@@ -1,0 +1,87 @@
+\def\GRAPHPATH{localgraphics}
+
+\ifdefined\HANDOUT
+  \documentclass[handout,aspectratio=1610,dvipsnames]{beamer}
+  \def\GRAPHPATH{graphics}
+\else
+  \documentclass[aspectratio=1610,dvipsnames]{beamer}
+\fi
+
+\input{localpackages.tex}
+\input{localcommands.tex}
+
+\ifdefined\TITLE
+  \title[Syntax | \StrSubstitute{\TITLE}{+}{ }]{Formale Semantik\\\StrSubstitute{\TITLE}{+}{ }}
+\else
+  \title[Formale Semantik]{Formale Semantik}
+\fi
+
+\author{Roland Schäfer}
+\institute[FSU Jena]{Institut für Germanistische Sprachwissenschaft\\Friedrich-Schiller-Universität Jena}
+\date[EGBD3]{\grau{stets aktuelle Fassungen: \url{https://github.com/rsling/VL-Deutsche-Syntax}}}
+
+\begin{document}
+
+\begingroup
+  \setbeamertemplate{navigation symbols}{}
+  \begin{frame}[noframenumbering,plain]
+   \titlepage
+  \end{frame}
+  \begin{frame}{Inhalt}
+    \centering 
+    \scalebox{0.9}{\begin{minipage}{\textwidth}
+      \begin{multicols}{2}
+        \tableofcontents
+      \end{multicols}
+    \end{minipage}}
+  \end{frame}
+\endgroup
+
+\ifdefined\TITLE
+  \input{includes/\TITLE}
+\else
+  \section[Grammatik]{Grammatik}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
+  \input{includes/01.+Grammatik.tex}
+  \let\subsection\section\let\section\woopsi
+
+\fi
+
+
+\makeatletter
+\setcounter{lastpagemainpart}{\the\c@framenumber}
+\makeatother
+
+\appendix
+
+\begin{frame}[allowframebreaks]
+  {Literatur}
+  \renewcommand*{\bibfont}{\footnotesize}
+  \setbeamertemplate{bibliography item}{}
+  \printbibliography
+\end{frame}
+
+\begin{frame}
+  {Autor}
+  \begin{block}{Kontakt}
+    Prof.\ Dr.\ Roland Schäfer\\
+    Institut für Germanistische Sprachwissenschaft\\
+    Friedrich-Schiller-Universität Jena\\
+    Fürstengraben 30\\
+    07743 Jena\\[\baselineskip]
+    \url{https://rolandschaefer.net}\\
+    \texttt{roland.schaefer@uni-jena.de}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  {Lizenz}
+  \begin{block}{Creative Commons BY-SA-3.0-DE}
+    Dieses Werk ist unter einer Creative Commons Lizenz vom Typ \textit{Namensnennung - Weitergabe unter gleichen Bedingungen 3.0 Deutschland} zugänglich.
+    Um eine Kopie dieser Lizenz einzusehen, konsultieren Sie \url{http://creativecommons.org/licenses/by-sa/3.0/de/} oder wenden Sie sich brieflich an Creative Commons, Postfach 1866, Mountain View, California, 94042, USA.
+  \end{block}
+\end{frame}
+
+\mode<beamer>{\setcounter{framenumber}{\thelastpagemainpart}}
+
+\end{document}
