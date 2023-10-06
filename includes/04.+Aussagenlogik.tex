@@ -1,45 +1,4 @@
-%\documentclass{beamer}
-\documentclass[handout]{beamer}
 
-\usepackage{beamerthemesplit,
-            graphicx,
-			      pstricks,
-			      color,
-			      colortbl,
-            fancyhdr,
-            tipa,
-            rotate,
-            url,
-            setspace,
-            pifont,
-            cite,
-            amsmath,
-            amsfonts,
-            amssymb,
-            tipa,
-            tipx,
-            gb4e,
-            cgloss4e,
-            xyling,
-            rotate,
-            stmaryrd}
-
-\title{Semantics{ }\\(3) Statement logic}
-\author{Roland Sch\"afer (University of G\"ottingen)}
-\date{Summer Term 2005 (May 04) / p. \today}
-
-\newcommand{\den}[1]{{$\llbracket${}#1$\rrbracket$}}
-\newcommand{\dem}[1]{{\llbracket{}#1\rrbracket}}
-\newcommand{\ra}[1]{{\langle{}#1\rangle}}
-\newcommand{\bl}[1]{\textcolor{blue}{#1}}
-\newcommand{\gr}[1]{\textcolor{gray}{#1}}
-\newcommand{\gn}[1]{\textcolor{green}{#1}}
-\newcommand{\lgr}[1]{\textcolor[gray]{0.9}{#1}}
-\newfont{\dslash}{dsrom12}
-
-\begin{document}
-
-\frame{\titlepage}
 
 \frame{\frametitle{}
 \begin{center}
@@ -285,33 +244,33 @@
 \end{itemize}
 }
 
-\frame{\frametitle{An example: Polish notation}
-\begin{itemize}
-  \item<1-> uses letters for functors and \bl{prefix style}: 
-     \begin{itemize}
-       \item<2-> $\neg$ \bl{N} (\emph{negatio})
-       \item<3-> $\vee$ \bl{A} (\emph{alternatio)}
-       \item<4-> $\wedge$ \bl{K} (\emph{koniunktio})
-       \item<5-> $\rightarrow$ \bl{C} (\emph{conditionalis})
-       \item<6-> $\leftrightarrow$ \bl{E} (\emph{equivalentia})
-     \end{itemize}
-  \item<7-> $p\wedge\neg q\vee r\rightarrow \neg s$ : CAKpNqrNs
-  \item<8-> (C(A(Kp(Nq))r)(Ns))
-\end{itemize}
-}
-
-\frame{\frametitle{An example}
-Draw trees!\\
-  \begin{center}{\singlespacing
-    \Tree[0]{
-    p\B{ddr} & \wedge & \neg\B{d} & q\B{dl} & \vee & r\B{dddl} & \rightarrow & \neg\B{d} & s\B{dl} \\
-    &        & \neg\B{dl} &   &      &   &            & \neg\B{dddl} &   \\
-    & \wedge\B{drrr} \\
-    &        &      &   & \vee\B{drr} \\
-       &        &      &   &      &   & \rightarrow \\
-    }
-    }\end{center}
-}
+% \frame{\frametitle{An example: Polish notation}
+% \begin{itemize}
+%   \item<1-> uses letters for functors and \bl{prefix style}: 
+%      \begin{itemize}
+%        \item<2-> $\neg$ \bl{N} (\emph{negatio})
+%        \item<3-> $\vee$ \bl{A} (\emph{alternatio)}
+%        \item<4-> $\wedge$ \bl{K} (\emph{koniunktio})
+%        \item<5-> $\rightarrow$ \bl{C} (\emph{conditionalis})
+%        \item<6-> $\leftrightarrow$ \bl{E} (\emph{equivalentia})
+%      \end{itemize}
+%   \item<7-> $p\wedge\neg q\vee r\rightarrow \neg s$ : CAKpNqrNs
+%   \item<8-> (C(A(Kp(Nq))r)(Ns))
+% \end{itemize}
+% }
+% 
+% \frame{\frametitle{An example}
+% Draw trees!\\
+%   \begin{center}
+%     \Tree[0]{
+%     p\B{ddr} & \wedge & \neg\B{d} & q\B{dl} & \vee & r\B{dddl} & \rightarrow & \neg\B{d} & s\B{dl} \\
+%     &        & \neg\B{dl} &   &      &   &            & \neg\B{dddl} &   \\
+%     & \wedge\B{drrr} \\
+%     &        &      &   & \vee\B{drr} \\
+%        &        &      &   &      &   & \rightarrow \\
+%     }
+%     \end{center}
+% }
 
 \frame{\frametitle{Large truth tables}
 \begin{itemize}
@@ -802,4 +761,3 @@ Draw trees!\\
 \end{itemize}
 }
 
-\end{document}
