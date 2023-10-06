@@ -1,53 +1,3 @@
-%\documentclass{beamer}
-\documentclass[handout]{beamer}
-
-\usepackage{beamerthemesplit,
-            graphicx,
-			      pstricks,
-			      color,
-			      colortbl,
-            fancyhdr,
-            rotate,
-            url,
-            setspace,
-            pifont,
-            cite,
-            amsmath,
-            amsfonts,
-            amssymb,
-            gb4e,
-            cgloss4e,
-            tree-dvips,
-            avm+,
-            ecltree+,
-            rotate,
-            stmaryrd}
-
-\title{Semantics{ }\\(5) Quantification in English}
-\author{Roland Sch\"afer (University of G\"ottingen)}
-\date{Summer Term 2005 (May 25)}
-
-\newcommand{\den}[1]{{$\llbracket${}#1$\rrbracket$}}
-\newcommand{\dem}[1]{{\llbracket{}#1\rrbracket}}
-\newcommand{\Dem}[2]{\llbracket{}#1\rrbracket^{#2}}
-\newcommand{\ra}[1]{{\langle{}#1\rangle}}
-\newcommand{\ek}[1]{$\left[$#1$\right]$}
-\newcommand{\lk}[0]{$\left[$}
-\newcommand{\rk}[0]{$\right]$}
-\newcommand{\ekm}[1]{\left[{}#1\right]}
-\newcommand{\bl}[1]{\textcolor{blue}{#1}}
-\newcommand{\rot}[1]{\textcolor{red}{#1}}
-\newcommand{\gr}[1]{\textcolor{gray}{#1}}
-\newcommand{\gn}[1]{\textcolor{green}{#1}}
-\newcommand{\lgr}[1]{\textcolor[gray]{0.9}{#1}}
-\newcommand{\mM}[0]{$\mathcal{M}$}
-\newcommand{\mMm}[0]{\mathcal{M}}
-\newfont{\dslash}{dsrom12}
-
-\begin{document}
-
-\frame{\titlepage}
-
 \section{From PC to F1}
 \subsection{Taking stock}
 
@@ -93,17 +43,17 @@
 
 \frame{\frametitle{Categories and lexicon}
 \begin{itemize}
-  \item<1-> pred_1 $\rightarrow$ P, Q
-  \item<2-> pred_2 $\rightarrow$ R
-  \item<3-> pred_3 $\rightarrow$ S
+  \item<1-> pred\Sub{1} $\rightarrow$ P, Q
+  \item<2-> pred\Sub{2} $\rightarrow$ R
+  \item<3-> pred\Sub{3} $\rightarrow$ S
   \item<4-> const $\rightarrow$ b, c
-  \item<5-> var $\rightarrow$ x_1, x_2, \ldots, x_n
+  \item<5-> var $\rightarrow$ x\Sub{1}, x\Sub{2}, \ldots, x\Sub{n}
 \end{itemize}
 }
 
 \frame{\frametitle{Phrase structure}
 \begin{itemize}
-  \item<1-> wff $\rightarrow$ pred_n a_1 a_2 \ldots a_n
+  \item<1-> wff $\rightarrow$ pred\Sub{n} a\Sub{1} a\Sub{2} \ldots a\Sub{n}
   \item<2-> wff $\rightarrow$ neg wff
   \item<3-> wff $\rightarrow$ wff con wff
   \item<4-> wff $\rightarrow$ (Q var) wff
@@ -120,7 +70,7 @@
     \chunk{\begin{bundle}
              {wff}
              \chunk{\begin{bundle}
-                      {pred_1}
+                      {pred\Sub{1}}
                       \chunk{P}
                     \end{bundle}
                    }
@@ -153,7 +103,7 @@
                     \chunk{\begin{bundle}
                              {wff}
                              \chunk{\begin{bundle}
-                                     {pred_2}
+                                     {pred\Sub{2}}
                                      \chunk{R}
                                     \end{bundle} 
                                    }
@@ -193,7 +143,7 @@
   {wff}\setlength\GapDepth{1.4ex}\setlength\GapWidth{1.5em}
   \chunk{\begin{bundle}
            {(Q var)}
-           \chunk{$\forall$ x_1}
+           \chunk{$\forall$ x\Sub{1}}
          \end{bundle}
         }
   \chunk{
@@ -202,7 +152,7 @@
     \chunk{\begin{bundle}
              {wff}
              \chunk{\begin{bundle}
-                      {pred_1}
+                      {pred\Sub{1}}
                       \chunk{P}
                     \end{bundle}
                    }
@@ -211,7 +161,7 @@
                      \chunk{
                             \begin{bundle}
                               {const}
-                              \chunk{x_1}
+                              \chunk{x\Sub{1}}
                             \end{bundle}
                            }
                     \end{bundle}
@@ -243,7 +193,7 @@
                         \chunk{\begin{bundle}
                                  {wff}
                                  \chunk{\begin{bundle}
-                                         {pred_2}
+                                         {pred\Sub{2}}
                                          \chunk{R}
                                         \end{bundle} 
                                        }
@@ -251,7 +201,7 @@
                                          {a}
                                          \chunk{\begin{bundle}
                                                   {var}
-                                                  \chunk{x_1}
+                                                  \chunk{x\Sub{1}}
                                                 \end{bundle}
                                                }
                                         \end{bundle} 
@@ -260,7 +210,7 @@
                                          {a}
                                          \chunk{\begin{bundle}
                                                   {var}
-                                                  \chunk{x_2}
+                                                  \chunk{x\Sub{2}}
                                                 \end{bundle}
                                                }
                                         \end{bundle} 
@@ -308,7 +258,7 @@
   {\node{a-2}{wff}}\setlength\GapDepth{1.4ex}\setlength\GapWidth{1.5em}
   \chunk{\begin{bundle}
            {(Q var)}
-           \chunk{\node{a-1}{$\forall$ x_1}}
+           \chunk{\node{a-1}{$\forall$ x\Sub{1}}}
          \end{bundle}
         }
   \chunk{
@@ -317,7 +267,7 @@
     \chunk{\begin{bundle}
              {\node{a-4}{wff}}
              \chunk{\begin{bundle}
-                      {pred_1}
+                      {pred\Sub{1}}
                       \chunk{P}
                     \end{bundle}
                    }
@@ -326,7 +276,7 @@
                      \chunk{
                             \begin{bundle}
                               {const}
-                              \chunk{\node{a-6}{x_1}}
+                              \chunk{\node{a-6}{x\Sub{1}}}
                             \end{bundle}
                            }
                     \end{bundle}
@@ -358,7 +308,7 @@
                         \chunk{\begin{bundle}
                                  {wff}
                                  \chunk{\begin{bundle}
-                                         {pred_2}
+                                         {pred\Sub{2}}
                                          \chunk{R}
                                         \end{bundle} 
                                        }
@@ -366,7 +316,7 @@
                                          {a}
                                          \chunk{\begin{bundle}
                                                   {var}
-                                                  \chunk{\node{a-9}{x_1}}
+                                                  \chunk{\node{a-9}{x\Sub{1}}}
                                                 \end{bundle}
                                                }
                                         \end{bundle} 
@@ -375,7 +325,7 @@
                                          {a}
                                          \chunk{\begin{bundle}
                                                   {var}
-                                                  \chunk{\node{a-10}{x_2}}
+                                                  \chunk{\node{a-10}{x\Sub{2}}}
                                                 \end{bundle}
                                                }
                                         \end{bundle} 
@@ -408,27 +358,27 @@
   \item<1-> \gr{remember T-sentences: \textbf{S of L is true in v iff p}.}
   \item<2-> \textbf{\bl{$\mathcal{M}$}} is a model of the accessible universe of discourse
     \begin{itemize}
-      \item<3-> $\mathcal{M}=\ra{U_n,V_n}$
+      \item<3-> $\mathcal{M}=\ra{U\Sub{n},V\Sub{n}}$
       \item<4-> \bl{$U_n$} = the set of accessible individuals (\bl{domain})
       \item<5-> \bl{$V_n$} = a \bl{valuation function} which assigns
          \begin{itemize}
            \item<6-> individuals to names
-           \item<7-> sets of n-tuples of indivuiduals to pred_n
+           \item<7-> sets of n-tuples of indivuiduals to pred\Sub{n}
          \end{itemize}
     \end{itemize}
   \item<8-> \textbf{\bl{g}} is function from variables to individuals in $\mathcal{M}$
   \item<9-> we evaluate: \bl{$\dem{\alpha}^{\mMm_n,g_n}$}
-  \item<10-> \emph{the extension of $\alpha$ relative to \mM_n and g_n}
+  \item<10-> \emph{the extension of $\alpha$ relative to \mM\Sub{n} and g\Sub{n}}
 \end{itemize}
 }
 
 \subsection{Assignment functions}
 \frame{\frametitle{Fixed and context-bound denotation}
 \begin{itemize}
-  \item<1-> V_n valuates \bl{statically}
+  \item<1-> V\Sub{n} valuates \bl{statically}
   \item<2-> Q's require flexible valuation of pronominal matrices
-  \item<3-> \emph{g_n} is like V_n for constants, only flexible
-  \item<4-> it can \bl{iterate through U_n}
+  \item<3-> \emph{g\Sub{n}} is like V\Sub{n} for constants, only flexible
+  \item<4-> it can \bl{iterate through U\Sub{n}}
   \item<5-> initial assignment can be anything:
     \begin{center}
       $g_1 = \left[\begin{array}{l}
@@ -442,7 +392,7 @@
 }
 
 \subsection{Modified assignment functions}
-\frame{\frametitle{Iterating through U_n}
+\frame{\frametitle{Iterating through U\Sub{n}}
 \begin{itemize}
   \item<1-> for each Q loop, one modification
   \item<2-> read \bl{$g_n\ekm{d/x_m}$} as\\ `\ldots relative to $g_n$ where $x_m$ is reassigned to $d$'
@@ -451,7 +401,7 @@
 \end{itemize}
 }
 
-\frame{\frametitle{Interpreting with g_n}
+\frame{\frametitle{Interpreting with g\Sub{n}}
 \begin{itemize}
   \item<1-> \bl{$\Dem{(\forall{}x_1)Px_1}{\mMm_1,g_1}$}
   \item<2-> start with initial assignment: $\Dem{x_1}{\mMm_1,g_1}=Webelhuth$ \\
@@ -524,13 +474,13 @@
 \frame{\frametitle{Cases of overt movement and traces}
 \begin{itemize}
   \item<1-> \bl{wh} movement:
-  \item<1-> \emph{\node{c-1}{What_i} will Agent Cooper solve \node{c-2}{t_i}?}
+  \item<1-> \emph{\node{c-1}{What\Sub{i}} will Agent Cooper solve \node{c-2}{t\Sub{i}}?}
   \item<1->
   \item<2-> \bl{passive} movement:
-  \item<2-> \emph{\node{c-3}{(Laura Palmer)_i} was killed \node{c-4}{t_i}.}
+  \item<2-> \emph{\node{c-3}{(Laura Palmer)\Sub{i}} was killed \node{c-4}{t\Sub{i}}.}
   \item<2->
   \item<3-> \bl{raising} verbs:
-  \item<3-> \emph{\node{c-5}{(Laura Palmer)_i} seems \node{c-6}{t_i} to be dead.}
+  \item<3-> \emph{\node{c-5}{(Laura Palmer)\Sub{i}} seems \node{c-6}{t\Sub{i}} to be dead.}
   \item<3->
 \end{itemize} \anodecurve[b]{c-2}[b]{c-1}{0.8cm}
               \anodecurve[b]{c-4}[b]{c-3}{0.8cm}
@@ -549,9 +499,9 @@
 
 \frame{\frametitle{Ambiguities at LF}
 \begin{itemize}
-  \item<1-> \emph{[_{S^{\prime\prime}} \node{d-1}{\bl{everybody_i}} [_{S^{\prime}} \node{d-3}{\bl{somebody_j}} [_S \node{d-2}{\bl{t_i}} loves \node{d-4}{\bl{t_j}} ]]]}
+  \item<1-> \emph{[\Sub{S\Up{$\prime\prime$}} \node{d-1}{\bl{everybody\Sub{i}}} [\Sub{S\Up{$\prime$}} \node{d-3}{\bl{somebody\Sub{j}}} [\Sub{S} \node{d-2}{\bl{t\Sub{i}}} loves \node{d-4}{\bl{t\Sub{j}}} ]]]}
   \item<1->
-  \item<2-> \emph{[_{S^{\prime\prime}} \node{d-5}{\bl{somebody_j}} [_{S^{\prime}} \node{d-7}{\bl{everybody_i}} [_S \node{d-8}{\bl{t_i}} loves \node{d-6}{\bl{t_j}} ]]]}
+  \item<2-> \emph{[\Sub{S\Up{$\prime\prime$}} \node{d-5}{\bl{somebody\Sub{j}}} [\Sub{S\Up{$\prime$}} \node{d-7}{\bl{everybody\Sub{i}}} [\Sub{S} \node{d-8}{\bl{t\Sub{i}}} loves \node{d-6}{\bl{t\Sub{j}}} ]]]}
   \item<2->
 \end{itemize} \anodecurve[b]{d-2}[b]{d-1}{0.6cm}
               \anodecurve[b]{d-4}[b]{d-3}{0.6cm}
@@ -608,4 +558,3 @@ A sentence containing the trace $t_i$ with an adjoined $NP_i$ (which consists of
 (similar)
 }
 
-\end{document}
