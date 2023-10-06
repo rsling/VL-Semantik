@@ -356,3 +356,23 @@
 \newcommand{\ARrkk}[3]{\POS[]-(0,4)+(#1)\ar@{<-}[#3]+(0,2)+(#2)}
 \newcommand{\ARrk}[3]{\ARrkk{0,#1}{0,#2}{#3}}
 \newcommand{\ARr}[2][0]{\ARrk{#1}{0}{#2}}
+
+\newcommand{\StrSpace}[1]{%
+  \StrSubstitute{#1}{+}{ }%
+}
+
+\NewDocumentCommand{\letterssub}{m}{%
+%  \saveexpandmode\noexpandarg
+  \def\tempstring{#1}%
+  \xStrSubstitute{\tempstring}{+}{ }[\tempstring]%
+  \xStrSubstitute{\tempstring}{-a}{ä}[\tempstring]%
+  \xStrSubstitute{\tempstring}{-o}{ö}[\tempstring]%
+  \xStrSubstitute{\tempstring}{-u}{ü}[\tempstring]%
+  \xStrSubstitute{\tempstring}{-l}{$\lambda$}[\tempstring]%
+  \tempstring
+%  \restoreexpandmode
+}
+
+\newcommand*{\xStrSubstitute}{%
+  \expandafter\StrSubstitute\expandafter
+}
