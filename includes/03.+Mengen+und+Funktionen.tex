@@ -1,40 +1,3 @@
-%\documentclass{beamer}
-\documentclass[handout]{beamer}
-
-\usepackage{beamerthemesplit,
-            graphicx,
-            color,
-            colortbl,
-            fancyhdr,
-            rotate,
-            url,
-            setspace,
-            pifont,
-            amsmath,
-            amsfonts,
-            amssymb,
-            gb4e,
-            xyling,
-            rotate,
-            stmaryrd}
-
-\title{Semantics{ }\\(2) Set and function theory}
-\author{Roland Sch\"afer (University of G\"ottingen)}
-\date{Summer Term 2005 (April 20) / p. \today}
-
-\newcommand{\den}[1]{{$\llbracket${}#1$\rrbracket$}}
-\newcommand{\dem}[1]{{\llbracket{}#1\rrbracket}}
-\newcommand{\ra}[1]{{\langle{}#1\rangle}}
-\newfont{\dslash}{dsrom12}
-
-\newcommand{\ARrkk}[3]{\POS[]-(0,4)+(#1)\ar@{<-}[#3]+(0,2)+(#2)}
-\newcommand{\ARrk}[3]{\ARrkk{0,#1}{0,#2}{#3}}
-\newcommand{\ARr}[2][0]{\ARrk{#1}{0}{#2}}
-
-\begin{document}
-
-\frame{\titlepage}
-
 \section{Sets and Functions}
 \subsection{The naive concept}
 \frame{\frametitle{What is a set?}
@@ -53,11 +16,11 @@
 
 \frame{\frametitle{Set definition and elements: \textcolor{black}{$\in$}}
   \begin{itemize}
-  \item<1-> M_1 = $\{a,b,c\}$
-  \item<2-> N_1 = $\{$`my book'$\}$\\ vs. N_2 = $\{$my book$\}$ \\vs. N_3 = $\{$`my', `book'$\}$
-  \item<3-> ill-formed: N_4 = $\{$`my', book$\}$
-  \item<4-> defined by a property of its members:\\M_2 = $\{$x:x is one of the first three letters of the alphabet$\}$
-  \item<5-> alternatively: \\M_2 = $\{$x$\|$x is one of the first three letters of the alphabet$\}$
+  \item<1-> M\Sub{1} = $\{a,b,c\}$
+  \item<2-> N\Sub{1} = $\{$`my book'$\}$\\ vs. N\Sub{2} = $\{$my book$\}$ \\vs. N\Sub{3} = $\{$`my', `book'$\}$
+  \item<3-> ill-formed: N\Sub{4} = $\{$`my', book$\}$
+  \item<4-> defined by a property of its members:\\M\Sub{2} = $\{$x:x is one of the first three letters of the alphabet$\}$
+  \item<5-> alternatively: \\M\Sub{2} = $\{$x$\|$x is one of the first three letters of the alphabet$\}$
   \item<6-> \textcolor{blue}{U}: the universal set (contains every discrete object)
   \end{itemize}
 }
@@ -105,7 +68,7 @@
   \item<1->But: \emph{Professors of English Linguistics are numerous.}
   \item<2->N = the set of sets with numerous members\\
   \item<3->$w\in E$ \& $E\in N$ $\not\Rightarrow$ $w\in P$
-  \item<4-> Hence: ^{\ast}Herr Webelhuth is numerous.
+  \item<4-> Hence: \Up{*}Herr Webelhuth is numerous.
 \end{itemize}
 }
 
@@ -338,7 +301,7 @@ An ordering relation R in A is ...
 
 \frame{\frametitle{Orders: an example}
 \begin{itemize}
-  \item<1-> a strict order: \emph{greater than} ($>$) in {\dslash N}
+  \item<1-> a strict order: \emph{greater than} ($>$) in $\mathbb{N}$
   \item<2-> what is the corresponding weak order
   \item<3-> $\geq$
 \end{itemize}
@@ -371,15 +334,15 @@ An ordering relation R in A is ...
 
 \frame{\frametitle{Denumerable sets}
 \begin{itemize}
-  \item<1-> {\dslash N} is infinite
-  \item<2-> for every A there is some R_{card}
+  \item<1-> $\mathbb{N}$ is infinite
+  \item<2-> for every A there is some R\Sub{card}
        \begin{itemize}
          \item<3-> a one-to-one correspondence
-         \item<4-> from A's members to the first $n$ members of {\dslash N}
+         \item<4-> from A's members to the first $n$ members of $\mathbb{N}$
          \item<5-> s.t. $n$ is the \textcolor{blue}{cardinality of A, $\|A\|$}
       \end{itemize}
   \item<6-> sets A,B with $\|A\|=\|B\|$ are \textcolor{blue}{equivalent}
-  \item<7-> $\|${\dslash N}$\|=\aleph^0$
+  \item<7-> $\|\mathbb{N}\|=\aleph^0$
 \end{itemize}
 }
 
@@ -387,9 +350,9 @@ An ordering relation R in A is ...
 
 \frame{\frametitle{A problem}
 \begin{itemize}
-  \item<1-> \textcolor{red}{for some sets there is no such R_{card}}
+  \item<1-> \textcolor{red}{for some sets there is no such R\Sub{card}}
   \item<2-> no way of bringing their elements into an exhaustive linear order
-  \item<3-> no problem with {\dslash Q}: 
+  \item<3-> no problem with $\mathbb{Q}$: 
     \begin{small}\Treek[2]{2}{
 	    & \K{$\ra{0,1}$}\ARkk{0,0}{0,0}{dl} & \K{$\ra{0,2}$}\ARkk{0,0}{0,0}{dl}\ARr{dll} & \K{$\ra{0,3}$}\ARkk{0,0}{3,0}{dl}\ARr{ddlll} & \K{$\cdots$}\ARkk{0,0}{0,0}{dl}\\
 	    \K{$\ra{1,0}$} & \K{$\ra{1,1}$}\ARkk{-3,0}{0,0}{dl}        & \K{$\ra{1,2}$}\ARkk{0,0}{0,0}{dl} & \K{$\ra{1,3}$}\ARkk{0,0}{0,0}{dl} & \K{$\cdots$}\ARkk{0,0}{0,0}{dl} \\
@@ -401,23 +364,23 @@ An ordering relation R in A is ...
 
 \frame{\frametitle{The non-denumerable real numbers}
 \begin{itemize}
-  \item<1-> now: {\dslash R}
-  \item<2-> some elements cannot be represented as an ordered pair of two elements of {\dslash N}
+  \item<1-> now: $\mathbb{R}$
+  \item<2-> some elements cannot be represented as an ordered pair of two elements of $\mathbb{N}$
   \item<3-> in $[0,1]$, every real can be represented as \textcolor{blue}{$0.abcdefg\ldots$}, $a,b,c,d,e,f,g,\ldots\in\{0,1,2,3,4,5,6,7,8,9\}$
 \end{itemize}
 }
 
 \frame{\frametitle{Trying to enumerate}
 \begin{itemize}
-  \item<1-> an enumeration of $[0,1]$ in {\dslash R}?\\
+  \item<1-> an enumeration of $[0,1]$ in $\mathbb{R}$?\\
   
   \medskip
   \begin{tabular}{ccccccccc}
-     x_1 & = & 0 & . & a_{11} & a_{12} & a_{13} & a_{14} & \ldots \\
-     x_2 & = & 0 & . & a_{21} & a_{22} & a_{23} & a_{24} & \ldots \\
-     x_3 & = & 0 & . & a_{31} & a_{32} & a_{33} & a_{34} & \ldots \\
+     x\Sub{1} & = & 0 & . & a\Sub{11} & a\Sub{12} & a\Sub{13} & a\Sub{14} & \ldots \\
+     x\Sub{2} & = & 0 & . & a\Sub{21} & a\Sub{22} & a\Sub{23} & a\Sub{24} & \ldots \\
+     x\Sub{3} & = & 0 & . & a\Sub{31} & a\Sub{32} & a\Sub{33} & a\Sub{34} & \ldots \\
       $\vdots$ & & \vdots &&&&& \\     
-     x_n & = & 0 & . & a_{n1} & a_{n2} & a_{n3} & a_{n4} & \ldots \\
+     x\Sub{n} & = & 0 & . & a\Sub{n1} & a\Sub{n2} & a\Sub{n3} & a\Sub{n4} & \ldots \\
   \end{tabular}
 \end{itemize}
 }
@@ -428,16 +391,15 @@ An ordering relation R in A is ...
   
   \medskip
   {\footnotesize\begin{center}\begin{tabular}{ccccccccc}
-     x_1 & = & 0 & . & \textcolor{red}{a_{11}} & a_{12} & a_{13} & a_{14} & \ldots \\
-     x_2 & = & 0 & . & a_{21} & \textcolor{red}{a_{22}} & a_{23} & a_{24} & \ldots \\
-     x_3 & = & 0 & . & a_{31} & a_{32} & \textcolor{red}{a_{33}} & a_{34} & \ldots \\
+     x\Sub{1} & = & 0 & . & \textcolor{red}{a\Sub{11}} & a\Sub{12} & a\Sub{13} & a\Sub{14} & \ldots \\
+     x\Sub{2} & = & 0 & . & a\Sub{21} & \textcolor{red}{a\Sub{22}} & a\Sub{23} & a\Sub{24} & \ldots \\
+     x\Sub{3} & = & 0 & . & a\Sub{31} & a\Sub{32} & \textcolor{red}{a\Sub{33}} & a\Sub{34} & \ldots \\
       $\vdots$ & & \vdots &&&&& \\     
-     x_n & = & 0 & . & a_{n1} & a_{n2} & a_{n3} & \textcolor{red}{a_{nn}} & \ldots \\
+     x\Sub{n} & = & 0 & . & a\Sub{n1} & a\Sub{n2} & a\Sub{n3} & \textcolor{red}{a\Sub{nn}} & \ldots \\
   \end{tabular}\end{center}}
   
   \item<2-> \textcolor{red}{It won't be in the array...}
-  \item<3-> {\dslash R} is non-denumerable
+  \item<3-> $\mathbb{R}$ is non-denumerable
   \item<4-> If $\|A\|=\aleph^0$ then $\|\wp(A)\|=2^{\aleph_0}$ (cf. Partee et al. 62f.)
 \end{itemize}
 }
-\end{document}

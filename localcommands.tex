@@ -119,10 +119,6 @@
 \newcommand{\ORiv}{\Bewegtes{4}}
 \newcommand{\ORv}{\Bewegtes{5}}
 
-
-\newcommand{\den}[1]{{$\llbracket${}#1$\rrbracket$}}
-\newcommand{\dem}[1]{{\llbracket{}#1\rrbracket}}
-
 % Beamer ==============================================================
 
 \usetheme[hideothersubsections]{Boadilla}
@@ -348,4 +344,12 @@
 \setbeamerfont{subsection in toc}{size=\tiny}
 \setbeamerfont{subsubsection in toc}{size=\tiny}
 
+%% SEMANTIK
 
+\newcommand{\den}[1]{{$\llbracket${}#1$\rrbracket$}}
+\newcommand{\dem}[1]{{\llbracket{}#1\rrbracket}}
+\newcommand{\ra}[1]{{\langle{}#1\rangle}}
+%\newfont{\dslash}{dsrom12}
+\newcommand{\ARrkk}[3]{\POS[]-(0,4)+(#1)\ar@{<-}[#3]+(0,2)+(#2)}
+\newcommand{\ARrk}[3]{\ARrkk{0,#1}{0,#2}{#3}}
+\newcommand{\ARr}[2][0]{\ARrk{#1}{0}{#2}}
