@@ -1,0 +1,805 @@
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+
+\usepackage{beamerthemesplit,
+            graphicx,
+			      pstricks,
+			      color,
+			      colortbl,
+            fancyhdr,
+            tipa,
+            rotate,
+            url,
+            setspace,
+            pifont,
+            cite,
+            amsmath,
+            amsfonts,
+            amssymb,
+            tipa,
+            tipx,
+            gb4e,
+            cgloss4e,
+            xyling,
+            rotate,
+            stmaryrd}
+
+\title{Semantics{ }\\(3) Statement logic}
+\author{Roland Sch\"afer (University of G\"ottingen)}
+\date{Summer Term 2005 (May 04) / p. \today}
+
+\newcommand{\den}[1]{{$\llbracket${}#1$\rrbracket$}}
+\newcommand{\dem}[1]{{\llbracket{}#1\rrbracket}}
+\newcommand{\ra}[1]{{\langle{}#1\rangle}}
+\newcommand{\bl}[1]{\textcolor{blue}{#1}}
+\newcommand{\gr}[1]{\textcolor{gray}{#1}}
+\newcommand{\gn}[1]{\textcolor{green}{#1}}
+\newcommand{\lgr}[1]{\textcolor[gray]{0.9}{#1}}
+\newfont{\dslash}{dsrom12}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\frame{\frametitle{}
+\begin{center}
+\textcolor{blue}{The book (PMW:87-246) deals with logic far more in-depth than we do. Only what is mentioned on the slides is relevant for the test. Reading the whole chapter from PMW will do you no harm, though.}
+\end{center}
+}
+
+\section{What logic is about}
+
+\subsection{On reasoning}
+\frame{\frametitle{Theories}
+\begin{itemize}
+  \item<1-> a collection of statements (propositions)
+  \item<2-> axioms (statements accepted to be true)
+  \item<3-> maybe based on observations (induction)
+  \item<4-> statements that follow from the axioms (deduction)
+  \item<5-> predictions beyond the axioms
+  \item<6-> rechecking for usability: e.g., Russell's paradox
+\end{itemize}
+}
+
+\frame{\frametitle{Proofs}
+\begin{itemize}
+  \item<1-> \textcolor{blue}{axioms}: atomic truths of your theory
+  \item<2-> \textcolor{blue}{theorem}: a proposition you want to prove
+  \item<3-> \textcolor{blue}{lemma}: subsidiary propositions (used to prove the theorem)
+  \item<4-> \textcolor{blue}{corollary}: propositions proved while proving some axiom
+\end{itemize}
+}
+
+\subsection{Where we need logic}
+\frame{\frametitle{A method of reasoning}
+\begin{itemize}
+  \item<1-> logic does not generate truths
+  \item<2-> \textcolor{blue}{formalizing statements, predications} etc.
+  \item<3-> \textcolor{blue}{rules of deduction from axioms to theorems}
+  \item<4-> empirical (induction) and exact (deduction) science
+  \item<5-> aiming at an adequate \textcolor{blue}{model} of the world (e.g., heliocentric universe)
+\end{itemize}
+}
+
+\frame{\frametitle{Why logic for semantics?}
+\begin{itemize}
+  \item<1-> truth-conditional
+  \item<2-> compositional behavior of propositions and connectives
+  \item<3-> a logic for entailments
+  \item<4-> why, e.g.: \emph{It is not the case that someone is happy.} $\rightarrow$ \emph{Nobody is happy.}
+\end{itemize}
+}
+
+\section{Statement calculus}
+\subsection{Formalization: Recursive Syntax}
+\frame{\frametitle{Atomic formulas: statements}
+\begin{itemize}
+  \item<1-> statements/propositions = the \bl{atoms}
+  \item<2-> a propositional symbol \emph{p}: a well-formed formula (\bl{wff})
+  \item<3-> ex.: \emph{Herr \underline{K}eydana is a passionate cyclist.}: \emph{k}
+  \item<4-> \den{k}=1 or 0 (depending on corresponding \textbf{model})
+\end{itemize}
+}
+
+\frame{\frametitle{Complex (molecular) formulas}
+\begin{itemize}
+  \item<1-> \textcolor{blue}{syntax}: restricts the forms of wff's to make them interpretable
+  \item<2-> define functors: functions in $\{0,1\}$
+  \item<3-> If \emph{p} and \emph{q} are wff's, then
+      \begin{itemize}
+         \item<4-> $\textcolor{blue}{\neg} p$
+         \item<5-> $p\textcolor{blue}{\vee} q$
+         \item<6-> $p\textcolor{blue}{\wedge} q$
+         \item<7-> $p\textcolor{blue}{\rightarrow} q$
+         \item<8-> $p\textcolor{blue}{\leftrightarrow} q$
+      \end{itemize}
+     is also a wff (a \bl{molecular term}).
+\end{itemize}
+}
+
+\frame{\frametitle{Complex (molecular) formulas}
+\begin{itemize}
+  \item<1-> \textcolor{blue}{syntax}: restricts forms of wff's to make them interpretable
+  \item<1-> define functors: functions in $\{\ra{0,1},\ra{1,0},0,1\}$
+  \item<1-> If \emph{p} and \emph{q} are wff's, then
+      \begin{itemize}
+         \item<1-> $\textcolor{blue}{\neg} p$ \textcolor{blue}{(negation)}
+         \item<1-> $p\textcolor{blue}{\vee} q$ \textcolor{blue}{(disjunction)}
+         \item<1-> $p\textcolor{blue}{\wedge} q$ \textcolor{blue}{(conjunction)}
+         \item<1-> $p\textcolor{blue}{\rightarrow} q$ \textcolor{blue}{(conditional)}
+         \item<1-> $p\textcolor{blue}{\leftrightarrow} q$ \textcolor{blue}{(biconditional)}
+      \end{itemize}
+     is also a wff.
+\end{itemize}
+}
+
+\frame{\frametitle{Complex (molecular) formulas}
+\begin{itemize}
+  \item<1-> \textcolor{blue}{syntax}: restricts forms of wff's to make them interpretable
+  \item<1-> define functors: functions in $\{\ra{0,1},\ra{1,0},0,1\}$
+  \item<1-> If \emph{p} and \emph{q} are wff's, then
+      \begin{itemize}
+         \item<1-> $\textcolor{blue}{\neg} p$ \textcolor{blue}{(negation - `not')}
+         \item<1-> $p\textcolor{blue}{\vee} q$ \textcolor{blue}{(disjunction - `or')}
+         \item<1-> $p\textcolor{blue}{\wedge} q$ \textcolor{blue}{(conjunction - `and')}
+         \item<1-> $p\textcolor{blue}{\rightarrow} q$ \textcolor{blue}{(conditional - `if')}
+         \item<1-> $p\textcolor{blue}{\leftrightarrow} q$ \textcolor{blue}{(biconditional - `iff')}
+      \end{itemize}
+     is also a wff.
+\end{itemize}
+}
+
+\subsection{Interpretation}
+
+\frame{\frametitle{Functions and truth tables}
+\begin{itemize}
+  \item<1-> standard defintion: \\
+  									\medskip    
+                    \begin{center}
+                    $\dem{\neg} = \left[
+                         \begin{array}{l}
+	                          1 \rightarrow 0\\
+	                          0 \rightarrow 1
+                         \end{array}
+                         \right]$
+                       \end{center}
+                         
+  \item<2-> but most widely used: \textcolor{blue}{truth tables}\\
+              \begin{center}
+              \begin{tabular}{c|c}
+                    $\neg$ & $p$\\
+                    \hline
+                    \textcolor{blue}{0} & 1 \\
+                    \textcolor{blue}{1} & 0 \\
+                  \end{tabular}
+              \end{center}
+\end{itemize}
+}
+
+\frame{\frametitle{Disjunction}
+     \begin{center}
+            \begin{tabular}{c|c|c}
+                  $p$ & $\vee$ & $q$\\
+                  \hline
+                  1 & \textcolor{blue}{1} & 1 \\
+                  1 & \textcolor{blue}{1} & 0 \\
+                  0 & \textcolor{blue}{1} & 1 \\
+                  0 & \textcolor{blue}{0} & 0 \\
+                \end{tabular}
+            \end{center}
+\begin{itemize}
+  \item<2-> \emph{Herr \underline{K}eydana is a passionate cyclist \textbf{or} we all \underline{l}ove logic.}
+  \item<3-> \textcolor{blue}{$K\vee$L}
+\end{itemize}
+}
+
+\frame{\frametitle{Conjunction}
+     \begin{center}
+            \begin{tabular}{c|c|c}
+                  $p$ & $\wedge$ & $q$\\
+                  \hline
+                  1 & \textcolor{blue}{1} & 1 \\
+                  1 & \textcolor{blue}{0} & 0 \\
+                  0 & \textcolor{blue}{0} & 1 \\
+                  0 & \textcolor{blue}{0} & 0 \\
+                \end{tabular}
+            \end{center}
+\begin{itemize}
+  \item<2-> \emph{Herr \underline{K}eydana is a passionate cyclist \textbf{and} we all \underline{l}ove logic.}
+  \item<3-> \textcolor{blue}{$K\wedge$L}
+\end{itemize}
+}
+
+\frame{\frametitle{Conditional}
+     \begin{center}
+            \begin{tabular}{c|c|c}
+                  $p$ & $\rightarrow$ & $q$\\
+                  \hline
+                  1 & \textcolor{blue}{1} & 1 \\
+                  1 & \textcolor{blue}{0} & 0 \\
+                  0 & \textcolor{blue}{1} & 1 \\
+                  0 & \textcolor{blue}{1} & 0 \\
+                \end{tabular}
+            \end{center}
+\begin{itemize}
+  \item<2-> \emph{\textbf{If} it \underline{r}ains, \textbf{then} the \underline{s}treets get wet.}
+  \item<3-> \textcolor{blue}{$R\rightarrow$S}
+\end{itemize}
+}
+
+\frame{\frametitle{Any problems with that?}
+\textbf{\emph{If it rains, the streets get wet.}}
+\begin{itemize}
+  \item<1-> it is raining (\textcolor{blue}{1}) , the streets are wet \textcolor{blue}{1} : \textcolor{blue}{\textbf{1}}
+  \item<2-> it is raining (\textcolor{blue}{1}) , the streets are dry \textcolor{blue}{0} : \textcolor{blue}{\textbf{0}}
+  \item<3-> it is not raining (\textcolor{blue}{0}) , the streets are wet \textcolor{blue}{1} : \textcolor{blue}{\textbf{1}}
+  \item<4-> it is not raining (\textcolor{blue}{0}) , the streets are dry \textcolor{blue}{0} : \textcolor{blue}{\textbf{1}}
+  \item<5-> \textcolor{blue}{ex vero non sequitur falsum}
+\end{itemize}
+}
+
+\frame{\frametitle{Biconditional}
+     \begin{center}
+            \begin{tabular}{c|c|c}
+                  $p$ & $\leftrightarrow$ & $q$\\
+                  \hline
+                  1 & \textcolor{blue}{1} & 1 \\
+                  1 & \textcolor{blue}{0} & 0 \\
+                  0 & \textcolor{blue}{0} & 1 \\
+                  0 & \textcolor{blue}{1} & 0 \\
+                \end{tabular}
+            \end{center}
+\begin{itemize}
+  \item<2-> \emph{\textbf{If and only if} your \underline{s}core is above 50, \textbf{then} you \underline{p}ass the semantics exam.}
+  \item<3-> \textcolor{blue}{$S\leftrightarrow$P}
+\end{itemize}
+}
+
+\frame{\frametitle{Scope of functors}
+\begin{itemize}
+  \item<1-> brackets are facultative
+  \item<2-> or set non-default functor scope
+  \item<3-> default scope\\
+  
+  \medskip
+     \begin{center}
+        \textcolor{blue}{scope} $\left\downarrow \begin{array}{c}
+           \neg \\
+           \wedge \\
+           \vee \\
+           \rightarrow \\
+           \leftrightarrow
+         \end{array} \right\uparrow
+        $ \textcolor{blue}{binding strength}
+     \end{center}
+\end{itemize}
+}
+
+\frame{\frametitle{An example}
+\begin{itemize}
+  \item<1-> $p\wedge\neg q\vee r\rightarrow \neg s$
+  \item<2-> $p\wedge\textcolor{blue}{(\neg} q\textcolor{blue}{)}\vee r\rightarrow \textcolor{blue}{(\neg} s\textcolor{blue}{)}$
+  \item<3-> $\textcolor{blue}{(}p\textcolor{blue}{\wedge}(\neg q)\textcolor{blue}{)}\vee r\rightarrow (\neg s)$
+  \item<4-> $\textcolor{blue}{(}(p\wedge(\neg q))\textcolor{blue}{\vee} r\textcolor{blue}{)}\rightarrow (\neg s)$
+  \item<5-> $\textcolor{blue}{(}((p\wedge(\neg q))\vee r)\textcolor{blue}{\rightarrow} (\neg s)\textcolor{blue}{)}$
+\end{itemize}
+}
+
+\frame{\frametitle{An example: Polish notation}
+\begin{itemize}
+  \item<1-> uses letters for functors and \bl{prefix style}: 
+     \begin{itemize}
+       \item<2-> $\neg$ \bl{N} (\emph{negatio})
+       \item<3-> $\vee$ \bl{A} (\emph{alternatio)}
+       \item<4-> $\wedge$ \bl{K} (\emph{koniunktio})
+       \item<5-> $\rightarrow$ \bl{C} (\emph{conditionalis})
+       \item<6-> $\leftrightarrow$ \bl{E} (\emph{equivalentia})
+     \end{itemize}
+  \item<7-> $p\wedge\neg q\vee r\rightarrow \neg s$ : CAKpNqrNs
+  \item<8-> (C(A(Kp(Nq))r)(Ns))
+\end{itemize}
+}
+
+\frame{\frametitle{An example}
+Draw trees!\\
+  \begin{center}{\singlespacing
+    \Tree[0]{
+    p\B{ddr} & \wedge & \neg\B{d} & q\B{dl} & \vee & r\B{dddl} & \rightarrow & \neg\B{d} & s\B{dl} \\
+    &        & \neg\B{dl} &   &      &   &            & \neg\B{dddl} &   \\
+    & \wedge\B{drrr} \\
+    &        &      &   & \vee\B{drr} \\
+       &        &      &   &      &   & \rightarrow \\
+    }
+    }\end{center}
+}
+
+\frame{\frametitle{Large truth tables}
+\begin{itemize}
+  \item<1-> for \emph{n} atoms in the term: $2^n$ lines
+  \item<2-> alternating blocks of 1's and 0's under every atom
+  \item<3-> $2^{(m-1)}$ times `1' followed by $2^{(m-1)}$ times `0' for the $m$-th atom from the right
+  \item<4-> until $2^n$ lines are reached
+\end{itemize}
+}
+
+\frame{\frametitle{An example}
+ {\scriptsize
+    \begin{center}
+    \begin{tabular}{c|c|c|c|c|c|c|c|c}
+     $p$ & $\wedge$ & $\neg$ & $q$ & $\vee$ & $r$ & $\rightarrow$ & $\neg$ & $s$ \\
+     \hline
+      1 &  &  & 1 &  & 1 &  &  & 1 \\
+      1 &  &  & 1 &  & 1 &  &  & 0 \\
+      1 &  &  & 1 &  & 0 &  &  & 1 \\
+      1 &  &  & 1 &  & 0 &  &  & 0 \\
+      1 &  &  & 0 &  & 1 &  &  & 1 \\
+      1 &  &  & 0 &  & 1 &  &  & 0 \\
+      1 &  &  & 0 &  & 0 &  &  & 1 \\
+      1 &  &  & 0 &  & 0 &  &  & 0 \\
+      0 &  &  & 1 &  & 1 &  &  & 1 \\
+      0 &  &  & 1 &  & 1 &  &  & 0 \\
+      0 &  &  & 1 &  & 0 &  &  & 1 \\
+      0 &  &  & 1 &  & 0 &  &  & 0 \\
+      0 &  &  & 0 &  & 1 &  &  & 1 \\
+      0 &  &  & 0 &  & 1 &  &  & 0 \\
+      0 &  &  & 0 &  & 0 &  &  & 1 \\
+      0 &  &  & 0 &  & 0 &  &  & 0 \\
+     \end{tabular}
+   \end{center}
+ }
+}
+
+\frame{\frametitle{An example}
+ {\scriptsize
+    \begin{center}
+    \begin{tabular}{c|c|c|c|c|c|c|c|c}
+     $p$ & $\wedge$ & $\neg$ & $q$ & $\vee$ & $r$ & $\rightarrow$ & $\neg$ & $s$ \\
+     \hline
+      \gr{1} &  & \bl{0} & 1 &  & \gr{1} &  & \bl{0} & 1 \\
+      \gr{1} &  & \bl{0} & 1 &  & \gr{1} &  & \bl{1} & 0 \\
+      \gr{1} &  & \bl{0} & 1 &  & \gr{0} &  & \bl{0} & 1 \\
+      \gr{1} &  & \bl{0} & 1 &  & \gr{0} &  & \bl{1} & 0 \\
+      \gr{1} &  & \bl{1} & 0 &  & \gr{1} &  & \bl{0} & 1 \\
+      \gr{1} &  & \bl{1} & 0 &  & \gr{1} &  & \bl{1} & 0 \\
+      \gr{1} &  & \bl{1} & 0 &  & \gr{0} &  & \bl{0} & 1 \\
+      \gr{1} &  & \bl{1} & 0 &  & \gr{0} &  & \bl{1} & 0 \\
+      \gr{0} &  & \bl{0} & 1 &  & \gr{1} &  & \bl{0} & 1 \\
+      \gr{0} &  & \bl{0} & 1 &  & \gr{1} &  & \bl{1} & 0 \\
+      \gr{0} &  & \bl{0} & 1 &  & \gr{0} &  & \bl{0} & 1 \\
+      \gr{0} &  & \bl{0} & 1 &  & \gr{0} &  & \bl{1} & 0 \\
+      \gr{0} &  & \bl{1} & 0 &  & \gr{1} &  & \bl{0} & 1 \\
+      \gr{0} &  & \bl{1} & 0 &  & \gr{1} &  & \bl{1} & 0 \\
+      \gr{0} &  & \bl{1} & 0 &  & \gr{0} &  & \bl{0} & 1 \\
+      \gr{0} &  & \bl{1} & 0 &  & \gr{0} &  & \bl{1} & 0 \\
+     \end{tabular}
+   \end{center}
+ }
+}
+
+\frame{\frametitle{An example}
+ {\scriptsize
+    \begin{center}
+    \begin{tabular}{c|c|c|c|c|c|c|c|c}
+     $p$ & $\wedge$ & $\neg$ & $q$ & $\vee$ & $r$ & $\rightarrow$ & $\neg$ & $s$ \\
+     \hline
+      1 & \bl{0} & 0 & \lgr{1} &  & \gr{1} &  & \gr{0} & \lgr{1} \\
+      1 & \bl{0} & 0 & \lgr{1} &  & \gr{1} &  & \gr{1} & \lgr{0} \\
+      1 & \bl{0} & 0 & \lgr{1} &  & \gr{0} &  & \gr{0} & \lgr{1} \\
+      1 & \bl{0} & 0 & \lgr{1} &  & \gr{0} &  & \gr{1} & \lgr{0} \\
+      1 & \bl{1} & 1 & \lgr{0} &  & \gr{1} &  & \gr{0} & \lgr{1} \\
+      1 & \bl{1} & 1 & \lgr{0} &  & \gr{1} &  & \gr{1} & \lgr{0} \\
+      1 & \bl{1} & 1 & \lgr{0} &  & \gr{0} &  & \gr{0} & \lgr{1} \\
+      1 & \bl{1} & 1 & \lgr{0} &  & \gr{0} &  & \gr{1} & \lgr{0} \\
+      0 & \bl{0} & 0 & \lgr{1} &  & \gr{1} &  & \gr{0} & \lgr{1} \\
+      0 & \bl{0} & 0 & \lgr{1} &  & \gr{1} &  & \gr{1} & \lgr{0} \\
+      0 & \bl{0} & 0 & \lgr{1} &  & \gr{0} &  & \gr{0} & \lgr{1} \\
+      0 & \bl{0} & 0 & \lgr{1} &  & \gr{0} &  & \gr{1} & \lgr{0} \\
+      0 & \bl{0} & 1 & \lgr{0} &  & \gr{1} &  & \gr{0} & \lgr{1} \\
+      0 & \bl{0} & 1 & \lgr{0} &  & \gr{1} &  & \gr{1} & \lgr{0} \\
+      0 & \bl{0} & 1 & \lgr{0} &  & \gr{0} &  & \gr{0} & \lgr{1} \\
+      0 & \bl{0} & 1 & \lgr{0} &  & \gr{0} &  & \gr{1} & \lgr{0} \\
+     \end{tabular}
+   \end{center}
+ }
+}
+
+\frame{\frametitle{An example}
+ {\scriptsize
+    \begin{center}
+    \begin{tabular}{c|c|c|c|c|c|c|c|c}
+     $p$ & $\wedge$ & $\neg$ & $q$ & $\vee$ & $r$ & $\rightarrow$ & $\neg$ & $s$ \\
+     \hline
+      \lgr{1} & 0 & \lgr{0} & \lgr{1} & \bl{1} & 1 &  & \gr{0} & \lgr{1} \\
+      \lgr{1} & 0 & \lgr{0} & \lgr{1} & \bl{1} & 1 &  & \gr{1} & \lgr{0} \\
+      \lgr{1} & 0 & \lgr{0} & \lgr{1} & \bl{0} & 0 &  & \gr{0} & \lgr{1} \\
+      \lgr{1} & 0 & \lgr{0} & \lgr{1} & \bl{0} & 0 &  & \gr{1} & \lgr{0} \\
+      \lgr{1} & 1 & \lgr{1} & \lgr{0} & \bl{1} & 1 &  & \gr{0} & \lgr{1} \\
+      \lgr{1} & 1 & \lgr{1} & \lgr{0} & \bl{1} & 1 &  & \gr{1} & \lgr{0} \\
+      \lgr{1} & 1 & \lgr{1} & \lgr{0} & \bl{1} & 0 &  & \gr{0} & \lgr{1} \\
+      \lgr{1} & 1 & \lgr{1} & \lgr{0} & \bl{1} & 0 &  & \gr{1} & \lgr{0} \\
+      \lgr{0} & 0 & \lgr{0} & \lgr{1} & \bl{1} & 1 &  & \gr{0} & \lgr{1} \\
+      \lgr{0} & 0 & \lgr{0} & \lgr{1} & \bl{1} & 1 &  & \gr{1} & \lgr{0} \\
+      \lgr{0} & 0 & \lgr{0} & \lgr{1} & \bl{0} & 0 &  & \gr{0} & \lgr{1} \\
+      \lgr{0} & 0 & \lgr{0} & \lgr{1} & \bl{0} & 0 &  & \gr{1} & \lgr{0} \\
+      \lgr{0} & 0 & \lgr{1} & \lgr{0} & \bl{1} & 1 &  & \gr{0} & \lgr{1} \\
+      \lgr{0} & 0 & \lgr{1} & \lgr{0} & \bl{1} & 1 &  & \gr{1} & \lgr{0} \\
+      \lgr{0} & 0 & \lgr{1} & \lgr{0} & \bl{0} & 0 &  & \gr{0} & \lgr{1} \\
+      \lgr{0} & 0 & \lgr{1} & \lgr{0} & \bl{0} & 0 &  & \gr{1} & \lgr{0} \\
+     \end{tabular}
+   \end{center}
+ }
+}
+
+\frame{\frametitle{An example}
+ {\scriptsize
+    \begin{center}
+    \begin{tabular}{c|c|c|c|c|c|c|c|c}
+     $p$ & $\wedge$ & $\neg$ & $q$ & $\vee$ & $r$ & $\rightarrow$ & $\neg$ & $s$ \\
+     \hline
+      \lgr{1} & \lgr{0} & \lgr{0} & \lgr{1} & 1 & \lgr{1} & \bl{0} & 0 & \lgr{1} \\
+      \lgr{1} & \lgr{0} & \lgr{0} & \lgr{1} & 1 & \lgr{1} & \bl{1} & 1 & \lgr{0} \\
+      \lgr{1} & \lgr{0} & \lgr{0} & \lgr{1} & 0 & \lgr{0} & \bl{1} & 0 & \lgr{1} \\
+      \lgr{1} & \lgr{0} & \lgr{0} & \lgr{1} & 0 & \lgr{0} & \bl{1} & 1 & \lgr{0} \\
+      \lgr{1} & \lgr{1} & \lgr{1} & \lgr{0} & 1 & \lgr{1} & \bl{0} & 0 & \lgr{1} \\
+      \lgr{1} & \lgr{1} & \lgr{1} & \lgr{0} & 1 & \lgr{1} & \bl{1} & 1 & \lgr{0} \\
+      \lgr{1} & \lgr{1} & \lgr{1} & \lgr{0} & 1 & \lgr{0} & \bl{0} & 0 & \lgr{1} \\
+      \lgr{1} & \lgr{1} & \lgr{1} & \lgr{0} & 1 & \lgr{0} & \bl{1} & 1 & \lgr{0} \\
+      \lgr{0} & \lgr{0} & \lgr{0} & \lgr{1} & 1 & \lgr{1} & \bl{0} & 0 & \lgr{1} \\
+      \lgr{0} & \lgr{0} & \lgr{0} & \lgr{1} & 1 & \lgr{1} & \bl{1} & 1 & \lgr{0} \\
+      \lgr{0} & \lgr{0} & \lgr{0} & \lgr{1} & 0 & \lgr{0} & \bl{1} & 0 & \lgr{1} \\
+      \lgr{0} & \lgr{0} & \lgr{0} & \lgr{1} & 0 & \lgr{0} & \bl{1} & 1 & \lgr{0} \\
+      \lgr{0} & \lgr{0} & \lgr{1} & \lgr{0} & 1 & \lgr{1} & \bl{0} & 0 & \lgr{1} \\
+      \lgr{0} & \lgr{0} & \lgr{1} & \lgr{0} & 1 & \lgr{1} & \bl{1} & 1 & \lgr{0} \\
+      \lgr{0} & \lgr{0} & \lgr{1} & \lgr{0} & 0 & \lgr{0} & \bl{1} & 0 & \lgr{1} \\
+      \lgr{0} & \lgr{0} & \lgr{1} & \lgr{0} & 0 & \lgr{0} & \bl{1} & 1 & \lgr{0} \\
+     \end{tabular}
+   \end{center}
+ }
+}
+
+\frame{\frametitle{An example}
+ {\scriptsize
+    \begin{center}
+    \begin{tabular}{c|c|c|c|c|c|c|c|c}
+     $p$ & $\wedge$ & $\neg$ & $q$ & $\vee$ & $r$ & $\rightarrow$ & $\neg$ & $s$ \\
+     \hline
+      \lgr{1} & \lgr{0} & \lgr{0} & \lgr{1} & \lgr{1} & \lgr{1} & \bl{0} & \lgr{0} & \lgr{1} \\
+      \lgr{1} & \lgr{0} & \lgr{0} & \lgr{1} & \lgr{1} & \lgr{1} & \bl{1} & \lgr{1} & \lgr{0} \\
+      \lgr{1} & \lgr{0} & \lgr{0} & \lgr{1} & \lgr{0} & \lgr{0} & \bl{1} & \lgr{0} & \lgr{1} \\
+      \lgr{1} & \lgr{0} & \lgr{0} & \lgr{1} & \lgr{0} & \lgr{0} & \bl{1} & \lgr{1} & \lgr{0} \\
+      \lgr{1} & \lgr{1} & \lgr{1} & \lgr{0} & \lgr{1} & \lgr{1} & \bl{0} & \lgr{0} & \lgr{1} \\
+      \lgr{1} & \lgr{1} & \lgr{1} & \lgr{0} & \lgr{1} & \lgr{1} & \bl{1} & \lgr{1} & \lgr{0} \\
+      \lgr{1} & \lgr{1} & \lgr{1} & \lgr{0} & \lgr{1} & \lgr{0} & \bl{0} & \lgr{0} & \lgr{1} \\
+      \lgr{1} & \lgr{1} & \lgr{1} & \lgr{0} & \lgr{1} & \lgr{0} & \bl{1} & \lgr{1} & \lgr{0} \\
+      \lgr{0} & \lgr{0} & \lgr{0} & \lgr{1} & \lgr{1} & \lgr{1} & \bl{0} & \lgr{0} & \lgr{1} \\
+      \lgr{0} & \lgr{0} & \lgr{0} & \lgr{1} & \lgr{1} & \lgr{1} & \bl{1} & \lgr{1} & \lgr{0} \\
+      \lgr{0} & \lgr{0} & \lgr{0} & \lgr{1} & \lgr{0} & \lgr{0} & \bl{1} & \lgr{0} & \lgr{1} \\
+      \lgr{0} & \lgr{0} & \lgr{0} & \lgr{1} & \lgr{0} & \lgr{0} & \bl{1} & \lgr{1} & \lgr{0} \\
+      \lgr{0} & \lgr{0} & \lgr{1} & \lgr{0} & \lgr{1} & \lgr{1} & \bl{0} & \lgr{0} & \lgr{1} \\
+      \lgr{0} & \lgr{0} & \lgr{1} & \lgr{0} & \lgr{1} & \lgr{1} & \bl{1} & \lgr{1} & \lgr{0} \\
+      \lgr{0} & \lgr{0} & \lgr{1} & \lgr{0} & \lgr{0} & \lgr{0} & \bl{1} & \lgr{0} & \lgr{1} \\
+      \lgr{0} & \lgr{0} & \lgr{1} & \lgr{0} & \lgr{0} & \lgr{0} & \bl{1} & \lgr{1} & \lgr{0} \\
+     \end{tabular}
+   \end{center}
+ }
+}
+
+\frame{\frametitle{Assignments: a contingent example}
+ {\scriptsize
+    \begin{center}
+    \begin{tabular}{c|c|c|c|c|c|c|c|c}
+     $p$ & $\wedge$ & $\neg$ & $q$ & $\vee$ & $r$ & $\rightarrow$ & $\neg$ & $s$ \\
+     \hline
+      \gr{1} & \lgr{0} & \lgr{0} & \gr{1} & \lgr{1} & \gr{1} & \bl{0} & \lgr{0} & \gr{1} \\
+      \gr{1} & \lgr{0} & \lgr{0} & \gr{1} & \lgr{1} & \gr{1} & \bl{1} & \lgr{1} & \gr{0} \\
+      \gr{1} & \lgr{0} & \lgr{0} & \gr{1} & \lgr{0} & \gr{0} & \bl{1} & \lgr{0} & \gr{1} \\
+      \gr{1} & \lgr{0} & \lgr{0} & \gr{1} & \lgr{0} & \gr{0} & \bl{1} & \lgr{1} & \gr{0} \\
+      \gr{1} & \lgr{1} & \lgr{1} & \gr{0} & \lgr{1} & \gr{1} & \bl{0} & \lgr{0} & \gr{1} \\
+      \gr{1} & \lgr{1} & \lgr{1} & \gr{0} & \lgr{1} & \gr{1} & \bl{1} & \lgr{1} & \gr{0} \\
+      \gr{1} & \lgr{1} & \lgr{1} & \gr{0} & \lgr{1} & \gr{0} & \bl{0} & \lgr{0} & \gr{1} \\
+      \gr{1} & \lgr{1} & \lgr{1} & \gr{0} & \lgr{1} & \gr{0} & \bl{1} & \lgr{1} & \gr{0} \\
+      \gr{0} & \lgr{0} & \lgr{0} & \gr{1} & \lgr{1} & \gr{1} & \bl{0} & \lgr{0} & \gr{1} \\
+      \gr{0} & \lgr{0} & \lgr{0} & \gr{1} & \lgr{1} & \gr{1} & \bl{1} & \lgr{1} & \gr{0} \\
+      \gr{0} & \lgr{0} & \lgr{0} & \gr{1} & \lgr{0} & \gr{0} & \bl{1} & \lgr{0} & \gr{1} \\
+      \gr{0} & \lgr{0} & \lgr{0} & \gr{1} & \lgr{0} & \gr{0} & \bl{1} & \lgr{1} & \gr{0} \\
+      \gr{0} & \lgr{0} & \lgr{1} & \gr{0} & \lgr{1} & \gr{1} & \bl{0} & \lgr{0} & \gr{1} \\
+      \gr{0} & \lgr{0} & \lgr{1} & \gr{0} & \lgr{1} & \gr{1} & \bl{1} & \lgr{1} & \gr{0} \\
+      \gr{0} & \lgr{0} & \lgr{1} & \gr{0} & \lgr{0} & \gr{0} & \bl{1} & \lgr{0} & \gr{1} \\
+      \gr{0} & \lgr{0} & \lgr{1} & \gr{0} & \lgr{0} & \gr{0} & \bl{1} & \lgr{1} & \gr{0} \\
+     \end{tabular}
+   \end{center}
+ }
+}
+
+\frame{\frametitle{Tautology}
+\begin{itemize}
+  \item<1-> take $p\vee\neg p$\\
+  \medskip
+  \item<2-> truth-table: \begin{tabular}{c|c|c|c}
+                           $p$ & $\vee$ & $\neg$ & $p$\\
+                           \hline
+                            1 & \bl{1} & \gr{0} & 1 \\
+                            0 & \bl{1} & \gr{1} & 0 \\
+                         \end{tabular}
+  \item<3-> true under every assignment, it is \textbf{valid}
+  \item<4-> by \emph{law of excluded middle}: for every $P$, $P\vee\neg P$ is true
+\end{itemize}
+}
+
+\frame{\frametitle{Contradiction}
+\begin{itemize}
+  \item<1-> take $p\wedge\neg p$\\
+  \medskip
+  \item<2-> truth-table: \begin{tabular}{c|c|c|c}
+                           $p$ & $\wedge$ & $\neg$ & $p$\\
+                           \hline
+                            1 & \bl{0} & \gr{0} & 1 \\
+                            0 & \bl{0} & \gr{1} & 0 \\
+                         \end{tabular}
+  \item<3-> false under every assignment, called \textbf{contradictory}
+\end{itemize}
+}
+
+\frame{\frametitle{Contingency}
+\begin{itemize}
+  \item<1-> take $p\wedge p$\\
+  \medskip
+  \item<2-> truth-table: \begin{tabular}{c|c|c}
+                           $p$ & $\wedge$ & $p$\\
+                           \hline
+                            1 & \bl{1} & 1 \\
+                            0 & \bl{0} & 0 \\
+                         \end{tabular}
+  \item<3-> the truth value depends on the assignemt	
+\end{itemize}
+}
+
+\subsection{Laws of the PropC}
+\frame{\frametitle{What are laws?}
+\begin{itemize}
+  \item<1-> notice: similarities of set theory and logic
+  \item<2-> non-trivial exact nature of their equivalence
+  \item<3-> laws state equivalences of (types of) wff
+  \item<4-> truth-conservative rewriting of wff's
+  \item<5-> any subformula which is a tautology (\bl{T}) or contradiction (\bl{F}):\\
+  
+  \medskip
+  ignore by \bl{Identity} Laws (Id.):\\
+     \begin{itemize}
+       \item<6-> $(P\vee F)\Leftrightarrow P$, $(P\vee T)\Leftrightarrow T$
+       \item<7-> $(P\wedge F)\Leftrightarrow F$, $(P\wedge T)\Leftrightarrow P$
+     \end{itemize}
+\end{itemize}
+}
+
+\frame{\frametitle{Equivalences: $\Leftrightarrow$}
+\begin{itemize}
+  \item<1-> \textcolor{blue}{X $\Leftrightarrow$ Y}: X has the same truth-conditions as Y
+  \item<2-> derivability of laws and rules (convenient redundancies)\\
+  
+  \medskip
+  \item<3-> \textcolor{blue}{Idempotency (Idemp.)}: 
+      \begin{itemize}
+        \item<4-> $(P\vee P)\Leftrightarrow P$
+        \item<5-> $(P\wedge P)\Leftrightarrow P$
+        \item<6-> \emph{Peter walks and Peter walks.} $\Leftrightarrow$ \emph{Peter walks.}
+      \end{itemize}
+\end{itemize}
+}
+
+\frame{\frametitle{Simple laws}
+\begin{itemize}
+  \item<1-> \bl{Associative Laws for $\vee$ and $\wedge$ (Assoc.)}:
+    \begin{itemize}
+      \item<2-> \bl{$((P\vee Q)\vee R) \Leftrightarrow (P\vee (Q\vee R))$}
+      \item<3-> \emph{((He walks or she talks) or we walk.) $\Leftrightarrow$ \\(He walks or (she talks or we walk.))}
+    \end{itemize}
+  \item<4-> \bl{Commutative Laws for $\vee$ and $\wedge$ (Comm.)}:
+    \begin{itemize}
+      \item<5-> \bl{$(P\vee Q) \Leftrightarrow (Q\vee P)$}
+      \item<6-> \emph{Peter walks or Sue snores.} $\Leftrightarrow$ \emph{Sue snores or Peter walks.}
+    \end{itemize}
+  \item<7-> \bl{Distributive Laws for $\vee\wedge$ and $\wedge\vee$ (Distr.)}:
+    \begin{itemize}
+      \item<8-> \bl{$(P\vee(Q\wedge R)) \Leftrightarrow ((P\vee Q)\wedge(P\vee R))$}
+      \item<9-> {\footnotesize \emph{(Sue snores) and (Peter walks or we talk).}\\ $\Leftrightarrow$ \emph{(Sue snores and Peter walks) or (Sue snores and we talk).}}
+    \end{itemize}
+\end{itemize}
+}
+
+\frame{\frametitle{Laws dealing with tautology and contradiction}
+\begin{itemize}
+  \item<1-> \bl{Complement Laws}:
+    \begin{itemize}
+      \item<2-> \gr{Tautology (T): $(P\vee\neg P)\Leftrightarrow \textbf{T}$}
+      \item<3-> \gr{Contradiction (F): $(P\wedge\neg P)\Leftrightarrow \textbf{F}$}
+      \item<4-> Double Negation (DN): \bl{$(\neg\neg P)\Leftrightarrow P$}
+      \item<5-> \emph{It is not the case that Sandy is not walking.} \\ $\Leftrightarrow$ \emph{Sandy is walking.}
+    \end{itemize}
+\end{itemize}
+}
+
+\frame{\frametitle{Conditionals Laws}
+\begin{itemize}
+      \item<1-> \bl{\textbf{Implication} (Impl.)}:\\
+          {\scriptsize\begin{tabular}{ccc|c|cccc}
+          $P$ & $\rightarrow$ & $Q$ & $\Leftrightarrow$ & $\neg$ & $P$ & $\vee$ & $Q$ \\
+          \hline
+          1 & \bl{1} & 1 &   & 0 & \gr{1} & \bl{1} & 1 \\
+          1 & \bl{0} & 0 &   & 0 & \gr{1} & \bl{0} & 0 \\
+          0 & \bl{1} & 1 &   & 1 & \gr{0} & \bl{1} & 1 \\
+          0 & \bl{1} & 0 &   & 1 & \gr{0} & \bl{1} & 0\\
+        \end{tabular}}
+        
+        \bigskip
+      \item<2-> \bl{\textbf{Contraposition} (Contr.)}:\\
+          {\scriptsize\begin{tabular}{ccc|c|ccccc}
+          $P$ & $\rightarrow$ & $Q$ & $\Leftrightarrow$ & $\neg$ & $Q$ & $\rightarrow$ & $\neg$ & $P$ \\
+          \hline
+          1 & \bl{1} & 1 &   & 0 & \gr{1} & \bl{1} & 0 & \gr{1} \\
+          1 & \bl{0} & 0 &   & 1 & \gr{0} & \bl{0} & 0 & \gr{1} \\
+          0 & \bl{1} & 1 &   & 0 & \gr{1} & \bl{1} & 1 & \gr{0} \\
+          0 & \bl{1} & 0 &   & 1 & \gr{0} & \bl{1} & 1 & \gr{0} \\
+        \end{tabular}}
+\end{itemize}
+}
+
+\frame{\frametitle{DeMorgan (DeM)}
+\begin{itemize}
+  \item<1-> \bl{DeMorgan's Laws}:
+    \begin{itemize}
+      \item<2-> \bl{$\neg(P\vee Q)\Leftrightarrow (\neg P\wedge\neg Q)$}
+      \item<3-> alternatively: $\overline{P\vee Q}\Leftrightarrow\overline{P}\wedge\overline{Q}$
+      \item<4-> \bl{$\neg(P\wedge Q)\Leftrightarrow (\neg P\vee\neg Q)$}
+      \item<5-> consequently: $\overline{\overline{P}\vee\overline{Q}}\Leftrightarrow\overline{\overline{P}}\wedge\overline{\overline{Q}}\Leftrightarrow P\wedge Q$
+    \end{itemize}
+\end{itemize}
+}
+
+\subsection{Rules of Inference}
+
+\frame{\frametitle{The Modus Ponens (MP)}
+    \begin{itemize}
+      \item Definition:\\{\footnotesize\begin{tabular}{|ccc|c|}
+              \hline
+              $P$ & $\rightarrow$ & $Q$ & \gr{premise 1} \\
+              P & & & \gr{premise 2}\\
+              \hline
+              & & Q & \gr{conclusion}\\
+              \hline
+            \end{tabular}}\\
+      
+      \medskip
+      \item<2-> or: $(P\rightarrow Q) \wedge (P) \rightarrow (Q)$
+      \item<3-> \emph{(1) If It rains, the streets get wet. (2) It is raining.\\ $\rightarrow$ The streets are getting wet.}
+    \end{itemize}
+}
+\frame{\frametitle{MP: a truth table illustration}
+\begin{itemize}
+  \item<1-> Premises are always set to be true!
+  \item<2-> the table:
+  
+  \medskip
+  \begin{tabular}{lll}
+   $P$ & $\rightarrow$ & $Q$ \\
+   1 & 1 & 1 \\
+   1 & 0 & 0 \\
+   0 & 1 & 1 \\
+   0 & 1 & 0 \\
+  \end{tabular}
+\end{itemize}
+}
+
+\frame{\frametitle{MP: a truth table illustration}
+\begin{itemize}
+  \item<1-> The conditional must be true.
+  \item<1> cancel the `false' row\\
+  
+  \medskip
+  \begin{tabular}{lll}
+   $P$ & $\rightarrow$ & $Q$ \\
+   1 & 1 & 1 \\
+   \gr{1} & \gr{0} & \gr{0} \\
+   0 & 1 & 1 \\
+   0 & 1 & 0 \\
+  \end{tabular}
+\end{itemize}
+}
+
+\frame{\frametitle{MP: a truth table illustration}
+\begin{itemize}
+  \item<1-> $P$ must be true.
+  \item<1-> cancel the `false' rows, Q can only be true:\\
+  
+  \medskip
+  \begin{tabular}{lll}
+   $P$ & $\rightarrow$ & $Q$ \\
+   1 & 1 & \textcolor{blue}{1} \\
+   \gr{1} & \gr{0} & \gr{0} \\
+   \gr{0} & \gr{1} & \gr{1} \\
+   \gr{0} & \gr{1} & \gr{0} \\
+  \end{tabular}
+\end{itemize}
+}
+
+\frame{\frametitle{The Modus Tollens (MT)}
+\begin{itemize}
+      \item<1-> Definition:\\{\footnotesize\begin{tabular}{|lll|}
+              \hline
+              $P$ & $\rightarrow$ & $Q$ \\
+               & & $\neg Q$\\
+              \hline
+              $\neg P$ & & \\
+              \hline
+            \end{tabular}}\\
+      
+      \medskip
+      \item<2-> the table illustration:\\
+      
+       \medskip
+       {\footnotesize\begin{tabular}{cccc}
+       $P$ & $\rightarrow$ & $Q$ &  \\
+        \gr{1} & \gr{1} & \gr{1} & (by premise 2) \\
+        \gr{1} & \gr{0} & \gr{0} & (by premise 1) \\
+        \gr{0} & \gr{1} & \gr{1} & (by premise 2) \\
+        \textcolor{blue}{0} & 1 & 0 & \\
+       \end{tabular}}
+\end{itemize}
+}
+
+\frame{\frametitle{The Syllogisms}
+\begin{itemize}
+  \item<1-> \bl{Hypothetical Syllogism (HS)}:
+    \begin{itemize}
+      \item \bl{$((P\rightarrow Q) \wedge (Q\rightarrow R)) \rightarrow (P\rightarrow R)$}
+      \item \emph{(1) If it rains, the streets get wet. (2) If the streets get wet,\\it smells nice.
+      	$\rightarrow$ If it rains, it smells nice.}
+    \end{itemize}
+  \item<2-> \bl{Disjunctive Syllogism (DS)}:
+    \begin{itemize}
+      \item \bl{$((P\vee Q) \wedge (\neg P)) \rightarrow (Q)$}
+      \item \emph{(1) Either Peter sleeps or Peter is awake. (2) Peter isn't awake.\\
+      $\rightarrow$ Peter sleeps.}
+    \end{itemize}
+\end{itemize}
+}
+
+\frame{\frametitle{Trivial rules}
+\begin{itemize}
+  \item<1-> \bl{Simplification (Simp.)}:
+    \begin{itemize}
+      \item \bl{$(P\wedge Q)\rightarrow P$}
+      \item \emph{(1) It is raining and the sun is shining. $\rightarrow$ It is raining.}
+    \end{itemize}
+  \item<2-> \bl{Conjunction (Conj.)}:
+    \begin{itemize}
+      \item \bl{$(P) \wedge (Q) \rightarrow (P\wedge Q)$}
+      \item \emph{(1) It is raining. (2) The sun is shining. $\rightarrow$ It is raining and the sun is shining.}
+    \end{itemize}
+  \item<3-> \bl{Addition (Add.)}:
+    \begin{itemize}
+      \item \bl{$(P) \rightarrow (P\wedge Q)$}
+      \item \emph{(1) It is raining. $\rightarrow$ It is raining or the sun is shining.}
+      \item What if Q is instantiated as true or false by another premise?
+    \end{itemize}
+\end{itemize}
+}
+
+\subsection{Proof}
+\frame{\frametitle{A sample proof}
+\begin{itemize}
+  \item<1-> Prove \bl{$p\vee q$} from \bl{$(p \vee q) \rightarrow \neg (r \wedge \neg s)$} and \bl{$r \wedge \neg s$}
+  \item<2-> The proof:\\
+  
+  \medskip
+    \begin{tabular}{llll}
+      &  &  & $p\vee q$ \\
+     1 & $(p\vee q)\rightarrow\neg (r\wedge \neg s)$ & & \\
+     2 & $r\wedge\neg s$ & &  \\
+     \hline
+     & $p\vee q$    & & 1,2,MT \\
+    \end{tabular}
+\end{itemize}
+}
+
+\end{document}

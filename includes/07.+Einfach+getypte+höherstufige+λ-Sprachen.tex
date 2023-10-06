@@ -1,0 +1,388 @@
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+
+\usepackage{beamerthemesplit,
+            graphicx,
+			      color,
+			      colortbl,
+            fancyhdr,
+            tipa,
+            rotate,
+            url,
+            setspace,
+            pifont,
+            cite,
+            amsmath,
+            amsfonts,
+            amssymb,
+            tipa,
+            tipx,
+            gb4e,
+            cgloss4e,
+            avm+,
+            ecltree+,
+            rotate,
+            stmaryrd,
+            xyling}
+
+\title{Semantics{ }\\(6) Simply-typed higher order $\lambda$ languages}
+\author{Roland Sch\"afer (University of G\"ottingen)}
+\date{Summer Term 2005 (June 01)}
+
+\newcommand{\den}[1]{{$\llbracket${}#1$\rrbracket$}}
+\newcommand{\dem}[1]{{\llbracket{}#1\rrbracket}}
+\newcommand{\Dem}[2]{\llbracket{}#1\rrbracket^{#2}}
+\newcommand{\DEM}[1]{\llbracket{}#1\rrbracket^{\mathcal{M},g}}
+%\newcommand{\ram}[1]{{\langle{}#1\rangle}}
+\newcommand{\ram}[1]{{\langle{}#1\rangle}}
+\newcommand{\ek}[1]{$\left[$#1$\right]$}
+\newcommand{\lk}[0]{$\left[$}
+\newcommand{\rk}[0]{$\right]$}
+\newcommand{\ekm}[1]{\left[{}#1\right]}
+\newcommand{\bl}[1]{\textcolor{blue}{#1}}
+\newcommand{\rot}[1]{\textcolor{red}{#1}}
+\newcommand{\gr}[1]{\textcolor{gray}{#1}}
+\newcommand{\gn}[1]{\textcolor{green}{#1}}
+\newcommand{\lgr}[1]{\textcolor[gray]{0.9}{#1}}
+\newcommand{\mM}[0]{$\mathcal{M}$}
+\newcommand{\mMm}[0]{\mathcal{M}}
+\newfont{\dslash}{dsrom12}
+
+%\beamertheme{Marburg}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{Preliminaries}
+
+\subsection{Different but related semantics}
+\frame{\frametitle{Montague and the generative tradition}
+\begin{itemize}
+  \item<1-> Chierchia \& McConnell-Ginet, Heim \& Kratzer, etc.: GB-ish semantics
+  \item<2-> both syntax and LF in phrase structures
+  \item<3-> \bl{LF as a proper linguistic level of representation}
+  \item<4-> \bl{Montague}: direct translation of NL into logic
+  \item<5-> \bl{Monatgue's LF is just a notational system for NL semantics}
+\end{itemize}
+}
+
+\frame{\frametitle{Targets for this week}
+\begin{itemize}
+  \item<1-> Learn to tell the difference between the montagovian and generative approach.
+  \item<2-> See the advantage of a general theory of typed languages.
+  \item<3-> Understand how $\lambda$ languages allow dramatically elegant formalizations.
+  \item<4-> ... while keeping in mind that these devices are extensions to our PC representation for NL semantics.
+\end{itemize}
+}
+
+\subsection{Sets and charactersitic functions}
+
+\frame{\frametitle{Denotations}
+\begin{itemize}
+  \item<1-> denotations in set/function-theoretic terms
+  \item<2-> a \bl{characteristic function (CF) $\mathcal{S}$} of a set S:\\
+     \bl{$\mathcal{S}(a) = 1\ iff\ a\in{}S,\ else\ 0$}
+  \item<3-> a CF `checks' individuals into a set
+  \item<4-> denotations can be stated as sets or their CF
+\end{itemize}
+}
+
+\subsection{Functional application}
+
+\frame{\frametitle{Generalizing combinatory semantic operations}
+\begin{itemize}
+  \item<1-> interpretation for [_S NP VP]:\\
+     $\Dem{\ekm{_S\ NP\ VP}}{\mMm,g} = 1\ iff\ \Dem{NP}{\mMm,g}\in{}\Dem{VP}{\mMm,g}$
+  \item<2-> Montague generally used CF's in definitions
+  \item<3-> evaluating [_S [_{NP} \emph{Mary}] [_{VP} \emph{sleeps}] ] as a matter of \bl{functional application (FA)}: \\
+     \begin{itemize}
+       \item<4-> $\Dem{Mary}{\mMm,g}=Mary$ \emph{in \mM}
+       \item<5-> $\Dem{sleeps}{\mMm,g}$ \emph{be the CF of the set of sleepers in \mM}
+       \item<6-> $\Dem{S}{\mMm,g}=\Dem{sleeps}{\mMm,g}(\Dem{Mary}{\mMm,g})$
+       \item<7-> ideally: generalize to all nodes
+     \end{itemize}
+\end{itemize}
+}
+
+\frame{\frametitle{The superscript notation}
+\begin{itemize}
+  \item<1-> all functions from S_1 to S_2
+  \item<2-> \bl{$S_2^{S_1}$}
+  \item<3-> for $T=\{0,1\}$ 
+     \begin{itemize}
+       \item<4-> $T^D$: all pred_1
+       \item<5-> $T^{D\times{}D}$: all pred_2
+     \end{itemize}
+  \item<4-> 
+\end{itemize}
+}
+
+\section{Simply typed languages}
+\subsection{New names for old categories}
+
+\frame{\frametitle{Some new names}
+\begin{itemize}
+  \item<1-> base for Dowty et al.: $L_1$, a first-order predicate language as we know it
+  \item<2-> semantic renaming of types:
+     \begin{itemize}
+       \item<3-> terms: \bl{$\ram{e}$} (entity-denoting)
+       \item<4-> formulas: \bl{$\ram{t}$} (truth-valued)
+       \item<5-> pred_1: \bl{$\ram{e,t}$}
+       \item<6-> pred_2: \bl{$\ram{e,\ram{e,t}}$}       
+     \end{itemize}
+\end{itemize}
+}
+
+\frame{\frametitle{Possible denotations of types}
+\begin{itemize}
+  \item<1-> $D_{\alpha}$ possible denotation (a set) of expressions of type $\alpha$
+  \item<2-> \bl{$D_{\ram{e}} = U$} (Dowty et al.'s $A$)
+  \item<3-> \bl{$D_{\ram{t}} = \{0,1\}$}
+  \item<4-> recursively: \bl{$D_{\ram{\alpha,\beta}}=D_{\ram{\beta}}^{D_{\ram{\alpha}}}$}
+  \item<5-> e.g., $D_{\ram{e,t}}=D_{\ram{t}}^{D_{\ram{e}}}$
+  \item<6-> $D_{\ram{e,\ram{e,t}}}=(D_{\ram{t}}^{D_{\ram{e}}})^{^{D_{\ram{e}}}}$
+  \item<7-> just a systematic way of naming types, model-theoretic interpretations still by $V,g$
+\end{itemize}
+}
+
+\subsection{The syntax of types}
+
+\frame{\frametitle{Defining types}
+\begin{itemize}
+  \item<1-> in our PS syntax: S as start symbol
+  \item<2-> in the typed system: sentences should be of type $\ram{t}$
+  \item<3-> \bl{complex types: functions from $\ram{e}$ to $\ram{t}$}\\
+     or generally \bl{from any (complex) type to any (comlex) type}
+\end{itemize}
+}
+
+\frame{\frametitle{Complex types as functions}
+\begin{itemize}
+  \item<1-> \bl{saturation} of complex types by FA:
+    \begin{itemize}
+      \item<2-> $\gamma\ is\ of\ type\ \ram{e,\ram{e,t}},\ \delta\ of\ \ram{e,t},\ \alpha\ and\ \beta\ of\ \ram{e}$
+      \item<3-> then $\gamma(\alpha)\ is\ of\ type\ \ram{e,t}$
+      \item<4-> and $\delta(\beta)\ is\ of\ type\ \ram{t}$
+    \end{itemize}
+  \item<5-> for any pred_2 $P$ and its arguments $a_1,a_2$, $P(a_2)(a_1)$ is a wff
+  \item<6-> connectives are of types \bl{$\ram{t,t}$ ($\neg$), $\ram{t,\ram{t,t}}$ ($\wedge$, etc.)}
+\end{itemize}
+}
+
+\frame{\frametitle{General semantics of typed languages}
+\begin{itemize}
+  \item<1-> generalized CF/FA approach
+  \item<2-> $\ram{e}$-types (terms):\\
+    $\DEM{a_n} = V(a_n)$ \\
+    $\DEM{x_n} = g(x_n)$
+  \item<3-> the rest: functional application\\
+    \bl{$\DEM{\delta(\alpha)} = \DEM{\delta}(\DEM{\alpha})$}
+\end{itemize}
+}
+
+\subsection{Higher orders}
+
+\frame{\frametitle{Refinement}
+\begin{itemize}
+  \item<1-> \bl{$Type$ is the set of types}
+  \item<2-> recursively defined complex types $\ram{a,b}$: infinite
+  \item<3-> type label $\ram{\alpha}$
+  \item<4-> vs. set of \bl{meaningful expressions} of that type: \bl{$ME_{\ram{\alpha}}$}
+\end{itemize}
+}
+
+\frame{\frametitle{Higher order}
+\begin{itemize}
+  \item<1-> first order languages: variables over individuals ($\ram{e}$-types)
+  \item<2-> n-order: \bl{variables over higher types} ($\ram{e,t}$-types etc.)
+  \item<3-> $P_{\ram{e,t}}$ or $Q_{\ram{e,\ram{e,t}}}$: constants of higher types
+  \item<4-> so: $v_{1_{\ram{e,t}}}\ekm{v_1(m)}$
+  \item<5-> if $V(m)=Mary$, $v_1$ is the set of all of Mary's properties
+\end{itemize}
+}
+
+\frame{\frametitle{Typing variables}
+\begin{itemize}
+  \item<1-> we write:
+    \begin{itemize}
+      \item<2-> \bl{$v_{n_{\ram{\alpha}}}$ for the n-th variable of type $\ram{\alpha}$}
+      \item<3-> Dowty et al.: $v_{n,\ram{\alpha}}$
+    \end{itemize}
+  \item<4-> alternatively abbreviated by old symbols $x_1$, $a$, $P$, etc.
+\end{itemize}
+}
+
+\subsection{Summed up semantics for a higher-order language}
+
+\frame{\frametitle{Constants, variables, functions}
+\begin{itemize}
+  \item<1-> non-logical constant $\alpha$: $\DEM{\alpha}=V(\alpha)$
+  \item<2-> variable $\alpha$: $\DEM{\alpha}=V(\alpha)$
+  \item<3-> $\alpha\in\ram{a,b},\ \beta\in{}a$, then $\DEM{\alpha(\beta)}=\DEM{\alpha}(\DEM{\beta})$
+\end{itemize}
+}
+
+\frame{\frametitle{Logical constants and quantifiers}
+\begin{itemize}
+  \item<1-> logical constants interpreted as functions in \{0,1\} as usual
+  \item<2-> if $v_{1_{\ram{\alpha}}}$ is a variable and $\phi\in{}ME_t$\\
+    then $\DEM{(\forall{}v_1)\phi}=1 iff$\\
+    for all $a\in{}D_{\alpha}$ $\Dem{\phi}{\mMm,g[a/v_1]}=1$
+\end{itemize}
+}
+
+\frame{\frametitle{An example}
+\begin{itemize}
+  \item<1-> quantified variable of type $\ram{e,t}$: $v_{0_{\ram{e,t}}}$
+  \item<2-> $\forall{}v_{0_{\ram{e,t}}}\ekm{v_{0_{\ram{e,t}}}(j)\rightarrow v_{0_{\ram{e,t}}}(d)}$
+  \item<3-> for $j,d\in{}ME_{\ram{e}}$
+  \item<4-> one property of every individual: being alone in its union set
+  \item<5-> hence, $j=d$
+  \item<6-> else in $\forall{}v_{0_{\ram{e,t}}}$, $\forall$ wouldn't hold
+\end{itemize}
+}
+
+\frame{\frametitle{Defining \emph{non}}
+\begin{itemize}
+  \item<1-> productive adjectival prefix: \emph{non-adjacent}, \emph{non-local}, etc.
+  \item<2-> inverting the characteristic function of the adjective
+  \item<3-> result denotes complement of the original adjective in $D_{\ram{e}}$
+  \item<4-> \emph{adjective}: $\ram{e,t}$, \bl{\emph{non}: $\ram{\ram{e,t},\ram{e,t}}$}
+  \item<5-> a function $h$ s.t. for every $k\in{}D_{\ram{e,t}}$ and every $d\in D_{\ram{e}}$\\
+     $(h(k))(d) = 1$ iff $k(d)=0$ and\\
+     $(h(k))(d) = 0$ iff $k(d)=1$
+\end{itemize}
+}
+
+\frame{\frametitle{Argument deletion}
+\begin{itemize}
+  \item<1-> \bl{understood objects} in: \emph{I eat.} - \emph{Vanity kills.} - etc.
+  \item<2-> \emph{eat} is in $ME_{\ram{e,\ram{e,t}}}$
+  \item<3-> assume a \bl{silent logical constant: $R_O$ in $ME_{\ram{\ram{e,\ram{e,t}},\ram{e,t}}}$}
+  \item<4-> a function $h$ s.t. for all $k\in D_{\ram{e,\ram{e,t}}}$ and all $d\in D_{\ram{e}}$\\
+  $h(k)(d)=1$ iff there is some $d^{\prime}\in D_{\ram{e}}$ s.t. k(d^{\prime})(d)=1
+  \item<5-> passives as similar subject deletion
+\end{itemize}
+}
+
+\section{Lambda languages}
+\subsection{From set constructor to the functional $\lambda$ abstractor}
+
+\frame{\frametitle{All there is to $\lambda$}
+\begin{itemize}
+  \item<1-> a new \bl{variable binder}
+  \item<2-> allows \bl{abstraction over wff's of arbitrary complexity}
+  \item<3-> similar to $\{x\|\phi\}$ (read as `the set of all $x$ s.t. $\phi$')
+  \item<4-> we get \bl{$\lambda{}x\ekm{\phi}$}
+  \item<5-> {\footnotesize on Montague's typewriter: $\hat{x}\ekm{\phi}$}
+  \item<6-> does not create a set but a function which can be taken as the CF of a set
+\end{itemize}
+}
+
+\frame{\frametitle{$\lambda$ abstraction}
+\begin{itemize}
+  \item<1-> for every wff $\phi$, any $x\in{}Var$, and any $a\in{}Con$
+  \item<2-> \bl{$\lambda$ abstraction: $\phi$ $\rightarrow$ $\lambda{}x\ekm{\phi^{\ekm{a/x}}}(a)$}
+  \item<3-> read $\phi^{(a/x)}$ as `\emph{phi} with every $a$ replaced by $x$'
+  \item<4-> $x$ can be of any type
+\end{itemize}
+}
+
+
+\frame{\frametitle{Two informal examples}
+\begin{itemize}
+   \item<1-> $\lambda{}x_{\ram{e}}\ekm{L(x)}$ is the characteristic function of the set of those individuals $d\in{}D_{\ram{e}}$ which have property $L$
+   \item<2-> $\lambda{}x_{\ram{e,t}}\ekm{x(l)}$ is the characteristic function of the set of those properties $k\in{}D_{\ram{e,t}}$ that the individual $l$ has
+\end{itemize}
+}
+
+\frame{\frametitle{$\lambda$ conversion}
+\begin{itemize}
+  \item<1-> $\lambda{}x\ekm{L(x)}$ is the abstract of $L(a)$ (with some individual $a$)
+  \item<2-> hence, it holds: $\lambda{}x\ekm{L(x)}(a)\Leftrightarrow{}L(a)$
+  \item<3-> for every wff $\phi$, any $x\in{}Var$, and any $a\in{}Con$
+  \item<4-> \bl{$\lambda$ conversion: $\lambda{}x\ekm{\phi}(a)$ $\rightarrow$ $\phi^{\ekm{x/a}}$}
+\end{itemize}
+}
+
+\frame{\frametitle{$\lambda$ in and out}
+\begin{itemize}
+  \item<1-> \bl{\Large$\lambda{}x\ekm{\phi}(a) \leftrightarrow \phi^{\ekm{x/a}}$}
+  \item<2-> not just syntactically, since truth conditions are equivalent
+  \item<3-> \bl{\Large$\lambda{}x\ekm{\phi}(a) \Leftrightarrow \phi^{\ekm{x/a}}$}
+  \item<4-> notice: \bl{$\lambda{}x_{\ram{\alpha}}\ekm{\phi}$ is in $ME_{\ram{\alpha,t}}$}
+  \item<5-> while $\phi$ (as a wff) is in $ME_{\ram{t}}$
+\end{itemize}
+}
+
+\subsection{General syntax/semantics for $\lambda$ languages}
+
+\frame{\frametitle{The full rules}
+\begin{itemize}
+  \item<1-> Dowty et al., 102f. (\emph{Syn C.10} and \emph{Sem 10})
+  \item<2-> \bl{If $\alpha\in{}ME_{\alpha}$ and $u\in{}Var_b$, then $\lambda{}u\ekm{\alpha}\in{}ME_{\ram{b,a}}$.}
+  \item<3-> \bl{If $\alpha\in{}ME_a$ and $u\in{}Var_b$ then $\DEM{\lambda{}u\ekm{\alpha}}$ is that function $h$ from $D_b$ into $D_a$ s.t. for all objects $k$ in $D_b$, $h(k)$ is equal to $\Dem{\alpha}{\mMm,g\ekm{k/u}}$.}
+\end{itemize}
+}
+
+\frame{\frametitle{The \emph{non} example revised (Dowty et al., 104)}
+\begin{itemize}
+  \item<1-> $\forall{}x\forall{}v_{0^{\ram{e,t}}}\ekm{(\mathbf{non}(v_{0_{\ram{e,t}}}))(x)\leftrightarrow\neg{}(v_{0_{\ram{e,t}}}(x))}$
+  \item<2-> $\forall{}v_{0_{\ram{e,t}}}\ekm{\lambda{}x\ekm{(\mathbf{non}(v_{0_{\ram{e,t}}}))(x)}=\lambda{}x\ekm{\neg{}(v_{0_{\ram{e,t}}}(x))}}$
+  \item<3-> $\forall{}v_{0_{\ram{e,t}}}\ekm{\mathbf{non}(v_{0_{\ram{e,t}}})=\lambda{}x\ekm{\neg{}(v_{0_{\ram{e,t}}}(x))}}$\\ \smallskip
+  {\footnotesize (since $\lambda{x}\ekm{\mathbf{non}(v)(x)}$ is unnecessarily abstract/$\eta$ reduction)}
+  \item<4-> $\lambda{}v_{0_{\ram{e,t}}}\ekm{\mathbf{non}(v_{0_{\ram{e,t}}})=\lambda{}v_{0_{\ram{e,t}}}\ekm{\lambda{}x\ekm{\neg{}(v_{0_{\ram{e,t}}}(x))}}}$
+  \item<5->{\footnotesize and since that is about all assignments for $\lambda{}v_{0_{\ram{e,t}}}$:}\\
+    $\mathbf{non}=\lambda{}v_{0_{\ram{e,t}}}\ekm{\lambda{x}\ekm{\neg{}v_{0_{\ram{e,t}}}(x)}}$
+\end{itemize}
+}
+
+\frame{
+\begin{center}
+  {\footnotesize\emph{Mary is non-adjacent.}\\(translate `adjacent' as $c_{0_{\ram{e,t}}}$, `Mary' as $c_{0_{\ram{e}}}$, ignore the copula)}\\
+  
+  \bigskip
+ 
+  \Tree[3]{& \K{$\neg{}c_{0_{\ram{e,t}}}(c_{0_{\ram{e}}})$ \bl{(by $\lambda$ conv.)}} \\
+           & \Kk{2.5}{$\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}(c_{0_{\ram{e}}})$ \bl{(by FA)}} \B{dr}\B{dl} \\
+           \K{$c_{0_{\ram{e}}}$} && \K{$\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}$ \bl{(by $\lambda$ conv.)}} \\
+            && \Kk{2.5}{$\lambda{}v_{0_{\ram{e,t}}}\ekm{\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}}(c_{0_{\ram{e,t}}})$ \bl{(by FA)}} \B{dr}\B{dl} \\
+           & \K{$\lambda{}v_{0_{\ram{e,t}}}\ekm{\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}}$} && \K{$c_{0_{\ram{e,t}}}$}
+          }
+
+\end{center}
+
+}
+
+\subsection{A glimpse at quantification in Montague's system}
+
+\frame{\frametitle{The behavior of quantified NPs}
+\begin{itemize}
+  \item<1-> syntactically like referential NPs
+  \item<2-> semantically like PC quantifiers
+  \item<3-> \emph{Every student walks.}: $\forall{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\rightarrow{}c_{1_{\ram{e,t}}}(v_{0_{\ram{e}}})}$
+  \item<4-> \emph{Some student walks.}: $\forall{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}c_{1_{\ram{e,t}}}(v_{0_{\ram{e}}})}$
+  \item<5-> making referential NPs and QNPs \bl{the same type}? 
+\end{itemize}
+}
+
+\frame{\frametitle{A higher type}
+\begin{itemize}
+  \item<1-> \bl{$\lambda{}v_{0_{\ram{e,t}}}\forall{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\rightarrow{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}$}
+  \item<2-> a second order function
+  \item<3-> characterizes the set of all predicates true of every student
+  \item<4-> equally: \bl{$\lambda{}v_{0_{\ram{e,t}}}\exists{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}$}
+\end{itemize}
+}
+
+\frame{\frametitle{Combining with some predicate}
+
+  \Tree[3]{& \K{$\exists{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}c_{1_{\ram{e,t}}}(v_{0_{\ram{e}}})}$ \bl{(by $\lambda$ conv.)}} \B{d} \\
+           & \K{$\lambda{}v_{0_{\ram{e,t}}}\exists{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}(c_{1_{\ram{e,t}}})$ \bl{(by FA)}} \B{dl}\B{dr} \\
+        \K{$\lambda{}v_{0_{\ram{e,t}}}\exists{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}$} & & \K{$c_{1_{\ram{e,t}}}$}
+       }
+
+}
+
+\end{document}

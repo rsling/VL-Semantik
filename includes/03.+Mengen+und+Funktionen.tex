@@ -1,0 +1,443 @@
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+
+\usepackage{beamerthemesplit,
+            graphicx,
+            color,
+            colortbl,
+            fancyhdr,
+            rotate,
+            url,
+            setspace,
+            pifont,
+            amsmath,
+            amsfonts,
+            amssymb,
+            gb4e,
+            xyling,
+            rotate,
+            stmaryrd}
+
+\title{Semantics{ }\\(2) Set and function theory}
+\author{Roland Sch\"afer (University of G\"ottingen)}
+\date{Summer Term 2005 (April 20) / p. \today}
+
+\newcommand{\den}[1]{{$\llbracket${}#1$\rrbracket$}}
+\newcommand{\dem}[1]{{\llbracket{}#1\rrbracket}}
+\newcommand{\ra}[1]{{\langle{}#1\rangle}}
+\newfont{\dslash}{dsrom12}
+
+\newcommand{\ARrkk}[3]{\POS[]-(0,4)+(#1)\ar@{<-}[#3]+(0,2)+(#2)}
+\newcommand{\ARrk}[3]{\ARrkk{0,#1}{0,#2}{#3}}
+\newcommand{\ARr}[2][0]{\ARrk{#1}{0}{#2}}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{Sets and Functions}
+\subsection{The naive concept}
+\frame{\frametitle{What is a set?}
+  \begin{itemize}
+  \item<1-> a freely defined unordered collection of discrete objects
+    \begin{itemize}
+      \item<2-> numbers,
+      \item<3-> people,
+      \item<4-> pairs of shoes,
+      \item<5-> words, \ldots
+    \end{itemize}
+  \item<6-> not necessarily for any purpose
+  \item<7-> no object occurs more than once
+  \end{itemize}
+}
+
+\frame{\frametitle{Set definition and elements: \textcolor{black}{$\in$}}
+  \begin{itemize}
+  \item<1-> M_1 = $\{a,b,c\}$
+  \item<2-> N_1 = $\{$`my book'$\}$\\ vs. N_2 = $\{$my book$\}$ \\vs. N_3 = $\{$`my', `book'$\}$
+  \item<3-> ill-formed: N_4 = $\{$`my', book$\}$
+  \item<4-> defined by a property of its members:\\M_2 = $\{$x:x is one of the first three letters of the alphabet$\}$
+  \item<5-> alternatively: \\M_2 = $\{$x$\|$x is one of the first three letters of the alphabet$\}$
+  \item<6-> \textcolor{blue}{U}: the universal set (contains every discrete object)
+  \end{itemize}
+}
+
+\subsection{Elements, subsets, power sets}
+
+\frame{\frametitle{Equality: \textcolor{black}{=}}
+  \begin{itemize}
+  \item<1-> \textcolor{blue}{Two sets with contain exactly the same members are \emph{equal}.}
+  \item<2-> independent of definition: \\ $\{$a,b,c$\}$ = \\ $\{$x:x is one of the first three letters of the alphabet$\}$
+  \item<3-> $\{$x:x is human$\}$ = $\{$x:x is from the planet earth and x can speak$\}$
+  \end{itemize}
+}
+
+\frame{\frametitle{Subsets: \textcolor{black}{$\subseteq$}}
+  \begin{itemize}
+  \item<1-> \textcolor{blue}{A set N which holds no member which is not in M is a \emph{subset} of M: N $\subseteq$ M}
+  \item<2-> $\{a\}\subseteq\{a,b,c\}$
+  \item<3-> the inverse: the \textcolor{blue}{superset}
+  \end{itemize}
+}
+
+\frame{\frametitle{Proper subsets: \textcolor{black}{$\subset$}}
+  \begin{itemize}
+  \item<1-> \textcolor{blue}{A set N which holds no member which is not in M and which is not equal to M is a \emph{proper subset} of M: N $\subset$ M}
+  \item<2-> So, actually: $\{a\}\subset\{a,b,c\}$ and $\{a,b,c\}\subseteq\{a,b,c\}$. Note that:
+  \item<3-> $M \subseteq M$ but $M \not\subset M$
+  \item<4-> $\{\{a\}\}\not\in\{a,b,c\}$
+  \item<5-> $\{\}\subset\{a,b,c\}$ (or any set), $\{\}$ is sometimes written $\emptyset$
+  \end{itemize}
+}
+
+\frame{\frametitle{Elements vs. subsets}
+\begin{itemize}
+  \item<1-> \emph{All professors of English Linguistics are human.}\\\emph{Herr Webelhuth is a professor of English Linguistics.}
+  \item<2->w = Herr Webelhuth\\
+  E = the set of professors of English Linguistics\\
+  H = the set of human beings
+  \item<3->$w\in E$ \& $E\subset H$ $\Rightarrow$ $w\in H$
+\end{itemize}
+}
+
+\frame{\frametitle{Elements vs. subsets}
+\begin{itemize}
+  \item<1->But: \emph{Professors of English Linguistics are numerous.}
+  \item<2->N = the set of sets with numerous members\\
+  \item<3->$w\in E$ \& $E\in N$ $\not\Rightarrow$ $w\in P$
+  \item<4-> Hence: ^{\ast}Herr Webelhuth is numerous.
+\end{itemize}
+}
+
+\frame{\frametitle{Power sets: \textcolor{black}{$\wp$}}
+  \begin{itemize}
+  \item<1-> \textcolor{blue}{For any set M: $\wp(M)=\{X\|X\subseteq M\}$}
+  \item<2-> for M=$\{a,b,c\}$:\\
+            $\wp(M)=\{\emptyset,\{a\},\{b\},\{c\},\{a,b\},\{a,b,c\},\{b,c\}\}$
+  \item<4-> Why is the empty set in the power set of every set \ldots
+  \item<5-> \dots and why is the empty a set a proper subset of every set?
+  \end{itemize}
+}
+
+\subsection{Union, intersection, etc.}
+
+\frame{\frametitle{Union \textcolor{black}{$\cup$} and intersection \textcolor{black}{$\cap$}}
+  \begin{itemize}
+  \item<1-> \textcolor{blue}{For any sets M and N: $M\cup N=\{x\|x\in M$ \textbf{or} $x\in N\}$}
+  \item<2-> if $M=\{a,b,c\}$ and $N=\{a,b,d\}$ then $M\cup N=\{a,b,c,d\}$
+  \item<3-> \textcolor{blue}{For any sets M and N: $M\cap N=\{x\|x\in M$ \textbf{and} $x\in N\}$}
+  \item<4-> if $M=\{a,b,c\}$ and $N=\{a,b\}$ then $M\cap N=\{a,b\}$
+  \item<5-> as a general principle (Consitency): $M\subseteq N$ iff $M\cup N=N$ and $M\subseteq N$ iff $M\cap N=M$
+  \end{itemize}
+}
+
+\frame{\frametitle{Generalized union \textcolor{black}{$\bigcup$} and intersection \textcolor{black}{$\bigcap$}}
+  \begin{itemize}
+  \item<1-> \textcolor{blue}{$\bigcup M =\{x\|x\in Y$ \textbf{for some} $Y\in M\}$}
+  \item<2-> (a) if $M=\{\{a\},\{a,b\},\{a,b,c\}\}$ then $\bigcup M=\{a,b,c\}$
+  \item<3-> (b) $M_1=\{a\}$, $M_2=\{a,b\}$, $M_3=\{a,b,c\}$, $I=\{1,2,3\}$; $\bigcup_{i\in I}M=\{a,b,c\}$
+  \item<4-> \textcolor{blue}{$\bigcap M =\{x\|x\in Y$ \textbf{for every} $Y\in M\}$}
+  \item<5-> (a) if $M=\{\{a\},\{a,b\},\{a,b,c\}\}$ then $\bigcap M=\{a\}$
+  \item<6-> (b) $M_1=\{a\}$, $M_2=\{a,b\}$, $M_3=\{a,b,c\}$, $I=\{1,2,3\}$; $\bigcap_{i\in I}M=\{a\}$
+  \end{itemize}
+}
+
+\frame{\frametitle{Difference \textcolor{black}{-} and complement \textcolor{black}{$\backslash$ and $^{\prime}$}}
+  \begin{itemize}
+  \item<1-> \textcolor{blue}{For any two sets M and N: $M-N=\{x\|x\in M$ and $x\not\in N\}$}
+  \item<2-> $M=\{a,b,c\}$, $N=\{a\}$, $M-N=\{b,c\}$
+  \item<3-> \textcolor{blue}{For any two sets M and N: $M\backslash N=\{x\|x\in N$ and $x\not\in M\}$}
+  \item<4-> $O=\{a,b,c,k\}$ $M\backslash O=\{k\}$
+  \item<5-> the universal complement: \textcolor{blue}{$M^{\prime}=\{x\|x\in U$ and $x\not\in M\}$}\\
+     (U the universal set)
+  \end{itemize}
+}
+
+\frame{\frametitle{Trivial equalities}
+  \begin{itemize}
+    \item<1-> Idempotency: $M\cup M=M$, $M\cap M=M$
+    \item<2-> Commutativity for $\cup$ and $\cap$: $M\cup N=N\cup M$ \ldots
+    \item<3-> Associativiy for $\cup$ and $\cap$: $(M\cup N)\cup O=M\cup (N\cup O)$ \ldots
+    \item<4-> Distributivity for $\cup$ and $\cap$: $M\cup (N\cap O)=(M\cup N)\cap (M\cup O)$ \ldots
+    \item<5-> Identity: $M\cup \emptyset=X$, $M\cup U=U$ \ldots what about $\cap$
+  \end{itemize}
+}
+
+\frame{\frametitle{More interesting equalities}
+  \begin{itemize}
+    \item<1-> Complement laws: $M\cup\emptyset=M$, $M^{\prime\prime}=M$, $M\cap M^{\prime}=\emptyset$, $X\cap U=U$
+    \item<2-> DeMorgan: $(M\cup N)^{\prime}=M^{\prime}\cap X^{\prime}$ \ldots
+  \end{itemize}
+}
+
+\section{Functions and Relations}
+\subsection{Ordered pairs/sets, n-tuples, Cartesian products}
+\frame{\frametitle{How to define an ordered pair}
+ \begin{itemize}
+   \item<1-> \ldots without introducing ordered tuples as a new primitive
+   \item<2-> take S=$\{\{a\},\{a,b\}\}$
+   \item<3-> we write: \textcolor{blue}{$\langle a,b\rangle = \{\{a\},\{a,b\}\}$}
+   \item<4-> orderend n-tuples defined recursively
+   \item<5-> $\langle a,b\rangle \not= \langle b,a\rangle$
+   \item<6-> first and second coordinate of the tuple
+ \end{itemize}
+}
+
+\frame{\frametitle{Cartesian products}
+ \begin{itemize}
+   \item<1-> sets of ordered pairs
+   \item<2-> tupling each member of the first argument with each of the second
+   \item<3-> \textcolor{blue}{$S_1\times S_2=\{\langle x,y\rangle\|x\in S_1$ and $y\in S_2\}$}
+   \item<4-> for an arbitrary number of sets: $S_1\times \cdots \times S_n=\{\langle x_1,x_2,\ldots,x_n\rangle\|x_i\in S_i\} $
+   \item<5-> $\langle x_1,x_2,\ldots,x_n\rangle$ abbreviated $\vec{x}$
+   \item<6-> for $S\times S\times\cdots$: n-fold products\\ $S^n=\{\vec{s}\|s_i\in S$ for $1\leq i\leq n\}$
+ \end{itemize}
+}
+
+\subsection{Relations}
+\frame{\frametitle{Defintion of relations}
+ \begin{itemize}
+   \item<1-> hold between (sets of) objects
+   \item<2-> \emph{x kicks y}, \emph{x lives on the same floor as y}, \ldots
+   \item<3-> formalization: \textcolor{blue}{Rab}, \textcolor{blue}{aRb}
+   \item<4-> \textcolor{blue}{$a\in A$ and $b\in B$: $R \subseteq A\times B$,\\ R is from A
+ (\textbf{domain}) to B (\textbf{range})}
+   \item<5-> R from A to A is \textcolor{blue}{in A}
+ \end{itemize}
+}
+
+\frame{\frametitle{Complement, inverse}
+ \begin{itemize}
+   \item<1-> complement \textcolor{blue}{$R^{\prime}=\{\langle a,b\rangle\ \not\in R\}$ for $R\subseteq A\times B$}
+      \begin{itemize}
+        \item<2-> R = the relation of teacherhood between a and b (the \textbf{arguments})
+        \item<3-> R$^{\prime}$ = all pairs $\langle b,a\rangle$ s.t. it is false that the first member is the teacher of the second member
+      \end{itemize}
+   \item<4-> inverse: \textcolor{blue}{$R^{-1}=\{\langle b,a\rangle\|\langle a,b\rangle\in R\}$  for $R\subseteq A\times B$}
+      \begin{itemize}
+        \item<5-> R = the relation of teacherhood between a and b:\\ \emph{Herr Webelhuth is the teacher of Herr Sch\"afer.}
+        \item<6-> R$^{-1}$ = all pairs $\langle b,a\rangle$ where $a$ is the teacher of $b$:\\ \emph{Herr Sch\"afer is the inverse-teacher of Herr Webelhuth.}
+      \end{itemize}  
+ \end{itemize}
+}
+\subsection{Functions}
+\frame{\frametitle{Functions}
+\begin{itemize}
+  \item<1-> \textcolor{blue}{A function F from A to B is a relation s.t. for every $a\in A$ there is exactly on tuple $\langle a,b\rangle\in A\times B$ s.t. $a$ is the first coordinate.}
+  \item<2-> partial function from A to B: for some $a\in A$ there is no tuple $\langle a,b\rangle\in A\times B$,  F is not \emph{defined for} some $a$ 
+\end{itemize}
+}
+
+\frame{\frametitle{Injection, surjection, bijection}
+\begin{itemize}
+  \item<1-> B the range of F, F is \textbf{into} B
+  \item<2-> F from A to B is \textcolor{blue}{\textbf{onto (a \textbf{surjection})} B iff there is no $b_i\in B$ s.t. there is no $\langle a,b_i\rangle\in F$}
+  \item<3-> F from A to B is \textcolor{blue}{\textbf{one-to-one (an \textbf{injection})} iff there are no two pairs s.t. $\langle a_i,b_j\rangle\in F$ and $\langle a_k,b_j\rangle\in F$}
+  \item<4-> one-to-one, onto, and total function: correspondence (bijection)
+\end{itemize}
+}
+
+\frame{\frametitle{Composition}
+\begin{itemize}
+  \item<1-> One can take the range of a function and make it the domain of another function.
+  \item<2-> \textcolor{blue}{A function $F_1:A\rightarrow B$ and a function $F_2:B\rightarrow C$ can be composed as $B(A(a))$, short $B\circ A$}
+  \item<3-> the compound function can be empty, it will be total if both A and B are bijections.
+\end{itemize}
+}
+
+\section{More about relations and sets}
+\subsection{Relations among themselves}
+
+\frame{\frametitle{Reflexivity}
+A relation R in $A=\{a,b,\ldots\}$ is...\\
+
+\bigskip
+{\small
+\begin{tabular}{ll|l}
+  & if & (ex.) \\
+  \hline
+  reflexive & for \textbf{every $a\in A$}: $\langle a,a\rangle\in R$ & is as heavy as\\
+       & & {\scriptsize A: physical objects} \\
+  irreflexive & for \textbf{every $a\in A$}: $\langle a,a\rangle\not\in R$ & is the father of \\
+  non-reflexive & for \textbf{some $a\in A$}: $\langle a,a\rangle\not\in R$ & has hurt \\
+\end{tabular}}
+}
+
+\frame{\frametitle{Symmetry}
+A relation R in $A=\{a,b,\ldots\}$ is...\\
+
+\bigskip
+{\small
+\begin{tabular}{ll|l}
+  & if & (ex.) \\
+  \hline
+  symmetric & for every $\langle a,b\rangle\in R$: & has the same car as\\
+            & $\langle b,a\rangle\in R$ & \\
+  asymmetric & for every $\langle a,b\rangle\in R$: & has a different car than \\
+             & $\langle b,a\rangle\not\in R$ & \\
+  non-symmetric & for some $\langle a,b\rangle\in R$: & is the sister of \\
+               & $\langle b,a\rangle\not\in R$ & \\
+	       anti-symmetric &  for every $\langle a,b\rangle\in R$: $a=b$ & beats oneself\\
+                  &                               & {\scriptsize not every human does}\\
+\end{tabular}}
+}
+
+\frame{\frametitle{Transitivity}
+A relation R in $A=\{a,b,\ldots\}$ is...\\
+
+\bigskip
+{\small
+\begin{tabular}{ll|l}
+  & if & (ex.) \\
+  \hline
+  transitive & if $\langle a,b\rangle\in R$ and $\langle b,c\rangle\in R$ & is to the left of\\
+            & then $\langle a,c\rangle\in R$ &  \\
+  intransitive & the above is never the case & is the father of \\
+  non-transitive & the above is sometimes not the case & likes \\
+\end{tabular}}
+}
+
+\frame{\frametitle{Connectedness}
+A relation  R in $A=\{a,b,\ldots\}$ is...\\
+
+\bigskip
+{\small
+\begin{tabular}{ll|l}
+  & if & (ex.) \\
+  \hline
+  connected & for every $a,b\in A$, $a\not =b$: & $>$ \\
+            & either $\langle a,b\rangle\in R$ or $\langle b,a\rangle\in R$ & {\scriptsize (A: the natural numbers)} \\
+  non-connected & for some $a,b\in A$  & likes \\
+                & the above is not the case & \\
+\end{tabular}}
+}
+
+\frame{\frametitle{Equivalence relations}
+\begin{itemize}
+  \item<1-> reflexive \footnotesize{($\langle a,a\rangle\in R$ for every $a$)}
+  \item<2-> symmetric \footnotesize{($\langle b,a\rangle\in R$ for every $\langle a,b\rangle$)}
+  \item<3-> transitive \footnotesize{($\langle a,b\rangle\in R$ \& $\langle b,c\rangle\in R\rightarrow\langle a,c\rangle\in R$)}
+  \item<4-> \emph{is as stupid as}
+  \item<5-> partition the range into equivalence classes:\\$A=\{a,b,c,d\}$, for example $P_{A_1}=\{\{a,b\},\{c\},\{d\}\}$
+  \item<6-> \textcolor{red}{not} $\{\{a\},\{b,c\}\}$ or $\{\{a,b\},\{b,c\},\{d\}\}$
+\end{itemize}  
+}
+
+\subsection{Orders}
+
+\frame{\frametitle{Defining ordering relations}
+An ordering relation R in A is ...
+\begin{itemize}
+  \item<1-> transitive \footnotesize{($\langle a,b\rangle\in R$ \& $\langle b,c\rangle\in R\rightarrow\langle a,c\rangle\in R$)} \ldots plus \ldots
+  \item<2-> \textcolor{blue}{irreflexive and asymmetric: \textbf{strict order}}
+  \item<3-> {\footnotesize $A=\{a,b,c,d\}$, $R_1=\{\langle a,b\rangle, \langle b,c\rangle, \langle a,c\rangle\}$}
+  \item<4-> \textcolor{blue}{reflexive and anti-symmetric: \textbf{weak order}}
+  \item<5-> {\footnotesize $A=\{a,b,c,d\}$, $R_1=\{\langle a,a\rangle, \langle b,b\rangle, \langle c,c\rangle, \langle a,b\rangle, \langle b,c\rangle, \langle a,c\rangle \}$}  
+\end{itemize}
+}
+
+\frame{\frametitle{Orders: an example}
+\begin{itemize}
+  \item<1-> a strict order: \emph{greater than} ($>$) in {\dslash N}
+  \item<2-> what is the corresponding weak order
+  \item<3-> $\geq$
+\end{itemize}
+}
+
+\frame{\frametitle{}
+\begin{itemize}
+  \item<1-> \textbf{minimal}: x is not preceded
+  \item<2-> \textbf{least}: x precedes every other lement
+  \item<3-> \textbf{maximal}: x is not succeeded
+  \item<4-> \textbf{greatest}: x succeeds every other element
+  \item<5-> \textbf{well-ordering}: total order, every subset has a least element
+\end{itemize}
+}
+
+\section{Cardinalities}
+\subsection{Denumerability}
+
+\frame{\frametitle{The number of elements\ldots}
+\begin{itemize}
+  \item<1-> $A=\{a,b,c\}$
+  \item<2-> $B=\{a,b,c\}$
+  \item<3-> obviously, $A=B$ (equal)
+  \item<4-> there is an $R$ from A to B s.t. $R=\{\langle a,a\rangle,\langle b,b\rangle,\langle c,c\rangle\}$
+  \item<5-> for every set C with the same number of elements\\ (e.g., $C=\{1,2,3\}$): 
+         $R=\{\langle a,1\rangle,\langle b,2\rangle,\langle c,3\rangle\}$
+  \item<6-> such relations are one-to-one correspondences
+\end{itemize}
+}
+
+\frame{\frametitle{Denumerable sets}
+\begin{itemize}
+  \item<1-> {\dslash N} is infinite
+  \item<2-> for every A there is some R_{card}
+       \begin{itemize}
+         \item<3-> a one-to-one correspondence
+         \item<4-> from A's members to the first $n$ members of {\dslash N}
+         \item<5-> s.t. $n$ is the \textcolor{blue}{cardinality of A, $\|A\|$}
+      \end{itemize}
+  \item<6-> sets A,B with $\|A\|=\|B\|$ are \textcolor{blue}{equivalent}
+  \item<7-> $\|${\dslash N}$\|=\aleph^0$
+\end{itemize}
+}
+
+\subsection{Non-denumerability}
+
+\frame{\frametitle{A problem}
+\begin{itemize}
+  \item<1-> \textcolor{red}{for some sets there is no such R_{card}}
+  \item<2-> no way of bringing their elements into an exhaustive linear order
+  \item<3-> no problem with {\dslash Q}: 
+    \begin{small}\Treek[2]{2}{
+	    & \K{$\ra{0,1}$}\ARkk{0,0}{0,0}{dl} & \K{$\ra{0,2}$}\ARkk{0,0}{0,0}{dl}\ARr{dll} & \K{$\ra{0,3}$}\ARkk{0,0}{3,0}{dl}\ARr{ddlll} & \K{$\cdots$}\ARkk{0,0}{0,0}{dl}\\
+	    \K{$\ra{1,0}$} & \K{$\ra{1,1}$}\ARkk{-3,0}{0,0}{dl}        & \K{$\ra{1,2}$}\ARkk{0,0}{0,0}{dl} & \K{$\ra{1,3}$}\ARkk{0,0}{0,0}{dl} & \K{$\cdots$}\ARkk{0,0}{0,0}{dl} \\
+	    \K{$\ra{2,0}$} & \K{$\ra{2,1}$}\ARkk{0,0}{0,0}{dl}        & \K{$\ra{2,2}$}\ARkk{0,0}{0,0}{dl} & \K{$\ra{2,3}$}\ARkk{0,0}{0,0}{dl} & \K{$\cdots$}\ARkk{0,0}{0,0}{dl} \\
+    \K{$\vdots$}   & \K{$\vdots$}          & \K{$\vdots$}   & \K{$\vdots$}   &  \\
+    }\end{small}
+\end{itemize}
+}
+
+\frame{\frametitle{The non-denumerable real numbers}
+\begin{itemize}
+  \item<1-> now: {\dslash R}
+  \item<2-> some elements cannot be represented as an ordered pair of two elements of {\dslash N}
+  \item<3-> in $[0,1]$, every real can be represented as \textcolor{blue}{$0.abcdefg\ldots$}, $a,b,c,d,e,f,g,\ldots\in\{0,1,2,3,4,5,6,7,8,9\}$
+\end{itemize}
+}
+
+\frame{\frametitle{Trying to enumerate}
+\begin{itemize}
+  \item<1-> an enumeration of $[0,1]$ in {\dslash R}?\\
+  
+  \medskip
+  \begin{tabular}{ccccccccc}
+     x_1 & = & 0 & . & a_{11} & a_{12} & a_{13} & a_{14} & \ldots \\
+     x_2 & = & 0 & . & a_{21} & a_{22} & a_{23} & a_{24} & \ldots \\
+     x_3 & = & 0 & . & a_{31} & a_{32} & a_{33} & a_{34} & \ldots \\
+      $\vdots$ & & \vdots &&&&& \\     
+     x_n & = & 0 & . & a_{n1} & a_{n2} & a_{n3} & a_{n4} & \ldots \\
+  \end{tabular}
+\end{itemize}
+}
+
+\frame{\frametitle{Failing to enumerate}
+\begin{itemize}
+  \item<1-> What about an $x_m$ which differs from $x_n$ at $a_{nn}$\\
+  
+  \medskip
+  {\footnotesize\begin{center}\begin{tabular}{ccccccccc}
+     x_1 & = & 0 & . & \textcolor{red}{a_{11}} & a_{12} & a_{13} & a_{14} & \ldots \\
+     x_2 & = & 0 & . & a_{21} & \textcolor{red}{a_{22}} & a_{23} & a_{24} & \ldots \\
+     x_3 & = & 0 & . & a_{31} & a_{32} & \textcolor{red}{a_{33}} & a_{34} & \ldots \\
+      $\vdots$ & & \vdots &&&&& \\     
+     x_n & = & 0 & . & a_{n1} & a_{n2} & a_{n3} & \textcolor{red}{a_{nn}} & \ldots \\
+  \end{tabular}\end{center}}
+  
+  \item<2-> \textcolor{red}{It won't be in the array...}
+  \item<3-> {\dslash R} is non-denumerable
+  \item<4-> If $\|A\|=\aleph^0$ then $\|\wp(A)\|=2^{\aleph_0}$ (cf. Partee et al. 62f.)
+\end{itemize}
+}
+\end{document}

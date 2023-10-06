@@ -1,0 +1,611 @@
+%\documentclass{beamer}
+\documentclass[handout]{beamer}
+
+\usepackage{beamerthemesplit,
+            graphicx,
+			      pstricks,
+			      color,
+			      colortbl,
+            fancyhdr,
+            rotate,
+            url,
+            setspace,
+            pifont,
+            cite,
+            amsmath,
+            amsfonts,
+            amssymb,
+            gb4e,
+            cgloss4e,
+            tree-dvips,
+            avm+,
+            ecltree+,
+            rotate,
+            stmaryrd}
+
+\title{Semantics{ }\\(5) Quantification in English}
+\author{Roland Sch\"afer (University of G\"ottingen)}
+\date{Summer Term 2005 (May 25)}
+
+\newcommand{\den}[1]{{$\llbracket${}#1$\rrbracket$}}
+\newcommand{\dem}[1]{{\llbracket{}#1\rrbracket}}
+\newcommand{\Dem}[2]{\llbracket{}#1\rrbracket^{#2}}
+\newcommand{\ra}[1]{{\langle{}#1\rangle}}
+\newcommand{\ek}[1]{$\left[$#1$\right]$}
+\newcommand{\lk}[0]{$\left[$}
+\newcommand{\rk}[0]{$\right]$}
+\newcommand{\ekm}[1]{\left[{}#1\right]}
+\newcommand{\bl}[1]{\textcolor{blue}{#1}}
+\newcommand{\rot}[1]{\textcolor{red}{#1}}
+\newcommand{\gr}[1]{\textcolor{gray}{#1}}
+\newcommand{\gn}[1]{\textcolor{green}{#1}}
+\newcommand{\lgr}[1]{\textcolor[gray]{0.9}{#1}}
+\newcommand{\mM}[0]{$\mathcal{M}$}
+\newcommand{\mMm}[0]{\mathcal{M}}
+\newfont{\dslash}{dsrom12}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{From PC to F1}
+\subsection{Taking stock}
+
+\frame{\frametitle{Back to semantics: F1}
+\begin{itemize}
+  \item<1-> before we turn to quantification in F1/F2 English:
+  \item<2-> names refer to individuals
+  \item<3-> itr. verbs refer to sets of individuals
+  \item<4-> tr. verbs refer to sets of ordered pairs of individuals
+  \item<5-> sentences refer to truth values
+\end{itemize}
+}
+
+\subsection{Pronouns and context}
+\frame{\frametitle{Reference of pronouns}
+\begin{itemize}
+  \item<1-> \emph{\textbf{This} drives a Golf.}
+  \item<2-> \emph{this} = a pronominal NP
+  \item<3-> denotes an \bl{individual}
+  \item<4-> but \bl{not rigidly}
+  \item<5-> fixed only within a specific context (SOA)
+\end{itemize}
+}
+
+\frame{\frametitle{Pronouns and variables}
+\begin{itemize}
+  \item<1-> quantified expression: $(\forall x)Px$
+  \item<2-> \emph{for all assignments of `this', `this' has property P}
+  \item<3-> Q evaluation in PC is algorithmic
+  \item<4-> \bl{variables interpreted like definite pronominal NPs} (within a fixed context)
+\end{itemize}
+}
+
+\subsection{Phrase structure version of PC}
+\frame{\frametitle{Categories and lexicon}
+\begin{itemize}
+  \item<1-> \emph{a} $\rightarrow$ const, var
+  \item<2-> conn $\rightarrow$ $\wedge,\vee,\rightarrow,\leftrightarrow$
+  \item<3-> neg $\rightarrow$ $\neg$
+  \item<4-> Q  $\rightarrow$ $\exists, \forall$
+\end{itemize}
+}
+
+\frame{\frametitle{Categories and lexicon}
+\begin{itemize}
+  \item<1-> pred_1 $\rightarrow$ P, Q
+  \item<2-> pred_2 $\rightarrow$ R
+  \item<3-> pred_3 $\rightarrow$ S
+  \item<4-> const $\rightarrow$ b, c
+  \item<5-> var $\rightarrow$ x_1, x_2, \ldots, x_n
+\end{itemize}
+}
+
+\frame{\frametitle{Phrase structure}
+\begin{itemize}
+  \item<1-> wff $\rightarrow$ pred_n a_1 a_2 \ldots a_n
+  \item<2-> wff $\rightarrow$ neg wff
+  \item<3-> wff $\rightarrow$ wff con wff
+  \item<4-> wff $\rightarrow$ (Q var) wff
+\end{itemize}
+}
+
+\subsection{Trees}
+\frame{\frametitle{A wff without Q}
+ 
+\begin{center}
+{\small
+   \begin{bundle}
+    {wff}\setlength\GapDepth{2ex}\setlength\GapWidth{3em}
+    \chunk{\begin{bundle}
+             {wff}
+             \chunk{\begin{bundle}
+                      {pred_1}
+                      \chunk{P}
+                    \end{bundle}
+                   }
+             \chunk{\begin{bundle}
+                     {a}
+                     \chunk{
+                            \begin{bundle}
+                              {var}
+                              \chunk{b}
+                            \end{bundle}
+                           }
+                    \end{bundle}
+                   }
+           \end{bundle}
+          }
+    \chunk{\begin{bundle}
+            {conn}
+            \chunk{$\wedge$}
+           \end{bundle}
+          }
+    \chunk{\begin{bundle}
+             {wff}
+             \chunk{\begin{bundle}
+                     {neg}
+                     \chunk{$\neg$}
+                    \end{bundle}
+                   }
+            \chunk{\begin{bundle}
+                    {wff}
+                    \chunk{\begin{bundle}
+                             {wff}
+                             \chunk{\begin{bundle}
+                                     {pred_2}
+                                     \chunk{R}
+                                    \end{bundle} 
+                                   }
+                             \chunk{\begin{bundle}
+                                     {a}
+                                     \chunk{\begin{bundle}
+                                              {const}
+                                              \chunk{b}
+                                            \end{bundle}
+                                           }
+                                    \end{bundle} 
+                                   }
+                             \chunk{\begin{bundle}
+                                     {a}
+                                     \chunk{\begin{bundle}
+                                              {const}
+                                              \chunk{c}
+                                            \end{bundle}
+                                           }
+                                    \end{bundle} 
+                                   }
+                           \end{bundle}
+                          }
+                   \end{bundle}
+                  }      
+           \end{bundle}
+          }
+  \end{bundle}
+ }
+\end{center}
+}
+
+\frame{\frametitle{A wff with Q's}
+\begin{center}
+{\small
+ \begin{bundle}
+  {wff}\setlength\GapDepth{1.4ex}\setlength\GapWidth{1.5em}
+  \chunk{\begin{bundle}
+           {(Q var)}
+           \chunk{$\forall$ x_1}
+         \end{bundle}
+        }
+  \chunk{
+  \begin{bundle}
+    {wff}
+    \chunk{\begin{bundle}
+             {wff}
+             \chunk{\begin{bundle}
+                      {pred_1}
+                      \chunk{P}
+                    \end{bundle}
+                   }
+             \chunk{\begin{bundle}
+                     {a}
+                     \chunk{
+                            \begin{bundle}
+                              {const}
+                              \chunk{x_1}
+                            \end{bundle}
+                           }
+                    \end{bundle}
+                   }
+           \end{bundle}
+          }
+    \chunk{\begin{bundle}
+            {conn}
+            \chunk{$\rightarrow$}
+           \end{bundle}
+          }
+    \chunk{\begin{bundle}
+             {wff}
+             \chunk{\begin{bundle}
+                      {(Q var)}
+                      \chunk{$\exists x_2$}
+                    \end{bundle}
+                   }
+             \chunk{      
+               \begin{bundle}
+                 {wff}
+                 \chunk{\begin{bundle}
+                         {neg}
+                         \chunk{$\neg$}
+                        \end{bundle}
+                   }
+                \chunk{\begin{bundle}
+                        {wff}
+                        \chunk{\begin{bundle}
+                                 {wff}
+                                 \chunk{\begin{bundle}
+                                         {pred_2}
+                                         \chunk{R}
+                                        \end{bundle} 
+                                       }
+                                 \chunk{\begin{bundle}
+                                         {a}
+                                         \chunk{\begin{bundle}
+                                                  {var}
+                                                  \chunk{x_1}
+                                                \end{bundle}
+                                               }
+                                        \end{bundle} 
+                                       }
+                                 \chunk{\begin{bundle}
+                                         {a}
+                                         \chunk{\begin{bundle}
+                                                  {var}
+                                                  \chunk{x_2}
+                                                \end{bundle}
+                                               }
+                                        \end{bundle} 
+                                       }
+                               \end{bundle}
+                              }
+                       \end{bundle}
+                      }      
+               \end{bundle}
+                      }
+            \end{bundle}           
+          }
+  \end{bundle}
+  }
+  \end{bundle}
+  }
+\end{center}
+}
+
+\subsection{C-command}
+\frame{\frametitle{Definition of c-command}
+\begin{itemize}
+  \item<1->Node A \bl{c-commands} (constituent-commands) node B iff
+    \begin{itemize}
+      \item<2-> \bl{A does not dominate B} and
+      \item<3-> and \bl{the first branching node dominating A also dominates B}.
+    \end{itemize}
+  \item<4-> The definition in CM allows a node to dominate itself.
+\end{itemize}
+}
+
+\frame{\frametitle{Configurational binding}
+\begin{itemize}
+  \item<1-> in configurational tree-structures:
+  \item<2-> \bl{A variables is bound by the closest c-commanding coindexed quantifier.}
+  \item<3-> scope = binding domain
+\end{itemize}
+}
+
+\frame{\frametitle{A wff with Q's}
+ 
+\begin{center}
+{\small
+ \begin{bundle}
+  {\node{a-2}{wff}}\setlength\GapDepth{1.4ex}\setlength\GapWidth{1.5em}
+  \chunk{\begin{bundle}
+           {(Q var)}
+           \chunk{\node{a-1}{$\forall$ x_1}}
+         \end{bundle}
+        }
+  \chunk{
+  \begin{bundle}
+    {\node{a-3}{wff}}
+    \chunk{\begin{bundle}
+             {\node{a-4}{wff}}
+             \chunk{\begin{bundle}
+                      {pred_1}
+                      \chunk{P}
+                    \end{bundle}
+                   }
+             \chunk{\begin{bundle}
+                     {\node{a-5}{a}}
+                     \chunk{
+                            \begin{bundle}
+                              {const}
+                              \chunk{\node{a-6}{x_1}}
+                            \end{bundle}
+                           }
+                    \end{bundle}
+                   }
+           \end{bundle}
+          }
+    \chunk{\begin{bundle}
+            {conn}
+            \chunk{$\rightarrow$}
+           \end{bundle}
+          }
+    \chunk{\begin{bundle}
+             {\node{a-8}{wff}}
+             \chunk{\begin{bundle}
+                      {(Q var)}
+                      \chunk{\node{a-7}{$\exists x_2$}}
+                    \end{bundle}
+                   }
+             \chunk{      
+               \begin{bundle}
+                 {wff}
+                 \chunk{\begin{bundle}
+                         {neg}
+                         \chunk{$\neg$}
+                        \end{bundle}
+                   }
+                \chunk{\begin{bundle}
+                        {wff}
+                        \chunk{\begin{bundle}
+                                 {wff}
+                                 \chunk{\begin{bundle}
+                                         {pred_2}
+                                         \chunk{R}
+                                        \end{bundle} 
+                                       }
+                                 \chunk{\begin{bundle}
+                                         {a}
+                                         \chunk{\begin{bundle}
+                                                  {var}
+                                                  \chunk{\node{a-9}{x_1}}
+                                                \end{bundle}
+                                               }
+                                        \end{bundle} 
+                                       }
+                                 \chunk{\begin{bundle}
+                                         {a}
+                                         \chunk{\begin{bundle}
+                                                  {var}
+                                                  \chunk{\node{a-10}{x_2}}
+                                                \end{bundle}
+                                               }
+                                        \end{bundle} 
+                                       }
+                               \end{bundle}
+                              }
+                       \end{bundle}
+                      }      
+               \end{bundle}
+                      }
+            \end{bundle}           
+          }
+  \end{bundle}
+  }
+  \end{bundle}
+  } {\makedash{2pt}
+     \anodecurve[t]{a-1}[l]{a-2}{1cm}
+     \anodecurve[b]{a-2}[t]{a-6}{1cm}
+     \anodecurve[b]{a-2}[t]{a-9}{1cm}
+     \anodecurve[t]{a-7}[l]{a-8}{1cm}
+     \anodecurve[b]{a-8}[t]{a-10}{1cm}
+    }
+\end{center}
+}
+
+\section{Model theory}
+\subsection{Models and valuations}
+\frame{\frametitle{Refinement of PC semantics}
+\begin{itemize}
+  \item<1-> \gr{remember T-sentences: \textbf{S of L is true in v iff p}.}
+  \item<2-> \textbf{\bl{$\mathcal{M}$}} is a model of the accessible universe of discourse
+    \begin{itemize}
+      \item<3-> $\mathcal{M}=\ra{U_n,V_n}$
+      \item<4-> \bl{$U_n$} = the set of accessible individuals (\bl{domain})
+      \item<5-> \bl{$V_n$} = a \bl{valuation function} which assigns
+         \begin{itemize}
+           \item<6-> individuals to names
+           \item<7-> sets of n-tuples of indivuiduals to pred_n
+         \end{itemize}
+    \end{itemize}
+  \item<8-> \textbf{\bl{g}} is function from variables to individuals in $\mathcal{M}$
+  \item<9-> we evaluate: \bl{$\dem{\alpha}^{\mMm_n,g_n}$}
+  \item<10-> \emph{the extension of $\alpha$ relative to \mM_n and g_n}
+\end{itemize}
+}
+
+\subsection{Assignment functions}
+\frame{\frametitle{Fixed and context-bound denotation}
+\begin{itemize}
+  \item<1-> V_n valuates \bl{statically}
+  \item<2-> Q's require flexible valuation of pronominal matrices
+  \item<3-> \emph{g_n} is like V_n for constants, only flexible
+  \item<4-> it can \bl{iterate through U_n}
+  \item<5-> initial assignment can be anything:
+    \begin{center}
+      $g_1 = \left[\begin{array}{l}
+                     x_1 \rightarrow Herr\ Webelhuth\\
+                     x_2 \rightarrow Frau\ Eckardt\\
+                     x_3 \rightarrow Turm-Mensa
+                   \end{array}
+             \right]$
+    \end{center}
+\end{itemize}
+}
+
+\subsection{Modified assignment functions}
+\frame{\frametitle{Iterating through U_n}
+\begin{itemize}
+  \item<1-> for each Q loop, one modification
+  \item<2-> read \bl{$g_n\ekm{d/x_m}$} as\\ `\ldots relative to $g_n$ where $x_m$ is reassigned to $d$'
+  \item<3-> $\dem{x_1}^{\mMm_1,g_1\ekm{Eckardt/x_1}}=Frau\ Eckardt$
+  \item<4-> $\dem{x_2}^{\mMm_1,g_1\ekm{\ekm{Eckardt/x_1}Mensa/x_2}}=Mensa$
+\end{itemize}
+}
+
+\frame{\frametitle{Interpreting with g_n}
+\begin{itemize}
+  \item<1-> \bl{$\Dem{(\forall{}x_1)Px_1}{\mMm_1,g_1}$}
+  \item<2-> start with initial assignment: $\Dem{x_1}{\mMm_1,g_1}=Webelhuth$ \\
+    check: $\Dem{Px_1}{\mMm_1,g_1}$
+  \item<3-> modify: $\Dem{x_1}{\mMm_1,g_1\ekm{Eckardt/x_1}}=Eckardt$ \\
+    check: $\Dem{Px_1}{\mMm_1,g_1}$
+  \item<4-> modify: $\Dem{x_1}{\mMm_1,g_1\ekm{Mensa/x_1}}=Mensa$ \\
+    check: $\Dem{Px_1}{\mMm_1,g_1}$
+  \item<5-> iff the answer was never 0, then \bl{$\Dem{(\forall{}x_1)Px_1}{\mMm_1,g_1}=1$}
+\end{itemize}
+}
+
+\frame{\frametitle{Multiple Q's: subloops}
+{\footnotesize
+\begin{itemize}
+  \item<1-> \bl{$\Dem{(\forall{}x_1)(\exists{}x_2)Px_1x_2}{\mMm_1,g_1}$}
+  \item<2-> $\Dem{x_1}{\mMm_1,g_1}=Webelhuth$
+    \begin{itemize}
+      \item<3->{\footnotesize $\Dem{x_2}{\mMm_1,g_1}=Eckardt$ }
+      \item<4->{\footnotesize  $\Dem{x_2}{\mMm_1,g_1\ekm{Webelhuth/x_2}}=Webelhuth$ }
+      \item<5->{\footnotesize  $\Dem{x_2}{\mMm_1,g_1\ekm{Mensa/x_2}}=Mensa$ }
+    \end{itemize}
+  \item<6-> $\Dem{x_1}{\mMm_1,g_1\ekm{Eckardt/x_1}}=Eckardt$
+    \begin{itemize}
+      \item<7->{\footnotesize  $\Dem{x_2}{\mMm_1,g_1\ekm{Eckardt/x_1}}=Eckardt$ }
+      \item<8->{\footnotesize  $\Dem{x_2}{\mMm_1,g_1\ekm{\ekm{Eckardt/x_1}Webelhuth/x2}}=Webelhuth$ }
+      \item<9->{\footnotesize  $\Dem{x_2}{\mMm_1,g_1\ekm{\ekm{Eckardt/x_1}Mensa/x2}}=Mensa$ }
+    \end{itemize}
+  \item<10-> $\Dem{x_1}{\mMm_1,g_1\ekm{Mensa/x_1}}=Mensa$
+    \begin{itemize}
+      \item<11->{\footnotesize  $\Dem{x_2}{\mMm_1,g_1\ekm{Mensa/x_1}}=Eckardt$ }
+      \item<12->{\footnotesize  $\Dem{x_2}{\mMm_1,g_1\ekm{\ekm{Mensa/x_1}Webelhuth/x_2}}=Webelhuth$ }
+      \item<13->{\footnotesize  $\Dem{x_2}{\mMm_1,g_1\ekm{\ekm{Mensa/x_1}Mensa/x_2}}=Mensa$ }
+    \end{itemize}
+\end{itemize}
+}
+}
+
+\section{Problems with natural language}
+
+\subsection{Restricted quantification}
+\frame{\frametitle{Natural weirdness}
+\begin{itemize}
+  \item<1-> quantifying expressions in NL beyond $\forall$ and $\exists$
+  \item<2-> some seem to work differently:
+  \item<3-> \emph{\bl{All patients} adore Dr. Rick \underline{D}agless M.D.} \\ \bl{$(\forall x_1)Px_1\rightarrow{}Ax_1d$} (ok)
+  \item<4-> but: \emph{\bl{Most patients} adore Dr. Rick \underline{D}agless M.D.}\\ \bl{$(MOST\ x_1)Px_1\rightarrow{}Ax_1d$} (\rot{wrong interpretation})
+  \item<5-> domain should be the set of patients, not individuals
+  \item<6-> For NL: \bl{Assume that the checking domain for Q is the set denoted by CN.}
+\end{itemize}
+}
+
+\subsection{Variable binding and scope}
+\frame{\frametitle{Scope ambiguities}
+\begin{itemize}
+  \item<1-> c-command condition on binding/scope fails in NL
+  \item<2-> no PNF's in NL
+  \item<3-> Q and common noun (CN) usually \bl{in-situ} (e.g., argument position) 
+  \item<4-> \bl{ambiguities independent of Q position}
+    \begin{itemize}
+      \item<5-> \emph{Everybody loves somebody.} (\emph{ELS})
+      \item<6-> $(\forall{}x_1)(\exists{}x_2)Lx_1x_2$
+      \item<7-> $(\exists{}x_2)(\forall{}x_1)Lx_1x_2$
+    \end{itemize}
+  \item<8-> \bl{Q ambiguity cannot be structural} (e.g., $\exists$ will never c-command $\forall$)  
+\end{itemize}
+}
+
+\subsection{Pre-spellout movement}
+\frame{\frametitle{Cases of overt movement and traces}
+\begin{itemize}
+  \item<1-> \bl{wh} movement:
+  \item<1-> \emph{\node{c-1}{What_i} will Agent Cooper solve \node{c-2}{t_i}?}
+  \item<1->
+  \item<2-> \bl{passive} movement:
+  \item<2-> \emph{\node{c-3}{(Laura Palmer)_i} was killed \node{c-4}{t_i}.}
+  \item<2->
+  \item<3-> \bl{raising} verbs:
+  \item<3-> \emph{\node{c-5}{(Laura Palmer)_i} seems \node{c-6}{t_i} to be dead.}
+  \item<3->
+\end{itemize} \anodecurve[b]{c-2}[b]{c-1}{0.8cm}
+              \anodecurve[b]{c-4}[b]{c-3}{0.8cm}
+              \anodecurve[b]{c-6}[b]{c-5}{0.8cm}
+}
+
+\subsection{LF movement}
+\frame{\frametitle{Levels of representation}
+\begin{itemize}
+  \item<1-> construction of an independent representational level LF
+  \item<2-> could use movement mechanism as used at surface level
+  \item<3-> \bl{All quantifiers adjoin to the left periphery of S at LF.}
+  \item<4-> \bl{LF is constructed by syntactic rules!}
+\end{itemize}
+}
+
+\frame{\frametitle{Ambiguities at LF}
+\begin{itemize}
+  \item<1-> \emph{[_{S^{\prime\prime}} \node{d-1}{\bl{everybody_i}} [_{S^{\prime}} \node{d-3}{\bl{somebody_j}} [_S \node{d-2}{\bl{t_i}} loves \node{d-4}{\bl{t_j}} ]]]}
+  \item<1->
+  \item<2-> \emph{[_{S^{\prime\prime}} \node{d-5}{\bl{somebody_j}} [_{S^{\prime}} \node{d-7}{\bl{everybody_i}} [_S \node{d-8}{\bl{t_i}} loves \node{d-6}{\bl{t_j}} ]]]}
+  \item<2->
+\end{itemize} \anodecurve[b]{d-2}[b]{d-1}{0.6cm}
+              \anodecurve[b]{d-4}[b]{d-3}{0.6cm}
+              \anodecurve[b]{d-6}[b]{d-5}{0.6cm}
+              \anodecurve[b]{d-8}[b]{d-7}{0.6cm}
+}
+
+\section{Quantification in English: F2}
+
+\subsection{Movement rules}
+\frame{\frametitle{The Q raising rule}
+
+\begin{center}
+  {\Large \bl{$[_S\ X\ NP\ Y\ ]\ \Rightarrow\ [_{S^{\prime}}\ NP_i\ [_S\ X\ t_i\ Y\ ]]$}}
+\end{center}
+
+\begin{itemize}
+  \item<2-> specify a PS as input and output
+  \item<3-> QR rule also introduces coindexing of traces
+\end{itemize}
+}
+
+\subsection{Fragment F2}
+\frame{\frametitle{Syntax}
+\begin{itemize}
+  \item<1-> copies all definitions from F1
+  \item<2-> adds appropriate definitions of quantifying determiners etc.
+    \begin{itemize}
+      \item<3-> \bl{$Det \rightarrow every,\ some$}
+      \item<4-> $NP \rightarrow Det N_{common-count}$
+    \end{itemize}
+  \item<5-> adds the \bl{QR rule}
+  \item<6-> assume introduction of reasonable syntactic types/rules without specifying
+  \item<7-> assume \bl{admissible (reasonable, possible) models \mM}
+\end{itemize}
+}
+
+\frame{\frametitle{Semantics for QR output: \emph{every}}
+\begin{center}
+\bl{$\Dem{\ekm{\ekm{every\ \beta}_i\ S}}{\mMm,g}=1\ iff\ for\ all\ u\in U:$\\
+    $if\ u\in\Dem{\beta}{\mMm,g}\ then\ \Dem{S}{\mMm,g\ekm{u/t_i}}$ \\
+   }
+\end{center}
+
+A sentence containing the trace $t_i$ with an adjoined $NP_i$ (which consists of \emph{every} plus the common noun $\beta$) extend to 1 iff for each individual $u$ in the universe $U$ which is in the set referred to by the common noun $\beta$, $S$ denotes 1 with $u$ assigned to the pronominal trace $t_i$. $g$ is modified iteratively to check that.
+}
+
+\frame{\frametitle{Semantics for QR output: \emph{some, a}}
+\begin{center}
+\bl{$\Dem{\ekm{\ekm{a\ \beta}_i\ S}}{\mMm,g}=1\ iff\ for\ some\ u\in U:$\\
+    $u\in\Dem{\beta}{\mMm,g}\ and\ \Dem{S}{\mMm,g\ekm{u/t_i}}$ \\
+   }
+\end{center}
+(similar)
+}
+
+\end{document}
