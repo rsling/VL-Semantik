@@ -92,7 +92,7 @@
 \newcommand{\Fl}{\XSolidBrush}
 \newcommand{\xxx}{\hspaceThis{[}}
 \newcommand{\zB}{z.\,B.\ }
-\newcommand{\down}[1]{\ensuremath{\mathrm{#1}}}
+%\newcommand{\down}[1]{\ensuremath{\mathrm{#1}}}
 \newcommand{\Zeile}{\vspace{\baselineskip}}
 \newcommand{\Halbzeile}{\vspace{0.5\baselineskip}}
 \newcommand{\Viertelzeile}{\vspace{0.25\baselineskip}}
@@ -349,6 +349,8 @@
 \newcommand{\dem}[1]{{\llbracket{}#1\rrbracket}}
 \newcommand{\Dem}[2]{\llbracket{}#1\rrbracket^{#2}}
 \newcommand{\DEM}[1]{\llbracket{}#1\rrbracket^{\mathcal{M},g}}
+\newcommand{\DEMM}[1]{\llbracket{}#1\rrbracket^{\mathcal{M},w,i,g}}
+\newcommand{\DEMI}[1]{\llbracket{}#1\rrbracket_{\not c}^{\mathcal{M},g}}
 %\newcommand{\ram}[1]{{\langle{}#1\rangle}}
 \newcommand{\ram}[1]{{\langle{}#1\rangle}}
 \newcommand{\ra}[1]{{\langle{}#1\rangle}}
@@ -363,6 +365,13 @@
 \newcommand{\lgr}[1]{\textcolor[gray]{0.9}{#1}}
 \newcommand{\mM}[0]{\ensuremath{\mathcal{M}}}
 \newcommand{\mMm}[0]{\ensuremath{\mathcal{M}}}
+\newcommand{\Prn}[0]{$^{\prime}$}
+\newcommand{\Prm}[0]{^{\prime}}
+\newcommand{\up}[0]{$\ \hat{ }\ $}
+\newcommand{\down}[0]{$\ \check{ }\ $}
+\newcommand{\upm}[0]{\ \hat{ }\ }
+\newcommand{\downm}[0]{\ \check{ }\ }
+\newcommand{\PRI}[0]{^{\prime}}
 
 \newcommand{\ARrkk}[3]{\POS[]-(0,4)+(#1)\ar@{<-}[#3]+(0,2)+(#2)}
 \newcommand{\ARrk}[3]{\ARrkk{0,#1}{0,#2}{#3}}

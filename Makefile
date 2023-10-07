@@ -72,7 +72,7 @@ handout06: $(OUTDIR)/06.+Quantifikation+und+Modelltheorie$(HANDOUTSUFF)$(PROJECT
 handout07: $(OUTDIR)/07.+Einfach+getypte+h-oherstufige+-l-Sprachen$(HANDOUTSUFF)$(PROJECT)$(SUFFSUFF)
 handout08: $(OUTDIR)/08.+Intensionalit-at$(HANDOUTSUFF)$(PROJECT)$(SUFFSUFF)
 handout09: $(OUTDIR)/09.+Tempus+und+Modalit-at$(HANDOUTSUFF)$(PROJECT)$(SUFFSUFF)
-handout10: $(OUTDIR)/10.Montagues+intensionale+Logik$(HANDOUTSUFF)$(PROJECT)$(SUFFSUFF)
+handout10: $(OUTDIR)/10.+Montagues+intensionale+Logik$(HANDOUTSUFF)$(PROJECT)$(SUFFSUFF)
 
 allhandouts: handout01 handout02 handout03 handout04 handout05 handout06 handout07 handout08 handout09 handout10
 
@@ -85,7 +85,7 @@ slides06: $(OUTDIR)/06.+Quantifikation+und+Modelltheorie$(SLIDESUFF)$(PROJECT)$(
 slides07: $(OUTDIR)/07.+Einfach+getypte+h-oherstufige+-l-Sprachen$(SLIDESUFF)$(PROJECT)$(SUFFSUFF)
 slides08: $(OUTDIR)/08.+Intensionalit-at$(SLIDESUFF)$(PROJECT)$(SUFFSUFF)
 slides09: $(OUTDIR)/09.+Tempus+und+Modalit-at$(SLIDESUFF)$(PROJECT)$(SUFFSUFF)
-slides10: $(OUTDIR)/10.Montagues+intensionale+Logik$(SLIDESUFF)$(PROJECT)$(SUFFSUFF)
+slides10: $(OUTDIR)/10.+Montagues+intensionale+Logik$(SLIDESUFF)$(PROJECT)$(SUFFSUFF)
 
 allslides: slides01 slides02 slides03 slides04 slides05 slides06 slides07 slides08 slides09 slides10
 

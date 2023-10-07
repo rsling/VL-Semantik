@@ -24,7 +24,7 @@
 
 \begingroup
   \setbeamertemplate{navigation symbols}{}
-  \begin{frame}[noframenumbering,plain]
+  \begin{frame}[noframenumbering,plain,allowframebreaks]
    \titlepage
   \end{frame}
   \begin{frame}{Inhalt}
@@ -40,9 +40,54 @@
 \ifdefined\TITLE
   \input{includes/\TITLE}
 \else
-  \section[Grammatik]{Grammatik}
+  \section[Inferenz und Bedeutung]{Inferenz und Bedeutung}
   \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
-  \input{includes/01.+Grammatik.tex}
+  \input{includes/01.+Inferenz+und+Bedeutung.tex}
+  \let\subsection\section\let\section\woopsi
+
+  \section[Referentielle Semantik]{Referentielle Semantik}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
+  \input{includes/02.+Referentielle+Semantik.tex}
+  \let\subsection\section\let\section\woopsi
+
+  \section[Mengen und Funktionen]{Mengen und Funktionen}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
+  \input{includes/03.+Mengen+und+Funktionen.tex}
+  \let\subsection\section\let\section\woopsi
+
+  \section[Aussagenlogik]{Aussagenlogik}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
+  \input{includes/04.+Aussagenlogik.tex}
+  \let\subsection\section\let\section\woopsi
+
+  \section[Prädikatenlogik]{Prädikatenlogik}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
+  \input{includes/05.+Pr-adikatenlogik.tex}
+  \let\subsection\section\let\section\woopsi
+
+  \section[Quantifikation und Modelltheorie]{Quantifikation und Modelltheorie}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
+  \input{includes/06.+Quantifikation+und+Modelltheorie.tex}
+  \let\subsection\section\let\section\woopsi
+
+  \section[Einfach getypte höherstufige $\lambda$-Sprachen]{Einfach getypte höherstufige $\lambda$-Sprachen}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
+  \input{includes/07.+Einfach+getypte+h-oherstufige+-l-Sprachen.tex}
+  \let\subsection\section\let\section\woopsi
+
+  \section[Intensionalität]{Intensionalität}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
+  \input{includes/08.+Intensionalit-at.tex}
+  \let\subsection\section\let\section\woopsi
+
+  \section[Tempus und Modalität]{Tempus und Modalität}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
+  \input{includes/09.+Tempus+und+Modalit-at.tex}
+  \let\subsection\section\let\section\woopsi
+
+  \section[Montagues intentionale Logik]{Montague}
+  \let\woopsi\section\let\section\subsection\let\subsection\subsubsection
+  \input{includes/10.+Montagues+intensionale+Logik.tex}
   \let\subsection\section\let\section\woopsi
 
 \fi

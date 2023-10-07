@@ -1,57 +1,3 @@
-%\documentclass{beamer}
-\documentclass[handout]{beamer}
-
-\usepackage{beamerthemesplit,
-            graphicx,
-			      color,
-			      colortbl,
-            fancyhdr,
-            tipa,
-            rotate,
-            url,
-            setspace,
-            pifont,
-            cite,
-            amsmath,
-            amsfonts,
-            amssymb,
-            tipa,
-            tipx,
-            gb4e,
-            cgloss4e,
-            avm+,
-            ecltree+,
-            rotate,
-            stmaryrd,
-            xyling}
-
-\title{Semantics{ }\\(7) Intensionality}
-\author{Roland Sch\"afer (University of G\"ottingen)}
-\date{Summer Term 2005 (June 15)}
-
-\newcommand{\den}[1]{{$\llbracket${}#1$\rrbracket$}}
-\newcommand{\dem}[1]{{\llbracket{}#1\rrbracket}}
-\newcommand{\Dem}[2]{\llbracket{}#1\rrbracket^{#2}}
-\newcommand{\DEM}[1]{\llbracket{}#1\rrbracket^{\mathcal{M},g}}
-\newcommand{\DEMM}[1]{\llbracket{}#1\rrbracket^{\mathcal{M},w,i,g}}
-%\newcommand{\ram}[1]{{\langle{}#1\rangle}}
-\newcommand{\ram}[1]{{\langle{}#1\rangle}}
-\newcommand{\ek}[1]{$\left[$#1$\right]$}
-\newcommand{\lk}[0]{$\left[$}
-\newcommand{\rk}[0]{$\right]$}
-\newcommand{\ekm}[1]{\left[{}#1\right]}
-\newcommand{\bl}[1]{\textcolor{blue}{#1}}
-\newcommand{\rot}[1]{\textcolor{red}{#1}}
-\newcommand{\gr}[1]{\textcolor{gray}{#1}}
-\newcommand{\gn}[1]{\textcolor{green}{#1}}
-\newcommand{\lgr}[1]{\textcolor[gray]{0.9}{#1}}
-\newcommand{\mM}[0]{$\mathcal{M}$}
-\newcommand{\mMm}[0]{\mathcal{M}}
-\newfont{\dslash}{dsrom12}
-
-\begin{document}
-
-\frame{\titlepage}
 
 \frame{\frametitle{Targets for this week}
 \begin{itemize}
@@ -150,7 +96,7 @@
   \item<2-> for each point in time: \bl{one possible temporal state of each world (instant $i\in{}I$)}
   \item<3-> representation of \bl{temporarily ordered world-time coordinates $\ram{w,i}\in{}W\times{}I$}
    \begin{center}
-     \includegraphics[scale=0.3]{psoas.jpg}
+     \includegraphics[scale=0.3]{\GRAPHPATH/psoas.jpg}
    \end{center}
 \end{itemize}
 }
@@ -174,7 +120,7 @@
   
   \medskip
    \begin{center}
-     \includegraphics[scale=0.3]{propfunction.jpg}
+     \includegraphics[scale=0.3]{\GRAPHPATH/propfunction.jpg}
    \end{center}
 \end{itemize}
 }
@@ -201,7 +147,7 @@
   
   \medskip
    \begin{center}
-     \includegraphics[scale=0.3]{entailment.jpg}
+     \includegraphics[scale=0.3]{\GRAPHPATH/entailment.jpg}
    \end{center}
 \end{itemize}
 }
@@ -213,7 +159,7 @@
   
   \medskip
    \begin{center}
-     \includegraphics[scale=0.3]{equivalence.jpg}
+     \includegraphics[scale=0.3]{\GRAPHPATH/equivalence.jpg}
    \end{center}
 \end{itemize}
 }
@@ -225,7 +171,7 @@
   
   \medskip
    \begin{center}
-     \includegraphics[scale=0.3]{contradiction.jpg}
+     \includegraphics[scale=0.3]{\GRAPHPATH/contradiction.jpg}
    \end{center}
 \end{itemize}
 }
@@ -237,7 +183,7 @@
   
   \medskip
    \begin{center}
-     \includegraphics[scale=0.3]{not-p.jpg}
+     \includegraphics[scale=0.3]{\GRAPHPATH/not-p.jpg}
    \end{center}
 \end{itemize}
 }
@@ -262,7 +208,7 @@
 
   \medskip
    \begin{center}
-     \includegraphics[scale=0.3]{necessarily-p.jpg}
+     \includegraphics[scale=0.3]{\GRAPHPATH/necessarily-p.jpg}
    \end{center}\end{itemize}
 }
 
@@ -273,7 +219,7 @@
 
   \medskip
    \begin{center}
-     \includegraphics[scale=0.3]{possibly-p.jpg}
+     \includegraphics[scale=0.3]{\GRAPHPATH/possibly-p.jpg}
    \end{center}
 \end{itemize}
 }
@@ -305,12 +251,12 @@
 
   \medskip
    \begin{center}
-     \includegraphics[scale=0.3]{wxi-to-u.jpg}
+     \includegraphics[scale=0.3]{\GRAPHPATH/wxi-to-u.jpg}
    \end{center}
 \end{itemize}
 }
 
-\frame{\frametitle{... and pred_ns}
+\frame{\frametitle{... and pred\Sub{n}s}
 \begin{itemize}
   \item<1->\emph{walks} etc. denotes different sets (or CFs) at different $\ram{w,i}$ coordinates
   \item<2->\bl{$for\ \beta\in Cons_{pred_n}, V(\beta)$ is a function from $W\times I$ to $\wp U^n\ (U^n=U_1\times U_2\times\ldots\times U_n)$}\\
@@ -318,7 +264,7 @@
 
   \medskip
    \begin{center}
-     \includegraphics[scale=0.27]{wxi-to-Puxu.jpg}
+     \includegraphics[scale=0.27]{\GRAPHPATH/wxi-to-Puxu.jpg}
    \end{center}
 \end{itemize}
 }
@@ -373,4 +319,3 @@
 \end{itemize}
 }
 
-\end{document}
