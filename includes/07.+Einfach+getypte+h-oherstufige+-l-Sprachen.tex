@@ -205,7 +205,7 @@
   \item<2-> \emph{eat} is in $ME_{\ram{e,\ram{e,t}}}$
   \item<3-> assume a \bl{silent logical constant: $R_O$ in $ME_{\ram{\ram{e,\ram{e,t}},\ram{e,t}}}$}
   \item<4-> a function $h$ s.t. for all $k\in D_{\ram{e,\ram{e,t}}}$ and all $d\in D_{\ram{e}}$\\
-  $h(k)(d)=1$ iff there is some $d^{\prime}\in D_{\ram{e}}$ s.t. k(d\Up{\prime})(d)=1
+  $h(k)(d)=1$ iff there is some $d^{\prime}\in D_{\ram{e}}$ s.t. k(d\Up{$\prime$})(d)=1
   \item<5-> passives as similar subject deletion
 \end{itemize}
 }
@@ -288,15 +288,14 @@
   
   \bigskip
  
-  \Tree[3]{& \K{$\neg{}c_{0_{\ram{e,t}}}(c_{0_{\ram{e}}})$ \bl{(by $\lambda$ conv.)}} \\
-           & \Kk{2.5}{$\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}(c_{0_{\ram{e}}})$ \bl{(by FA)}} \B{dr}\B{dl} \\
-           \K{$c_{0_{\ram{e}}}$} && \K{$\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}$ \bl{(by $\lambda$ conv.)}} \\
-            && \Kk{2.5}{$\lambda{}v_{0_{\ram{e,t}}}\ekm{\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}}(c_{0_{\ram{e,t}}})$ \bl{(by FA)}} \B{dr}\B{dl} \\
-           & \K{$\lambda{}v_{0_{\ram{e,t}}}\ekm{\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}}$} && \K{$c_{0_{\ram{e,t}}}$}
-          }
-
+%  \Tree[3]{%
+%           & \K{$\neg{}c_{0_{\ram{e,t}}}(c_{0_{\ram{e}}})$ \bl{(by $\lambda$ conv.)}} \\
+%           & \Kk{2.5}{$\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}(c_{0_{\ram{e}}})$ \bl{(by FA)}} \B{dr}\B{dl} \\
+%           \K{$c_{0_{\ram{e}}}$} && \K{$\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}$ \bl{(by $\lambda$ conv.)}} \\
+%            && \Kk{2.5}{$\lambda{}v_{0_{\ram{e,t}}}\ekm{\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}}(c_{0_{\ram{e,t}}})$ \bl{(by FA)}} \B{dr}\B{dl} \\
+%           & \K{$\lambda{}v_{0_{\ram{e,t}}}\ekm{\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}}$} && \K{$c_{0_{\ram{e,t}}}$}
+%          }
 \end{center}
-
 }
 
 \subsection{A glimpse at quantification in Montague's system}
@@ -322,10 +321,10 @@
 
 \frame{\frametitle{Combining with some predicate}
 
-  \Tree[3]{& \K{$\exists{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}c_{1_{\ram{e,t}}}(v_{0_{\ram{e}}})}$ \bl{(by $\lambda$ conv.)}} \B{d} \\
-           & \K{$\lambda{}v_{0_{\ram{e,t}}}\exists{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}(c_{1_{\ram{e,t}}})$ \bl{(by FA)}} \B{dl}\B{dr} \\
-        \K{$\lambda{}v_{0_{\ram{e,t}}}\exists{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}$} & & \K{$c_{1_{\ram{e,t}}}$}
-       }
+%  \Tree[3]{& \K{$\exists{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}c_{1_{\ram{e,t}}}(v_{0_{\ram{e}}})}$ \bl{(by $\lambda$ conv.)}} \B{d} \\
+%           & \K{$\lambda{}v_{0_{\ram{e,t}}}\exists{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}(c_{1_{\ram{e,t}}})$ \bl{(by FA)}} \B{dl}\B{dr} \\
+%        \K{$\lambda{}v_{0_{\ram{e,t}}}\exists{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}$} & & \K{$c_{1_{\ram{e,t}}}$}
+%       }
 
 }
 
