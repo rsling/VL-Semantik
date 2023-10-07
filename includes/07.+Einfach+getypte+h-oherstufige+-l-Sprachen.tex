@@ -36,10 +36,10 @@
 
 \frame{\frametitle{Generalizing combinatory semantic operations}
 \begin{itemize}
-  \item<1-> interpretation for [_S NP VP]:\\
-     $\Dem{\ekm{_S\ NP\ VP}}{\mMm,g} = 1\ iff\ \Dem{NP}{\mMm,g}\in{}\Dem{VP}{\mMm,g}$
+  \item<1-> interpretation for [\Sub{S} NP VP]:\\
+     $\Dem{\ekm{\Sub{S}\ NP\ VP}}{\mMm,g} = 1\ iff\ \Dem{NP}{\mMm,g}\in{}\Dem{VP}{\mMm,g}$
   \item<2-> Montague generally used CF's in definitions
-  \item<3-> evaluating [_S [_{NP} \emph{Mary}] [_{VP} \emph{sleeps}] ] as a matter of \bl{functional application (FA)}: \\
+  \item<3-> evaluating [\Sub{S} [\Sub{NP} \emph{Mary}] [\Sub{VP} \emph{sleeps}] ] as a matter of \bl{functional application (FA)}: \\
      \begin{itemize}
        \item<4-> $\Dem{Mary}{\mMm,g}=Mary$ \emph{in \mM}
        \item<5-> $\Dem{sleeps}{\mMm,g}$ \emph{be the CF of the set of sleepers in \mM}
@@ -51,12 +51,12 @@
 
 \frame{\frametitle{The superscript notation}
 \begin{itemize}
-  \item<1-> all functions from S_1 to S_2
+  \item<1-> all functions from S\Sub{1} to S\Sub{2}
   \item<2-> \bl{$S_2^{S_1}$}
   \item<3-> for $T=\{0,1\}$ 
      \begin{itemize}
-       \item<4-> $T^D$: all pred_1
-       \item<5-> $T^{D\times{}D}$: all pred_2
+       \item<4-> $T^D$: all pred\Sub{1}
+       \item<5-> $T^{D\times{}D}$: all pred\Sub{2}
      \end{itemize}
   \item<4-> 
 \end{itemize}
@@ -72,8 +72,8 @@
      \begin{itemize}
        \item<3-> terms: \bl{$\ram{e}$} (entity-denoting)
        \item<4-> formulas: \bl{$\ram{t}$} (truth-valued)
-       \item<5-> pred_1: \bl{$\ram{e,t}$}
-       \item<6-> pred_2: \bl{$\ram{e,\ram{e,t}}$}       
+       \item<5-> pred\Sub{1}: \bl{$\ram{e,t}$}
+       \item<6-> pred\Sub{2}: \bl{$\ram{e,\ram{e,t}}$}       
      \end{itemize}
 \end{itemize}
 }
@@ -109,7 +109,7 @@
       \item<3-> then $\gamma(\alpha)\ is\ of\ type\ \ram{e,t}$
       \item<4-> and $\delta(\beta)\ is\ of\ type\ \ram{t}$
     \end{itemize}
-  \item<5-> for any pred_2 $P$ and its arguments $a_1,a_2$, $P(a_2)(a_1)$ is a wff
+  \item<5-> for any pred\Sub{2} $P$ and its arguments $a_1,a_2$, $P(a_2)(a_1)$ is a wff
   \item<6-> connectives are of types \bl{$\ram{t,t}$ ($\neg$), $\ram{t,\ram{t,t}}$ ($\wedge$, etc.)}
 \end{itemize}
 }
@@ -205,7 +205,7 @@
   \item<2-> \emph{eat} is in $ME_{\ram{e,\ram{e,t}}}$
   \item<3-> assume a \bl{silent logical constant: $R_O$ in $ME_{\ram{\ram{e,\ram{e,t}},\ram{e,t}}}$}
   \item<4-> a function $h$ s.t. for all $k\in D_{\ram{e,\ram{e,t}}}$ and all $d\in D_{\ram{e}}$\\
-  $h(k)(d)=1$ iff there is some $d^{\prime}\in D_{\ram{e}}$ s.t. k(d^{\prime})(d)=1
+  $h(k)(d)=1$ iff there is some $d^{\prime}\in D_{\ram{e}}$ s.t. k(d\Up{\prime})(d)=1
   \item<5-> passives as similar subject deletion
 \end{itemize}
 }
