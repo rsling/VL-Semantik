@@ -1,431 +1,498 @@
+\section{Linguistische Theorien}
 
-\section{Organization}
-\subsection{Syllabus}
-\frame{\frametitle{Main textbooks}
-  \begin{itemize}
-  \item<1-> Chierchia \& McConnell-Ginet, \textit{Meaning and Grammar}
-  \item<2-> Partee, ter Meulen \& Wall, \emph{Mathematical Methods in Linguistics}
-  \item<3-> Blackburn, Bos \& Striegnitz, \emph{Learn Prolog now!}
-  \item<4-> Blackburn \& Bos, \emph{Computational Semantics for Natural Language}
+\begin{frame}
+  {Ein neues semiotisches Dreieck}
+  \onslide<+->
+  \onslide<+->
+  Im Sinn der letzten Woche interessiert uns nur die linke Seite.\\
+  \onslide<+->
+  \Zeile
+  \centering 
+  \begin{forest}
+    [\gruen{Formen}
+      [\gruen{Reale Objekte}, edge=gruen]
+      [Mentale Konzepte]
+    ]
+  \end{forest}
+\end{frame}
+
+\begin{frame}
+  {"`Semantik"' im generativen T-Modell}
+  \onslide<+->
+  \onslide<+->
+  \centering 
+  \resizebox{0.6\textwidth}{!}{
+    \begin{tikzpicture}
+
+      \node [rectangle, draw, align=left, color=teal, rounded corners=0.5em] (Numeration) at (5cm, -6cm) {Numeration};
+      
+      \node [visible on=<3->, rectangle, draw, align=left, color=gray] (Lexikon) at (1cm, -6cm) {Lexikon};
+      \path (Lexikon.east) edge [visible on=<3->, line width=0.5mm, dashed] node [below, shift={(-0.4cm,0)}] {\textit{}} (Numeration.west);
+     
+      \node [visible on=<4->, rectangle, draw, align=left, color=gray] (Intention) at (9cm, -6cm) {Intention};
+      \path (Intention.west) edge [visible on=<4->, line width=0.5mm, dashed] node [below, shift={(-0.4cm,0)}] {\textit{}} (Numeration.east);
+
+      \node [visible on=<5->, rectangle, draw, align=left, fill=black, color=black, rounded corners=0.5em] (Syntax) at (5cm, -4.5cm) {\whyte{Syntax}};
+      \path (Numeration.north) edge [visible on=<5->, line width=0.5mm, -latex] node [below, shift={(-0.4cm,0)}] {\textit{}} (Syntax.south);  
+
+      \node [visible on=<6->, rectangle, draw, align=left, color=teal, rounded corners=0.5em] (Phrasenstruktur) at (5cm, -3cm) {Phrasenstruktur};
+      \path (Syntax.north) edge [visible on=<6->, line width=0.5mm, -latex] node [below, shift={(-0.4cm,0)}] {\textit{}} (Phrasenstruktur.south);  
+
+      \node [visible on=<7->, rectangle, draw, align=left, color=teal, rounded corners=0.5em] (PF) at (4cm, 0cm) {PF};
+      \path (Phrasenstruktur.north) edge [visible on=<7->, line width=0.5mm, -latex] node [below, shift={(-0.4cm,0)}] {\textit{}} (PF.south);  
+     
+      \node [visible on=<8->, rectangle, draw, align=left, color=gray] (Aeusserung) at (1cm, 0cm) {Äußerung};
+      \path (Aeusserung.east) edge [visible on=<8->, line width=0.5mm, dashed] node [below, shift={(-0.4cm,0)}] {\textit{}} (PF.west);
+     
+      \node [visible on=<9->, rectangle, draw, align=left, fill=black, color=black, rounded corners=0.5em] (Syntax2) at (6cm, -1.5cm) {\whyte{Syntax 2}};
+      \path (Phrasenstruktur.north) edge [visible on=<9->, line width=0.5mm, -latex] node [below, shift={(-0.4cm,0)}] {\textit{}} (Syntax2.south);  
+     
+      \node [visible on=<10->, rectangle, draw, align=left, color=teal, rounded corners=0.5em] (LF) at (6cm, 0cm) {LF};
+      \path (Syntax2.north) edge [visible on=<10->, line width=0.5mm, -latex] node [below, shift={(-0.4cm,0)}] {\textit{}} (LF.south);  
+
+      \node [visible on=<11->, rectangle, draw, align=left, color=gray] (Interpretation) at (9cm, 0cm) {Interpretation};
+      \path (Interpretation.west) edge [visible on=<11->, line width=0.5mm, dashed] node [below, shift={(-0.4cm,0)}] {\textit{}} (LF.east);
+      
+    \end{tikzpicture}
+  }
+\end{frame}
+
+\begin{frame}
+  {Repräsentationsebenen}
+  \onslide<+->
+  \onslide<+->
+  Im klassischen generativen Modell:\\
+  \grau{\footnotesize (In minimalistischen Modellen herrscht -- Chomsky muss es mögen! -- sowieso Anarchie.)}
+  \Zeile
+  \begin{itemize}[<+->]
+    \item keine echte Interpretation auf LF
+    \item Bewegung \rot{nachdem} der Satz geäußert wurde
+    \item Herstellung einer logisch interpretierbaren \alert{Form} auf LF
+    \item Grund | Syntax kann nicht alle Interpretationen abbilden
+      \Halbzeile
+      \begin{itemize}[<+->]
+        \item[ ] \alert{Klassiker Quantorenskopus}
+        \item[ ] \textit{Everybody loves somebody.}
+          \Viertelzeile
+        \item[A] Für alle Personen y gilt, dass es eine Person x gibt, für die gilt: y liebt x \grau{($\forall y\exists x.L(y,x)$)}
+        \item[B] Es gibt eine Person x, sodass für alle Personen y gilt: y liebt x \grau{($\exists x\forall y.L(y,x)$)}
+      \end{itemize}
   \end{itemize}
-}
+\end{frame}
 
-\frame{\frametitle{Further reading}
-  \begin{itemize}
-  \item<1-> Bucher, \emph{Einf\"uhrung in die angewandte Logik}
-  \item<2-> Sag, Wasow \& Bender, \emph{Syntactic Theory}
-  \item<3-> Dowty, \emph{Tense, Time Adverbs, and Compositional Semantic Theory}
-  \item<4-> Partee, \emph{Noun Phrase Interpretation and Type-shifting Principles}
-  \item<5-> Copestake, Flickinger \& Sag \emph{Minimal Recursion Semantics}
+
+\begin{frame}
+  {Montagues direkte Interpretation}
+  \onslide<+->
+  \onslide<+->
+  Sprache ist Logik ist Sprache \ldots\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item[A] Entweder ist die \alert{Übersetzung in eine LF trivial und äquivalent zur PF\slash Syntax},\\
+      oder \orongsch{sie fügt etwas hinzu, dass der Sprache an sich fehlt}.
+    \item[B] Sätze haben aber auch \alert{mit LF-Übersetzung nur die Bedeutungen,\\
+      die sie sowieso haben} \grau{(keine Hinzufügung)}.
+    \item[\ding{222}] Also ist die \gruen{Übersetzung in LF trivial und äquivalent zur PF\slash Syntax}.
+    \item[\ding{222}] Wir können \gruen{Sätze direkt interpretieren} (wie sie gesprochen\slash geschrieben werden).
+     \Zeile 
+   \item \alert{Montagues \textit{lf}} | direkte Übersetzung von sprachlichen in logische Ausdrücke
   \end{itemize}
-}
+\end{frame}
 
-\subsection{Course Structure}
-\frame {
-  \frametitle{The three sessions}
-  \begin{itemize}
-  \item<1-> Formal Semantics, 90 min. on Wednesday
-  \item<2-> PROLOG, 30 min. on Wednesday
-  \item<3-> Tutorial, 90 min. on Friday
-  \item<4-> Summer course (implementation), 1 week
+\section{Referentielle Semantik basal}
+
+\begin{frame}
+  {Interessante Eigenschaften von Sprache}
+  \onslide<+->
+  \begin{itemize}[<+->]
+    \item Aussagen über die\slash Teile der Welt
+    \item Ausdrücke bezeichnen\slash referieren auf Dinge i.\,w.\,S.
+    \item Informativität
+    \item objektiv beurteilbar (\zB Wahrheit von Sätzen)
+      \Zeile
+    \item \alert{Aber welche sprachlichen Einheiten referieren auf was?}
   \end{itemize}
-}
+\end{frame}
 
-\frame{ \frametitle{The first weeks: Preliminaries (subject to changes)}
-\begin{center}\begin{tabular}{lp{7cm}}
-  Session 1 &  Introduction to Referential Semantics \\
-            &  \textcolor[rgb]{0.50,0.50,0.50}{(CM chap. 1 \& 2)} \\
-  Session 2 &  Set theory, ordering theory, statement logic\\
-   & \textcolor[rgb]{0.50,0.50,0.50}{(PMW chap. 1 - 6)} \\
-  Session 3 &  Predicate calculi \textcolor[rgb]{0.50,0.50,0.50}{(PMW chap. 7 \& 8)}\\
-\end{tabular}\end{center}
-}
+\begin{frame}
+  {Referenz | Eigennamen}
+  \onslide<+->
+  \onslide<+->
+  Ein \alert{Eigenname} \ding{222} \alert{genau ein Objekt} in der Welt\\
+  \onslide<+->
+  \Zeile
+  \centering
+    \begin{tikzpicture}
+      \node [] (name) at (-6cm, 0cm) {\textit{Jan Böhmermann}};
+      \node [visible on=<4->] (boehmi) at (0cm, 0cm) {\includegraphics[width=0.2\textwidth]{\GRAPHPATH/boehmermann}};
+      \path (name.east) edge [visible on=<4->, line width=0.5mm, -latex] node {\textit{}} (boehmi.west);
+    \end{tikzpicture}
+\end{frame}
 
-\frame{ \frametitle{The middle weeks: First steps (subject to changes)}
-\begin{center}\begin{tabular}{lp{7cm}}
-  Session 4 &  Quantification and model theory\\
-   & \textcolor[rgb]{0.50,0.50,0.50}{(CM chap. 3)}\\
-  Session 5 &  Quantification in English \textcolor[rgb]{0.50,0.50,0.50}{(CM chap. 3)}\\
-  Session 6 &  Intensionality \textcolor[rgb]{0.50,0.50,0.50}{(CM chap. 5)}\\
-  Session 7 &  Tense, modals, complementizers\\
-            &  \textcolor[rgb]{0.50,0.50,0.50}{(CM chap. 5)}\\
-  Session 8 &  $\lambda$ \textcolor[rgb]{0.50,0.50,0.50}{(CM chap. 7)}\\
-\end{tabular}\end{center}
-}
+\begin{frame}
+  {Referenz | Appellativa}
+  \onslide<+->
+  \onslide<+->
+  Ein normales \alert{Nomen} \ding{222} \alert{eine Menge von Objekten} in der Welt\\
+  \onslide<+->
+  \Zeile
+  \centering
+    \begin{tikzpicture}
+      \node [] (noun) at (-6cm, 0cm) {\textit{soldier}};
+      \node [visible on=<4->] (soldiers) at (0cm, 0cm) {\includegraphics[width=0.2\textwidth]{\GRAPHPATH/soldiers}};
+      \path (noun.east) edge [visible on=<4->, line width=0.5mm, -latex] node {\textit{}} (soldiers.west);
+    \end{tikzpicture}
+\end{frame}
 
-\frame{ \frametitle{The final weeks: Advanced topics (subject to changes)}
-\begin{center}\begin{tabular}{lp{7cm}}
-  Session 9 &  Word meaning \textcolor[rgb]{0.50,0.50,0.50}{(CM chap. 8)}\\
-  Session 10 &  Generalized quantifiers  \textcolor[rgb]{0.50,0.50,0.50}{(CM chap. 7)}\\
-  Session 11 &  Type shifting \textcolor[rgb]{0.50,0.50,0.50}{(Partee)}\\
-  Session 12 &  Underspecified scope \textcolor[rgb]{0.50,0.50,0.50}{(Copestake \emph{et al.})}\\
-  Session 13 & Backup session \\
-  Session 14 &  \textcolor[rgb]{1.00,0.00,0.00}{Final test on 2004-07-13}\\
-\end{tabular}\end{center}
-}
+\begin{frame}
+  {Referenz | Adjektive und Verben}
+  \onslide<+->
+  \onslide<+->
+  Ein (intersektives) \alert{Adjektiv} oder ein \alert{Verb} \ding{222} \alert{eine Menge von Objekten} in der Welt\\
+  \onslide<+->
+  \Zeile
+  \centering
+    \begin{tikzpicture}
+      \node [] (adj) at (-6cm, 0cm) {\textit{human}};
+      \node [visible on=<4->] (boehmi) at (0cm, +2cm) {\includegraphics[width=0.1\textwidth]{\GRAPHPATH/boehmermann}};
+      \path (adj.east) edge [visible on=<4->, line width=0.5mm, -latex] node {\textit{}} (boehmi.west);
+      \node [visible on=<5->] (soldiers) at (0cm, 0cm) {\includegraphics[width=0.1\textwidth]{\GRAPHPATH/soldiers}};
+      \path (adj.east) edge [visible on=<5->, line width=0.5mm, -latex] node {\textit{}} (soldiers.west);
+      \node [visible on=<6->] (crowd) at (0cm, -2cm) {\includegraphics[width=0.1\textwidth]{\GRAPHPATH/crowd}};
+      \path (adj.east) edge [visible on=<6->, line width=0.5mm, -latex] node {\textit{}} (crowd.west);
+    \end{tikzpicture}
+\end{frame}
 
-\subsection{Our subject}
+\begin{frame}
+  {Referenz | Sätze}
+  \onslide<+->
+  \onslide<+->
+  Ein \alert{Satz} \ding{222} in erster Näherung \alert{ein Sachverhalt}\\
+  \onslide<+->
+  \Zeile
+  \centering
+    \begin{tikzpicture}
+      \node [align=left] (s) at (-6cm, 0cm) {\it A humming bird\\\it is hovering over\\\it a red flower.};
 
-\frame{ \frametitle{What \emph{meaning} could mean}
-  \begin{itemize}
-  \item<1-> The meaning of an expression is the idea conveyed by it.
-  \item<2-> \ldots is the mental image it creates.
-  \item<3-> \ldots is what a speaker wants to achieve by uttering it.
-  \item<4-> \ldots is the set of objects to which it refers (for example in the case of nouns).
+      \node [visible on=<4->, align=center] (hum) at (0cm, +2cm) {\includegraphics[width=0.2\textwidth]{\GRAPHPATH/hummingbird}};
+      \path (s.east) edge [visible on=<4->, line width=0.5mm, -latex] node {\textit{}} (hum.west);
+      
+      \node [visible on=<5->, align=center] (boehmi) at (0cm, -2cm) {\includegraphics[width=0.2\textwidth]{\GRAPHPATH/boehmermann}\\\footnotesize (als Individuum)};
+      \path (s.east) edge [visible on=<5->, line width=0.5mm, -latex, color=red] node {\textit{}} (boehmi.west);
+      \node [visible on=<6->, align=center, color=red, fill=red] (nein) at (-3.5cm, -1.25cm) {\footnotesize \whyte{Nein! falsche}\\\footnotesize \whyte{Art von Objekt}};
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+  {Freges Prinzip | Das hier wollen wir formalisieren!}
+  \onslide<+->
+  \onslide<+->
+  Bedeutung ist kompositional!\\
+  \Halbzeile
+  \begin{itemize}[<+->]\small
+    \item \textit{humming bird} \ding{222} die \alert{Menge} der Kolibri-Objekte
+    \item \textit{a} \ding{222} \alert{Existenzaussage} für ein Element aus einer Menge
+    \item \textit{a humming bird} \ding{222} \alert{Existenzaussage} für ein Element $x$\\
+      aus der Menge der Kolibri-Objekte
+    \item \textit{is hovering} \ding{222} die \alert{Menge} der schwebenden Objekten
+    \item \textit{a humming bird is hovering} \ding{222} das existierende Kolibri-Objekt $x$\\
+      ist auch ein \alert{Element der Menge} der schwebenden Objekte
+    \item \textit{a red flower} \ding{222} \alert{Existenzaussage} für ein Element $y$\\
+      aus der \alert{Schnittmenge} der roten Objekte und der Blumen-Objekte
+    \item \textit{over} \ding{222} die \alert{Relation} zwischen Objekten (s.\ nächste Woche),\\
+      die sich übereinander befinden
+    \item \textit{A Humming is hovering over a red flower.} \ding{222}\\
+      \gruen{Es gibt ein Objekt $x$ aus der Schnittmenge der Kolibri- und der schwebenden Objekte,\\
+      und es gibt ein Objekt $y$ aus der Schnittmenge der roten und der Blumen-Objekte,\\
+    und $x$ befindet sich über $y$.}
   \end{itemize}
-}
+\end{frame}
 
-\frame{ \frametitle{What the study of meaning could be}
-\begin{itemize}
-  \item<1-> The study of the intellectual concepts perceivable in the world.
-  \item<2-> \ldots of how the brain processes expressions, relates it to (fields of) cognitive 
-  concepts.
-  \item<3-> \ldots of how a discourse of planful and intelligent agents (humans) is structured.
-  \item<4-> \textcolor[rgb]{0.00,0.00,1.00}{\ldots of the correspondences between expressions and objects; and of how expressions 
-  are combined to be used productively.}
-\end{itemize}
-}
+\section{Semantische Eigenschaften von Sätzen}
 
-\frame{ \frametitle{What this class is about}
-  \begin{itemize}
-  \item<1-> Which objects do words refer to?
-  \item<2-> What makes sentences true?
-  \item<3-> How is the informational value of sentences related to their logical structure?
-  \item<4-> How can sentences be unambiguously interpreted?
+\begin{frame}
+  {Implikation (Entailment)}
+  \onslide<+->
+  \onslide<+->
+  Mengen von Aussagesätzen \alert{implizieren} andere Sätze.\\
+  \onslide<+->
+  Sätze (Implikationen) lassen sich aus anderen Sätzen (Axiome) \alert{beweisen}.\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item[A] \textit{Jan Böhmermann ist ein Mensch.}
+    \item[B] \textit{Jan Böhmermann ist leutselig.}
+    \item[C] \textit{Jan Böhmermann ist ein leutseliger Mensch.}
+      \Halbzeile
+    \item[ ] \alert{$A,B\vdash C$} | A und B implizieren C. (C ist beweisbar aus A und B.)
+    \item[ ] \rot{$A\not\vdash C$} | A impliziert nicht C.
+    \item[ ] \rot{$B\not\vdash C$} | B impliziert nicht C.
+      \Halbzeile
+    \item[ ] \orongsch{$A\vdash A\wedge A$} \onslide<+->| \textit{Jan Böhmermann ist ein Mensch \orongsch{und} Jan Böhmermann ist ein Mensch.}
+      \Halbzeile
+    \item[D] \textit{Irgendetwas ist ein Mensch.}
+    \item[ ] \alert{$A\vdash D$} 
   \end{itemize}
-}
+\end{frame}
 
-\frame{ \frametitle{What this class is \textcolor[rgb]{1.00,0.00,0.00}{not} about}
-  \begin{itemize}
-    \item<1-> what words mean,
-    \item<2-> how the brain works with sentences,
-    \item<3-> the structure of discourse (at least not much).
+\begin{frame}
+  {Tests auf Implikation}
+  \onslide<+->
+  \onslide<+->
+  Wenn diese Kriterien zutreffen, impliziert A B:\\
+  \Zeile
+  \begin{itemize}[<+->]
+    \item Wenn A wahr ist, ist B auch immer wahr.
+    \item Eine Situation, die von B beschrieben wird, wird auch von A beschrieben.
+    \item Die Information in B ist vollständig in der Information in A enthalten.
+    \item Man kann unter keinen Umständen sagen: \textit{A ist wahr, aber B ist nicht wahr.}
   \end{itemize}
-}
+\end{frame}
 
-\section{Linguistic theories}
-\subsection{Semiotics}
-\frame{\frametitle{The theory of signs: a triangle}
-  \begin{center}
-  \begin{bundle}
-  {forms:}
-    \chunk{objects}
-    \chunk{mental images}
-  \end{bundle}
-  \end{center}
-}
+\begin{frame}
+  {Übung | Sind das Implikationen?}
+  \begin{itemize}[<+->]\small
+    \item Böhmermann ist Showmaster. $\vdash$ Böhmermann ist menschlich.
+    \item Böhmermann ist nicht sehr groß. $\vdash$ Irgendjemand ist nicht sehr groß.
+    \item Böhmermann ist nicht sehr groß. $\vdash$ Irgendjemand ist sehr groß.
+    \item Manche Menschen sind leutselig. $\vdash$ Böhmermann ist leutselig.
+    \item Ich habe das neue drip-133-Album gehört. $\vdash$ drip-133 hat ein neues Album veröffentlicht.
+    \item Nachdem ich einen Sherry getrunken habe, habe ich den Kondensator getauscht.\\
+      $\vdash$ Ich habe einen Sherry getrunken.
+    \item Nachdem Linux nicht mehr startete, habe ich einen weiteren Sherry getrunken.\\
+      $\vdash$ Linux ist noch nie gestartet.
+    \item Mein ehemaliger Mitbewohner mag Becks.\\
+      $\vdash$ Mein ehemaliger Mitbewohner könnte Sherry mögen.
+    \item Böhmermann hat das heutige ZDF Magazin beendet.\\
+      $\vdash$ Das heutige ZDF Magazin wurde beendet.
+  \end{itemize}
+\end{frame}
 
-\subsection{Generative Grammar}
-\frame{\frametitle{Semantics in the Chomskian T-model} 
-\begin{center}
-  \includegraphics[scale=0.4]{\GRAPHPATH/tmodel.ps}
-\end{center}
-}
+\begin{frame}
+  {Präsupposition | Der plausible HIntergrund}
+  \onslide<+->
+  \onslide<+->
+  Präsuppositionen sind schwächer als Implikationen.\\
+  \Zeile
+  \begin{itemize}[<+->]
+    \item[A] \textit{Willy Brandt ist der gegenwärtige Kanzler Deutschlands.}
+    \item[B] \textit{Wenn Willy Brandt der gegenwärtige Kanzler Deutschlands ist,\\
+      trägt er eine große Verantwortung.}
+    \item[C] \textit{Willy Brandt ist nicht der gegenwärtige Kanzler Deutschlands.}
+    \item[D] \textit{Willy Brandt lebt.}
+    \item[E] \textit{Es gibt einen Kanzler Deutschlands.}
+      \Halbzeile
+    \item \alert{A und B präsupponieren D.} = D ist eine Voraussetzung\\
+      für eine erfolgreiche Interpretation von A und B.
+    \item \orongsch{C präsupponiert nicht D.}
+    \item \alert{A, B und C präsupponieren E.}
+      \Halbzeile
+    \item Die einzige Implikation hier: $A\vdash E$
+  \end{itemize}
+\end{frame}
 
-\subsection{Levels of representation}
-\frame{\frametitle{LF is just the logical \textcolor[rgb]{1.00,0.00,0.00}{form}}
- \begin{itemize}
-   \item<1-> No interpretation proper at LF.
-   \item<2-> Movement transformations after the sentence has been uttered.
-   \item<3-> At the LF level, sentences have a form compatible to their logic.
-   \item<4-> Why? Syntax itself is often inadequate to express all alternatives of a sentence's logical representation.
- \end{itemize}
-}
+\begin{frame}
+  {Tests auf Präsupposition}
+  \onslide<+->
+  \onslide<+->
+  Die Unterschiede zur Implikation sind relevant.\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Nicht nur Aussagesätzen haben Präsuppositionen (Modale, Konditionale, \ldots)
+    \item Negierte Sätze haben oft gleiche Präsuppositionen wie nicht-negierte.
+    \item Präsuppositionen können negiert werden, und der Ausgangssatz bleibt wahr.\\
+      \grau{(Geht nicht mit Implikationen.)}
+      \begin{itemize}[<+->]
+        \item[F] \textit{Willy Brandt ist nicht Kanzler Deutschlands.}
+        \item[G] \textit{Es gibt einen Kanzler Deutschlands.}
+        \item[ ] F präsupponiert G, bleibt aber wahr, wenn G falsch ist.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-\section{A referential framework}
+\begin{frame}
+  {Synonymie}
+  \onslide<+->
+  \onslide<+->
+  Synonyme Ausdrücke haben \orongsch{exakt} \alert{die gleiche Referenz}.\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item lexikalische Synonymie | \textit{humming bird} $\stackrel{lex}{\equiv}$ \textit{colibri}
+      \Halbzeile
+    \item kompositionale Synonymie
+      \begin{itemize}[<+->]
+        \item[ ] \textit{Mulder traf seine entführte Schwester, nachdem er\\
+          in die geheime Militärbasis eingebrochen war.}
+        \item[$\equiv$] \textit{Bevor er seine entführte Schwester traf, brach Mulder in die geheime Militärbasis ein.}
+      \end{itemize}
+    \Halbzeile
+    \item \alert{$A\equiv B\ \text{gdw}\ A\vdash B\ \text{und}\ B\vdash A$} (gegenseitige Implikation)
+    \item \grau{\textit{gdw} = \textit{genau dann wenn} | \textit{iff} = \textit{if and only if}}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Some properties of language}
- \begin{itemize}
-   \item<1-> aboutness
-   \item<2-> referential nature
-   \item<3-> informative
-   \item<4-> objectiveness (of content)
-   \item<5-> \textcolor[rgb]{0.00,0.00,1.00}{But which linguistic elements refer to what?}
- \end{itemize}
-}
+\section{Referenz von Sätzen}
 
-\subsection{The simple case}
+% \subsection{Referential and non-referential NPs}
+% \frame{\frametitle{Noun-like expressions and complex NPs}
+%  \begin{itemize}
+%    \item<1-> I saw \textcolor{blue}{a man}.
+%    \item<2-> I saw \textcolor{blue}{the green wobbly thing crawling near}.
+%    \item<3-> I saw \textcolor{blue}{it}.
+%  \end{itemize}
+% }
+% 
+% \frame{\frametitle{Problems with referential NPs}
+%  \begin{itemize}
+%    \item<1-> \emph{\textcolor{blue}{The dark subatomic particles in the universe} have a total mass much larger than the visible subatomic particles.}
+%    \item<2-> \emph{\textcolor{blue}{Problems with referential semantic theories} don't concern \textcolor{blue}{Rumpletweezer}.}
+%    \item<3-> \textcolor{red}{and of course, vagueness (e.g., Sorites Paradox)}
+%  \end{itemize}
+% }
+% 
+% \frame{\frametitle{Problems with non-referential NPs}
+%  \begin{itemize}
+%    \item<1-> \emph{some guy}
+% 	 \item<2-> \emph{not the faintest trace of blood}
+% 	 \item<3-> \emph{any axiom of Zermelo-Fraenkel set theory}
+%  \end{itemize}
+% }
 
-\frame{\frametitle{Names}
-\begin{center}
-\begin{tabular}{ccc}
- an individual name & $\longrightarrow$ & one object in the world \\
- \node{a-1}{\emph{Harald Schmidt}} &  & \node{a-2}{\includegraphics[scale=0.3]{\GRAPHPATH/hs.ps}} \\
-\end{tabular}
-\end{center}
-  \anodeconnect[r]{a-1}[l]{a-2}
-}
+\begin{frame}
+  {Natürliche Sprache und Implikation}
+  \onslide<+->
+  \onslide<+->
+  Referentielle Semantik $\not=$ \alert{\textit{Zeigen auf Objekte durch Sprache}}.\\
+  \Viertelzeile
+  \onslide<+->
+  Zusätzliche Logik für Fälle wie diesen (und viele andere):\\
+  \Zeile
+  \onslide<+->
+  \begin{tabular}[h]{lll}
+    & \alert{\textit{Die Lieblingsblume meines Kolibris}} & \textit{ist rot.} \\
+    \visible<6->{\orongsch{$\vdash$}} & \visible<5->{\alert{\textit{Eine Blume}} & \textit{ist rot.}} \\
+  \end{tabular}
+\end{frame}
 
-\frame{\frametitle{Common nouns}
-\begin{center}
-\begin{tabular}{ccc}
- a common noun & $\longrightarrow$ & lots of objects \\
- \node{b-1}{\emph{soldier}} &  & \node{b-2}{\includegraphics[scale=0.3]{\GRAPHPATH/soldiers.ps}} \\
-                 &  & \\
-                 &            & \node{b-3}{etc.} \\
-\end{tabular}
-\end{center}
-  \anodeconnect[r]{b-1}[l]{b-2}
-  \anodeconnect[r]{b-1}[l]{b-3}
-}
+\begin{frame}
+  {Sätze referieren aus Wahrheitswerte!}
+  \onslide<+->
+  \onslide<+->
+  \centering 
+  Um zu der gewünschten Logik zu kommen, zeigen wir jetzt,\\
+  dass \alert{Sätze auf Wahrheitswerte referieren}.\\
+  \Halbzeile
+  \onslide<+->
+  Wahrheitswerte sind nur \alert{\textit{wahr}} und \alert{\textit{falsch}}.\\
+  \Halbzeile
+  \onslide<+->
+  Die Verben \alert{\textit{denotieren}} und \textit{\alert{referieren auf}} sind hier synonym.\\
+  \Doppelzeile
+  \onslide<+->
+  Warten Sie bitte ein paar Wochen, wenn Sie diese Darstellung reduktionistisch finden.
+\end{frame}
 
-\frame{\frametitle{Adjectives}
-\begin{center}
-\begin{tabular}{ccc}
- an adjective & $\longrightarrow$ & lots of different objects of different kinds\\
- \node{c-1}{\emph{is human}} &  & \node{c-2}{\includegraphics[scale=0.3]{\GRAPHPATH/hs.ps}} \\
-                 &  & \\
-                 &  & \node{c-3}{\includegraphics[scale=0.3]{\GRAPHPATH/soldiers.ps}} \\
-                 &            & \node{c-4}{\includegraphics[scale=0.3]{\GRAPHPATH/soccer.ps}} \\
-\end{tabular}
-\end{center}
-  \anodeconnect[r]{c-1}[l]{c-2}
-  \anodeconnect[r]{c-1}[l]{c-3}
-  \anodeconnect[r]{c-1}[l]{c-4}
-}
+\begin{frame}
+  {Synonyme NPs}
+  \onslide<+->
+  \begin{itemize}[<+->]
+    \item[a] \textit{colibri}
+    \item[b] \textit{humming bird}
+    \item[ ] \gruen{$a\stackrel{lex}{\equiv} b$}
+      \Halbzeile
+    \item[c] \textit{a brunette lady}
+    \item[d] \textit{a brown-haired dame}
+    \item[ ] \gruen{$c\equiv d$}
+      \Halbzeile
+    \item[e] \textit{the primates}
+    \item[f] \textit{the apes and humans}
+    \item[ ] \gruen{$e\equiv f$}
+  \end{itemize}
+\end{frame}
 
-\subsection{Complex cases}
+\begin{frame}
+  {Synonymie von Konstituenten und Sätzen}
+  Synonymie von Konstituenten im Satzkontext \ding{222} Satzsynonymie\\
+  \onslide<+->
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item[A] \alert{\textit{A \orongsch{colibri} is hovering over a red flower.}}
+    \item[B] \alert{\textit{A \orongsch{humming bird} is hovering over a red flower.}}
+    \item[ ] \gruen{$A\equiv B$ weil $a\equiv b$ und Satzkontext identisch}
+      \Halbzeile
+    \item[C] \alert{\textit{Lauren Bacall was \orongsch{a brunette lady}.}}
+    \item[D] \alert{\textit{Lauren Bacall was \orongsch{a brown-haired dame}.}}
+    \item[ ] \gruen{$C\equiv D$ weil $c\equiv d$ und Satzkontext identisch}
+      \Halbzeile
+    \item[E] \alert{\textit{\orongsch{Primates} are intelligent.}}
+    \item[F] \alert{\textit{\orongsch{The apes and humans} are intelligent.}}
+    \item[ ] \gruen{$E\equiv F$ weil $e\equiv f$ und Satzkontext identisch}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Sentences} 
-\begin{center}
-\begin{tabular}{p{3cm}cc}
- a sentence & $\longrightarrow$ & a situation, a fact, \dots\\
- \emph{\node{d-1}{A humming bird} is hovering over a red flower\node{d-1b}{.}} &  & \node{d-2}{\includegraphics[scale=0.3]{\GRAPHPATH/hummingbird.ps}} \\
-  & \node{d-3}{\textcolor{red}{not at all}} & \node{d-4}{\includegraphics[scale=0.3]{\GRAPHPATH/hs.ps}} \\
-  & \node{d-5}{\textcolor{red}{(object type mismatch)}} & \\
-\end{tabular}
-\end{center}
-  \anodeconnect[t]{d-1}[l]{d-2}
-  \nodeconnect[r]{d-1b}[l]{d-3}
-  \anodeconnect[r]{d-3}[l]{d-4}
-}
+\begin{frame}
+  {Zwei Axiome}
+  \onslide<+->
+  \begin{itemize}[<+->]
+    \item[ ] Referenz\slash Denotat eines Ausdrucks A: \alert{\den{A}}
+      \Zeile
+    \item[ ] Erinnerung: Synonymität für Sätze ist gegenseitige Implikation.
+      \Zeile
+    \item[Ax1] Synonyme Ausdrücke (NPs, Verben, Sätze, \ldots) haben dieselbe Referenz.
+    \item[ ] Formal: \alert{$A\equiv B\leftrightarrow\den{A}=\den{B}$}
+      \Zeile
+    \item[Ax2] Wenn wir in Ausdruck C einen Ausdruck A durch\\
+      einen synonymen Ausdruck B ersetzen, behält C seine Referenz.
+    \item[ ] Formal: \alert{$\den{A}=\den{B}\rightarrow\den{[\Sub{C} A]}=\den{[\Sub{C} B]}$}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Frege's Principle: Meaning is compositional}
- \begin{itemize}
-   \item<1-> \emph{A humming bird} $\longrightarrow$ one of many individuals 
-   \item<2-> \emph{is hovering}  $\longrightarrow$ a property of that individual
-   \item<3-> \emph{over} $\longrightarrow$ a relation between individuals
-   \item<4-> \emph{a red} $\longrightarrow$ a property of another individual
-   \item<5-> \emph{flower} $\longrightarrow$ the other one of many individuals
-   \item<6-> \textcolor{red}{\emph{is hovering over a red flower} $\longrightarrow$ a complex property.}
- \end{itemize}
-}
+\begin{frame}
+  {Zwei wahre Sätze}
+  \onslide<+->
+  \onslide<+->
+  Wahrheitswert von A und B | 1 bzw.\ \textit{wahr}\\
+  \onslide<+->
+  \Zeile
+  \begin{itemize}[<+->]
+    \item[A] \textit{Lauren Bacall was a brunette lady.}
+    \item[B] \textit{My humming bird's favourite flower is red.} 
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Recursion: infinite use of finite means}
- \begin{itemize}
-   \item<1-> Frege's principle is indispensable!
-   \item<2-> \emph{Harald Schmidt is \textcolor{blue}{human}.}
-   \item<3-> \emph{Harald Schmidt is \textcolor{blue}{human} and \textcolor{blue}{tall}.}
-   \item<4-> \emph{Harald Schmidt is \textcolor{blue}{human} and \textcolor{blue}{tall} and \textcolor{blue}{male}.}
-   \item<5-> \emph{Harald Schmidt is \textcolor{blue}{human} and \textcolor{blue}{tall} and \textcolor{blue}{male} and \textcolor{blue}{not blue}.}
-   \item<6-> \emph{Harald Schmidt is \textcolor{blue}{human} and \textcolor{blue}{tall} and \textcolor{blue}{male} and \textcolor{blue}{not blue} and \textcolor{blue}{grumpy in the morning}...}
- \end{itemize}
-}
+\begin{frame}
+  {Erste Schlussfolgerung}
+  \onslide<+->
+  \onslide<+->
+  Einsetzen von A und B in Satz T (Aussage über Wahrheitswert)\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item[T] \alert{\textit{The truth value of `\_\_\_' is 1.}}
+      \Halbzeile
+    \item[{[\Sub{T}A]}] \alert{\textit{The truth value of `\orongsch{Lauren Bacall was a brunette lady.}' is 1.}}
+    \item[{[\Sub{T}B]}] \alert{\textit{The truth value of `\orongsch{My humming bird's favourite flower is red.}' is 1.}}
+      \Halbzeile
+    \item[ ] folgt \gruen{$A\equiv[\Sub{T}A]$} und \gruen{$B\equiv[\Sub{T}B]$}
+    \item[ ] mit Ax1 \gruen{$\den{A}=\den{[\Sub{T}A]}$} und \gruen{$\den{B}=\den{[\Sub{T}B]}$}
+      \Halbzeile
+    \item[ ] Bitte bedenken: $A$ und $[\Sub{T}A]$ haben auch intuitiv "`dieselbe Aussage"'.
+  \end{itemize}
+\end{frame}
 
-\section{Some fundamental semantic notions}
-\frame{\frametitle{Basic semantics judgements}
- \begin{itemize}
-   \item<1-> entailment
-   \item<2-> presupposition
-   \item<3-> ambiguity
-   \item<4-> synonymy
- \end{itemize}
-}
-
-\subsection{Entailment}
-\frame{\frametitle{Entailment: pure logic}
- \begin{itemize}
-   \item<1-> A: \emph{This is electronic.}
-   \item<2-> B: \emph{This is a presentation.}
-   \item<3-> \textcolor{blue}{C follows logically: \emph{This is an electronic presentation.}}
-   \item<4-> \textcolor{blue}{$A, B\vdash C$}
-   \item<5-> \textcolor{red}{$A\not\vdash C$}
-   \item<6-> \textcolor{red}{$B\not\vdash C$}
- \end{itemize}
-}
-
-\frame{\frametitle{Entailment: pure logic, formally}
- \begin{itemize}
-   \item<1-> D: \emph{Harald Schmidt is human.}
-   \item<2-> \textcolor{blue}{E follows logically: \emph{Something is human.}}
-   \item<3-> \textcolor{blue}{$D\vdash E$}
-   \item<4-> \textcolor{blue}{$D\wedge D$ follows logically: \emph{Harald Schmidt is human and Harald Schmidt is human.}}
-   \item<5-> \textcolor{blue}{$D \vdash D\wedge D$}
- \end{itemize}
-}
-
-\frame{\frametitle{Tests: X entails Y if...}
- \begin{itemize}
-   \item<1->When X is true, Y is true.
-   \item<2->A situation described by Y is also described by X.
-   \item<3->The information given by Y is fully contained in the information given by X.
-   \item<4->One cannot say X is true and Y is false.
-\end{itemize}
-}
-
-\frame{\frametitle{Entailments?}
- \begin{itemize}\small
-   \item<2->\emph{Harald Schmidt is a talkmaster. $\rightarrow$ Harald Schmidt is human.}
-   \item<3->\emph{Harald Schmidt is tall. $\rightarrow$ Someone is tall.}
-   \item<4->\emph{Some humans are tall. $\rightarrow$ Harald Schmidt is tall.}
-   \item<5->\emph{I have listened to Paul Kalkbrenner's new 12'' on bpitchcontrol. $\rightarrow$ Paul Kalkbrenner has released a 12'' on bpitchcontrol.}
-   \item<6->\emph{After I had a Beck's, I installed RedHat on my PC. $\rightarrow$ I had a Beck's.}
-   \item<7->\emph{After the bootloader had failed to boot RedHat on my PC, I had another Beck's. $\rightarrow$ RedHat has never booted on my PC.}
-   \item<8->\emph{My flatmate likes Beck's. $\rightarrow$ My flatmate hates beer.}
-   \item<9->\emph{Harald Schmidt cancelled his show. $\rightarrow$ Harald Schmidt's show was cancelled.}
-\end{itemize}
-}
-
-\subsection{Presupposition}
-\frame{\frametitle{Presuppostion: the background}
- \begin{itemize}
-   \item<1->A: \emph{Willy Brandt is the current chancelor of the FRG.}
-   \item<2->B: \emph{If Willy Brandt is the current chancelor of the FRG, why doesn't he do something?}
-   \item<3->C: \emph{Willy Brandt is not the current chancelor of the FRG.}
-   \item<4->\textcolor{blue}{A and B presuppose D: \emph{Willy Brandt is alive.}, C doesn't.}
-   \item<5->\textcolor{blue}{A, B, and C presuppose E: \emph{There is a chancelor of the FRG}.}
-   \item<6->Note: A $\vdash$ D, A $\vdash$ E
-   \item<7->But: \textcolor{red}{B $\not\vdash$ D, B $\not\vdash$ E, C $\not\vdash$ E}
-\end{itemize}
-}
-
-\frame{\frametitle{Presuppostion: two tests}
- \begin{itemize}
-   \item<1->Presuppositions are triggered by all sorts of sentences (incl. negations, modals, conditionals, etc.).
-   \item<2->Presuppositions can be negated while the sentence which presupposes them remains true. Entailments cannot be negated while keeping the entailing sentence true.
-\end{itemize}
-}
-
-\subsection{Ambiguity, Synonymy, Vagueness, \ldots}
-\frame{\frametitle{Ambiguity in syntax}
- \begin{itemize}
-   \item<1-> \emph{She saw the man with a telescope.}
-   \item<2-> {She [saw the man] with a telescope.}
-   \item<3-> {She saw [the man with a telescope].}
- \end{itemize}
-}
-
-\frame{\frametitle{Ambiguity in semantics: scope}
- \begin{itemize}
-   \item<1-> \emph{Everybody loves somebody.}
-   \item<2-> Every person loves at least one other person.\\(Needn't be the same.)
-   \item<3-> There is one person loved by everyone
- \end{itemize}
-}
-
-\frame{\frametitle{Synonymy} 
- \begin{itemize}
-   \item<1-> Lexical synonymy: \emph{humming bird} $\stackrel{lex}{\equiv}$ \emph{colibri}
-   \item<2-> Compositionally (\textbf{equivalence}): \emph{Mulder met his abducted sister after he broke into the secret army base.} $\equiv$ \emph{Before meeting his abducted sister, Mulder broke into the secret army base.}
-   \item<3-> \textcolor{blue}{A $\equiv$ B iff A $\vdash$ B and B $\vdash$ A}
- \end{itemize}
-}
-
-\section{From reference to sense}
-\subsection{Referential and non-referential NPs}
-\frame{\frametitle{Noun-like expressions and complex NPs}
- \begin{itemize}
-   \item<1-> I saw \textcolor{blue}{a man}.
-   \item<2-> I saw \textcolor{blue}{the green wobbly thing crawling near}.
-   \item<3-> I saw \textcolor{blue}{it}.
- \end{itemize}
-}
-
-\frame{\frametitle{Problems with referential NPs}
- \begin{itemize}
-   \item<1-> \emph{\textcolor{blue}{The dark subatomic particles in the universe} have a total mass much larger than the visible subatomic particles.}
-   \item<2-> \emph{\textcolor{blue}{Problems with referential semantic theories} don't concern \textcolor{blue}{Rumpletweezer}.}
-   \item<3-> \textcolor{red}{and of course, vagueness (e.g., Sorites Paradox)}
- \end{itemize}
-}
-
-\frame{\frametitle{Problems with non-referential NPs}
- \begin{itemize}
-   \item<1-> \emph{some guy}
-	 \item<2-> \emph{not the faintest trace of blood}
-	 \item<3-> \emph{any axiom of Zermelo-Fraenkel set theory}
- \end{itemize}
-}
-
-\subsection{A `reference' for complex terms?}
-\frame{\frametitle{Beyond pointin-at-and-naming}
-We need a logic to explain for effects like:\\
-
-\bigskip
- \begin{tabular}{clr}
-	&\textcolor{blue}{my humming bird's favorite flower} & is red \\
-  $\vdash$&\textcolor{blue}{some flower} & is red \\
-\end{tabular}
-}
-
-\subsection{Sentences refer to 0 and 1}
-\frame{\frametitle{Some content-synonymous simple expressions}
-\begin{itemize}
-  \item<1-> a: \emph{colibri}
-  \item<2-> b: \emph{humming bird}
-  \item<3-> c: \emph{a brunette lady}
-  \item<4-> d: \emph{a brown-haired dame}
-  \item<5-> e: \emph{the primates}
-  \item<6-> f: \emph{the apes and humans}
-  \item<7-> \textcolor{blue}{a $\stackrel{lex}{\equiv}$ b, c $\stackrel{lex}{\equiv}$ d, e $\stackrel{lex}{\equiv}$ f}
-\end{itemize}
-}
-
-\frame{\frametitle{Some content-synonymous complex expressions}
-\begin{itemize}
-  \item<1-> A: \emph{\textcolor{blue}{A colibri} is hovering over a red flower.}
-  \item<2-> B: \emph{\textcolor{blue}{A humming bird} is hovering over a red flower.}
-  \item<3-> C: \emph{Lauren Bacall was \textcolor{blue}{a brunette lady}}
-  \item<4-> D: \emph{Lauren Bacall was \textcolor{blue}{a brown-haired dame}}
-  \item<5-> E: \emph{\textcolor{blue}{Primates} are intelligent.}
-  \item<6-> F: \emph{\textcolor{blue}{The apes and humans} are inteligent.}
-  \item<7-> \textcolor{blue}{A $\equiv$ B, C $\equiv$ D, E $\equiv$ F}
-\end{itemize}
-}
-
-\frame{\frametitle{Two axioms}
-\begin{itemize}
-\item<1-> \textcolor{blue}{Ax1}	Two expressions (e.g., NPs, sentences) that are synonymous have the same reference.
-\item<2-> Formally: A $\equiv$ B then $\llbracket$A$\rrbracket$ = $\llbracket$B$\rrbracket$
-\item<3-> Note: $\llbracket$A$\rrbracket$ is applicable to simplex and complex expressions A; it just produces the reference of A.
-\item<3-> \textcolor{blue}{Ax2}	If we replace expression B within expression A with the synonymous expression C, then A does not change its reference.
-\item<4-> Formally: If $\llbracket$B$\rrbracket$ = $\llbracket$C$\rrbracket$ then $\llbracket$[\Sub{A} B]$\rrbracket$ = $\llbracket$[\Sub{A} C]$\rrbracket$
-\end{itemize}
-}	
-
-\frame{\frametitle{One common property of sentences: the truth value}
-\begin{itemize}
-  \item<1-> A: \emph{Lauren Bacall was a brunette lady.} (assumed to be true in the actual world)
-  \item<2-> B: \emph{My cat sleeps quietly.} (assumed to be true in the actual world)
-\end{itemize}
-}
-
-\frame{\frametitle{First conclusion}
-\begin{itemize}
-  \item <1-> $[\Sub{T} A]$ = \emph{The truth value of `Lauren Bacall was a brunette lady' is 1}.
-  \item <2-> $[\Sub{T} B]$ = \emph{The truth value of `My cat sleeps quietly' is 1}.
-  \item <3-> Such that \textcolor{blue}{A $\equiv [\Sub{T} A]$} and \textcolor{blue}{B $\equiv [\Sub{T} B]$}. \\ \footnotesize(Check: Whenever A is true, $[\Sub{T} A]$ is true and v.v.)
-  \item <4-> So, by Ax1 \textcolor{blue}{$\llbracket$A$\rrbracket$ = $\llbracket [\Sub{T} A]\rrbracket$}\\
-     and \textcolor{blue}{$\llbracket$B$\rrbracket$ = $\llbracket [\Sub{T} B]\rrbracket$}
-\end{itemize}
-}		
-
-\frame{\frametitle{Second conclusion}
-\begin{itemize}
-  \item<1-> Check the denotations of the contained NPs:\\ \textcolor{blue}{$\llbracket$\emph{the truth value of A}$\rrbracket$ = $\llbracket$\emph{the truth value of B}$\rrbracket$ = 1}
-  \item<2-> Such that by Ax2:\\ \textcolor{blue}{$\llbracket [\Sub{T} A]\rrbracket$ = $\llbracket [\Sub{T} B]\rrbracket$}
-  \item<3-> \footnotesize{Why? Exchanging the referentially identical NPs `the truth value of A' and `the truth value of B' in the otherwise identical sentences `\_ is 1' forces us to conclude by Ax2 that also the whole sentences must have the same reference. Our book (CM) is a bit vague on that point.}
-\end{itemize}
-}		
-
-\frame{\frametitle{Final conclusion}
-\begin{center}
- \Large\textcolor{blue}{$\llbracket$A$\rrbracket$ = $\llbracket  [\Sub{T} A]\rrbracket$ = $\llbracket [\Sub{T} B]\rrbracket$ = $\llbracket$B$\rrbracket$ = 1}\\
- \medskip
- \textcolor{green}{Sentences denote truth values.}\\
- \medskip
-\end{center}
-}
+\begin{frame}
+  {Zweite Schlussforlgerung}
+  \onslide<+->
+  \onslide<+->
+  In $[\Sub{T}A]$ und $[\Sub{T}B]$ sind A und B jeweils in einer NP eingebettet.\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item $\den{the truth value of A}=\den{the truth value of B}=1$
+    \item[ ] mit Ax2 \gruen{$\den{[\Sub{T}A]}=\den{[\Sub{T}B]}$}
+    \item[ ] damit \gruen{$\den{A}=\den{[\Sub{T}A]}=\den{[\Sub{T}B]}=\den{B}=1$}
+      \Halbzeile
+    \item \gruen{Sätze referieren auf Wahrheitswerte.}\\
+      \grau{(Denn man kann das mit zwei beliebigen wahren Sätzen machen.)}
+  \end{itemize}
+\end{frame}
 
 \frame{\frametitle{Advantages of truth values}
 \begin{itemize}

@@ -46,6 +46,11 @@
   \definecolor{ltb}{rgb}{0.8,0.8,1}
   \definecolor{lgr}{rgb}{0.5,1,0.5}
   \definecolor{orongsch}{RGB}{255,165,0}
+  \definecolor{orgrA}{RGB}{   204, 206,  80}
+  \definecolor{orgrB}{RGB}{   153, 212,  60}
+  \definecolor{orgrC}{RGB}{   102, 218,  40}
+  \definecolor{orgrD}{RGB}{    51, 224,  20}
+  \definecolor{gruen}{RGB}{     0, 230,   0}
   \definecolor{gruen}{rgb}{0,0.4,0}
   \definecolor{rot}{rgb}{0.7,0.2,0.0}
   \definecolor{tuerkis}{RGB}{63,136,143}
@@ -57,8 +62,12 @@
   \definecolor{trueblue}{rgb}{0.8,0.8,1}
   \definecolor{ltb}{rgb}{0.9,0.9,1}
   \definecolor{lgr}{rgb}{0.7,1,0.7}
-  \definecolor{orongsch}{RGB}{255,200,100}
-  \definecolor{gruen}{RGB}{0,230,0}
+  \definecolor{orongsch}{RGB}{255, 200, 100}
+  \definecolor{orgrA}{RGB}{   204, 206,  80}
+  \definecolor{orgrB}{RGB}{   153, 212,  60}
+  \definecolor{orgrC}{RGB}{   102, 218,  40}
+  \definecolor{orgrD}{RGB}{    51, 224,  20}
+  \definecolor{gruen}{RGB}{     0, 230,   0}
   \definecolor{rot}{RGB}{255,155,100}
   \definecolor{tuerkis}{RGB}{150,205,205}
   \definecolor{braun}{RGB}{140,120,115}
@@ -93,6 +102,7 @@
 \newcommand{\xxx}{\hspaceThis{[}}
 \newcommand{\zB}{z.\,B.\ }
 %\newcommand{\down}[1]{\ensuremath{\mathrm{#1}}}
+\newcommand{\Doppelzeile}{\vspace{2\baselineskip}}
 \newcommand{\Zeile}{\vspace{\baselineskip}}
 \newcommand{\Halbzeile}{\vspace{0.5\baselineskip}}
 \newcommand{\Viertelzeile}{\vspace{0.25\baselineskip}}
@@ -344,8 +354,16 @@
 \setbeamerfont{subsection in toc}{size=\tiny}
 \setbeamerfont{subsubsection in toc}{size=\tiny}
 
+\newcommand{\Lf}{
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}
+
+
+
 %% SEMANTIK
-\newcommand{\den}[1]{{$\llbracket${}#1$\rrbracket$}}
+\newcommand{\den}[1]{\ensuremath{\llbracket\text{#1}\rrbracket}}
 \newcommand{\dem}[1]{{\llbracket{}#1\rrbracket}}
 \newcommand{\Dem}[2]{\llbracket{}#1\rrbracket^{#2}}
 \newcommand{\DEM}[1]{\llbracket{}#1\rrbracket^{\mathcal{M},g}}
