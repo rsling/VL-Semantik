@@ -169,54 +169,168 @@
   \end{itemize}
 \end{frame}
 
-\frame{\frametitle{Union \textcolor{black}{$\cup$} and intersection \textcolor{black}{$\cap$}}
-  \begin{itemize}
-  \item<1-> \textcolor{blue}{For any sets M and N: $M\cup N=\{x\|x\in M$ \textbf{or} $x\in N\}$}
-  \item<2-> if $M=\{a,b,c\}$ and $N=\{a,b,d\}$ then $M\cup N=\{a,b,c,d\}$
-  \item<3-> \textcolor{blue}{For any sets M and N: $M\cap N=\{x\|x\in M$ \textbf{and} $x\in N\}$}
-  \item<4-> if $M=\{a,b,c\}$ and $N=\{a,b\}$ then $M\cap N=\{a,b\}$
-  \item<5-> as a general principle (Consitency): $M\subseteq N$ iff $M\cup N=N$ and $M\subseteq N$ iff $M\cap N=M$
+\begin{frame}
+  {Vereinigungsmenge und Schnittmenge}
+  \onslide<+->
+  \onslide<+->
+  \begin{minipage}{1\textwidth}
+    \centering 
+    \scalebox{0.5}{%
+      $\vcenter{\hbox{\begin{tikzpicture}[thick,
+                set/.style = {circle,
+                        minimum size = 3cm,
+                        fill=MidnightBlue!50}]
+        \node[set,label={135:$M$}] (M) at (0,0) {};
+        \node[set,label={45:$N$}] (N) at (1.8,0) {};
+        \begin{scope}
+                \clip (0,0) circle(1.5cm);
+                \clip (1.8,0) circle(1.5cm);
+                \fill[MidnightBlue!50](0,0) circle(1.5cm);
+        \end{scope}
+        \draw (0,0) circle(1.5cm);
+        \draw (1.8,0) circle(1.5cm);
+        \node at (0.9,1.8) {$M\cup N$};
+      \end{tikzpicture}}}$
+    }%
+    $\vcenter{\hbox{Vereinigungsmenge | Für Mengen M und N: \alert{$M\cup N=\{x: x\in M$ \textbf{oder} $x\in N\}$}}}$
+  \end{minipage}
+  \onslide<+->
+  \begin{minipage}{1\textwidth}
+    \centering 
+    \scalebox{0.5}{%
+      $\vcenter{\hbox{\begin{tikzpicture}[thick,
+              set/.style = {circle,
+                      minimum size = 3cm,
+                      fill=MidnightBlue!50}]
+      \node[set,label={135:$M$}] (M) at (0,0) {};
+      \node[set,label={45:$N$}] (N) at (1.8,0) {};
+      \begin{scope}
+              \clip (0,0) circle(1.5cm);
+              \clip (1.8,0) circle(1.5cm);
+              \fill[Dandelion](0,0) circle(1.5cm);
+      \end{scope}
+      \draw (0,0) circle(1.5cm);
+      \draw (1.8,0) circle(1.5cm);
+      \node at (0.9,0) {$M\cap N$};
+    \end{tikzpicture}}}$
+    }%
+    $\vcenter{\hbox{Schnittmenge | Für Mengen M und N: \orongsch{$M\cap N=\{x: x\in M$ \textbf{und} $x\in N\}$}\rule{2.5em}{0em}}}$
+  \end{minipage}
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Beispiel Vereinigungsmenge
+      \begin{itemize}[<+->]
+        \item $M=\{\alert<7->{a},\alert<7->{b},\gruen<7->{c}\}$
+        \item $N=\{\alert<7->{a},\alert<7->{b},\orongsch<7->{d}\}$
+        \item $M\cup N=\{\alert<7->{a},\alert<7->{b},\gruen<7->{c},\orongsch<7->{d}\}$
+      \end{itemize}
+      \Halbzeile
+    \item Beispiel Schnittmenge
+      \begin{itemize}[<+->]
+        \item $M=\{\gruen<11->{a},\gruen<11->{b},c\}$
+        \item $N=\{\gruen<11->{a},\gruen<11->{b}\}$
+        \item $M\cap N=\{\gruen<11->{a},\gruen<11->{b}\}$
+      \end{itemize}
   \end{itemize}
-}
+\end{frame}
 
-\frame{\frametitle{Generalized union \textcolor{black}{$\bigcup$} and intersection \textcolor{black}{$\bigcap$}}
-  \begin{itemize}
-  \item<1-> \textcolor{blue}{$\bigcup M =\{x\|x\in Y$ \textbf{for some} $Y\in M\}$}
-  \item<2-> (a) if $M=\{\{a\},\{a,b\},\{a,b,c\}\}$ then $\bigcup M=\{a,b,c\}$
-  \item<3-> (b) $M_1=\{a\}$, $M_2=\{a,b\}$, $M_3=\{a,b,c\}$, $I=\{1,2,3\}$; $\bigcup_{i\in I}M=\{a,b,c\}$
-  \item<4-> \textcolor{blue}{$\bigcap M =\{x\|x\in Y$ \textbf{for every} $Y\in M\}$}
-  \item<5-> (a) if $M=\{\{a\},\{a,b\},\{a,b,c\}\}$ then $\bigcap M=\{a\}$
-  \item<6-> (b) $M_1=\{a\}$, $M_2=\{a,b\}$, $M_3=\{a,b,c\}$, $I=\{1,2,3\}$; $\bigcap_{i\in I}M=\{a\}$
+\begin{frame}
+  {Generalisierte Vereinigungs- und Schnittmenge\only<15>{}}
+  \onslide<+->
+  \onslide<+->
+  \alert{$\bigcup M =\{x: x\in Y$ \textbf{für irgendeine} $Y\in M\}$}\\
+  \onslide<+->
+  \alert{$\bigcap M =\{x: x\in Y$ \textbf{für jede} $Y\in M\}$}\\
+  \Zeile 
+  \begin{itemize}[<+->]
+    \item Beispiel generalisierte Vereinigungsmenge
+      \begin{itemize}[<+->]
+        \item $M=\{\{\gruen<7>{a}\},\{\gruen<7>{a},\gruen<8>{b}\},\{\gruen<7>{a},\gruen<8>{b},\gruen<9>{c}\}\}$
+        \item $\bigcup M=\{%
+            \only<7->{\gruen<7>{a}}%
+            \only<8->{,\gruen<8>{b}}%
+            \only<9->{,\gruen<9>{c}}%
+          \}$
+      \end{itemize}
+      \Halbzeile
+      \onslide<10->
+    \item Beispiel generalisierte Schnittmenge
+      \begin{itemize}[<+->]
+        \item<10-> $M=\{\{\gruen<12>{a}\},\{\gruen<12>{a},\orongsch<13>{b}\},\{\gruen<12>{a},\orongsch<13>{b},\orongsch<14>{c}\}\}$
+        \item<11-> $\bigcap M=\{%
+            \only<12->{\gruen<12>{a}}
+          \}$
+      \end{itemize}
   \end{itemize}
-}
+\end{frame}
 
-\frame{\frametitle{Difference \textcolor{black}{-} and complement \textcolor{black}{$\backslash$ and $^{\prime}$}}
-  \begin{itemize}
-  \item<1-> \textcolor{blue}{For any two sets M and N: $M-N=\{x\|x\in M$ and $x\not\in N\}$}
-  \item<2-> $M=\{a,b,c\}$, $N=\{a\}$, $M-N=\{b,c\}$
-  \item<3-> \textcolor{blue}{For any two sets M and N: $M\backslash N=\{x\|x\in N$ and $x\not\in M\}$}
-  \item<4-> $O=\{a,b,c,k\}$ $M\backslash O=\{k\}$
-  \item<5-> the universal complement: \textcolor{blue}{$M^{\prime}=\{x\|x\in U$ and $x\not\in M\}$}\\
-     (U the universal set)
+\begin{frame}
+  {Differenzmenge und Komplementmenge}
+  \onslide<+->
+  \onslide<+->
+  Differenzmenge | \alert{$M-N=\{x: x\in M$ and $x\not\in N\}$}\\
+  \onslide<+->
+  Komplementmenge | \alert{$M\backslash N=\{x: x\in N$ and $x\not\in M\}$}\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Beispiel Differenzmenge
+      \begin{itemize}[<+->]
+        \item $M=\{\orongsch<7,10>{a},\orongsch<10>{\gruen<7>{b}},\orongsch<10>{\gruen<7>{c}}\}$
+        \item $N=\{\orongsch<7>{a}\}$
+        \item $M-N=\{\gruen<7>{b},\gruen<7>{c}\}$
+      \end{itemize}
+      \Halbzeile
+    \item Beispiel Komplementmenge
+      \begin{itemize}[<+->]
+        \item $O=\{\orongsch<10>{a},\orongsch<10>{b},\orongsch<10>{c},\alert<10>{k}\}$
+        \item $M\backslash O=\{\alert<10>{k}\}$
+      \end{itemize}
+      \Halbzeile
+    \item Universelles Komplement
+      \begin{itemize}[<+->]
+        \item die universelle Menge | U=\{x: x is an object\}
+        \item $\alert{M^{\prime}}=\{x: x\in U$ and $x\not\in M\}$
+      \end{itemize}
   \end{itemize}
-}
+\end{frame}
 
-\frame{\frametitle{Trivial equalities}
-  \begin{itemize}
-    \item<1-> Idempotency: $M\cup M=M$, $M\cap M=M$
-    \item<2-> Commutativity for $\cup$ and $\cap$: $M\cup N=N\cup M$ \ldots
-    \item<3-> Associativiy for $\cup$ and $\cap$: $(M\cup N)\cup O=M\cup (N\cup O)$ \ldots
-    \item<4-> Distributivity for $\cup$ and $\cap$: $M\cup (N\cap O)=(M\cup N)\cap (M\cup O)$ \ldots
-    \item<5-> Identity: $M\cup \emptyset=X$, $M\cup U=U$ \ldots what about $\cap$
-  \end{itemize}
-}
+\begin{frame}
+  {Triviale Identitäten}
+  \onslide<+->
+  \onslide<+->
+  \centering 
+  \begin{tabular}[h]{lccc}
+    Idempotenz      & $M\cup M$ & $=$ & $M$ \\
+                    & $M\cap M$ & $=$ & $M$ \\
+   Kommutativität   & $M\cup N$ & $=$ & $N\cup M$ \\
+                    & $M\cap N$ & $=$ & $N\cap M$ \\
+   Assoziativität   & $(M\cup N)\cup O$ & $=$ & $M\cup (N\cup O)$ \\
+                    & $(M\cap N)\cap O$ & $=$ & $M\cap (N\cap O)$ \\
+   Distributivität  & $M\cup (N\cap O)$ & $=$ & $(M\cup N)\cap (M\cup O)$ \\
+  \end{tabular}
+\end{frame}
 
-\frame{\frametitle{More interesting equalities}
-  \begin{itemize}
-    \item<1-> Complement laws: $M\cup\emptyset=M$, $M^{\prime\prime}=M$, $M\cap M^{\prime}=\emptyset$, $X\cap U=U$
-    \item<2-> DeMorgan: $(M\cup N)^{\prime}=M^{\prime}\cap X^{\prime}$ \ldots
+\begin{frame}
+  {Interessante Identitäten}
+  \onslide<+->
+  \onslide<+->
+  Komplementgesetze\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item $M\cup\emptyset=M$
+    \item $M^{\prime\prime}=M$
+    \item $M\cap M^{\prime}=\emptyset$
+    \item $X\cap U=U$
   \end{itemize}
-}
+  \onslide<+->
+  \Zeile
+  DeMorgan\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item $(M\cup N)^{\prime}=M^{\prime}\cap X^{\prime}$
+    \item DeMorgen begegnet uns in der Logik wieder.
+  \end{itemize}
+\end{frame}
 
 \section{Funktionen und Relationen}
 
