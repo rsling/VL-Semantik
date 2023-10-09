@@ -1,88 +1,173 @@
-\section{Sets and Functions}
-\subsection{The naive concept}
-\frame{\frametitle{What is a set?}
-  \begin{itemize}
-  \item<1-> a freely defined unordered collection of discrete objects
-    \begin{itemize}
-      \item<2-> numbers,
-      \item<3-> people,
-      \item<4-> pairs of shoes,
-      \item<5-> words, \ldots
-    \end{itemize}
-  \item<6-> not necessarily for any purpose
-  \item<7-> no object occurs more than once
+\section{Mengen und Funktionen}
+
+\begin{frame}
+  {Was ist eine Menge?}
+  \onslide<+->
+  \onslide<+->
+  Eine \alert{frei definierbare ungeordnete Sammlung von diskreten Objekten}\\
+  \begin{itemize}[<+->]
+    \item Zahlen
+    \item Menschen
+    \item Schuhe
+    \item Wörter
+    \item \ldots
+      \Halbzeile
+    \item nicht unbedingt zweckgebunden
+    \item \orongsch{jedes Objekt maximal einmal in jeder Menge}
   \end{itemize}
-}
+  \centering
+  \Zeile
+  \onslide<+->
+  Das Wesentliche von heute in \citet[Kapitel~1--4]{ParteeEa1990}
+\end{frame}
 
-\frame{\frametitle{Set definition and elements: \textcolor{black}{$\in$}}
-  \begin{itemize}
-  \item<1-> M\Sub{1} = $\{a,b,c\}$
-  \item<2-> N\Sub{1} = $\{$`my book'$\}$\\ vs. N\Sub{2} = $\{$my book$\}$ \\vs. N\Sub{3} = $\{$`my', `book'$\}$
-  \item<3-> ill-formed: N\Sub{4} = $\{$`my', book$\}$
-  \item<4-> defined by a property of its members:\\M\Sub{2} = $\{$x:x is one of the first three letters of the alphabet$\}$
-  \item<5-> alternatively: \\M\Sub{2} = $\{$x$\|$x is one of the first three letters of the alphabet$\}$
-  \item<6-> \textcolor{blue}{U}: the universal set (contains every discrete object)
+\begin{frame}
+  {Notation und Beispiele für Mengen}
+  \onslide<+->
+  \onslide<+->
+  Mengendefinition \alert{\{\}}, Elementstatus $\in$\\
+  \Zeile
+  \begin{itemize}[<+->]
+    \item M\Sub{1} = \alert{$\{a,b,c\}$} (Menge von Buchstaben)
+      \Halbzeile
+    \item N\Sub{1} = \alert{$\{$`my book'$\}$} (einelementige Menge, enthält eine NP)
+      \begin{itemize}[<+->]
+        \item vs. \alert{N\Sub{2} = $\{$my book$\}$} (einelementige Menge, enthält mein Buch)
+        \item vs. \alert{N\Sub{3} = $\{$`my', `book'$\}$} (Menge von Wörtern)
+      \end{itemize}
+      \Halbzeile
+    \item möglich, aber ungewöhnlich: \orongsch{N\Sub{4} = $\{$`my', book$\}$}
+      \Halbzeile
+    \item definiert über eine Eigenschaft der Elemente (zwei Notationen):\\
+      M\Sub{2} = \gruen{$\{$x: x is one of the first three letters of the alphabet$\}$}\\
+      M\Sub{2} = \gruen{$\{$x$\|$ x is one of the first three letters of the alphabet$\}$}
+      \Halbzeile
+    \item \alert{U}: die universelle Menge (alle Objekte)
   \end{itemize}
-}
+\end{frame}
 
-\subsection{Elements, subsets, power sets}
-
-\frame{\frametitle{Equality: \textcolor{black}{=}}
-  \begin{itemize}
-  \item<1-> \textcolor{blue}{Two sets with contain exactly the same members are \emph{equal}.}
-  \item<2-> independent of definition: \\ $\{$a,b,c$\}$ = \\ $\{$x:x is one of the first three letters of the alphabet$\}$
-  \item<3-> $\{$x:x is human$\}$ = $\{$x:x is from the planet earth and x can speak$\}$
+\begin{frame}
+  {Identität von Mengen}
+  \onslide<+->
+  \onslide<+->
+  Zwei Mengen mit exakt den gleichen Elementen sind \alert{identisch}.\\
+  \Zeile 
+  \begin{itemize}[<+->]
+    \item \alert{\{a, b, c\}} = \gruen{\{x: x is one of the first tree letter of the alphabet\}}
+      \Halbzeile
+    \item \alert{\{x: x is human\}} = \gruen{\{x: x is from the Earth, a primate but not an ape\}}
   \end{itemize}
-}
+\end{frame}
 
-\frame{\frametitle{Subsets: \textcolor{black}{$\subseteq$}}
-  \begin{itemize}
-  \item<1-> \textcolor{blue}{A set N which holds no member which is not in M is a \emph{subset} of M: N $\subseteq$ M}
-  \item<2-> $\{a\}\subseteq\{a,b,c\}$
-  \item<3-> the inverse: the \textcolor{blue}{superset}
+\begin{frame}
+  {Teilmengen und Obermengen}
+  \onslide<+->
+  \onslide<+->
+  \alert{Teilmenge} | Eine Menge N, die kein Element enthält,\\
+  das nicht auch in Menge M enthalten ist (umg.\ \alert{Obermenge}).\\
+  \Halbzeile
+  \onslide<+->
+  Teilmenge oder Identität $\subseteq$\\
+  Obermenge oder Identität $\supseteq$\\
+  \Zeile
+  \begin{itemize}[<+->]
+    \item \{a\} \alert{$\subseteq$} \{a,b,c\} und \{a,b,c\} \alert{$\supseteq$} \{a\}
+    \item \{a\} \alert{$\subseteq$} \{a,b,c\} und \{a,b,c\} \alert{$\supseteq$} \{a\} 
+    \item \{a,b,c\} \alert{$\subseteq$} \{a,b,c\}
+      \Halbzeile
+    \item \{a,b,c,d\} \orongsch{$\not\subseteq$} \{a,b,c\} und \{a,b,c\} \orongsch{$\not\supseteq$} \{a,b,c,d\}
+      \Halbzeile
+    \item \{x: x is human\} \gruen{$\subseteq$} \{x: is an ape\}
   \end{itemize}
-}
+\end{frame}
 
-\frame{\frametitle{Proper subsets: \textcolor{black}{$\subset$}}
-  \begin{itemize}
-  \item<1-> \textcolor{blue}{A set N which holds no member which is not in M and which is not equal to M is a \emph{proper subset} of M: N $\subset$ M}
-  \item<2-> So, actually: $\{a\}\subset\{a,b,c\}$ and $\{a,b,c\}\subseteq\{a,b,c\}$. Note that:
-  \item<3-> $M \subseteq M$ but $M \not\subset M$
-  \item<4-> $\{\{a\}\}\not\in\{a,b,c\}$
-  \item<5-> $\{\}\subset\{a,b,c\}$ (or any set), $\{\}$ is sometimes written $\emptyset$
+
+\begin{frame}
+  {Echte Teilmengen und Obermengen}
+  \onslide<+->
+  \onslide<+->
+  \alert{Echte Teilmenge} | Eine Menge N, die kein Element enthält,\\
+  das nicht auch in Menge M enthalten ist, und die nicht mit M identisch ist.\\
+  \Halbzeile
+  \onslide<+->
+  Echte Teilmenge $\subset$\\
+  Echte Obermenge $\supset$\\
+  \Zeile
+  \begin{itemize}[<+->]
+    \item $\{a\}\gruen{\subset}\{a,b,c\}$ und $\{a\}\alert{\subset}\{a,b,c\}$
+    \item $\{a,b,c\}\orongsch{\not\subset}\{a,b,c\}$ aber $\{a,b,c\}\orongsch{\subseteq}\{a,b,c\}$
   \end{itemize}
-}
+\end{frame}
 
-\frame{\frametitle{Elements vs. subsets}
-\begin{itemize}
-  \item<1-> \emph{All professors of English Linguistics are human.}\\\emph{Herr Webelhuth is a professor of English Linguistics.}
-  \item<2->w = Herr Webelhuth\\
-  E = the set of professors of English Linguistics\\
-  H = the set of human beings
-  \item<3->$w\in E$ \& $E\subset H$ $\Rightarrow$ $w\in H$
-\end{itemize}
-}
-
-\frame{\frametitle{Elements vs. subsets}
-\begin{itemize}
-  \item<1->But: \emph{Professors of English Linguistics are numerous.}
-  \item<2->N = the set of sets with numerous members\\
-  \item<3->$w\in E$ \& $E\in N$ $\not\Rightarrow$ $w\in P$
-  \item<4-> Hence: \Up{*}Herr Webelhuth is numerous.
-\end{itemize}
-}
-
-\frame{\frametitle{Power sets: \textcolor{black}{$\wp$}}
-  \begin{itemize}
-  \item<1-> \textcolor{blue}{For any set M: $\wp(M)=\{X\|X\subseteq M\}$}
-  \item<2-> for M=$\{a,b,c\}$:\\
-            $\wp(M)=\{\emptyset,\{a\},\{b\},\{c\},\{a,b\},\{a,b,c\},\{b,c\}\}$
-  \item<4-> Why is the empty set in the power set of every set \ldots
-  \item<5-> \dots and why is the empty a set a proper subset of every set?
+\begin{frame}
+  {Elemente vs.\ Teilmengen}
+  \onslide<+->
+  \begin{itemize}[<+->]
+    \item Achtung bei Mengen von Mengen
+      \begin{itemize}[<+->]
+        \item \{\{a\}\} \orongsch{$\not\subset$} \{a,b,c\}
+        \item \{\{a\}\} \orongsch{$\not\subseteq$} \{a,b,c\}
+        \item \{\{a\}\} \orongsch{$\not\in$} \{a,b,c\}
+      \end{itemize}
+    \Zeile
+    \item für leere Menge \grau{\{\} oder $\emptyset$}
+      \begin{itemize}[<+->]
+        \item \{\} \alert{$\subset$} jede anderen Menge
+        \item \{\} \orongsch{$\not\in$} \{\}
+      \end{itemize}
   \end{itemize}
-}
+\end{frame}
 
-\subsection{Union, intersection, etc.}
+\begin{frame}
+  {Logik mit Mengen, Teilmengen und Elementen}
+  \onslide<+->
+  \begin{itemize}[<+->]
+    \item Logik mit Mengen
+        \begin{itemize}[<+->]
+        \item \textit{Alle Anglistikprofessoren sind menschlich.}\\
+          \textit{Herr Webelhuth ist Anglistikprofessor.}
+        \item w = Herr Webelhuth\\
+          E = \{x: x is professors of English Linguistics\}\\
+          H = \{x: x is human\}
+        \item Aus \alert{$w\in E$} und \alert{$E\subset H$} folgt \gruen{$w\in H$}
+      \end{itemize}
+      \Halbzeile
+    \item Aber
+      \begin{itemize}[<+->]
+        \item \textit{Die Anglistikprofessoren sind zahlreich.}
+        \item N = \{x: x is a set with many members\}
+        \item Aus \alert{w $\in$ E} und \orongsch{E $\in$ N} folgt nicht \alert{w $\in$ N}
+        \item Vergleiche: *Herr Webelhuth ist zahlreich.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Potenzmengen (power sets)}
+  \onslide<+->
+  \onslide<+->
+  Potenzmenge $\wp(\cdot)$ | Für jede Menge M: \alert{$\wp(M)=\{X:X\subseteq M\}$}\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Beispiel
+      \begin{itemize}[<+->]
+        \item M=\{\gruen<6,9,10,12>{a},\gruen<7,9,11,12>{b},\gruen<8,10,11,12>{c}\}
+        \item $\wp(M)=\{%
+           \only<6->{\gruen<6>{\{a\}}}%
+           \only<7->{,\gruen<7>{\{b\}}}%
+           \only<8->{,\gruen<8>{\{c\}}}%
+           \only<9->{,\gruen<9>{\{a,b\}}}%
+           \only<10->{,\gruen<10>{\{a,c\}}}%
+           \only<11->{,\gruen<11>{\{b,c\}}}%
+           \only<12->{,\gruen<12>{\{a,b,c\}}}%
+           \only<13->{,\orongsch<13>{\{\}}}%
+         \}$
+      \end{itemize}
+      \Halbzeile
+    \item Warum ist die leere Menge in der Potenzmenge jeder Menge?
+    \item Warum ist die leere Menge eine echte Teilmenge jeder Menge?
+  \end{itemize}
+\end{frame}
 
 \frame{\frametitle{Union \textcolor{black}{$\cup$} and intersection \textcolor{black}{$\cap$}}
   \begin{itemize}
@@ -133,8 +218,8 @@
   \end{itemize}
 }
 
-\section{Functions and Relations}
-\subsection{Ordered pairs/sets, n-tuples, Cartesian products}
+\section{Funktionen und Relationen}
+
 \frame{\frametitle{How to define an ordered pair}
  \begin{itemize}
    \item<1-> \ldots without introducing ordered tuples as a new primitive
@@ -157,7 +242,6 @@
  \end{itemize}
 }
 
-\subsection{Relations}
 \frame{\frametitle{Defintion of relations}
  \begin{itemize}
    \item<1-> hold between (sets of) objects
@@ -183,7 +267,6 @@
       \end{itemize}  
  \end{itemize}
 }
-\subsection{Functions}
 \frame{\frametitle{Functions}
 \begin{itemize}
   \item<1-> \textcolor{blue}{A function F from A to B is a relation s.t. for every $a\in A$ there is exactly on tuple $\langle a,b\rangle\in A\times B$ s.t. $a$ is the first coordinate.}
@@ -208,8 +291,8 @@
 \end{itemize}
 }
 
-\section{More about relations and sets}
-\subsection{Relations among themselves}
+\section{Mehr über Relationen und Mengen}
+
 
 \frame{\frametitle{Reflexivity}
 A relation R in $A=\{a,b,\ldots\}$ is...\\
@@ -286,8 +369,6 @@ A relation  R in $A=\{a,b,\ldots\}$ is...\\
 \end{itemize}  
 }
 
-\subsection{Orders}
-
 \frame{\frametitle{Defining ordering relations}
 An ordering relation R in A is ...
 \begin{itemize}
@@ -317,89 +398,88 @@ An ordering relation R in A is ...
 \end{itemize}
 }
 
-\section{Cardinalities}
-\subsection{Denumerability}
-
-\frame{\frametitle{The number of elements\ldots}
-\begin{itemize}
-  \item<1-> $A=\{a,b,c\}$
-  \item<2-> $B=\{a,b,c\}$
-  \item<3-> obviously, $A=B$ (equal)
-  \item<4-> there is an $R$ from A to B s.t. $R=\{\langle a,a\rangle,\langle b,b\rangle,\langle c,c\rangle\}$
-  \item<5-> for every set C with the same number of elements\\ (e.g., $C=\{1,2,3\}$): 
-         $R=\{\langle a,1\rangle,\langle b,2\rangle,\langle c,3\rangle\}$
-  \item<6-> such relations are one-to-one correspondences
-\end{itemize}
-}
-
-\frame{\frametitle{Denumerable sets}
-\begin{itemize}
-  \item<1-> $\mathbb{N}$ is infinite
-  \item<2-> for every A there is some R\Sub{card}
-       \begin{itemize}
-         \item<3-> a one-to-one correspondence
-         \item<4-> from A's members to the first $n$ members of $\mathbb{N}$
-         \item<5-> s.t. $n$ is the \textcolor{blue}{cardinality of A, $\|A\|$}
-      \end{itemize}
-  \item<6-> sets A,B with $\|A\|=\|B\|$ are \textcolor{blue}{equivalent}
-  \item<7-> $\|\mathbb{N}\|=\aleph^0$
-\end{itemize}
-}
-
-\subsection{Non-denumerability}
-
-\frame{\frametitle{A problem}
-\begin{itemize}
-  \item<1-> \textcolor{red}{for some sets there is no such R\Sub{card}}
-  \item<2-> no way of bringing their elements into an exhaustive linear order
-  \item<3-> no problem with $\mathbb{Q}$: 
-    \begin{small}\Treek[2]{2}{
-	    & \K{$\ra{0,1}$}\ARkk{0,0}{0,0}{dl} & \K{$\ra{0,2}$}\ARkk{0,0}{0,0}{dl}\ARr{dll} & \K{$\ra{0,3}$}\ARkk{0,0}{3,0}{dl}\ARr{ddlll} & \K{$\cdots$}\ARkk{0,0}{0,0}{dl}\\
-	    \K{$\ra{1,0}$} & \K{$\ra{1,1}$}\ARkk{-3,0}{0,0}{dl}        & \K{$\ra{1,2}$}\ARkk{0,0}{0,0}{dl} & \K{$\ra{1,3}$}\ARkk{0,0}{0,0}{dl} & \K{$\cdots$}\ARkk{0,0}{0,0}{dl} \\
-	    \K{$\ra{2,0}$} & \K{$\ra{2,1}$}\ARkk{0,0}{0,0}{dl}        & \K{$\ra{2,2}$}\ARkk{0,0}{0,0}{dl} & \K{$\ra{2,3}$}\ARkk{0,0}{0,0}{dl} & \K{$\cdots$}\ARkk{0,0}{0,0}{dl} \\
-    \K{$\vdots$}   & \K{$\vdots$}          & \K{$\vdots$}   & \K{$\vdots$}   &  \\
-    }\end{small}
-\end{itemize}
-}
-
-\frame{\frametitle{The non-denumerable real numbers}
-\begin{itemize}
-  \item<1-> now: $\mathbb{R}$
-  \item<2-> some elements cannot be represented as an ordered pair of two elements of $\mathbb{N}$
-  \item<3-> in $[0,1]$, every real can be represented as \textcolor{blue}{$0.abcdefg\ldots$}, $a,b,c,d,e,f,g,\ldots\in\{0,1,2,3,4,5,6,7,8,9\}$
-\end{itemize}
-}
-
-\frame{\frametitle{Trying to enumerate}
-\begin{itemize}
-  \item<1-> an enumeration of $[0,1]$ in $\mathbb{R}$?\\
-  
-  \medskip
-  \begin{tabular}{ccccccccc}
-     x\Sub{1} & = & 0 & . & a\Sub{11} & a\Sub{12} & a\Sub{13} & a\Sub{14} & \ldots \\
-     x\Sub{2} & = & 0 & . & a\Sub{21} & a\Sub{22} & a\Sub{23} & a\Sub{24} & \ldots \\
-     x\Sub{3} & = & 0 & . & a\Sub{31} & a\Sub{32} & a\Sub{33} & a\Sub{34} & \ldots \\
-      $\vdots$ & & \vdots &&&&& \\     
-     x\Sub{n} & = & 0 & . & a\Sub{n1} & a\Sub{n2} & a\Sub{n3} & a\Sub{n4} & \ldots \\
-  \end{tabular}
-\end{itemize}
-}
-
-\frame{\frametitle{Failing to enumerate}
-\begin{itemize}
-  \item<1-> What about an $x_m$ which differs from $x_n$ at $a_{nn}$\\
-  
-  \medskip
-  {\footnotesize\begin{center}\begin{tabular}{ccccccccc}
-     x\Sub{1} & = & 0 & . & \textcolor{red}{a\Sub{11}} & a\Sub{12} & a\Sub{13} & a\Sub{14} & \ldots \\
-     x\Sub{2} & = & 0 & . & a\Sub{21} & \textcolor{red}{a\Sub{22}} & a\Sub{23} & a\Sub{24} & \ldots \\
-     x\Sub{3} & = & 0 & . & a\Sub{31} & a\Sub{32} & \textcolor{red}{a\Sub{33}} & a\Sub{34} & \ldots \\
-      $\vdots$ & & \vdots &&&&& \\     
-     x\Sub{n} & = & 0 & . & a\Sub{n1} & a\Sub{n2} & a\Sub{n3} & \textcolor{red}{a\Sub{nn}} & \ldots \\
-  \end{tabular}\end{center}}
-  
-  \item<2-> \textcolor{red}{It won't be in the array...}
-  \item<3-> $\mathbb{R}$ is non-denumerable
-  \item<4-> If $\|A\|=\aleph^0$ then $\|\wp(A)\|=2^{\aleph_0}$ (cf. Partee et al. 62f.)
-\end{itemize}
-}
+% \section{Mächtigkeiten}
+% 
+% 
+% \frame{\frametitle{The number of elements\ldots}
+% \begin{itemize}
+%   \item<1-> $A=\{a,b,c\}$
+%   \item<2-> $B=\{a,b,c\}$
+%   \item<3-> obviously, $A=B$ (equal)
+%   \item<4-> there is an $R$ from A to B s.t. $R=\{\langle a,a\rangle,\langle b,b\rangle,\langle c,c\rangle\}$
+%   \item<5-> for every set C with the same number of elements\\ (e.g., $C=\{1,2,3\}$): 
+%          $R=\{\langle a,1\rangle,\langle b,2\rangle,\langle c,3\rangle\}$
+%   \item<6-> such relations are one-to-one correspondences
+% \end{itemize}
+% }
+% 
+% \frame{\frametitle{Denumerable sets}
+% \begin{itemize}
+%   \item<1-> $\mathbb{N}$ is infinite
+%   \item<2-> for every A there is some R\Sub{card}
+%        \begin{itemize}
+%          \item<3-> a one-to-one correspondence
+%          \item<4-> from A's members to the first $n$ members of $\mathbb{N}$
+%          \item<5-> s.t. $n$ is the \textcolor{blue}{cardinality of A, $\|A\|$}
+%       \end{itemize}
+%   \item<6-> sets A,B with $\|A\|=\|B\|$ are \textcolor{blue}{equivalent}
+%   \item<7-> $\|\mathbb{N}\|=\aleph^0$
+% \end{itemize}
+% }
+% 
+% 
+% \frame{\frametitle{A problem}
+% \begin{itemize}
+%   \item<1-> \textcolor{red}{for some sets there is no such R\Sub{card}}
+%   \item<2-> no way of bringing their elements into an exhaustive linear order
+%   \item<3-> no problem with $\mathbb{Q}$: 
+%     \begin{small}\Treek[2]{2}{
+% 	    & \K{$\ra{0,1}$}\ARkk{0,0}{0,0}{dl} & \K{$\ra{0,2}$}\ARkk{0,0}{0,0}{dl}\ARr{dll} & \K{$\ra{0,3}$}\ARkk{0,0}{3,0}{dl}\ARr{ddlll} & \K{$\cdots$}\ARkk{0,0}{0,0}{dl}\\
+% 	    \K{$\ra{1,0}$} & \K{$\ra{1,1}$}\ARkk{-3,0}{0,0}{dl}        & \K{$\ra{1,2}$}\ARkk{0,0}{0,0}{dl} & \K{$\ra{1,3}$}\ARkk{0,0}{0,0}{dl} & \K{$\cdots$}\ARkk{0,0}{0,0}{dl} \\
+% 	    \K{$\ra{2,0}$} & \K{$\ra{2,1}$}\ARkk{0,0}{0,0}{dl}        & \K{$\ra{2,2}$}\ARkk{0,0}{0,0}{dl} & \K{$\ra{2,3}$}\ARkk{0,0}{0,0}{dl} & \K{$\cdots$}\ARkk{0,0}{0,0}{dl} \\
+%     \K{$\vdots$}   & \K{$\vdots$}          & \K{$\vdots$}   & \K{$\vdots$}   &  \\
+%     }\end{small}
+% \end{itemize}
+% }
+% 
+% \frame{\frametitle{The non-denumerable real numbers}
+% \begin{itemize}
+%   \item<1-> now: $\mathbb{R}$
+%   \item<2-> some elements cannot be represented as an ordered pair of two elements of $\mathbb{N}$
+%   \item<3-> in $[0,1]$, every real can be represented as \textcolor{blue}{$0.abcdefg\ldots$}, $a,b,c,d,e,f,g,\ldots\in\{0,1,2,3,4,5,6,7,8,9\}$
+% \end{itemize}
+% }
+% 
+% \frame{\frametitle{Trying to enumerate}
+% \begin{itemize}
+%   \item<1-> an enumeration of $[0,1]$ in $\mathbb{R}$?\\
+%   
+%   \medskip
+%   \begin{tabular}{ccccccccc}
+%      x\Sub{1} & = & 0 & . & a\Sub{11} & a\Sub{12} & a\Sub{13} & a\Sub{14} & \ldots \\
+%      x\Sub{2} & = & 0 & . & a\Sub{21} & a\Sub{22} & a\Sub{23} & a\Sub{24} & \ldots \\
+%      x\Sub{3} & = & 0 & . & a\Sub{31} & a\Sub{32} & a\Sub{33} & a\Sub{34} & \ldots \\
+%       $\vdots$ & & \vdots &&&&& \\     
+%      x\Sub{n} & = & 0 & . & a\Sub{n1} & a\Sub{n2} & a\Sub{n3} & a\Sub{n4} & \ldots \\
+%   \end{tabular}
+% \end{itemize}
+% }
+% 
+% \frame{\frametitle{Failing to enumerate}
+% \begin{itemize}
+%   \item<1-> What about an $x_m$ which differs from $x_n$ at $a_{nn}$\\
+%   
+%   \medskip
+%   {\footnotesize\begin{center}\begin{tabular}{ccccccccc}
+%      x\Sub{1} & = & 0 & . & \textcolor{red}{a\Sub{11}} & a\Sub{12} & a\Sub{13} & a\Sub{14} & \ldots \\
+%      x\Sub{2} & = & 0 & . & a\Sub{21} & \textcolor{red}{a\Sub{22}} & a\Sub{23} & a\Sub{24} & \ldots \\
+%      x\Sub{3} & = & 0 & . & a\Sub{31} & a\Sub{32} & \textcolor{red}{a\Sub{33}} & a\Sub{34} & \ldots \\
+%       $\vdots$ & & \vdots &&&&& \\     
+%      x\Sub{n} & = & 0 & . & a\Sub{n1} & a\Sub{n2} & a\Sub{n3} & \textcolor{red}{a\Sub{nn}} & \ldots \\
+%   \end{tabular}\end{center}}
+%   
+%   \item<2-> \textcolor{red}{It won't be in the array...}
+%   \item<3-> $\mathbb{R}$ is non-denumerable
+%   \item<4-> If $\|A\|=\aleph^0$ then $\|\wp(A)\|=2^{\aleph_0}$ (cf. Partee et al. 62f.)
+% \end{itemize}
+% }
