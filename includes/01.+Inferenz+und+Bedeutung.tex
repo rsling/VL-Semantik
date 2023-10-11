@@ -4,8 +4,12 @@
 \begin{frame}
   {Literatur | Einführungen}
   \onslide<+->
+  \onslide<+->
+  Die folgenden drei Bücher sind die Grundlage des Seminars:\\
+  \Zeile
   \begin{itemize}[<+->]
     \item \alert{\citet{ChierchiaMcconnellginet2000}} | GB-orientiert, nur die Kapitel von Chierchia
+    \item \alert{\citet{DowtyEa1981}} | tolle Montague-Einführung von seinen Schülern
     \item \alert{\citet{ParteeEa1990}} | wichtige Grundlagen (Algebra, Logik), viele Druckfehler
   \end{itemize}
 \end{frame}
@@ -15,7 +19,6 @@
   \onslide<+->
   \begin{itemize}[<+->]
     \item \alert{\citet{Bucher1998}} | lesbare Logik-Einführung auf Deutsch
-    \item \alert{\citet{DowtyEa1981}} | tolle Montague-Einführung von seinen Schülern
     \item \alert{\citet{Carpenter1997}} | prima Hardcore-Einführung mit Kategorialgrammatik
     \item \alert{\citet{Gutzmann2019}} | aktuelle Einführung auf Deutsch
   \end{itemize}
@@ -66,43 +69,177 @@
 \section{Schlussfolgern}
 
 \begin{frame}
-  {Was folgt aus A?}
+  {Was folgt logisch?}
+  \onslide<+->
+  \onslide<+->
+  Fallen Ihnen logische Schlussfolgerungen aus diesen Aussagen ein?\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Das Semester hat begonnen.
+    \item Olha hat einen sehr leichten ukrainischen Akzent.
+    \item Entweder regnet es gerade, oder die Wasserleitung ist gebrochen.
+    \item Es regnet, oder die Wasserleitung ist gebrochen. Es regnet seit zwei Stunden.
+    \item Falls der Dänemark-Urlaub ausfällt, fahre ich eine Woche zu meinen Eltern.\\
+      Der Dänemark-Urlaub fällt aus.
+    \item Wenn es regnet, wird die Straße nass. Die Straße ist nicht nass.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
-  {Folgt B aus A? | Einfache Fälle}
+  {Folgt B aus A?} % Sätze
+  \onslide<+->
+  \begin{itemize}[<+->]
+    \item A: Ein blauer Renault fährt auf der A9 Richtung Berlin.\\
+      B: Ein Renault fährt auf der A9 Richtung Berlin.
+    \item A: Ich finde Geranien abstoßend.\\
+      B: Ich habe schon mindestens einmal mindestens eine Geranie gesehen.
+    \item A: Der WANG PC ist nicht IBM-kompatibel.\\
+      B: Es existiert mindestens ein WANG PC.
+    \item A: Alle Menschen sind intelligent.\\
+      B: Horst Lichter ist intelligent.
+    \item A: Krister hat mir seinen Volvo Amazon verkauft.\\
+      B: Irgendjemand hat seinen Volvo Amazon verkauft.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
-  {Folgt B aus A? | Schwierigere Fälle}
+  {Folgt B aus A?} % Lexik und Grammatik
+  \begin{itemize}[<+->]
+    \item A: Entweder regnet es, oder die Wasserleitung im Bad ist gebrochen, und die Wasserleitung im Bad ist gebrochen.\\
+      B: Es regnet nicht.
+    \item A: Michelle hat uns den Dobermann für eine Woche zur Pflege überlassen.\\
+      B: Der Dobermann wurde uns für eine Woche zur Pflege überlassen.
+    \item A: Jan glaubt, dass seine Sendung nicht abgesetzt wird.\\
+      B: Jan glaubt nicht, dass seine Sendung abgesetzt wird.
+    \item A: Falls Dr.\ Kohl jetzt wieder Kanzler der BRD ist, gibt es vermutlich jeden Tag Pfälzer Saumagen zum Dinner.\\
+      B: Es gibt einen Kanzler der BRD.
+    \item A: Ein Mensch betritt den Raum.\\
+      B: Es gibt mindestens einen Menschen.
+    \item A: Ein Mensch, der die Bibel gelesen hat, begeht im Durchschnitt nicht weniger Straftaten als andere.\\
+      B: Es gibt mindestens einen Menschen.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
-  {Folgt B aus A? | Grammatik}
+  {Folgt B aus A?} % Stories
+  \onslide<+->
+  \begin{itemize}[<+->]
+    \item A: Herr Keydana fährt einen Golf. Alles, was einen Golf fährt, ist entweder menschlich oder eine AI, die auf Deep Learning basiert. Es gibt keine AI, die auf Deep Learning basiert, die einen Golf fährt.\\
+      \alert{B: Es gibt mindestens einen Menschen.}
+      \Halbzeile
+    \item A: Es gibt an der Uni Göttingen mindestens einen Dozenten, der einen Golf fährt. Götz ist Dozent an der Uni Göttingen und Radsportler. Sein Auto ist gerade in der Werkstatt. Jeder Dozent an der Uni Göttingen fährt entweder einen Golf oder ist kein Radsportler, falls sein Auto in der Werkstatt ist.\\
+      \alert{B: Götz fährt einen Golf.}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
-  {Woher wissen Sie das?}
-\end{frame}
-
-\begin{frame}
-  {Weltwissen vs.\ Logik}
+  {Logik}
+  \onslide<+->
+  \onslide<+->
+  \centering 
+  Versuchen Sie, eine Definition des Begriffs \alert{logische Schlussfolgerung} zu geben.\\
+  \onslide<+->
+  \Zeile
+  Wann folgt eine Aussage aus einer oder mehreren anderen Aussagen?
 \end{frame}
 
 \begin{frame}
   {Inferenz | Abduktion}
+  \onslide<+->
+  \onslide<+->
+  Entspricht oft der "`Alltagslogik"'. Suche nach \alert{spontan plausiblen Ursachen}.\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item A: Der Verdächtige hat kein Alibi und ein Motiv.\\
+      B: Der Verdächtige ist der Täter.
+    \item Ich habe so einen komischen Husten, und die Infektionszahlen steigen wieder.\\
+      B: Oh mein Gott, ich habe Covid!
+    \item A: Es soll eine Impfpflicht eingeführt werden.\\
+      B: George Soros und Bill Gates wollen uns Mikrochips einpflanzen.
+    \item A: In Mikes Büro ist um 22 Uhr noch Licht.\\
+      B: Mike bereitet seine Lehrveranstaltung für morgen vor.
+  \end{itemize}
+  \onslide<+->
+  \centering 
+  \Zeile 
+  \orongsch{Hochgradig gefährlich, weil nicht formalisierbar und sehr bequem.}\\
+  \alert{Gleichzeitig im Alltag unentbehrlich.}\\
+  \grau{\footnotesize Die meisten "`logischen"' Schlussfolgerungen von Vulkaniern sind im besten Fall Abduktionen.}
 \end{frame}
 
 \begin{frame}
   {Inferenz | Induktion}
+  \onslide<+->
+  \onslide<+->
+  Suche nach \alert{allgemeingültigen Aussagen} aus Partikularereignissen.\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item A\Sub{1}: Im Zentrum der Galaxis befindet sich ein supermassives schwarzes Loch.\\
+          A\Sub{2}: Die Galaxis ist eine Galaxie.\\
+          B: Im Zentrum jeder Galaxie befindet sich ein supermassives schwarzes Loch.
+    \item A: Im Zentrum von 1200 Galaxien befindet sich ein supermassives schwarzes Loch.\\
+          B: Im Zentrum jeder Galaxie befindet sich ein supermassives schwarzes Loch.
+    \item A: Aus dieser Einmündung kam noch nie ein Auto von rechts.\\
+          B: Aus dieser Einmündung wird in drei Sekunden kein Auto von rechts kommen.
+  \end{itemize}
+  \onslide<+->
+  \Zeile 
+  \centering 
+  \alert{"`Besser"' als Abduktion, vor allem je mehr Partikularereignisse zugrundeliegen.}\\
+  \orongsch{Kann trotzdem gewaltig daneben gehen.}\\
+  \grau{\footnotesize Spielt in der Wissenschaft eine große Rolle, aber ist fundamental nicht ausreichend.}
 \end{frame}
 
 \begin{frame}
   {Inferenz | Deduktion}
+  \onslide<+->
+  \onslide<+->
+  \alert{Prämissen} (egal, wo diese herkommen) und formale \alert{Schlussregeln}\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item A\Sub{1}: Götz ist ein Dozent an der Uni Göttingen.\\
+      A\Sub{2}: Jeder Dozent an der Uni Göttingen ist ein Mensch.\\
+      B: Götz ist ein Mensch.
+    \item A\Sub{1}: Entweder (wurde die Welt von einem Gebrauchtwagenhändler erschaffen) oder (Rewe verkauft keine Weetabix).\\
+      A\Sub{2}: Rewe verkauft keine Weetabix.\\
+      B: Die Welt wurde von einem Gebrauchtwagenhändler erschaffen.
+  \end{itemize}
+  \onslide<+->
+  \Zeile
+  \centering 
+  \alert{Nur Deduktion ist Logik. Nur darum geht es in diesem Semester.}\\
+  Für die Logik menschlicher Sprache entfällt das Problem absurder Prämissen.
 \end{frame}
 
 \begin{frame}
-  {Deduktion, Logik und Modelltheorie}
+  {Ganz trivial ist das nicht \ldots}
+  \onslide<+->
+  \onslide<+->
+    A: Herr Keydana fährt einen Golf. Alles, was einen Golf fährt, ist entweder menschlich oder eine AI, die auf Deep Learning basiert. Es gibt keine AI, die auf Deep Learning basiert, die einen Golf fährt.\\
+    \alert{B: Es gibt mindestens einen Menschen.}\\
+    \onslide<+->
+    \Halbzeile
+    Hier ist der Beweis (vgl. Woche 5):\\
+    \onslide<+->
+    \Halbzeile
+    \centering
+    \scalebox{0.7}{%
+    \begin{tabular}{cll}
+      (1) & $Dk$ &  \\
+      (2) & $(\forall x)(Dx\rightarrow Hx \vee Px)$ & \\
+      (3) & $\neg(\exists x)(Px\wedge Dx)$ & \\
+      \hline
+      (4) & $(\forall x)\neg(Px\wedge Dx)$ & 3,QN\\
+      (5) & $(\forall x)(\neg Px\vee\neg Dx)$ & 4,DeM\\
+      (6) & $(\forall x)(Dx\rightarrow\neg Px)$ & 5,Comm,Impl \\
+      (7) & $Dk \rightarrow \neg Pk$ & 6,$-\forall$(1) \\
+      (8) & $\neg Pk$ & 1,7,MP \\
+      (9) & $Dk\rightarrow Hk \vee Pk$ & 2,$-\forall$(1)\\
+      (10) & $Hk\vee Pk$ & 1,9,MP \\
+      (11) & $Hk$ & 8,10,DS \\
+      \gruen{$\therefore$} & \gruen{$(\exists x)Hx$} & 10,$+\exists$ \\
+    \end{tabular}%
+  }
 \end{frame}
 
 \section{Grundfragen}
@@ -318,7 +455,7 @@
     \item \grau{Ganz am Rande zu generativer AI \ldots}
       \begin{itemize}[<+->]
         \item \grau{Erfolg | Sie modelliert völlig natürliche Grammatik.}
-        \item \grau{\ldots\ also alle Grammatiker bitte setzen!}
+        \item \grau{\ldots\ also alle Grammatiker (inkl.\ Chomsky) bitte setzen!}
         \item \grau{Misserfolg | Sie weiß nichts über die Welt,\\
           es wirkt nur so wegen des immensen sprachlichen Inputs.}
         \item \grau{\ldots\ eine Art fancy Papagei.}
