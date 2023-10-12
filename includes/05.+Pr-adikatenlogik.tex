@@ -1,68 +1,132 @@
+\section{Warum Prädikatenlogik?}
 
-\section{Why predicate calculus?}
+\begin{frame}
+  {Kompositionalität}
+  \onslide<+->
+  \onslide<+->
+  Kaum Kompositionalität in der Aussagenlogik\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Kompositionalität beschärnkt auf Ebene des \alert{Satzes\slash der Proposition} (und größer)
+    \item keine Generalisierungen über \alert{Individuen}, \alert{Eigenschaften} und \alert{Quantifikation}
+    \item offensichtlicher Informationsverlust
+      \begin{itemize}[<+->]
+        \item \textit{Martin is an \underline{e}xpert on inversion and Martin is a good \underline{c}limber.}
+        \item wird zu $e\wedge c$
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Weak compositionality in SL}
-\begin{itemize}
-  \item<1-> properties/relations vs. individuals
-  \item<2-> \emph{Martin is an \underline{e}xpert on inversion and Martin is a good \underline{c}limber.}
-  \item<3-> \ldots becomes $E\wedge C$
-  \item<4-> compositionality resticted to level of connected propositional atoms
-\end{itemize}
-}
+\begin{frame}
+  {Erwünschte Schlussfolgerungen}
+  \onslide<+->
+  \onslide<+->
+  Deduktion mit Quantifikation\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item alle, einige\slash mindestens ein, zwei, die meisten, \ldots\ Individuen
+    \item einige zu formalisierende Schlüsse
+      \begin{itemize}[<+->]
+        \item \alert{alle x} haben eine Eigenschaft $\vdash$ \alert{einige x} haben diese Eigenschaft
+        \item \alert{Martin} hat eine Eigenschaft $\vdash$ \alert{mindestens ein x} hat diese Eigenschafgt
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Some desirable deductions}
-\begin{itemize}
-  \item<1-> important generalizations about all and some individuals (which have property P)
-  \item<2-> \emph{`all P $\rightarrow$ some P'}
-  \item<3-> \emph{`Martin P $\rightarrow$ some P'}
-\end{itemize}
-}
+\section{Syntax und Semantik}
 
-\section{The construction of PC}
+\begin{frame}
+  {Syntax von PL | Atome ($\approx$ Lexikon)}
+  \onslide<+->
+  \onslide<+->
+  Atome sind nicht mehr automatisch Wffs.\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item \alert{(Individuen)-Variablen}: $x_1, x_2, y, z, \cdots$ \grau{(Menge V)}
+    \item \alert{(Individuen-)Konstanten}: $a, b, c, \cdots$ \grau{(Menge C)}
+    \item \alert{Terme}: Variablen und Konstanten \grau{($T=V\cup C$)}
+    \item \alert{Prädikatensymbole}: $A, B, C, \cdots$
+      \begin{itemize}[<+->]
+        \item jedes Prädikat mit $n$ Argumenten \grau{($n$-stellige Prädikate)}
+        \item \grau{Mengen $P_1,\ldots,P_n\subset P$}
+      \end{itemize}
+    \item \alert{Quantoren}
+      \begin{itemize}[<+->]
+        \item $\exists$ \textit{es gibt mindestens ein \_\_}
+        \item $\forall$ \textit{für alle \_\_\ gilt}
+      \end{itemize}
+    \item plus alle \alert{Funktoren} der Aussagenlogik
+  \end{itemize}
+\end{frame}
 
-\subsection{Atoms and syntax}
+\begin{frame}
+  {Syntax von PL | Komposition}
+  \onslide<+->
+  \onslide<+->
+  Wffs aus Prädikaten, Termen und Quantoren\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item \alert{$P(t_1,\cdots,t_n)$} ist eine Wff\\
+      wenn \alert{$P\in P_n$} und \alert{$t_1,\cdots,t_n\in T$}
+      \Halbzeile
+    \item \alert{$(\exists x)\phi$} und \alert{$(\forall x)\phi$} sind Wffs\\
+      wenn \alert{$x\in V$} und \alert{$\phi$ eine Wff} ist
+      \Halbzeile
+    \item Wffs lassen sich mit den Funktoren der Aussagenlogik kombinieren
+      \Halbzeile
+    \item Nichts anderes ist eine Wff in PL.\\
+      \grau{Hinweis | Eigentlich ist Wff auch als Menge aller Wffs definiert.}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Atoms of PC}
-\begin{itemize}
-  \item<1-> individual \bl{variables}: $x,y,z,x_1,x_2\ldots$
-  \item<2-> individual \bl{constants}: $a,b,c,\ldots$
-  \item<3-> variables and constants: \bl{terms}
-  \item<4-> \bl{predicate symbols} (taking individual symbols or tuples of them): $A,B,C,\ldots$
-  \item<5-> \bl{quantifiers}: existential $\exists$ (or $\bigvee$) and universal $\forall$ (or $\bigwedge$)
-  \item<6-> plus the connectives of SL
-\end{itemize}
-}
+\begin{frame}
+  {Semantik | Modelle und Individuen}
+  \onslide<+->
+  \onslide<+->
+  \alert{Modell} | Die (Beschreibung der) Welt, relativ zu derer Wffs ausgewertet werden\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item \alert{Model} \Model | enthält \alert{Diskursuniversum} $D$ = Menge aller Individuen
+    \item Beispiel | ${\mathcal M}_1$ enthält $D=\{Martin,Kilroy,Scully\}$
+      \Halbzeile
+    \item \alert{Valuationsfunktion} | $\dem{\cdot}^{\Model}$ enthält eine Funktion in $T\times D$
+      \Viertelzeile
+    \item Beispiel für ein Model \Model\Sub{1}
+      \begin{itemize}[<+->]
+        \item für $m,k,s\in C$ und $Martin, Kilroy, Scully\in D$
+        \item $\dem{m}^{\Model_1}=Martin$
+        \item $\dem{k}^{\Model_1}=Kilroy$
+        \item $\dem{s}^{\Model_1}=Scully$
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Some syntax}
-\begin{itemize}
-  \item<1-> for an $n$-ary predicate P and terms $t_1\ldots t_n$,\\ \bl{$P(t_1\ldots t_n)$} or $Pt_1\ldots t_n$ is a wff.
-  \item<2-> possible prefix, function (bracket) and infix notation:\\ $Pxy$, $P(x,y)$, $xPy$
-  \item<3-> syntax for connectives from SL
-  \item<4-> for any wff $\phi$ and any variable $x$, \bl{$(\exists x)\phi$} and \bl{$(\forall x)\phi$} are wff's
-\end{itemize}
-}
-
-\subsection{Semantics}
-
-\frame{\frametitle{Semantic for individual constants}
-\begin{itemize}
-  \item<1-> \bl{denote} individuals
-  \item<2-> a \bl{model $\mathcal M$} contains a set of individuals $D$
-  \item<3-> the \bl{valuation function $V$} (or F): from constants to individuals in D
-  \item<4-> for some ${\mathcal M}_1$: $D=\{Martin,Kilroy,Scully\}$
-  \item<5-> $V_{{\mathcal M}_1}(m)=Martin$
-  \item<6-> $V_{{\mathcal M}_1}(k)=Kilroy$, $V_{{\mathcal M}_1}(s)=Scully$
-\end{itemize}
-}
-
-\frame{\frametitle{Semantics for predicate symbols}
-\begin{itemize}
-  \item<1-> \bl{denote relations (sets of n-tuples)}
-  \item<2-> $\dem{P}^{{\mathcal M}_1}=\{Martin,Kilroy\}$ or $V_{{\mathcal M}_1}(P)=\{Martin,Kilroy\}$
-  \item<3-> $V_{{\mathcal M}_1}(Q)=\{\langle Martin,Kilroy\rangle, \langle Martin,Scully\rangle, \langle Kilroy,Kilroy\rangle,$\\ $\langle Scully,Scully\rangle\}$
-  \item<4-> s.t. $\llbracket P(m)\rrbracket^{\mathcal{M}_1}=\llbracket P\rrbracket^{\mathcal{M}_1}(\llbracket m)\rrbracket^{\mathcal{M}_1})=1$ iff $\llbracket m\rrbracket^{\mathcal{M}_1}\in\llbracket P\rrbracket^{\mathcal{M}_1}$
-\end{itemize}
-}
+\begin{frame}
+  {Semantik | Prädikate}
+  \onslide<+->
+  \onslide<+->
+  Bedeutung von Prädikaten | \alert{Relationen} (Mengen von Tupeln)\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Erinnerung | n-stellige Relationen als \alert{n-Tupel}, hier Teil des Modells
+      \begin{itemize}[<+->]
+        \item \gruen<10>{\textit{schläft} | $R_1=\{Martin,Kilroy,Biden,\cdots\}$}
+        \item \textit{Staatsoberhaupt von} | $R_2=\{\tuple{Biden,USA},\tuple{Xi,China},\tuple{Carl\ Gustaf,Schweden},\cdots\}$
+        \item \gruen<11>{\textit{jagt} | $R_3=\{\tuple{Kilroy,Martin}, \tuple{Scully,Kilroy}\}$}
+      \end{itemize}
+      \Halbzeile
+    \item Menge $R$ der Relationen \grau{($R^n$ für n-stellige)}
+    \item Semantik eines Prädikats: Relation | $\dem{\cdot}^{\Model}$ enthält eine Funktion in $P\times \{0,1\}$
+    \item \alert{$\dem{P(t_1)}^{\Model}=\dem{P}^{\Model}(\dem{t_1}^{\Model})=1\ iff\ \dem{t_1}^{\Model}\in\dem{P}^{\Model}$}\\
+      \grau{\footnotesize Äquivalente Formulierung mit n-Tupeln für n-stellige Prädikate}
+      \Viertelzeile
+      \begin{itemize}[<+->]
+        \item \gruen<10>{\textit{Martin ($m$) schläft ($R_1$)}: $\dem{R_1(m)}^{\Model_1}=1$ weil $\dem{m}^{\Model_1}=Martin$ und $Martin\in\dem{R_1}^{\Model_1}$}
+        \item \gruen<11>{\textit{Martin ($m$) jagt ($R_3$) Kilroy ($k$)}: $\dem{R_3(m,k)}^{\Model_1}=0$ weil\\
+          $\dem{m}^{\Model_1}=Martin$ und $\dem{k}^{\Model_1}=Kilroy$ und $\tuple{Martin,Kilroy}\not\in\dem{R_3}^{\Model_1}$}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
 \frame{\frametitle{Semantics for connectives and quantifiers}
 \begin{itemize}
@@ -100,7 +164,6 @@
 \end{itemize}
 }
 
-\subsection{More rules}
 
 \frame{\frametitle{Functor/quantifier practice}
 \begin{itemize}
@@ -136,9 +199,7 @@
 \end{itemize}
 }
 
-\section{Laws of PC}
-
-\subsection{Negation and distribution}
+\section{Äquivalenzen}
 
 \frame{\frametitle{Universal $\vee$ and $\wedge$}
 \begin{itemize}
@@ -172,8 +233,6 @@
 \end{itemize}
 }
 
-\subsection{Movement}
-
 \frame{\frametitle{Quantifier movement (QM)}
 \begin{itemize}
   \item<1-> desirable format: \bl{prefix + matrix}
@@ -185,8 +244,6 @@
   \item<5-> i.e.: Watch your variables!
 \end{itemize}
 }
-
-\subsection{Some in-class practice}
 
 \frame{\frametitle{Let's formalize:}
 \begin{itemize}
@@ -202,9 +259,7 @@
  \end{itemize}
 }
 
-\section{Natural deduction in PC}
-
-\subsection{Quantifier elimination}
+\section{Schlussregeln}
 
 \frame{\frametitle{Universal instantiation ($-\forall$) and generalization ($+\forall$)}
 \begin{itemize}
@@ -226,8 +281,6 @@
   \item<6-> hence: \bl{When you apply EI, always use fresh constants!}
 \end{itemize}
 }
-
-\subsection{An example}
 
 \frame{\frametitle{One sample task}
 \begin{itemize}
