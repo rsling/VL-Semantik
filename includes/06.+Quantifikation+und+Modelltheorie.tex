@@ -244,7 +244,7 @@
       ]
     ]
   \end{forest}}\\
-  \visible<4->{\footnotesize\alert{Skopus\slash c-Kommando-Domäne von $\exists x_2$}}\visible<4->{ | \footnotesize\gruen{Skopus\slash c-Kommando-Domäne von $\forall x_1$} (zgl.\ \alert{derer von $\exists x_2$})}\\
+  \visible<2->{\footnotesize\alert{Skopus\slash c-Kommando-Domäne von $\exists x_2$}}\visible<3->{ | \footnotesize\gruen{Skopus\slash c-Kommando-Domäne von $\forall x_1$} (zgl.\ \alert{derer von $\exists x_2$})}\\
 \end{frame}
 
 \section{Modelltheorie}
@@ -381,117 +381,219 @@
   \end{minipage}
 \end{frame}
 
+\section{Quantifikation in natürlicher Sprache}
+
+\begin{frame}
+  {Seltsame Quantoren}
+  \onslide<+->
+  \onslide<+->
+  Wie quantifiziert \textit{meist}?\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Kleineres Problem | $\exists$ sowohl \textit{mindestens ein} als auch \textit{einige}
+      \Halbzeile
+    \item Grundsätzliches Problem | \textit{meist} (und andere)
+      \begin{itemize}[<+->]
+        \item[ ] \textit{Die meisten Patienten sind zufrieden.}
+        \item Potentieller Quantor \alert{$\rotatebox[origin=c]{180}{M}$} | \alert{$\rotatebox[origin=c]{180}{M}xPx\rightarrow Zx$}\\\grau{\footnotesize Für die meisten Objekte gilt, dass sie zufrieden sind, wenn sie Patienten sind.}
+        \item \orongsch{Falsche Interpretation}| Domäne = $\dem{P}^{\Model_1}\{x:x\ ist\ Patient\}$, nicht $D_1$
+      \end{itemize}
+      \Halbzeile
+    \item Korrekte Lösung | \alert{Generalisierte Quantoren} (am Ende des Seminars)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Natürliche Sprache | Ambiger Skopus}
+  \onslide<+->
+  \onslide<+->
+  In PL ist Skopus klar geregelt, in natürlicher Sprache nicht.\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item c-Kommando für Skopus nicht adäquat
+    \item Natürliche Sprache ohne \alert{pränexe Normalform} (PNF), Quantor in situ
+    \item Außerdem \alert{Ambiguität = mehrere Lesarten}
+      \begin{itemize}[<+->]
+        \item \emph{Everybody loves somebody.} (\emph{ELS})
+        \item $\forall{}x_1\exists{}x_2Lx_1x_2$
+        \item $\exists{}x_2\forall{}x_1Lx_1x_2$
+      \end{itemize}
+      \Halbzeile
+    \item Für eine strukturelle Modellierung (c-Kommando) | \alert{LF-Bewegung}
+    \item Beispiele für andere Lösungen, mehr in Montagues lf-Tradition
+      \begin{itemize}[<+->]
+        \item \alert{Cooper Storage} (implementiert in HPSG)
+        \item \alert{Unterspezifikation} (implementiert in HPSG; kognitiv recht plausibel)
+        \item \alert{Hypothetische Beweise} (implementiert in Kategorialgrammatik)
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  {Für eine strukturelle Lösung | LF-Bewegung}
+  \onslide<+->
+  \onslide<+->
+  Relevante syntaktische Erweiterung zu $F_1$ | \alert{Quantifier Raising (QR) Rule}\\
+  \Halbzeile
+  \onslide<+->
+  \centering 
+  {\Large \alert{$[_S\ X\ NP\ Y\ ]\ \Longrightarrow\ [_{S^{\prime}}\ NP_i\ [_S\ X\ t_i\ Y\ ]]$}}\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Phrasenstruktur als Input und Output (= Skopus in Syntax, LF als Syntax)
+    \item Koindizierung und Linksadjunktion an S beide Teil einer Regel
+    \item \grau{Kein wesentlicher Unterschied, falls CP oder IP statt S}
+      \Halbzeile
+    \item Außerdem | \alert{$Det \rightarrow every,\ some$} and \alert{$NP \rightarrow Det\ N^{count}$}
+      \Halbzeile
+    \item Syntax-Problem | Völlig unnötig eine \orongsch{kontextsensitive Regel}
+    \item Semantik-Probleme bei Chierchia
+      \begin{itemize}[<+->]
+        \item Einführung syntaktischer Typen wird skizzenhaft (s.\ Montague)
+        \item Definition zulässiger Modelle unterschlagen (s.\ Montague)
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Semantik für QR mit \textit{every}}
+  \onslide<+->
+  \onslide<+->
+  \centering
+  \alert{\Large $\Dem{\ekm{\ekm{every\ \beta}_i\ S}}{\mMm,g}=1\ iff\ for\ all\ d\in D:$\\
+  $if\ d\in\Dem{\beta}{\mMm,g}\ then\ \Dem{S}{\mMm,g\ekm{u/t_i}}$}\\
+  \onslide<+->
+  \Zeile
+  A sentence containing the trace $t_i$ with an adjoined $NP_i$ (which consists of \emph{every} plus the common noun $\beta$) extend to 1 iff for each individual $d$ in the universe $D$ which is in the set referred to by the common noun $\beta$, $S$ denotes 1 with $d$ assigned to the pronominal trace $t_i$. $g$ is modified iteratively to check that.
+\end{frame}
+
+
+\begin{frame}
+  {Semantik für QR-Regel mit \textit{some}}
+  \onslide<+->
+  \onslide<+->
+  \centering
+  \alert{\Large $\Dem{\ekm{\ekm{a\ \beta}_i\ S}}{\mMm,g}=1\ iff\ for\ some\ u\in U:$\\
+    $u\in\Dem{\beta}{\mMm,g}\ and\ \Dem{S}{\mMm,g\ekm{u/t_i}}$}\\
+  \onslide<+->
+  \Zeile
+  Die Interpretation erfolgt nach ähnlichem Schema.
+\end{frame}
+
+\begin{frame}
+  {Bäume}
+  \onslide<+->
+  \onslide<+->
+  \textit{Martin sends \gruen{all colleagues} \orongsch{some paper}.} in the $\exists\forall$ reading:\\
+  \centering
+  \onslide<+->
+  \Zeile 
+  $\vcenter{\hbox{\scalebox{0.5}{\begin{forest}
+    [$S$
+      [$NP$
+        [$N$
+          [\textit{Martin}]
+        ]
+      ]
+      [$VP$, calign=child, calign child=2
+        [$V_{tr}$
+          [\textit{sends}]
+        ]
+        [$NP$, gruentree
+          [$Det$
+            [\textit{all}]
+          ]
+          [$N$
+            [\textit{colleagues}]
+          ]
+        ]
+        [$NP$, orongschtree
+          [$Det$
+            [\textit{some}]
+          ]
+          [$N$
+            [\textit{paper}]
+          ]
+        ]
+      ]
+    ]
+  \end{forest}}}}$~\only<4->{$\Longrightarrow$}\only<5->{$\Longrightarrow$}~$\vcenter{\hbox{\scalebox{0.5}{%
+    \only<4>{\begin{forest}
+    [$S\Prm$
+      [$NP_i$, gruentree
+        [$Det$
+          [\textit{all}]
+        ]
+        [$N$
+          [\textit{colleagues}]
+        ]
+      ]
+      [$S$
+        [$NP$
+          [$N$
+            [\textit{Martin}]
+          ]
+        ]
+        [$VP$, calign=child, calign child=2
+          [$V_{tr}$
+            [\textit{sends}]
+          ]
+          [$t_1$, gruentree]
+          [$NP$, orongschtree
+            [$Det$
+              [\textit{some}]
+            ]
+            [$N$
+              [\textit{paper}]
+            ]
+          ]
+        ]
+      ]
+    ]
+  \end{forest}}%
+  \only<5->{\begin{forest}
+    [$S\Prm$
+      [$NP$, orongschtree
+        [$Det$
+          [\textit{some}]
+        ]
+        [$N$
+          [\textit{paper}]
+        ]
+      ]
+      [$S\Prm$
+        [$NP_i$, gruentree
+          [$Det$
+            [\textit{all}]
+          ]
+          [$N$
+            [\textit{colleagues}]
+          ]
+        ]
+        [$S$
+          [$NP$
+            [$N$
+              [\textit{Martin}]
+            ]
+          ]
+          [$VP$, calign=child, calign child=2
+            [$V_{tr}$
+              [\textit{sends}]
+            ]
+            [$t_1$, gruentree]
+            [$t_2$, orongschtree]
+          ]
+        ]
+      ]
+    ]
+  \end{forest}}}}}$%
+\end{frame}
+
+\section{Aufgaben}
+
+\begin{frame}
+  {Aufgaben I}
+\end{frame}
+
 \end{document}
-
-\section{Problems with natural language}
-
-\frame{\frametitle{Natural weirdness}
-\begin{itemize}
-  \item<1-> quantifying expressions in NL beyond $\forall$ and $\exists$
-  \item<2-> some seem to work differently:
-  \item<3-> \emph{\bl{All patients} adore Dr. Rick \underline{D}agless M.D.} \\ \bl{$(\forall x_1)Px_1\rightarrow{}Ax_1d$} (ok)
-  \item<4-> but: \emph{\bl{Most patients} adore Dr. Rick \underline{D}agless M.D.}\\ \bl{$(MOST\ x_1)Px_1\rightarrow{}Ax_1d$} (\rot{wrong interpretation})
-  \item<5-> domain should be the set of patients, not individuals
-  \item<6-> For NL: \bl{Assume that the checking domain for Q is the set denoted by CN.}
-\end{itemize}
-}
-
-\frame{\frametitle{Scope ambiguities}
-\begin{itemize}
-  \item<1-> c-command condition on binding/scope fails in NL
-  \item<2-> no PNF's in NL
-  \item<3-> Q and common noun (CN) usually \bl{in-situ} (e.g., argument position) 
-  \item<4-> \bl{ambiguities independent of Q position}
-    \begin{itemize}
-      \item<5-> \emph{Everybody loves somebody.} (\emph{ELS})
-      \item<6-> $(\forall{}x_1)(\exists{}x_2)Lx_1x_2$
-      \item<7-> $(\exists{}x_2)(\forall{}x_1)Lx_1x_2$
-    \end{itemize}
-  \item<8-> \bl{Q ambiguity cannot be structural} (e.g., $\exists$ will never c-command $\forall$)  
-\end{itemize}
-}
-
-\frame{\frametitle{Cases of overt movement and traces}
-\begin{itemize}
-  \item<1-> \bl{wh} movement:
-  \item<1-> \emph{\node{c-1}{What\Sub{i}} will Agent Cooper solve \node{c-2}{t\Sub{i}}?}
-  \item<1->
-  \item<2-> \bl{passive} movement:
-  \item<2-> \emph{\node{c-3}{(Laura Palmer)\Sub{i}} was killed \node{c-4}{t\Sub{i}}.}
-  \item<2->
-  \item<3-> \bl{raising} verbs:
-  \item<3-> \emph{\node{c-5}{(Laura Palmer)\Sub{i}} seems \node{c-6}{t\Sub{i}} to be dead.}
-  \item<3->
-\end{itemize} \anodecurve[b]{c-2}[b]{c-1}{0.8cm}
-              \anodecurve[b]{c-4}[b]{c-3}{0.8cm}
-              \anodecurve[b]{c-6}[b]{c-5}{0.8cm}
-}
-
-\frame{\frametitle{Levels of representation}
-\begin{itemize}
-  \item<1-> construction of an independent representational level LF
-  \item<2-> could use movement mechanism as used at surface level
-  \item<3-> \bl{All quantifiers adjoin to the left periphery of S at LF.}
-  \item<4-> \bl{LF is constructed by syntactic rules!}
-\end{itemize}
-}
-
-\frame{\frametitle{Ambiguities at LF}
-\begin{itemize}
-  \item<1-> \emph{[\Sub{S\Up{$\prime\prime$}} \node{d-1}{\bl{everybody\Sub{i}}} [\Sub{S\Up{$\prime$}} \node{d-3}{\bl{somebody\Sub{j}}} [\Sub{S} \node{d-2}{\bl{t\Sub{i}}} loves \node{d-4}{\bl{t\Sub{j}}} ]]]}
-  \item<1->
-  \item<2-> \emph{[\Sub{S\Up{$\prime\prime$}} \node{d-5}{\bl{somebody\Sub{j}}} [\Sub{S\Up{$\prime$}} \node{d-7}{\bl{everybody\Sub{i}}} [\Sub{S} \node{d-8}{\bl{t\Sub{i}}} loves \node{d-6}{\bl{t\Sub{j}}} ]]]}
-  \item<2->
-\end{itemize} \anodecurve[b]{d-2}[b]{d-1}{0.6cm}
-              \anodecurve[b]{d-4}[b]{d-3}{0.6cm}
-              \anodecurve[b]{d-6}[b]{d-5}{0.6cm}
-              \anodecurve[b]{d-8}[b]{d-7}{0.6cm}
-}
-
-\section{Quantification in English: F2}
-
-\frame{\frametitle{The Q raising rule}
-
-\begin{center}
-  {\Large \bl{$[_S\ X\ NP\ Y\ ]\ \Rightarrow\ [_{S^{\prime}}\ NP_i\ [_S\ X\ t_i\ Y\ ]]$}}
-\end{center}
-
-\begin{itemize}
-  \item<2-> specify a PS as input and output
-  \item<3-> QR rule also introduces coindexing of traces
-\end{itemize}
-}
-
-\frame{\frametitle{Syntax}
-\begin{itemize}
-  \item<1-> copies all definitions from F1
-  \item<2-> adds appropriate definitions of quantifying determiners etc.
-    \begin{itemize}
-      \item<3-> \bl{$Det \rightarrow every,\ some$}
-      \item<4-> $NP \rightarrow Det N_{common-count}$
-    \end{itemize}
-  \item<5-> adds the \bl{QR rule}
-  \item<6-> assume introduction of reasonable syntactic types/rules without specifying
-  \item<7-> assume \bl{admissible (reasonable, possible) models \mM}
-\end{itemize}
-}
-
-\frame{\frametitle{Semantics for QR output: \emph{every}}
-\begin{center}
-\bl{$\Dem{\ekm{\ekm{every\ \beta}_i\ S}}{\mMm,g}=1\ iff\ for\ all\ u\in U:$\\
-    $if\ u\in\Dem{\beta}{\mMm,g}\ then\ \Dem{S}{\mMm,g\ekm{u/t_i}}$ \\
-   }
-\end{center}
-
-A sentence containing the trace $t_i$ with an adjoined $NP_i$ (which consists of \emph{every} plus the common noun $\beta$) extend to 1 iff for each individual $u$ in the universe $U$ which is in the set referred to by the common noun $\beta$, $S$ denotes 1 with $u$ assigned to the pronominal trace $t_i$. $g$ is modified iteratively to check that.
-}
-
-\frame{\frametitle{Semantics for QR output: \emph{some, a}}
-\begin{center}
-\bl{$\Dem{\ekm{\ekm{a\ \beta}_i\ S}}{\mMm,g}=1\ iff\ for\ some\ u\in U:$\\
-    $u\in\Dem{\beta}{\mMm,g}\ and\ \Dem{S}{\mMm,g\ekm{u/t_i}}$ \\
-   }
-\end{center}
-(similar)
-}
-
