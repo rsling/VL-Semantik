@@ -42,13 +42,13 @@
   Atome sind nicht mehr automatisch Wffs.\\
   \Halbzeile
   \begin{itemize}[<+->]
-    \item \alert{(Individuen)-Variablen}: $x_1, x_2, y, z, \cdots$ \grau{(Menge V)}
-    \item \alert{(Individuen-)Konstanten}: $a, b, c, \cdots$ \grau{(Menge C)}
-    \item \alert{Terme}: Variablen und Konstanten \grau{($T=V\cup C$)}
-    \item \alert{Prädikatensymbole}: $A, B, C, \cdots$
+    \item \alert{(Individuen)-Variablen}: $x_1, x_2, y, z, \cdots$ \grau{$\in V$}
+    \item \alert{(Individuen-)Konstanten}: $a, b, c, \cdots$ \grau{$\in C$}
+    \item \alert{Terme}: Variablen und Konstanten \grau{$T=V\cup C$}
+    \item \alert{Prädikatensymbole}: $A, B, C, \cdots \grau{\in P}$
       \begin{itemize}[<+->]
         \item jedes Prädikat mit $n$ Argumenten \grau{($n$-stellige Prädikate)}
-        \item \grau{Mengen $P_1,\ldots,P_n\subset P$}
+        \item \grau{Mengen $P^1,\ldots,P^n\subset P$}
       \end{itemize}
     \item \alert{Quantoren}
       \begin{itemize}[<+->]
@@ -67,7 +67,7 @@
   \Halbzeile
   \begin{itemize}[<+->]
     \item \alert{$P(t_1,\cdots,t_n)$} ist eine Wff\\
-      wenn \alert{$P\in P_n$} und \alert{$t_1,\cdots,t_n\in T$}
+      wenn \alert{$P\in P^n$} und \alert{$t_1,\cdots,t_n\in T$}
       \Halbzeile
     \item \alert{$(\exists x)\phi$} und \alert{$(\forall x)\phi$} sind Wffs\\
       wenn \alert{$x\in V$} und \alert{$\phi$ eine Wff} ist
@@ -135,7 +135,12 @@
   Synkategorematische Ausdrücke | \alert{Modifizieren Bedeutungen}, haben aber keine eigene\\
   \Halbzeile
   \begin{itemize}[<+->]
-    \item \alert{$\neg\phi$}, \alert{$\phi_1\vee\phi_2$}, \alert{$\phi_1\wedge\phi_2$}, \alert{$\phi_1\rightarrow\phi_2$}, \alert{$\phi_1\leftrightarrow\phi_2$} wie in AL
+    \item wie in AL
+      \begin{itemize}[<+->]
+        \item \alert{$\neg\phi$}
+        \item \alert{$\phi_1\vee\phi_2$} und \alert{$\phi_1\wedge\phi_2$}
+        \item \alert{$\phi_1\rightarrow\phi_2$} und \alert{$\phi_1\leftrightarrow\phi_2$}
+      \end{itemize}
       \Halbzeile
     \item Allquantor | \alert{$\dem{(\forall x)\phi}^{\Model}=1$} gdw \alert{$\dem{\phi}^{\Model}=1$} für alle $c\in C$,\\
       eingesetzt anstelle aller Vorkommen von $x$ in $\phi$
@@ -176,6 +181,7 @@
 
 \begin{frame}
   {Details zu Quantoren}
+  \label{slide:quantoren}
   \onslide<+->
   \begin{itemize}[<+->]
     \item Vertauschbarkeit von Quantoren
@@ -333,6 +339,89 @@
 \end{frame}
 
 \begin{frame}
+  {Quantorenbewegung mit Bäumen}
+  \onslide<+->
+  \onslide<+->
+  \centering 
+  $\vcenter{\hbox{\begin{forest}
+    [Wff
+      [Wff, gruentree
+        [\orongsch{$\exists x$}]
+        [Wff
+          [$P(x)$]
+        ]
+      ]
+      [$\rightarrow$]
+      [Wff
+        [$\phi$]
+      ]
+    ]
+  \end{forest}}}$\visible<3->{~\hspace{2em}$\Longrightarrow$\hspace{2em}~%
+  $\vcenter{\hbox{\begin{forest}
+    [Wff, gruentree
+      [\orongsch{$\forall x$}]
+      [Wff
+        [Wff
+          [$P(x)$]
+        ]
+        [$\rightarrow$]
+        [Wff
+          [$\phi$]
+        ]
+      ]
+    ]
+  \end{forest}}}$}\\
+  \Doppelzeile
+  \visible<3->{Bewegung = \gruen{Ausweitung des Skopus}}\\
+  \visible<4->{\grau{\footnotesize Wenn man unbedingt möchte, kann man jetzt von c-Kommando reden.}}
+\end{frame}
+
+\begin{frame}
+  {Quantorenbewegung | Obacht auf die Variablen}
+  \onslide<+->
+  \onslide<+->
+  Was steckt in $\phi$?\\
+  \onslide<+->
+  \Halbzeile
+  \centering 
+  $\vcenter{\hbox{\begin{forest}
+    [Wff
+      [Wff, gruentree
+        [\orongsch{$\exists x$}]
+        [Wff
+          [$P(x)$]
+        ]
+      ]
+      [$\rightarrow$]
+      [Wff, bluetree
+        [\orongsch{$\forall x$}]
+        [$Q(x)$]
+      ]
+    ]
+  \end{forest}}}$\visible<4->{~\hspace{2em}$\Longrightarrow$\hspace{2em}~%
+  $\vcenter{\hbox{\begin{forest}
+    [Wff, gruentree
+      [\orongsch{$\forall x$}]
+      [Wff
+        [Wff
+          [$P(x)$]
+        ]
+        [$\rightarrow$]
+        [Wff, rottree
+          [\orongsch{$\forall x$}]
+          [$Q(x)$]
+        ]
+      ]
+    ]
+  \end{forest}}}$}\\
+  \Doppelzeile
+  \visible<3->{Links | Unabhängig ausgewertete \orongsch{quantifizierte} $x$ mit \gruen{unabhängigem} \blau{Skopus}}\\
+  \visible<4->{Rechts | Problem! Das $x$ im \rot{roten Teilbaum} ist doppelt gebunden.}
+\end{frame}
+
+
+
+\begin{frame}
   {Formalisieren üben}
   \onslide<+->
   \begin{itemize}[<+->]
@@ -367,7 +456,7 @@
         \item Nur, wenn $a$ durch $-\forall$ eingeführt wurde!
       \end{itemize}
       \Halbzeile
-    \item Beispiel\\
+    \item Beispiel \ldots\ \alert{Substanzielles wird an Individuen bewiesen.}\\
       \onslide<+->
       \Viertelzeile
       \rule{4em}{0em}\scalebox{0.7}{%
@@ -443,7 +532,6 @@
   \onslide<+->
   \centering 
   \scalebox{0.8}{\begin{tabular}[h]{rlll}
-    &                                                   &                     & \\
     1 & $G(k)$                                          &                     & \textit{\grau{\scriptsize Herr \underline{K}eydana fährt einen \underline{G}olf.}}\\
     2 & $(\forall x)[(G(x)\rightarrow M(x)\vee A(x)]$   &                     & \textit{\grau{\scriptsize Alles, was einen Golf fährt, ist entweder ein \underline{M}ensch oder eine \underline{A}I.}}\\
     3 & $\neg(\exists y)[A(y)\wedge G(y)]$              & $\vdash(\exists z)M(z)$   & \textit{\grau{\scriptsize Es gibt keine AI, die einen Golf fährt.}} $\vdash$ \textit{\grau{\scriptsize Es gibt mindestens einen Menschen.}}\\
@@ -466,12 +554,17 @@
   {Aufgaben I | Quantorennegation}
   \onslide<+->
   \onslide<+->
-  Treffen die folgenden Behauptungen zu?\\
-  \Halbzeile
   \begin{enumerate}
-    \item $\forall x \neg(P(x)\leftrightarrow Q(x))\equiv\neg\exists x\neg(P(x)\leftrightarrow Q(x))$
-    \item $\neg\neg\forall x(R(x)\vee\neg\neg S(x))\equiv\neg\exists x\neg (R(x)\vee S(x))$
-    \item $\exists x (P(x)\wedge P(x))\equiv\neg\forall x\neg P(x)$
+    \item Treffen die folgenden Behauptungen zu?\\
+      \Halbzeile
+      \begin{enumerate}
+        \item $\forall x \neg(P(x)\leftrightarrow Q(x))\equiv\neg\exists x\neg(P(x)\leftrightarrow Q(x))$
+        \item $\neg\neg\forall x(R(x)\vee\neg\neg S(x))\equiv\neg\exists x\neg (R(x)\vee S(x))$
+        \item $\exists x (P(x)\wedge P(x))\equiv\neg\forall x\neg P(x)$
+      \end{enumerate}
+      \Zeile
+    \item Versuchen Sie, intuitiv zu formulieren, warum die auf Folie~\ref{slide:quantoren} besprochene Einschränkung bei der Quantorenvertauschung besteht.
+      Gemeint ist: $\orongsch{(\forall x)(\exists y)}\phi\ \rot{\not\vdash}\ \orongsch{(\exists y)(\forall x)}\phi$
   \end{enumerate}
 \end{frame}
 
@@ -479,9 +572,9 @@
   {Aufgaben II | Natürliche Deduktion}
   \onslide<+->
   \begin{enumerate}
-    \item Alle L\"ugner sind unglaubw\"urdig. Einige L\"ugner sind Zugschaffner. \alert{Zeigen/Widerlegen Sie: Einige Zugschaffner sind unglaubw\"urdig.}
-    \item Alle Flugzeuge sind Automaten. Einige Automaten sind besorgniserregend. \alert{Zeigen/Widerlegen Sie: Einige Flugzeuge sind besorgniserregend.}
-    \item Kein K\"aufer wird betrogen. Einige K\"aufer sind auch H\"andler. \alert{Zeigen/Widerlegen Sie: Einige H\"andler werden nicht betrogen.}
+    \item Alle L\"ugner sind unglaubw\"urdig. Einige L\"ugner sind Zugschaffner.\\ \alert{Zeigen/Widerlegen Sie: Einige Zugschaffner sind unglaubw\"urdig.}
+    \item Alle Flugzeuge sind Automaten. Einige Automaten sind besorgniserregend.\\ \alert{Zeigen/Widerlegen Sie: Einige Flugzeuge sind besorgniserregend.}
+    \item Kein K\"aufer wird betrogen. Einige K\"aufer sind auch H\"andler.\\ \alert{Zeigen/Widerlegen Sie: Einige H\"andler werden nicht betrogen.}
 \end{enumerate}
  
 \end{frame}

@@ -77,8 +77,8 @@
         \item[ ] \alert{Klassiker Quantorenskopus}
         \item[ ] \textit{Everybody loves somebody.}
           \Viertelzeile
-        \item[A] Für alle Personen y gilt, dass es eine Person x gibt, für die gilt: y liebt x \grau{($\forall y\exists x.L(y,x)$)}
-        \item[B] Es gibt eine Person x, sodass für alle Personen y gilt: y liebt x \grau{($\exists x\forall y.L(y,x)$)}
+        \item[A] Für alle Personen y gilt, dass es eine Person x gibt, für die gilt: y liebt x \grau{| $(\forall y)(\exists x)L(y,x)$}
+        \item[B] Es gibt eine Person x, sodass für alle Personen y gilt: y liebt x \grau{| ($\exists x)(\forall y)L(y,x)$}
       \end{itemize}
   \end{itemize}
 \end{frame}
@@ -362,7 +362,7 @@
   Wahrheitswerte sind nur \alert{\textit{wahr}} und \alert{\textit{falsch}}.\\
   \Halbzeile
   \onslide<+->
-  Die Verben \alert{\textit{denotieren}} und \textit{\alert{referieren auf}} sind hier synonym.\\
+  Die Verben \alert{\textit{denotieren}} und \textit{\alert{referieren auf}} sind hier erst einmal synonym.\\
   \Doppelzeile
   \onslide<+->
   Warten Sie bitte ein paar Wochen, wenn Sie diese Darstellung reduktionistisch finden.
@@ -435,6 +435,9 @@
     \item[A] \textit{Lauren Bacall was a brunette lady.}
     \item[B] \textit{My humming bird's favourite flower is red.} 
   \end{itemize}
+  \Doppelzeile
+  \centering \alert{\Large Diese Sätze haben außer ihrem Wahrheitswert\\
+  semantisch nichts gemein!}
 \end{frame}
 
 \begin{frame}
@@ -450,7 +453,7 @@
     \item[{[\Sub{T}B]}] \alert{\textit{The truth value of `\orongsch{My humming bird's favourite flower is red.}' is 1.}}
       \Halbzeile
     \item[ ] Da aus $A$ $[_T A]$ folgt und umgekehrt: \gruen{$A\equiv[\Sub{T}A]$} und \gruen{$B\equiv[\Sub{T}B]$}
-    \item[ ] mit Ax1 \gruen{$\den{A}=\den{[\Sub{T}A]}$} und \gruen{$\den{B}=\den{[\Sub{T}B]}$}
+    \item[ ] und daher mit Ax1 \gruen{$\den{A}=\den{[\Sub{T}A]}$} und \gruen{$\den{B}=\den{[\Sub{T}B]}$}
       \Halbzeile
     \item[ ] Bitte bedenken: $A$ und $[\Sub{T}A]$ haben auch intuitiv "`denselben Inhalt"'.
   \end{itemize}
@@ -560,10 +563,10 @@
     \item $\llbracket$Herr Webelhuth$\rrbracket$ = Herr Webelhuth \label{lexint01}
     \item $\llbracket$Frau Klenk$\rrbracket$ = Frau Klenk \label{lexint02}
     \item $\llbracket$the Turm-Mensa$\rrbracket$ = the Turm-Mensa \label{lexint03}
-    \item $\llbracket$is relaxed$\rrbracket$ = \{x:x is relaxed\} \label{lexint04}
-    \item $\llbracket$is creative$\rrbracket$ = \{x:x is creative\} \label{lexint05}
-    \item $\llbracket$is stupid$\rrbracket$ = \{x:x is stupid\} \label{lexint06}
-    \item $\llbracket$prefers$\rrbracket$ = \{$\langle$x,y$\rangle$: x prefers y\} \label{lexint07}
+    \item $\llbracket$is relaxed$\rrbracket$ = $\{x:x\ is\ relaxed\}$ \label{lexint04}
+    \item $\llbracket$is creative$\rrbracket$ = $\{x:x\ is\ creative\}$ \label{lexint05}
+    \item $\llbracket$is stupid$\rrbracket$ = $\{x:x\ is\ stupid\}$ \label{lexint06}
+    \item $\llbracket$prefers$\rrbracket$ = $\{\langle x,y\rangle: x\ prefers\ y\}$ \label{lexint07}
   \end{itemize}
 \end{frame}
 
@@ -600,10 +603,10 @@
 \begin{frame}
   {T-Sätze für F\Sub{1}}
   \begin{itemize}[<+->]
-    \item \den{\alert{[\Sub{S}{ }N{ }VP]}} = 1 iff \den{N} $\in$ \den{VP}, else 0 \label{t01}
-    \item \den{\alert{[\Sub{S} S1 conj S2]}} = \den{conj} ($\langle$\den{S1},\den{S2}$\rangle$) \label{t02}
-    \item \den{\alert{[\Sub{S} neg S]}} = \den{neg} (\den{S}) \label{t03}
-    \item \den{\alert{[\Sub{VP} V\Sub{t} N]}} = \{x: $\langle$x, \den{N} $\rangle$ $\in$ \den{V\Sub{t}}\} \label{t04}
+    \item \den{\alert{[\Sub{S}{ }N{ }VP]}} = 1 iff $\den{N}\in\den{VP}$, else $0$ \label{t01}
+    \item \den{\alert{[\Sub{S} S1 conj S2]}} = $\den{conj}(\langle\den{S1},\den{S2}\rangle)$ \label{t02}
+    \item \den{\alert{[\Sub{S} neg S]}} = $\den{neg}(\den{S})$ \label{t03}
+    \item \den{\alert{[\Sub{VP} V\Sub{t} N]}} = $\{x:\langle x,\den{N}\rangle\in\den{V\Sub{t}}\}$ \label{t04}
       \Halbzeile
     \item für einen nicht verzweigenden Knoten K und seine Tochter D: $\dem{[\Sub{K} D]}=\dem{D}$ \label{t05}
       \Halbzeile
@@ -644,11 +647,11 @@
   {Semantik | Referenz der Teile und ihrer Bedeutung}
   \onslide<+->
   \onslide<+->
-  \alert{v} (Sachverhalt) | Herr Webelhuth (das ontologische Objekt) $\in$\{x: x is relaxed\}\\
+  \alert{v} (Sachverhalt) | Herr Webelhuth (das ontologische Objekt) $\in\{x: x\ is\ relaxed\}$\\
   \Halbzeile
   \begin{itemize}[<+->]
     \item für N: \den{\textit{Herr Webelhuth}} = Herr Webelhuth (das ontologische Objekt)
-    \item für VP (und V\Sub{i}): \den{\textit{is relaxed}} = \{x: x is relaxed\} (enthält Herrn Webelhuth)
+    \item für VP (und V\Sub{i}): \den{\textit{is relaxed}} = $\{x:x\ is\ relaxed\}$ (enthält Herrn Webelhuth)
     \item für S: \den{[\Sub{S}{ }N{ }VP]} = 1 iff \den{N} $\in$ \den{VP}, else 0
       \Halbzeile
     \item in v daher \gruen{\den{[\Sub{S} \textit{Herr Webelhuth is relaxed.}]}=1}
@@ -890,17 +893,16 @@
   \onslide<+->
   \small Entwickeln Sie ein ähnliches Fragment D\Sub{1} für das Deutsche mit Lexikon, Syntax und Semantik\\
   das die folgenden Sätze generiert. Lexikon und Konstituentenstruktur können Sie frei wählen.\\
-  \grau{\scriptsize Es hat einen guten Grund, dass wir Englisch als Objektsprache nehmen. Sie können für dieses\\
+  \Halbzeile
+  \grau{\scriptsize Es hat einen guten Grund, dass wir oft Englisch als Objektsprache nehmen. Sie können für dieses\\
   Fragment des Deutschen Kasus entweder ignorieren, oder Sie probieren, Kasusunterschiede zu modellieren.}\\
   \onslide<+->
   \Halbzeile
-  Lexikon von D\Sub{1}:
   \begin{itemize}[<+->]
     \item Herr Müller ist Aktivist.
     \item Frau Klann ist intelligent.
     \item Frau Klann begrüßt Herrn Müller.
     \item Frau Klann hustet.
-    \item Wolken sind zahlreich.\\
-      \orongsch{(Dieser Satz ist die Extra-Callenge. Bitte zuerst den Rest modellieren.)}
+    \item Frau Klann schreibt ein gutes Buch.
   \end{itemize}
 \end{frame}

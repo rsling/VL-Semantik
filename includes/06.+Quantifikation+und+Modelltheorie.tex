@@ -1,448 +1,390 @@
-\section{From PC to F1}
-\subsection{Taking stock}
+\section{Von Prädikatenlogik zu natürlicher Sprache}
 
-\frame{\frametitle{Back to semantics: F1}
-\begin{itemize}
-  \item<1-> before we turn to quantification in F1/F2 English:
-  \item<2-> names refer to individuals
-  \item<3-> itr. verbs refer to sets of individuals
-  \item<4-> tr. verbs refer to sets of ordered pairs of individuals
-  \item<5-> sentences refer to truth values
-\end{itemize}
-}
+\begin{frame}
+  {Zur Erinnerung}
+  \onslide<+->
+  \onslide<+->
+  Semantik von Fragment F1\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Namen referieren auf \alert{spezifische Individuen}
+    \item intransitive Verben referieren auf \alert{Mengen von Individuen}
+    \item mehrstellige Verben referieren auf Mengen von \alert{Tupeln von Individuen}
+    \item Sätze referieren auf \alert{Wahrheitswerte}!
+      \Halbzeile
+    \item F2 | Integration von Erkenntnissen aus Prädikatenlogik
+  \end{itemize}
+  \onslide<+->
+  \Zeile
+  \centering 
+  Alles Wesentliche dieser Sitzung in \citet[Kapitel~3]{ChierchiaMcconnellginet2000}
+\end{frame}
 
-\subsection{Pronouns and context}
-\frame{\frametitle{Reference of pronouns}
-\begin{itemize}
-  \item<1-> \emph{\textbf{This} drives a Golf.}
-  \item<2-> \emph{this} = a pronominal NP
-  \item<3-> denotes an \bl{individual}
-  \item<4-> but \bl{not rigidly}
-  \item<5-> fixed only within a specific context (SOA)
-\end{itemize}
-}
+\begin{frame}
+  {Das Problem mit Pronomina}
+  \onslide<+->
+  \onslide<+->
+  Wie situationsabhängige Namen\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item[ ] \textit{\alert{This} is red.}
+    \item Pronomen \alert{\textit{this}} | syntaktisch eine NP
+    \item \ldots\ und referiert auf \alert{ein spezifisches Objekt} (wie Namen)\\
+      \grau{\footnotesize keine Quantifikation bzw. Mengenreferenz}
+      \Halbzeile
+    \item Aber \orongsch{nur in gegebener Situation interpretierbar}\\
+      \grau{\footnotesize Deixis, im Text auch Anaphorik}
+    \item Kein Äquivalent in klassischer Logik
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Pronouns and variables}
-\begin{itemize}
-  \item<1-> quantified expression: $(\forall x)Px$
-  \item<2-> \emph{for all assignments of `this', `this' has property P}
-  \item<3-> Q evaluation in PC is algorithmic
-  \item<4-> \bl{variables interpreted like definite pronominal NPs} (within a fixed context)
-\end{itemize}
-}
+\begin{frame}
+  {Pronomina und Variablen}
+  \onslide<+->
+  \onslide<+->
+  Ähnlichkeit von Variablen und Pronominalausdrücken\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Rumpf einer quantifizierten Wff | Wff $P(x)$ aus Wff $(\forall x)Px$
+    \item Ungebundenes $x$ in $P(x)$ \alert{ähnlich wie Pronominalbedeutung}\\
+      \grau{\footnotesize Externe Interpretationsvorschrift erforderlich}
+    \Halbzeile
+  \item Quantoren | Auswertungsalgorithmus\\
+    \grau{\footnotesize Für alle möglichen belegungen von $x$, $P(x)$}
+  \item Pronomina | Kontextuelle Auswertung\\
+    \grau{\footnotesize Belegung für $x$ im gegebenen Kontext}
+  \end{itemize}
+\end{frame}
 
-\subsection{Phrase structure version of PC}
-\frame{\frametitle{Categories and lexicon}
-\begin{itemize}
-  \item<1-> \emph{a} $\rightarrow$ const, var
-  \item<2-> conn $\rightarrow$ $\wedge,\vee,\rightarrow,\leftrightarrow$
-  \item<3-> neg $\rightarrow$ $\neg$
-  \item<4-> Q  $\rightarrow$ $\exists, \forall$
-\end{itemize}
-}
+\begin{frame}
+  {Prädikatenlogik | Syntax}
+  \onslide<+->
+  \onslide<+->
+  Als Vorüberlegung | Prädikatenlogik als \alert{Phrasenstrukturgrammatik}\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item[ ] $a\ \rightarrow\ const, var$ \grau{| Individuenausdrücke}
+    \item[ ] $conn\ \rightarrow\ \wedge,\vee,\rightarrow,\leftrightarrow$ \grau{| Funktoren}
+    \item[ ] $neg\ \rightarrow\ \neg$ \grau{| Negation}
+    \item[ ] $Q\ \rightarrow\ \exists,\forall$ \grau{| nur zwei Quantoren}
+    \item[ ] $pred^1\ \rightarrow\ P, Q$ \grau{| einstellige Prädikate}
+    \item[ ] $pred^2\ \rightarrow\ R$ \grau{| zweistellige Prädikate}
+    \item[ ] $pred^3\ \rightarrow\ S$ \grau{| dreistellige Prädikate}
+    \item[ ] $const\ \rightarrow\ b, c$ \grau{| nur zwei Individenkonstanten}
+    \item[ ] $var\ \rightarrow\ x_1,x_2,\cdots x_n$ \grau{| beliebig viele Variablen}
+      \Halbzeile
+    \item \grau{Die Formalisierung ist äquivalent zur mengenbasierten von letzter Woche!}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Categories and lexicon}
-\begin{itemize}
-  \item<1-> pred\Sub{1} $\rightarrow$ P, Q
-  \item<2-> pred\Sub{2} $\rightarrow$ R
-  \item<3-> pred\Sub{3} $\rightarrow$ S
-  \item<4-> const $\rightarrow$ b, c
-  \item<5-> var $\rightarrow$ x\Sub{1}, x\Sub{2}, \ldots, x\Sub{n}
-\end{itemize}
-}
+\begin{frame}
+  {Prädikatenlogik | PS-Regeln}
+  \onslide<+->
+  \onslide<+->
+  Wir nehmen eine \alert{Prädikatsnotation ohne Klammern} | $Px$ statt $P(x)$ usw.\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item $wff\rightarrow pred^1\ a_1\ldots\ a_n$ \grau{| n-stellige Prädikate und ihre Argumente}
+    \item $wff\rightarrow neg\ wff$ \grau{| Applikation von Negation auf Wffs}
+    \item $wff\rightarrow wff\ conn\ wff$ \grau{| Applikation von anderen Funktoren auf Wffs}
+    \item $wff\rightarrow Q\ var\ wff$ \grau{| Quantifikation}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Phrase structure}
-\begin{itemize}
-  \item<1-> wff $\rightarrow$ pred\Sub{n} a\Sub{1} a\Sub{2} \ldots a\Sub{n}
-  \item<2-> wff $\rightarrow$ neg wff
-  \item<3-> wff $\rightarrow$ wff con wff
-  \item<4-> wff $\rightarrow$ (Q var) wff
-\end{itemize}
-}
+\begin{frame}
+  {Eine Wff ohne Quantoren}
+  \onslide<+->
+  \onslide<+->
+  Zum Beispiel: \textit{Ben ($b$) paddelt ($P$) und ($\wedge$) Ben rudert ($R$) nicht ($\neg$) mit Chris ($c$).}\\
+  In PL: \alert{$Pb\wedge\neg Rbc$}\\
+  \onslide<+->
+  \Zeile
+  \centering
+  \scalebox{0.8}{\begin{forest}
+    [$wff$, calign=child, calign child=2
+      [$wff$
+        [$pred^1$
+          [$P$]
+        ]
+        [$a$
+          [$const$
+            [$b$]
+          ]
+        ]
+      ]
+      [$conn$
+        [$\wedge$]
+      ]
+      [$wff$
+        [$\neg$]
+        [$wff$, calign=child, calign child=2
+          [$pred^2$
+            [$R$]
+          ]
+          [$a$
+            [$const$
+              [$b$]
+            ]
+          ]
+          [$a$
+            [$const$
+              [$c$]
+            ]
+          ]
+        ]
+      ]
+    ]
+  \end{forest}}
+\end{frame}
 
-\subsection{Trees}
-\frame{\frametitle{A wff without Q}
- 
-\begin{center}
-{\small
-   \begin{bundle}
-    {wff}\setlength\GapDepth{2ex}\setlength\GapWidth{3em}
-    \chunk{\begin{bundle}
-             {wff}
-             \chunk{\begin{bundle}
-                      {pred\Sub{1}}
-                      \chunk{P}
-                    \end{bundle}
-                   }
-             \chunk{\begin{bundle}
-                     {a}
-                     \chunk{
-                            \begin{bundle}
-                              {var}
-                              \chunk{b}
-                            \end{bundle}
-                           }
-                    \end{bundle}
-                   }
-           \end{bundle}
-          }
-    \chunk{\begin{bundle}
-            {conn}
-            \chunk{$\wedge$}
-           \end{bundle}
-          }
-    \chunk{\begin{bundle}
-             {wff}
-             \chunk{\begin{bundle}
-                     {neg}
-                     \chunk{$\neg$}
-                    \end{bundle}
-                   }
-            \chunk{\begin{bundle}
-                    {wff}
-                    \chunk{\begin{bundle}
-                             {wff}
-                             \chunk{\begin{bundle}
-                                     {pred\Sub{2}}
-                                     \chunk{R}
-                                    \end{bundle} 
-                                   }
-                             \chunk{\begin{bundle}
-                                     {a}
-                                     \chunk{\begin{bundle}
-                                              {const}
-                                              \chunk{b}
-                                            \end{bundle}
-                                           }
-                                    \end{bundle} 
-                                   }
-                             \chunk{\begin{bundle}
-                                     {a}
-                                     \chunk{\begin{bundle}
-                                              {const}
-                                              \chunk{c}
-                                            \end{bundle}
-                                           }
-                                    \end{bundle} 
-                                   }
-                           \end{bundle}
-                          }
-                   \end{bundle}
-                  }      
-           \end{bundle}
-          }
-  \end{bundle}
- }
-\end{center}
-}
+\begin{frame}
+  {Eine Wff mit Quantoren}
+  \onslide<+->
+  \onslide<+->
+  Zum Beispiel: \textit{Als Paddler hat man immer jemanden, mit dem man nicht rudert.}\\
+  In PL: \alert{$\forall x_1[Px_1\rightarrow\exists x_2\neg Px_1x_2]$}\\
+  \onslide<+->
+  \Halbzeile
+  \centering
+  \scalebox{0.7}{\begin{forest}
+    [$wff$
+      [$Q\ var$
+        [$\forall x_1$]
+      ]
+      [$wff$, calign=child, calign child=2
+        [$wff$
+          [$pred^1$
+            [$P$]
+          ]
+          [$a$
+            [$var$
+              [$x_1$]
+            ]
+          ]
+        ]
+        [$conn$
+          [$\rightarrow$]
+        ]
+        [$wff$
+          [$Q\ var$
+            [$\exists x_2$]
+          ]
+          [$wff$
+            [$\neg$]
+            [$wff$, calign=child, calign child=2
+              [$pred^2$
+                [$R$]
+              ]
+              [$a$
+                [$const$
+                  [$x_1$]
+                ]
+              ]
+              [$a$
+                [$const$
+                  [$x_2$]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  \end{forest}}
+\end{frame}
 
-\frame{\frametitle{A wff with Q's}
-\begin{center}
-{\small
- \begin{bundle}
-  {wff}\setlength\GapDepth{1.4ex}\setlength\GapWidth{1.5em}
-  \chunk{\begin{bundle}
-           {(Q var)}
-           \chunk{$\forall$ x\Sub{1}}
-         \end{bundle}
-        }
-  \chunk{
-  \begin{bundle}
-    {wff}
-    \chunk{\begin{bundle}
-             {wff}
-             \chunk{\begin{bundle}
-                      {pred\Sub{1}}
-                      \chunk{P}
-                    \end{bundle}
-                   }
-             \chunk{\begin{bundle}
-                     {a}
-                     \chunk{
-                            \begin{bundle}
-                              {const}
-                              \chunk{x\Sub{1}}
-                            \end{bundle}
-                           }
-                    \end{bundle}
-                   }
-           \end{bundle}
-          }
-    \chunk{\begin{bundle}
-            {conn}
-            \chunk{$\rightarrow$}
-           \end{bundle}
-          }
-    \chunk{\begin{bundle}
-             {wff}
-             \chunk{\begin{bundle}
-                      {(Q var)}
-                      \chunk{$\exists x_2$}
-                    \end{bundle}
-                   }
-             \chunk{      
-               \begin{bundle}
-                 {wff}
-                 \chunk{\begin{bundle}
-                         {neg}
-                         \chunk{$\neg$}
-                        \end{bundle}
-                   }
-                \chunk{\begin{bundle}
-                        {wff}
-                        \chunk{\begin{bundle}
-                                 {wff}
-                                 \chunk{\begin{bundle}
-                                         {pred\Sub{2}}
-                                         \chunk{R}
-                                        \end{bundle} 
-                                       }
-                                 \chunk{\begin{bundle}
-                                         {a}
-                                         \chunk{\begin{bundle}
-                                                  {var}
-                                                  \chunk{x\Sub{1}}
-                                                \end{bundle}
-                                               }
-                                        \end{bundle} 
-                                       }
-                                 \chunk{\begin{bundle}
-                                         {a}
-                                         \chunk{\begin{bundle}
-                                                  {var}
-                                                  \chunk{x\Sub{2}}
-                                                \end{bundle}
-                                               }
-                                        \end{bundle} 
-                                       }
-                               \end{bundle}
-                              }
-                       \end{bundle}
-                      }      
-               \end{bundle}
-                      }
-            \end{bundle}           
-          }
-  \end{bundle}
-  }
-  \end{bundle}
-  }
-\end{center}
-}
+\begin{frame}
+  {Skopus und c-Kommando}
+  Skopus in konfigurationaler Logik-Syntax: \alert{c-Kommando}\\
+  Variablen als \alert{gebunden vom nächsten c-kommandierenden koindizierten Quantor}\\
+  \Halbzeile
+  \centering
+  \scalebox{0.6}{\begin{forest}
+    [$wff$
+      [$Q\ var$
+        [$\forall x_1$]
+      ]
+      [$wff$, calign=child, calign child=2, gruentree
+        [$wff$
+          [$pred^1$
+            [$P$]
+          ]
+          [$a$
+            [$var$
+              [$x_1$]
+            ]
+          ]
+        ]
+        [$conn$
+          [$\rightarrow$]
+        ]
+        [$wff$
+          [$Q\ var$
+            [$\exists x_2$]
+          ]
+          [$wff$, bluetree
+            [$\neg$]
+            [$wff$, calign=child, calign child=2
+              [$pred^2$
+                [$R$]
+              ]
+              [$a$
+                [$const$
+                  [$x_1$]
+                ]
+              ]
+              [$a$
+                [$const$
+                  [$x_2$]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  \end{forest}}\\
+  \visible<4->{\footnotesize\alert{Skopus\slash c-Kommando-Domäne von $\exists x_2$}}\visible<4->{ | \footnotesize\gruen{Skopus\slash c-Kommando-Domäne von $\forall x_1$} (zgl.\ \alert{derer von $\exists x_2$})}\\
+\end{frame}
 
-\subsection{C-command}
-\frame{\frametitle{Definition of c-command}
-\begin{itemize}
-  \item<1->Node A \bl{c-commands} (constituent-commands) node B iff
-    \begin{itemize}
-      \item<2-> \bl{A does not dominate B} and
-      \item<3-> and \bl{the first branching node dominating A also dominates B}.
-    \end{itemize}
-  \item<4-> The definition in CM allows a node to dominate itself.
-\end{itemize}
-}
+\section{Modelltheorie}
 
-\frame{\frametitle{Configurational binding}
-\begin{itemize}
-  \item<1-> in configurational tree-structures:
-  \item<2-> \bl{A variables is bound by the closest c-commanding coindexed quantifier.}
-  \item<3-> scope = binding domain
-\end{itemize}
-}
+\begin{frame}
+  {Semantik für PL in Vorbereitung auf natürliche Sprache}
+  \onslide<+->
+  \onslide<+->
+  Ziel (zur Erinnerung) | T-Sätze der Form \textit{S aus L ist wahr in v gdw \ldots}\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item \alert{Modell $\Model$} | zugängliches Diskursuniversum (bzw.\ dessen Beschreibung)
+    \item \alert{Menge $D_n$} | Zugängliche Individuen (\textit{domain}) in $\Model_n$
+    \item \alert{Funktion $V_n$} | Valuation -- Zuweisung von
+      \begin{itemize}[<+->]
+        \item Namen zu Individuen in $\Model_n$
+        \item Predikaten zu Tupeln von Individuen
+      \end{itemize}
+    \item \alert{$\Model_n=\tuple{D_n,V_n}$}
+      \Halbzeile
+    \item \alert{Funktion $g_n$} | Zuweisung von Variablen zu Individuen in $\Model_n$ 
+      \Halbzeile
+    \item Allgemeine Evaluation in $\Model_n$ | $\dem{\alpha}^{\Model_n,g_n}$\\
+      \grau{Lies: \textit{Die Extension von Ausdruck $\alpha$ relativ zu $\Model_n$ und $g_n$}}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{A wff with Q's}
- 
-\begin{center}
-{\small
- \begin{bundle}
-  {\node{a-2}{wff}}\setlength\GapDepth{1.4ex}\setlength\GapWidth{1.5em}
-  \chunk{\begin{bundle}
-           {(Q var)}
-           \chunk{\node{a-1}{$\forall$ x\Sub{1}}}
-         \end{bundle}
-        }
-  \chunk{
-  \begin{bundle}
-    {\node{a-3}{wff}}
-    \chunk{\begin{bundle}
-             {\node{a-4}{wff}}
-             \chunk{\begin{bundle}
-                      {pred\Sub{1}}
-                      \chunk{P}
-                    \end{bundle}
-                   }
-             \chunk{\begin{bundle}
-                     {\node{a-5}{a}}
-                     \chunk{
-                            \begin{bundle}
-                              {const}
-                              \chunk{\node{a-6}{x\Sub{1}}}
-                            \end{bundle}
-                           }
-                    \end{bundle}
-                   }
-           \end{bundle}
-          }
-    \chunk{\begin{bundle}
-            {conn}
-            \chunk{$\rightarrow$}
-           \end{bundle}
-          }
-    \chunk{\begin{bundle}
-             {\node{a-8}{wff}}
-             \chunk{\begin{bundle}
-                      {(Q var)}
-                      \chunk{\node{a-7}{$\exists x_2$}}
-                    \end{bundle}
-                   }
-             \chunk{      
-               \begin{bundle}
-                 {wff}
-                 \chunk{\begin{bundle}
-                         {neg}
-                         \chunk{$\neg$}
-                        \end{bundle}
-                   }
-                \chunk{\begin{bundle}
-                        {wff}
-                        \chunk{\begin{bundle}
-                                 {wff}
-                                 \chunk{\begin{bundle}
-                                         {pred\Sub{2}}
-                                         \chunk{R}
-                                        \end{bundle} 
-                                       }
-                                 \chunk{\begin{bundle}
-                                         {a}
-                                         \chunk{\begin{bundle}
-                                                  {var}
-                                                  \chunk{\node{a-9}{x\Sub{1}}}
-                                                \end{bundle}
-                                               }
-                                        \end{bundle} 
-                                       }
-                                 \chunk{\begin{bundle}
-                                         {a}
-                                         \chunk{\begin{bundle}
-                                                  {var}
-                                                  \chunk{\node{a-10}{x\Sub{2}}}
-                                                \end{bundle}
-                                               }
-                                        \end{bundle} 
-                                       }
-                               \end{bundle}
-                              }
-                       \end{bundle}
-                      }      
-               \end{bundle}
-                      }
-            \end{bundle}           
-          }
-  \end{bundle}
-  }
-  \end{bundle}
-  } {\makedash{2pt}
-     \anodecurve[t]{a-1}[l]{a-2}{1cm}
-     \anodecurve[b]{a-2}[t]{a-6}{1cm}
-     \anodecurve[b]{a-2}[t]{a-9}{1cm}
-     \anodecurve[t]{a-7}[l]{a-8}{1cm}
-     \anodecurve[b]{a-8}[t]{a-10}{1cm}
-    }
-\end{center}
-}
+\begin{frame}
+  {Unterschied zwischen $V_n$ und $g_n$}
+  \onslide<+->
+  \onslide<+->
+  Feste und variable Denotation\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item $V_n$ evaluiert \alert{statisch} im Modell.\\
+      \grau{\footnotesize Wenn das Modell einmal feststeht, evaluiert $V_n$ jede Konstante stets gleich.}
+      \Halbzeile
+    \item Variablen (gebunden durch Quantoren) werden \alert{volatil interpretiert}.\\
+    \item \alert{Iteration} durch Universum $D_n$ durch $g_n$
+    \item Eine Modifikation der Belegung pro Iteration
+      \begin{itemize}[<+->]
+        \item Modifizierte \textit{assignment function} \alert{$g_n[d_i/x_m]$}\\
+          Lies: \textit{relativ zu $g_n$, wobei die Referenz von Variable $x_m$ auf Individuum $d_i$ gesetzt wird}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-\section{Model theory}
-\subsection{Models and valuations}
-\frame{\frametitle{Refinement of PC semantics}
-\begin{itemize}
-  \item<1-> \gr{remember T-sentences: \textbf{S of L is true in v iff p}.}
-  \item<2-> \textbf{\bl{$\mathcal{M}$}} is a model of the accessible universe of discourse
-    \begin{itemize}
-      \item<3-> $\mathcal{M}=\ra{U\Sub{n},V\Sub{n}}$
-      \item<4-> \bl{$U_n$} = the set of accessible individuals (\bl{domain})
-      \item<5-> \bl{$V_n$} = a \bl{valuation function} which assigns
-         \begin{itemize}
-           \item<6-> individuals to names
-           \item<7-> sets of n-tuples of indivuiduals to pred\Sub{n}
-         \end{itemize}
-    \end{itemize}
-  \item<8-> \textbf{\bl{g}} is function from variables to individuals in $\mathcal{M}$
-  \item<9-> we evaluate: \bl{$\dem{\alpha}^{\mMm_n,g_n}$}
-  \item<10-> \emph{the extension of $\alpha$ relative to \mM\Sub{n} and g\Sub{n}}
-\end{itemize}
-}
+\begin{frame}
+  {Evaluation von Variablen}
+  \onslide<+->
+  \onslide<+->\scriptsize
+  $\alert{D_1}=\{Herr\ Webelhuth, Frau\ Klenk, Turm-Mensa\}$ \grau{| Individuen in $\Model_1$}\\
+  \onslide<+->
+  $\alert{V_1(P)}=\{Herr\ Webelhuth, Frau\ Klenk, Turm-Mensa\}$ \grau{| Prädikat $P$ (\zB \textit{ist ein physikalisches Objekt}) in $\Model_1$}\\
+  \onslide<+->
+  Evaluiere \alert{$\dem{\forall x_1Px_1}^{\Model_1,g_1}$}\visible<8->{$=\gruen{1}$ weil keiner Belegung $\dem{Px_1}^{\Model_1,g_1}=\orongsch{0}$}\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Initiale Belegung \alert{$\dem{x_1}^{\Model_1,g_1}=Herr\ Webelhuth$}\\
+      \scalebox{0.7}{$g_1 = \left[\begin{array}{l}
+          \gruen<5>{x_1 \rightarrow Herr\ Webelhuth}\\
+            x_2 \rightarrow Herr\ Webelhuth\\
+            x_3 \rightarrow Herr\ Webelhuth
+        \end{array}\right]$}\\
+        \Viertelzeile
+          $\dem{Px_1}^{\Model_1,g_1}=\gruen{1}$
+          \Halbzeile
+        \item \alert{$\dem{x_1}^{\Model_1,g_1[Klenk/x_1]}=Frau\ Klenk$}\\
+         \scalebox{0.7}{$g_1 = \left[\begin{array}{l}
+             \gruen<6>{x_1 \rightarrow Frau\ Klenk}\\
+            x_2 \rightarrow Herr\ Webelhuth\\
+            x_3 \rightarrow Herr\ Webelhuth
+        \end{array}\right]$}\\
+        \Viertelzeile
+          $\dem{Px_1}^{\mMm_1,g_1\ekm{Klenk/x_1}}=\gruen{1}$
+          \Halbzeile
+        \item \alert{$\dem{x_1}^{\Model_1,g_1[Turm-Mensa/X_1]}=Turm-Mensa$}\\
+         \scalebox{0.7}{$g_1 = \left[\begin{array}{l}
+             \gruen<7>{x_1 \rightarrow Turm-Mensa}\\
+            x_2 \rightarrow Herr\ Webelhuth\\
+            x_3 \rightarrow Herr\ Webelhuth
+        \end{array}\right]$}\\
+        \Viertelzeile
+          $\dem{Px_1}^{\mMm_1,g_1\ekm{Mensa/x_1}}=\gruen{1}$
+  \end{itemize}
+\end{frame}
 
-\subsection{Assignment functions}
-\frame{\frametitle{Fixed and context-bound denotation}
-\begin{itemize}
-  \item<1-> V\Sub{n} valuates \bl{statically}
-  \item<2-> Q's require flexible valuation of pronominal matrices
-  \item<3-> \emph{g\Sub{n}} is like V\Sub{n} for constants, only flexible
-  \item<4-> it can \bl{iterate through U\Sub{n}}
-  \item<5-> initial assignment can be anything:
-    \begin{center}
-      $g_1 = \left[\begin{array}{l}
-                     x_1 \rightarrow Herr\ Webelhuth\\
-                     x_2 \rightarrow Frau\ Eckardt\\
-                     x_3 \rightarrow Turm-Mensa
-                   \end{array}
-             \right]$
-    \end{center}
-\end{itemize}
-}
+\begin{frame}
+  {Evaluation mit zwei Variablen}
+  \onslide<+->
+  \onslide<+->\scriptsize
+  $\alert{D_1}=\{Herr\ Webelhuth, Frau\ Klenk, Turm-Mensa\}$ \grau{| Individuen in $\Model_1$}\\
+  \onslide<+->
+  $\alert{V_1(Q)}=\{\tuple{Webelhuth,Klenk},\tuple{Webelhuth,Mensa},\tuple{Klenk,Webelhuth}\}$ \grau{| Prädikat $Q$ (\zB \textit{x besucht y}) in $\Model_1$}\\
+  \onslide<+->
+  Evaluiere \alert{$\dem{\forall x_1\exists x_2 Qx_1x_2}^{\Model_1,g_1}\visible<18->{=\orongsch{0}}$} \visible<18->{weil nicht für jede Belegung von $x_1$ mindestens einmal \gruen{1}}\\
+  \onslide<+->
+  \Zeile
+  \begin{minipage}{0.5\textwidth}\begin{itemize}[<+->]
+        \item Initiale Belegung $\dem{x_1}^{\Model_1,g_1}=Frau\ Klenk$
+          \begin{itemize}[<+->]\scriptsize
+            \item $\dem{Qx_1x_2}^{\mMm_1,g_1}=\orongsch{0}$
+            \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\gruen<8>{Klenk/x_2}]}=\orongsch{0}$
+            \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\gruen<9>{Webelhuth/x_2}]}=\gruen{1}$
+          \end{itemize}
+        \item $\dem{x_1}^{\Model_1,g_1[Turm-Mensa/x_1]}=Turm-Mensa$
+          \begin{itemize}[<+->]\scriptsize
+            \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<11-13>{Turm-Mensa/x_1}]}=\orongsch{0}$
+            \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<11-13>{Turm-Mensa/x_1},\gruen<12>{Klenk/x_2}]}=\orongsch{0}$
+            \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<11-13>{Turm-Mensa/x_1},\gruen<13>{Webelhuth/x_2}]}=\orongsch{0}$ \rot{Abbruch!}
+          \end{itemize}
+        \item $\dem{x_1}^{\Model_1,g_1[Webelhuth/x_1]}=Herr\ Webelhuth$
+          \begin{itemize}[<+->]\scriptsize
+            \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<15-17>{Webelhuth/x_1}]}=\gruen{1}$
+            \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<15-17>{Webelhuth/x_1},\gruen<16>{Klenk/x_2}]}=\gruen{1}$
+            \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<15-17>{Webelhuth/x_1},\gruen<17>{Webelhuth/x_2}]}=\orongsch{0}$
+          \end{itemize}
+    \end{itemize}\end{minipage}%
+    \begin{minipage}{0.5\textwidth}%
+    \centering 
+    \scalebox{1.2}{$g_1 = \left[\begin{array}{l}
+        x_1 \rightarrow \tuerkis<11-13,15-17>{%
+          \only<5-10,14,18->{Frau\ Klenk}%
+          \only<11-13>{Turm-Mensa}%
+          \only<15-17>{Herr\ Webelhuth}%
+        }\\
+        x_2 \rightarrow \gruen<8-9,12-13,16-17>{%
+          \only<5-7,10-11,14-15,18->{Turm-Mensa}%
+          \only<8,12,16>{Frau\ Klenk}%
+          \only<9,13,17>{Herr\ Webelhuth}
+        }\\
+      x_3 \rightarrow Herr\ Webelhuth\\
+    \end{array}\right]$}\\
+  \end{minipage}
+\end{frame}
 
-\subsection{Modified assignment functions}
-\frame{\frametitle{Iterating through U\Sub{n}}
-\begin{itemize}
-  \item<1-> for each Q loop, one modification
-  \item<2-> read \bl{$g_n\ekm{d/x_m}$} as\\ `\ldots relative to $g_n$ where $x_m$ is reassigned to $d$'
-  \item<3-> $\dem{x_1}^{\mMm_1,g_1\ekm{Eckardt/x_1}}=Frau\ Eckardt$
-  \item<4-> $\dem{x_2}^{\mMm_1,g_1\ekm{\ekm{Eckardt/x_1}Mensa/x_2}}=Mensa$
-\end{itemize}
-}
-
-\frame{\frametitle{Interpreting with g\Sub{n}}
-\begin{itemize}
-  \item<1-> \bl{$\Dem{(\forall{}x_1)Px_1}{\mMm_1,g_1}$}
-  \item<2-> start with initial assignment: $\Dem{x_1}{\mMm_1,g_1}=Webelhuth$ \\
-    check: $\Dem{Px_1}{\mMm_1,g_1}$
-  \item<3-> modify: $\Dem{x_1}{\mMm_1,g_1\ekm{Eckardt/x_1}}=Eckardt$ \\
-    check: $\Dem{Px_1}{\mMm_1,g_1}$
-  \item<4-> modify: $\Dem{x_1}{\mMm_1,g_1\ekm{Mensa/x_1}}=Mensa$ \\
-    check: $\Dem{Px_1}{\mMm_1,g_1}$
-  \item<5-> iff the answer was never 0, then \bl{$\Dem{(\forall{}x_1)Px_1}{\mMm_1,g_1}=1$}
-\end{itemize}
-}
-
-\frame{\frametitle{Multiple Q's: subloops}
-{\footnotesize
-\begin{itemize}
-  \item<1-> \bl{$\Dem{(\forall{}x_1)(\exists{}x_2)Px_1x_2}{\mMm_1,g_1}$}
-  \item<2-> $\Dem{x_1}{\mMm_1,g_1}=Webelhuth$
-    \begin{itemize}
-      \item<3->{\footnotesize $\Dem{x_2}{\mMm_1,g_1}=Eckardt$ }
-      \item<4->{\footnotesize  $\Dem{x_2}{\mMm_1,g_1\ekm{Webelhuth/x_2}}=Webelhuth$ }
-      \item<5->{\footnotesize  $\Dem{x_2}{\mMm_1,g_1\ekm{Mensa/x_2}}=Mensa$ }
-    \end{itemize}
-  \item<6-> $\Dem{x_1}{\mMm_1,g_1\ekm{Eckardt/x_1}}=Eckardt$
-    \begin{itemize}
-      \item<7->{\footnotesize  $\Dem{x_2}{\mMm_1,g_1\ekm{Eckardt/x_1}}=Eckardt$ }
-      \item<8->{\footnotesize  $\Dem{x_2}{\mMm_1,g_1\ekm{\ekm{Eckardt/x_1}Webelhuth/x2}}=Webelhuth$ }
-      \item<9->{\footnotesize  $\Dem{x_2}{\mMm_1,g_1\ekm{\ekm{Eckardt/x_1}Mensa/x2}}=Mensa$ }
-    \end{itemize}
-  \item<10-> $\Dem{x_1}{\mMm_1,g_1\ekm{Mensa/x_1}}=Mensa$
-    \begin{itemize}
-      \item<11->{\footnotesize  $\Dem{x_2}{\mMm_1,g_1\ekm{Mensa/x_1}}=Eckardt$ }
-      \item<12->{\footnotesize  $\Dem{x_2}{\mMm_1,g_1\ekm{\ekm{Mensa/x_1}Webelhuth/x_2}}=Webelhuth$ }
-      \item<13->{\footnotesize  $\Dem{x_2}{\mMm_1,g_1\ekm{\ekm{Mensa/x_1}Mensa/x_2}}=Mensa$ }
-    \end{itemize}
-\end{itemize}
-}
-}
+\end{document}
 
 \section{Problems with natural language}
 
-\subsection{Restricted quantification}
 \frame{\frametitle{Natural weirdness}
 \begin{itemize}
   \item<1-> quantifying expressions in NL beyond $\forall$ and $\exists$
@@ -454,7 +396,6 @@
 \end{itemize}
 }
 
-\subsection{Variable binding and scope}
 \frame{\frametitle{Scope ambiguities}
 \begin{itemize}
   \item<1-> c-command condition on binding/scope fails in NL
@@ -470,7 +411,6 @@
 \end{itemize}
 }
 
-\subsection{Pre-spellout movement}
 \frame{\frametitle{Cases of overt movement and traces}
 \begin{itemize}
   \item<1-> \bl{wh} movement:
@@ -487,7 +427,6 @@
               \anodecurve[b]{c-6}[b]{c-5}{0.8cm}
 }
 
-\subsection{LF movement}
 \frame{\frametitle{Levels of representation}
 \begin{itemize}
   \item<1-> construction of an independent representational level LF
@@ -511,7 +450,6 @@
 
 \section{Quantification in English: F2}
 
-\subsection{Movement rules}
 \frame{\frametitle{The Q raising rule}
 
 \begin{center}
@@ -524,7 +462,6 @@
 \end{itemize}
 }
 
-\subsection{Fragment F2}
 \frame{\frametitle{Syntax}
 \begin{itemize}
   \item<1-> copies all definitions from F1

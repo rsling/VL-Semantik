@@ -66,6 +66,26 @@
   \grau{Hausarbeiten nach Absprache.}
 \end{frame}
 
+\begin{frame}
+  {Die unausweichliche Frage nach ein paar Wochen \visible<2->{| \rot{WTF???}}}
+  \onslide<+->
+  \onslide<+->
+  \onslide<+->
+  "`Wozu brauchen wir das denn?"'\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Nicht zu leugnende \alert{logische Eigenschaften von Sprache}
+    \item Kleiner Einblick in deren \alert{technisch sehr aufwendige Beschreibung}
+      \Halbzeile
+    \item Wichtige Lernziele
+      \begin{itemize}[<+->]
+        \item Realistische Einschätzung \alert{eigener semantischer Intuitionen}
+        \item Erkennen der \alert{Grenzen der Möglichkeiten von Logik} in der Analyse von Sprache
+        \item Für zukünftige Forschende | \alert{Grundausbildung in formaler Semantik unabdinglich}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
 \section{Schlussfolgern}
 
 \begin{frame}
@@ -226,23 +246,21 @@
     \onslide<+->
     \Halbzeile
     \centering
-    \scalebox{0.7}{%
-    \begin{tabular}{cll}
-      (1) & $Dk$ &  \\
-      (2) & $(\forall x)(Dx\rightarrow Hx \vee Px)$ & \\
-      (3) & $\neg(\exists x)(Px\wedge Dx)$ & \\
-      \hline
-      (4) & $(\forall x)\neg(Px\wedge Dx)$ & 3,QN\\
-      (5) & $(\forall x)(\neg Px\vee\neg Dx)$ & 4,DeM\\
-      (6) & $(\forall x)(Dx\rightarrow\neg Px)$ & 5,Comm,Impl \\
-      (7) & $Dk \rightarrow \neg Pk$ & 6,$-\forall$(1) \\
-      (8) & $\neg Pk$ & 1,7,MP \\
-      (9) & $Dk\rightarrow Hk \vee Pk$ & 2,$-\forall$(1)\\
-      (10) & $Hk\vee Pk$ & 1,9,MP \\
-      (11) & $Hk$ & 8,10,DS \\
-      \gruen{$\blacksquare$} & \gruen{$(\exists x)Hx$} & 10,$+\exists$ \\
-    \end{tabular}%
-  }
+    \scalebox{0.8}{\begin{tabular}[h]{rll}
+      1  & $G(k)$                                          & \\
+      2  & $(\forall x)[(G(x)\rightarrow M(x)\vee A(x)]$   & \\
+      3  & $\neg(\exists y)[A(y)\wedge G(y)]$              & $\vdash(\exists z)M(z)$  \\
+      \cline{1-3}
+      4  & $(\forall y)\neg[A(y)\wedge G(y)]$              & 3,QN \\
+      5  & $(\forall y)[\neg A(y)\vee\neg G(y)]$           & 4,DeM \\
+      6  & $(\forall y)[G(y)\rightarrow \neg A(y)]$        & 5,Komm.,Impl. \\
+      7  & $G(k)\rightarrow \neg A(k)$                     & 6,$-\forall(1)$ \\
+      8  & $\neg A(k)$                                     & 1,7,MP \\
+      9  & $G(k)\rightarrow M(k)\vee A(k)$                 & 2,$-\forall(1)$ \\
+      10 & $M(k)\vee A(k)$                                 & 1,9,MP \\
+      11 & $M(k)$                                          & 8,10,DS \\
+      12 & $(\exists z)M(z)$                               & 11,$+\exists$ $\blacksquare$ \\
+    \end{tabular}}
 \end{frame}
 
 \section{Grundfragen}

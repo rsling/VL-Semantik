@@ -544,7 +544,7 @@
   {Modus ponens (MP)}
   \onslide<+->
   \onslide<+->
-  Eine \alert{Implikation} (Antezedenz $\rightarrow$ Konsequenz) und \alert{ihr Antezedenz} sind gegeben.\\
+  Eine \alert{Implikation} (Antezedens $\rightarrow$ Konsequenz) und \alert{ihr Antezedens} sind gegeben.\\
   \onslide<+->
   \Zeile
   \rule{3em}{0em}\scalebox{0.7}{%
@@ -672,19 +672,19 @@
   \begin{itemize}[<+->]
     \item \alert{Simplifikation (Simp.)}:
       \begin{itemize}
-        \item \alert{$p\wedge Q\vdash\gruen{p}$}
+        \item \alert{$p\wedge q\vdash\gruen{p, q}$}
         \item \emph{It is raining and the sun is shining. $\vdash$ It is raining.}
       \end{itemize}
       \Halbzeile
-    \item \alert{Konjunction (Konj.)}:
+    \item \alert{Konjunktion (Konj.)}:
       \begin{itemize}
-        \item \alert{$p\wedge q\vdash\gruen{p\wedge q}$}
+        \item \alert{$p, q\vdash\gruen{p\wedge q}$}
         \item \emph{It is raining. The sun is shining. $\vdash$ It is raining and the sun is shining.}
       \end{itemize}
       \Halbzeile
     \item \alert{Addition (Add.)}:
       \begin{itemize}
-        \item \alert{$p\vdash\gruen{p\wedge q}$}
+        \item \alert{$p\vdash\gruen{p\vee q}$}
         \item \emph{It is raining. $\vdash$ It is raining or the sun is shining.}
         \item What if Q is instantiated as true or false by another premise?
       \end{itemize}
@@ -715,23 +715,25 @@
   {Ein Beispielbeweis}
   \onslide<+->
   \onslide<+->
-  \gruen<4->{Wenn} es \blau<5->{r}egnet \gruen<6->{oder} \blau<7->{g}ewittert, \gruen<4->{dann} \orongsch<8->{ist es nicht der Fall, dass} die Sonne \blau<9->{s}cheint \gruen<10->{und} der Wind \orongsch<11->{nicht} \blau<12->{b}läst.
-  Die Sonne \blau<14->{s}cheint \gruen<15->{und} der Wind \blau<17->{b}läst \orongsch<16->{nicht}. \textbf{Zeigen Sie: Es regnet oder gewittert.}
+  \gruen<4->{Wenn} es \blau<5->{regnet}, \gruen<4->{dann} \orongsch<6->{ist es nicht der Fall, dass} die Sonne \blau<7->{scheint} \gruen<8->{oder} der Wind \orongsch<9->{nicht} \blau<10->{bläst}.
+  Es \alert<12->{regnet}.
+  Zeigen Sie: Die Sonne \alert<14->{scheint} \orongsch<15->{nicht}.
   \Halbzeile
   \begin{itemize}[<+->]
-    \item erste Prämisse | $\visible<5->{\blau{r}}\visible<6->{\gruen{\vee}}\visible<7->{\blau{g}}\visible<4->{\gruen{\rightarrow}}\visible<8->{\orongsch{\neg}(}\visible<9->{\blau{s}}\visible<10->{\gruen{\wedge}}\visible<11->{\orongsch{\neg}}\visible<12->{\blau{b}}\visible<8->{)}$
-    \item<13-> zweite Prämisse | $\visible<14->{\blau{s}}\visible<15->{\gruen{\wedge}}\visible<16->{\orongsch{\neg}}\visible<17->{\blau{b}}$
-    \item<18-> Schlussfolgerung | $r\vee g$
+    \item erste Prämisse | $\visible<5->{\blau{r}}\visible<4->{\gruen{\rightarrow}}\visible<6->{\orongsch{\neg}(}\visible<7->{\blau{s}}\visible<8->{\gruen{\vee}}\visible<9->{\orongsch{\neg}}\visible<10->{\blau{b}}\visible<6->{)}$
+    \item<11-> zweite Prämisse | \visible<12->{\alert{$r$}}
+    \item<13-> Schlussfolgerung | $\visible<15->{\orongsch{\neg}} \visible<14->{\alert{s}}$
   \end{itemize}
   \Zeile
   \centering 
-  \onslide<19->
-  \begin{tabular}{llll}
-      &  &  & $r\vee g$ \\
-      \visible<20->{1 & $(r\vee g)\rightarrow\neg (s\wedge \neg b)$ & & \\}
-      \visible<21->{2 & $s\wedge\neg b$ & &  \\
+  \onslide<15->
+  \begin{tabular}{rll}
+      \visible<16->{1 & $r\rightarrow\neg (s\vee \neg b)$ & \\}
+      \visible<17->{2 & $r$ & $\vdash \neg s$ \\
       \hline}
-      \visible<22->{$\blacksquare$ & $r\vee g$    & & 1,2,MT \\}
+      \visible<18->{3 & $\neg(s\vee \neg b)$ & 1,2,MP} \\
+        \visible<19->{4 & $\neg s\wedge b$ & 3,DeM} \\
+        \visible<20->{5 & $\neg s$ & 4,Simp. $\blacksquare$} \\
   \end{tabular}
 \end{frame}
 
