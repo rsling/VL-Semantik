@@ -11,270 +11,452 @@
   \onslide<+->
   \Halbzeile
   Was sind \alert{$\lambda$-Sprachen?}\\
-  Und woher kennen Sie den $\lambda$-Operator eigentlich schon?
+  Und woher kennen Sie den $\lambda$-Operator eigentlich schon?\\
+  \onslide<+->
+  \Halbzeile
+  \grau{\footnotesize Text für heute: \citet[Kapitel~4]{DowtyEa1981} | \citealt[Kapitel~7]{ChierchiaMcconnellginet2000}}
 \end{frame}
 
-\section{Preliminaries}
+\section{Einfachere Semantik}
 
-\frame{\frametitle{Montague and the generative tradition}
-\begin{itemize}
-  \item<1-> Chierchia \& McConnell-Ginet, Heim \& Kratzer, etc.: GB-ish semantics
-  \item<2-> both syntax and LF in phrase structures
-  \item<3-> \bl{LF as a proper linguistic level of representation}
-  \item<4-> \bl{Montague}: direct translation of NL into logic
-  \item<5-> \bl{Monatgue's LF is just a notational system for NL semantics}
-\end{itemize}
-}
+\begin{frame}
+  {Montague vs.\ Generativismus}
+  \onslide<+->
+  \onslide<+->
+  Es geht wie immer auch ohne Bewegung.\\
+  \Zeile 
+  \begin{itemize}[<+->]
+    \item Chierchia | auf Grundlage von GB-Syntax
+      \begin{itemize}[<+->]
+        \item Syntax und \alert{Semantik in Phrasenstrukturen}
+        \item Sprache wird zu Logik durch unsichtbare Bewegung.
+        \item Semantik als \alert{eigene Repräsentationsebene}
+      \end{itemize}
+      \Halbzeile
+    \item Montague | \alert{Sprache ist Logik!}
+      \begin{itemize}[<+->]
+        \item Direkte Interpretation von Zeichen als logische Symbole
+        \item Logische Form (lf) als \alert{Sichtbarmachen} logischer Eigenschaften
+        \item \alert{Keine Überseztung}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Targets for this week}
-\begin{itemize}
-  \item<1-> Learn to tell the difference between the montagovian and generative approach.
-  \item<2-> See the advantage of a general theory of typed languages.
-  \item<3-> Understand how $\lambda$ languages allow dramatically elegant formalizations.
-  \item<4-> ... while keeping in mind that these devices are extensions to our PC representation for NL semantics.
-\end{itemize}
-}
+\begin{frame}
+  {Vorbemerkung | Charakteristische Funktionen}
+  \onslide<+->
+  \onslide<+->
+  Mengen, über Funktionen definiert\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Große Bedeutung von Mengen in formaler Semantik
+      \Halbzeile
+    \item Charakteristische Funktion von Mengen\\
+      \alert{$\mathcal{S}(a) = 1\ iff\ a\in{}S,\ else\ 0$}
+    \item CF als Einsortierung in ihre Menge
+    \item CF in Mengendefinitionen\\
+      \rule{0em}{1em}$S=\{x: x\ mod\ 2=0\}$\\
+      \rule{0em}{1em}$\mathcal{S}=f(x)[x\ mod\ 2=0]$\\
+      \Halbzeile
+    \item \alert{Äquivalenz von Mengendenotation und CF-Dontation}
+  \end{itemize}
+\end{frame}
 
+\begin{frame}
+  {Vorbemerkung | T-Sätze und Funktionsapplikation}
+  \onslide<+->
+  \onslide<+->
+  Funktionsapplikation als allgemeiner Kompositionsmechanismus\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Etwas umständliche Interpretation mit T-Sätzen\\
+      \alert{$\Dem{\ekm{\Sub{S}\ NP\ VP}}{\mMm,g} = 1\ iff\ \Dem{NP}{\mMm,g}\in{}\Dem{VP}{\mMm,g}$}
+      \Halbzeile
+    \item CF statt Mengen | \alert{Funktion appliziert direkt!}\\
+      \begin{itemize}[<+->]
+        \item $\Dem{Mary}{\mMm,g}=Mary$ \emph{in \mM}
+        \item $\Dem{sleeps}{\mMm,g}$ \emph{be the CF of the set of sleepers in \mM}
+        \item \alert{$\Dem{S}{\mMm,g}=\Dem{sleeps}{\mMm,g}(\Dem{Mary}{\mMm,g})$}
+        \item \orongsch{Kein Bedarf an T-Sätzen}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Denotations}
-\begin{itemize}
-  \item<1-> denotations in set/function-theoretic terms
-  \item<2-> a \bl{characteristic function (CF) $\mathcal{S}$} of a set S:\\
-     \bl{$\mathcal{S}(a) = 1\ iff\ a\in{}S,\ else\ 0$}
-  \item<3-> a CF `checks' individuals into a set
-  \item<4-> denotations can be stated as sets or their CF
-\end{itemize}
-}
+\begin{frame}
+  {Vorbemerkung | Funktionen von Mengen zu Mengen}
+  \onslide<+->
+  \onslide<+->
+  Funktionen von Mengen von (Tupeln von) Individuen zu Ausdrücken usw.\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Funktionen \alert{Definitionsbereich $S_1$} $\rightarrow$ \gruen{Wertebereich $S_2$} | $\gruen{S_2}^{\alert{S_1}}$\\
+      \grau{$S_2^{S_1}$ | Die Menge aller Funktionen von $S_1$ zu $S_2$}
+      \Halbzeile
+    \item Beispiel | Einstellige und Zweistellige Prädikate
+      \begin{itemize}[<+->]
+        \item $T=\{0,1\}$ | Wahrheitswerte
+        \item $D$ | Diskursuniversum (Menge aller Individuen)
+        \item $D\times D$ | Menge aller 2-Tupel von Individuen
+          \Viertelzeile
+        \item \alert{$T^D$} | Menge aller Funktionen von Individuen zu Wahrheitswerten\\
+          \grau{Menge der CFs aller einstelligen Prädikate}
+          \Viertelzeile
+        \item \alert{$T^{D\times D}$} | Menge aller Funktionen von 2-Tupeln von Individuen zu Wahrheitswerten\\
+          \grau{Menge der CFs aller zweistelligen Prädikate}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
+\section{Getypte Sprachen}
 
-\frame{\frametitle{Generalizing combinatory semantic operations}
-\begin{itemize}
-  \item<1-> interpretation for [\Sub{S} NP VP]:\\
-     $\Dem{\ekm{\Sub{S}\ NP\ VP}}{\mMm,g} = 1\ iff\ \Dem{NP}{\mMm,g}\in{}\Dem{VP}{\mMm,g}$
-  \item<2-> Montague generally used CF's in definitions
-  \item<3-> evaluating [\Sub{S} [\Sub{NP} \emph{Mary}] [\Sub{VP} \emph{sleeps}] ] as a matter of \bl{functional application (FA)}: \\
-     \begin{itemize}
-       \item<4-> $\Dem{Mary}{\mMm,g}=Mary$ \emph{in \mM}
-       \item<5-> $\Dem{sleeps}{\mMm,g}$ \emph{be the CF of the set of sleepers in \mM}
-       \item<6-> $\Dem{S}{\mMm,g}=\Dem{sleeps}{\mMm,g}(\Dem{Mary}{\mMm,g})$
-       \item<7-> ideally: generalize to all nodes
-     \end{itemize}
-\end{itemize}
-}
+\begin{frame}
+  {Kein Bedarf an Phrasenkategorien}
+  \onslide<+->
+  \onslide<+->
+  Logik hat bereits \alert{Typensysteme}, um Syntax zu strukturieren!\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item \alert{$L_{Type}$} | Prädikatenlogik \alert{$L_1$ plus Typen}
+    \item \alert{Typen} | Semantisch fundierte Klassen von Ausdrücken
+      \Halbzeile
+    \item Einfache Typen
+      \begin{itemize}[<+->]
+        \item Terme | $\ram{e}$
+        \item Wffs\slash Formeln | $\ram{t}$ | \orongsch{Ersetzt Startsymbol \alert{S} der PSG!}
+      \end{itemize}
+      \Halbzeile
+    \item Komplexe\slash \alert{funktionale} Typen
+      \begin{itemize}[<+->]
+        \item Einstellige Prädikate | $\ram{e,t}$
+        \item Zweistellige Prädikate | $\ram{e,\ram{e,t}}$
+      \end{itemize}
+      \Halbzeile
+    \item Allgemein | $\ram{\sigma,\tau}$-Ausdrücke denotieren Funktionen von Denotaten\\
+      von $\ram{\sigma}$-Ausdrücken zu Denotaten von $\ram{\tau}$-Ausdrücken.
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{The superscript notation}
-\begin{itemize}
-  \item<1-> all functions from S\Sub{1} to S\Sub{2}
-  \item<2-> \bl{$S_2^{S_1}$}
-  \item<3-> for $T=\{0,1\}$ 
-     \begin{itemize}
-       \item<4-> $T^D$: all pred\Sub{1}
-       \item<5-> $T^{D\times{}D}$: all pred\Sub{2}
-     \end{itemize}
-  \item<4-> 
-\end{itemize}
-}
+\begin{frame}
+  {Modell | Denotate getypter Ausdrücke}
+  \onslide<+->
+  \onslide<+->
+  Homogenes Diskursuniversum $D$ (auch $U$ und bei \citealt{DowtyEa1981} $A$)\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Allgemein $D_{\alpha}$ | Menge von Denotaten von Ausdrücken des Typs $\alpha$
+      \Halbzeile
+    \item Einfache Typen
+      \begin{itemize}[<+->]
+        \item \alert{$D_{\ram{e}} = U$}
+        \item \alert{$D_{\ram{t}} = \{0,1\}$}
+      \end{itemize}
+      \Halbzeile
+    \item Komplexe Typen | Rekursiv definierte Denotate
+      \begin{itemize}[<+->]
+        \item 
+          \item Allgemein | \alert{$D_{\ram{\alpha,\beta}}=D_{\ram{\beta}}^{D_{\ram{\alpha}}}$}
+          \item Einstelliuge Prädikate | $D_{\ram{e,t}}=D_{\ram{t}}^{D_{\ram{e}}}$
+          \item Zweistellige Prädikate | $D_{\ram{e,\ram{e,t}}}=(D_{\ram{t}}^{D_{\ram{e}}})^{^{D_{\ram{e}}}}$
+      \end{itemize}
+      \Halbzeile
+    \item Interpretation weiterhin durch $V,g$
+  \end{itemize}
+\end{frame}
 
-\section{Simply typed languages}
+\begin{frame}
+  {Komplexe Typen für Funktionen und FA}
+  \onslide<+->
+  \onslide<+->
+  $\ram{\sigma}$-Ausdrücke saturieren $\ram{\sigma,\tau}$-Ausdrücke zu $\ram{\tau}$-Ausdrücken.\\
+  \Zeile
+  \begin{itemize}[<+->]
+    \item Beispiel für Saturierung durch \alert{Funktionsapplikation (FA)}
+      \begin{itemize}[<+->]
+        \item Wenn \alert{$P$} vom Typ \alert{$\ram{e,\ram{e,t}}$}, \gruen{$Q$} vom Typ \gruen{$\ram{e,t}$} und \orongsch{$x,y$} vom Typ \orongsch{$\ram{e}$}
+        \item dann ist $\gruen{Q}(\orongsch{x})$ vom Typ \tuerkis{$\ram{t}$}
+        \item und $\alert{P}(\orongsch{x})$ vom Typ \tuerkis{$\ram{e,t}$} sowie $\alert{P}(\orongsch{x})(\orongsch{y})$ vom Typ \tuerkis{$\ram{t}$}
+      \end{itemize}
+      \Zeile
+    \item Funktionale Typen von \alert{Funktoren}
+      \begin{itemize}[<+->]
+        \item Negation $\neg$ | Typ \alert{$\ram{t,t}$}
+        \item Andere Funktoren $\wedge,\vee,\rightarrow,\leftrightarrow$ | Typ \alert{$\ram{t,\ram{t,t}}$}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Some new names}
-\begin{itemize}
-  \item<1-> base for Dowty et al.: $L_1$, a first-order predicate language as we know it
-  \item<2-> semantic renaming of types:
-     \begin{itemize}
-       \item<3-> terms: \bl{$\ram{e}$} (entity-denoting)
-       \item<4-> formulas: \bl{$\ram{t}$} (truth-valued)
-       \item<5-> pred\Sub{1}: \bl{$\ram{e,t}$}
-       \item<6-> pred\Sub{2}: \bl{$\ram{e,\ram{e,t}}$}       
-     \end{itemize}
-\end{itemize}
-}
+\begin{frame}
+  {Allgemeine Semantik für getypte Sprachen}
+  \onslide<+->
+  \onslide<+->
+  Wirklich keine T-Sätze mehr!\\
+  \Zeile
+  \begin{itemize}[<+->]
+    \item Semantik für $\ram{e}$-Typen (Terme)\\
+      \Viertelzeile
+      $\DEM{a_n} = \alert{V}(a_n)$ \\
+      $\DEM{x_n} = \alert{g}(x_n)$
+      \Halbzeile
+    \item Ansonsten nur FA\\
+      \bl{$\DEM{\delta(\alpha)} = \DEM{\delta}(\DEM{\alpha})$}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Possible denotations of types}
-\begin{itemize}
-  \item<1-> $D_{\alpha}$ possible denotation (a set) of expressions of type $\alpha$
-  \item<2-> \bl{$D_{\ram{e}} = U$} (Dowty et al.'s $A$)
-  \item<3-> \bl{$D_{\ram{t}} = \{0,1\}$}
-  \item<4-> recursively: \bl{$D_{\ram{\alpha,\beta}}=D_{\ram{\beta}}^{D_{\ram{\alpha}}}$}
-  \item<5-> e.g., $D_{\ram{e,t}}=D_{\ram{t}}^{D_{\ram{e}}}$
-  \item<6-> $D_{\ram{e,\ram{e,t}}}=(D_{\ram{t}}^{D_{\ram{e}}})^{^{D_{\ram{e}}}}$
-  \item<7-> just a systematic way of naming types, model-theoretic interpretations still by $V,g$
-\end{itemize}
-}
+\begin{frame}
+  {Verallgemeinerung und Sprachen höherer Ordnung}
+  \onslide<+->
+  \onslide<+->
+  Sprache höherer Ordnung = Sprache mit \alert{Variablen über höhere Typen $\ram{\sigma,\tau}$}\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item $Type$ ist die Menge aller Typen
+      \begin{itemize}[<+->]
+        \item \alert{$\ram{e},\ram{t}\in Type$}
+        \item Wenn $\ram{\sigma},\ram{\tau}\in Type$, dann \alert{$\ram{\sigma,\tau}\in Type$}
+        \item \grau{Nichts sonst ist in $Type$.}
+      \end{itemize}
+      \Viertelzeile 
+    \item $ME$ ist die Menge aller bedeutungsvollen Ausdrücke
+      \begin{itemize}[<+->]
+        \item $ME_{\sigma}$ ist die Menge der Ausdrücke vom Typ $\sigma$ | $ME=\bigcup ME_{\sigma}$ mit $\sigma\in Type$
+        \item $Ty$ ist eine Funktion von Ausdrücken zu ihren Typen | $Ty(a)=\sigma\ iff\ a\in ME_{\sigma}$
+      \end{itemize}
+      \Halbzeile
+    \item Höhere Ordnung | \alert{Variablen über Ausdrücke von funktionalen Typen}
+      \begin{itemize}[<+->]
+        \item $P_{\ram{e,t}}$ und $Q_{\ram{e,\ram{e,t}}}$ | Bekannte \alert{Konstanten} höherer (=funktionaler) Typen
+        \item Parallel \alert{$v_{n_{\ram{e,t}}}$} | Die \alert{n-te Variable über einstellige Prädikate}
+          \Viertelzeile
+        \item Damit möglich \gruen{$M=\{v_{1_{\ram{e,t}}}:\dem{v_{1_{\ram{e,t}}}(m)}=1\}$}\\
+          Wenn $\dem{m}=Maria$, dann ist $M$ die Menge von Marias Eigenschaften!
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Defining types}
-\begin{itemize}
-  \item<1-> in our PS syntax: S as start symbol
-  \item<2-> in the typed system: sentences should be of type $\ram{t}$
-  \item<3-> \bl{complex types: functions from $\ram{e}$ to $\ram{t}$}\\
-     or generally \bl{from any (complex) type to any (comlex) type}
-\end{itemize}
-}
+\begin{frame}
+  {Systematische Interpretation zur systematischen Syntax}
+  \onslide<+->
+  \onslide<+->
+  Zusammenfassung | Die Semantik reduziert sich auf FA und Variablenauswertung.\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Interpretation von Termen und Funktionsausdrücken
+      \begin{itemize}[<+->]
+        \item Nicht-logische Konstanten | \alert{$\alpha$: $\DEM{\alpha}=V(\alpha)$}
+        \item Variablen | \alert{$\alpha$: $\DEM{\alpha}=V(\alpha)$}
+        \item Wenn $\alpha\in\ram{a,b}$ und $\beta\in{}a$ dann $\DEM{\alpha(\beta)}=\DEM{\alpha}(\DEM{\beta})$
+      \end{itemize}
+      \Halbzeile
+    \item Logische Konstanten (Typen $\ram{t,t}$ und $\ram{t,\ram{t,t}}$) denotieren Funktionen in $\{0,1\}$.
+      \Halbzeile
+    \item Quantoren
+      \begin{itemize}[<+->]
+        \item Für Variable $v_{1_{\ram{\orongsch{\alpha}}}}$ und Wff $\phi\in{}ME_t$ ist $\DEM{\alert{(\forall{}v_1)\phi}}=1$ gdw
+        \item[ ] für alle $a\in{}D_{\orongsch{\alpha}}$ $\Dem{\phi}{\mMm,g[a/v_1]}=1$
+       \Viertelzeile 
+     \item Für Variable $v_{1_{\ram{\orongsch{\alpha}}}}$ und Wff $\phi\in{}ME_t$ ist $\DEM{\alert{(\exists{}v_1)\phi}}=1$ gdw
+        \item[ ] für mindestens ein $a\in{}D_{\orongsch{\alpha}}$ $\Dem{\phi}{\mMm,g[a/v_1]}=1$
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Complex types as functions}
-\begin{itemize}
-  \item<1-> \bl{saturation} of complex types by FA:
-    \begin{itemize}
-      \item<2-> $\gamma\ is\ of\ type\ \ram{e,\ram{e,t}},\ \delta\ of\ \ram{e,t},\ \alpha\ and\ \beta\ of\ \ram{e}$
-      \item<3-> then $\gamma(\alpha)\ is\ of\ type\ \ram{e,t}$
-      \item<4-> and $\delta(\beta)\ is\ of\ type\ \ram{t}$
+\begin{frame}
+  {Beispiel | Quantifikation über Prädikate}
+  \onslide<+->
+  \onslide<+->
+  \alert{$\forall{}v_{0_{\ram{e,t}}}\ekm{v_{0_{\ram{e,t}}}(j)\rightarrow v_{0_{\ram{e,t}}}(d)}$}
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Eine quantifizierbare Variable vom Typ $\ram{e,t}$ | \alert{$v_{0_{\ram{e,t}}}$}
+    \item Zwei Individuenkonstanten | $j,d\in ME_{\ram{e}}$ \grau{\zB John und Dorothy}
+    \item \textit{Für alle einstelligen Prädikate gilt: Wenn $j$ die vom Prädikat\\
+      beschriebene Eigenschaft hat, hat $d$ auch diese Eigenschaft.}
+      \Halbzeile
+    \item Wann ist diese Wff wahr?
+      \begin{itemize}[<+->]
+        \item Wenn $j$ und $d$ \alert{alle benennbaren Eigenschaften teilen}?
+        \item Eine Eigenschaft jedes Objekts |\\
+          \alert{CF der Menge $\{x:x\ is\ the\ sole\ member\ of\ this\ set\}$} (\textit{union set})
+        \item Einzige Möglichkeit für Wahrheit der Wff also \gruen{j=d}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Beispiel | Wortbildung mit Präfix \textit{non}}
+  \onslide<+->
+  \onslide<+->
+  \textit{non} in Sätzen wie \textit{This function is \alert{non-continuous}.}\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Produktives Suffix im Englischen, wie \textit{nicht-} im Deutschen
+    \item Bedeutungsbeitrag | \alert{Invertiert die CF} eines Adjektivs
+    \item \alert{Komplementbildung} der Ursprungsmenge in $D_{\ram{e,t}}$
+      \Halbzeile
+    \item Syntax und Semantik von \textit{non}
+      \Viertelzeile
+      \begin{itemize}[<+->]
+        \item Adjektiv \textit{continuous} | Typ $\ram{e,t}$
+        \item Typ von \textit{non} | In: Adjektiv \slash Out: Adjektiv | \alert{$\ram{\ram{e,t},\ram{e,t}}$}
+          \Viertelzeile
+        \item $\DEM{non}=h$ s.\,t.\ \alert{$h\in D_{\ram{\ram{e,t},\ram{e,t}}}$} and for every $k\in{}D_{\ram{e,t}}$ and every $d\in D_{\ram{e}}$\\
+          \gruen{$(h(k))(d) = 1$ iff $k(d)=0$ and $(h(k))(d) = 0$ iff $k(d)=1$}
+
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Beispiel | Argumentunterdrückung}
+  \onslide<+->
+  \onslide<+->
+  Optionale Argumente wie in \alert{\textit{I eat.}} oder \alert{\textit{Vanity kills.}}\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Zweistellige Verben wie \textit{eat} in \alert{$ME_{\ram{e,\ram{e,t}}}$}
+      \Halbzeile
+    \item Aus einem zweistelligen Verb ein einstelliges machen
+      \Viertelzeile
+      \begin{itemize}[<+->]
+        \item Phonologisch leere lexikalische Konstante | \alert{$R_O\in ME_{\ram{\ram{e,\ram{e,t}},\ram{e,t}}}$}\\
+          \grau{\footnotesize Ähnlich wie lexikalische Regeln in HPSG}
+          \Viertelzeile
+        \item Semantik | $\DEM{R_0}=h$ s.\,t.\ \alert{$h\in D_{\ram{\ram{e,\ram{e,t}},\ram{e,t}}}$} and for all $k\in D_{\ram{e,\ram{e,t}}}$ and all $d\in D_{\ram{e}}$\\
+          \gruen{$(h(k))(d)=1$ iff there is some $d\Prm\in D_{\ram{e}}$ s.\,t.\ $k(d\Prm)(d)=1$}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{$\lambda$-Sprachen}
+
+\begin{frame}
+  {Sie kennen bereits $\lambda$-Abstraktionen!}
+  \onslide<+->
+  \onslide<+->
+  \centering 
+  \Large
+  Was bedeutet \alert{$f(x)=3x^2+5x+8$} ?\\
+  \onslide<+->
+  \Zeile
+  \raggedright
+  \normalsize
+  \begin{itemize}[<+->]
+    \item \alert{$3x^2+5x+8$} ist eine Wff mit einer ungebundenen Variable.
+    \item Die Variable wird gebunden und die Wff \alert{wird damit zur Funktion}\\
+      \grau{\footnotesize $x$ wird zur Eingabevariable und muss bei Anwendung durch Eingabewert ersetzt werden.}
+    \item Außerdem wird die Funktion \alert{f genannt}.
+  \end{itemize}
+  \onslide<+->
+  \Halbzeile
+  \centering 
+  \Large
+  In $\lambda$-Notation: \gruen{$f\stackrel{def}{=}\lambda x\ekm{3x^2+5x+8}$}
+\end{frame}
+
+\begin{frame}
+  {Nur ein neuer Variablenbinder}
+  \onslide<+->
+  \onslide<+->
+  \gruen{Mit $\lambda$ bildet man ad hoc anonyme Funktionen.}\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Abstraktion über Wffs beliebiger Komplexität
+    \item $\lambda$-Bindung der Variable | Gebundene Variable als \alert{Eingabevariable der Funktion}
+    \item Sehr ähnlich wie Listendefinition
+      \begin{itemize}[<+->]
+        \item Menge | \alert{$\{x: x\ mod\ 2=0\}$} \grau{| allgemein $\{x:\phi\}$}
+        \item CF dieser Menge | \alert{$\lambda x\ekm{x\ mod\ 2=0}$} \grau{| allgemein $\lambda x\ekm{\phi}$}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Formale Erweiterung von $L_{Type}$}
+  \onslide<+->
+  \onslide<+->
+  Nur wenige Erweiterungen in $L_{Type}$\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Für jede Wff $\phi$ mit \alert{$Ty(\phi)=\ram{t}$} und jede \gruen{$x\in Var$} und jede \orongsch{$a\in Con$}
+      \Viertelzeile
+      \begin{itemize}[<+->]
+        \item Abstraktion | $\phi\ \Longrightarrow\ \gruen{\lambda x}\ekm{\alert{\phi}^{[\orongsch{a}/\gruen{x}]}}$\\
+          \grau{\footnotesize Definition $\phi^{[a/x]}$ | Wff $\phi$ in der alle $a$ durch $x$ getauscht wurden}
+        \item Anwendung der Funktion ($\lambda$-Konversion) | $\gruen{\lambda x}\ekm{\alert{\phi}^{[\orongsch{a}/\gruen{x}]}}(\orongsch{a})=\alert{\phi}$
+      \end{itemize}
+      \Halbzeile
+    \item Es gilt \alert{$\lambda{}x\ekm{\phi^{a/x}}(a)\equiv{}\phi$} für jede Wff $\phi$, jede $a\in Con$ und jede $x\in{}Var$
+    \item $x$ kann von einem \alert{beliebigen Typ $\sigma$} sein.
+    \item Es gilt für \alert{$\lambda x\ekm{\phi}$} mit $x\in ME_{\ram{\sigma}}$ stets \alert{\alert{$\phi\in ME_{\ram{t}}$}} sowie \alert{$\lambda x\ekm{\phi}\in ME_{\ram{\sigma,t}}$}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Zwei Beispiele}
+  \onslide<+->
+  \onslide<+->
+  Abstraktion über \alert{Individuenvariable} und \alert{Prädikatsvariable}\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Individuenvariable \alert{$x_{\ram{e}}$} \grau{alternativ $v_{1_{\ram{e}}}$}
+      \begin{itemize}[<+->]
+        \item \alert{$\lambda{}x_{\ram{e}}\ekm{L(x)}$}
+        \item Mit $L$ \zB für \textit{laughs}
+        \item Die CF der Menge von Individuen $d\in{}D_{\ram{e}}$ mit die Eigenschaft $L$ (alle Lachenden)
+        \item Mengendefinition dazu \alert{$\{x: L(x)\}$}
+      \end{itemize}
+      \Halbzeile
+    \item Prädikatsvariable \gruen{$P_{\ram{e,t}}$} \grau{alternativ $v_{1_{\ram{e,t}}}$}
+      \begin{itemize}[<+->]
+        \item \gruen{$\lambda{}P_{\ram{e,t}}\ekm{P(l)}$}
+        \item Mit $l$ \zB für \textit{Horst Lichter}
+        \item Die CF aller Eigenschaften $k\in{}D_{\ram{e,t}}$ von $l$ (alle Eigenschaften Horst Lichters)
+        \item Mengendefinition dazu \gruen{$\{P: P(l)\}$}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  {Als wäre das jetzt nicht schon klar \ldots}
+  \onslide<+->
+  \onslide<+->
+  Die vollen Regeln aus \citet[102]{DowtyEa1981} (Syn C.10 and Sem 10)\\
+  \Halbzeile
+    \begin{itemize}[<+->]
+      \item If $\alpha\in{}ME_{\alpha}$ and $u\in{}Var_b$, then $\lambda{}u\ekm{\alpha}\in{}ME_{\ram{b,a}}$.
+      \item If $\alpha\in{}ME_a$ and $u\in{}Var_b$ then $\DEM{\lambda{}u\ekm{\alpha}}$ is that function $h$ from $D_b$ into $D_a$\\
+        ($h\in D_a^{D_b}$) s.\,t.\ for all objects $k$ in $D_b$, $h(k)$ is equal to $\Dem{\alpha}{\mMm,g\ekm{k/u}}$.
     \end{itemize}
-  \item<5-> for any pred\Sub{2} $P$ and its arguments $a_1,a_2$, $P(a_2)(a_1)$ is a wff
-  \item<6-> connectives are of types \bl{$\ram{t,t}$ ($\neg$), $\ram{t,\ram{t,t}}$ ($\wedge$, etc.)}
-\end{itemize}
-}
+  \Halbzeile
+\end{frame}
 
-\frame{\frametitle{General semantics of typed languages}
-\begin{itemize}
-  \item<1-> generalized CF/FA approach
-  \item<2-> $\ram{e}$-types (terms):\\
-    $\DEM{a_n} = V(a_n)$ \\
-    $\DEM{x_n} = g(x_n)$
-  \item<3-> the rest: functional application\\
-    \bl{$\DEM{\delta(\alpha)} = \DEM{\delta}(\DEM{\alpha})$}
-\end{itemize}
-}
+\begin{frame}
+  {Konversionen}
+  \onslide<+->
+  \onslide<+->
+  \alert{Konversionen\slash Reduktionen} | Arten, $\lambda$-Ausdrücke umzuschreiben\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item \alert{$\alpha$-Konversion} | Umbenennung von Variablen
+      \begin{itemize}[<+->]
+        \item \alert{$\lambda x\ekm{\phi}\stackrel{\alpha}{\equiv}\lambda y\ekm{\phi^{\ekm{x/y}}}$} gdw $y$ in $\phi$ nicht vorkommt
+      \end{itemize}
+      \Halbzeile
+    \item \gruen{$\beta$-Reduktion} | Funktionsapplikation
+      \begin{itemize}[<+->]
+        \item \gruen{$\lambda x\ekm{\phi}(a)\stackrel{\beta}{\equiv}\phi^{\ekm{x/a}}$}
+        \item Ausdrucke mit nicht realisierten, aber möglichen $\beta$-Reduktionen: \gruen{$\beta$-Redex}
+      \end{itemize}
+      \Halbzeile
+    \item \tuerkis{$\eta$-Reduktion} | Entfernen von leeren Abstraktionen
+      \begin{itemize}[<+->]
+        \item \tuerkis{$\lambda x\ekm{F(x)}\stackrel{\eta}{\equiv}F$} gdw $Ty(F)=Ty(\lambda x\ekm{F(x)})$ \grau{(und $x$ nicht frei in F ist)}
+        \item Ausdruck mit nicht realisierten, aber möglichen $\eta$-Reduktionen: \gruen{$\eta$-Redex}
+        \item Mäßige Semantiker | $\eta$-Redex-Fetisch mit \orongsch{$\lambda x\lambda y\lambda z\ekm{gibt\Prm(x,y,z)}$} usw.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-
-\frame{\frametitle{Refinement}
-\begin{itemize}
-  \item<1-> \bl{$Type$ is the set of types}
-  \item<2-> recursively defined complex types $\ram{a,b}$: infinite
-  \item<3-> type label $\ram{\alpha}$
-  \item<4-> vs. set of \bl{meaningful expressions} of that type: \bl{$ME_{\ram{\alpha}}$}
-\end{itemize}
-}
-
-\frame{\frametitle{Higher order}
-\begin{itemize}
-  \item<1-> first order languages: variables over individuals ($\ram{e}$-types)
-  \item<2-> n-order: \bl{variables over higher types} ($\ram{e,t}$-types etc.)
-  \item<3-> $P_{\ram{e,t}}$ or $Q_{\ram{e,\ram{e,t}}}$: constants of higher types
-  \item<4-> so: $v_{1_{\ram{e,t}}}\ekm{v_1(m)}$
-  \item<5-> if $V(m)=Mary$, $v_1$ is the set of all of Mary's properties
-\end{itemize}
-}
-
-\frame{\frametitle{Typing variables}
-\begin{itemize}
-  \item<1-> we write:
-    \begin{itemize}
-      \item<2-> \bl{$v_{n_{\ram{\alpha}}}$ for the n-th variable of type $\ram{\alpha}$}
-      \item<3-> Dowty et al.: $v_{n,\ram{\alpha}}$
-    \end{itemize}
-  \item<4-> alternatively abbreviated by old symbols $x_1$, $a$, $P$, etc.
-\end{itemize}
-}
-
-
-\frame{\frametitle{Constants, variables, functions}
-\begin{itemize}
-  \item<1-> non-logical constant $\alpha$: $\DEM{\alpha}=V(\alpha)$
-  \item<2-> variable $\alpha$: $\DEM{\alpha}=V(\alpha)$
-  \item<3-> $\alpha\in\ram{a,b},\ \beta\in{}a$, then $\DEM{\alpha(\beta)}=\DEM{\alpha}(\DEM{\beta})$
-\end{itemize}
-}
-
-\frame{\frametitle{Logical constants and quantifiers}
-\begin{itemize}
-  \item<1-> logical constants interpreted as functions in \{0,1\} as usual
-  \item<2-> if $v_{1_{\ram{\alpha}}}$ is a variable and $\phi\in{}ME_t$\\
-    then $\DEM{(\forall{}v_1)\phi}=1 iff$\\
-    for all $a\in{}D_{\alpha}$ $\Dem{\phi}{\mMm,g[a/v_1]}=1$
-\end{itemize}
-}
-
-\frame{\frametitle{An example}
-\begin{itemize}
-  \item<1-> quantified variable of type $\ram{e,t}$: $v_{0_{\ram{e,t}}}$
-  \item<2-> $\forall{}v_{0_{\ram{e,t}}}\ekm{v_{0_{\ram{e,t}}}(j)\rightarrow v_{0_{\ram{e,t}}}(d)}$
-  \item<3-> for $j,d\in{}ME_{\ram{e}}$
-  \item<4-> one property of every individual: being alone in its union set
-  \item<5-> hence, $j=d$
-  \item<6-> else in $\forall{}v_{0_{\ram{e,t}}}$, $\forall$ wouldn't hold
-\end{itemize}
-}
-
-\frame{\frametitle{Defining \emph{non}}
-\begin{itemize}
-  \item<1-> productive adjectival prefix: \emph{non-adjacent}, \emph{non-local}, etc.
-  \item<2-> inverting the characteristic function of the adjective
-  \item<3-> result denotes complement of the original adjective in $D_{\ram{e}}$
-  \item<4-> \emph{adjective}: $\ram{e,t}$, \bl{\emph{non}: $\ram{\ram{e,t},\ram{e,t}}$}
-  \item<5-> a function $h$ s.t. for every $k\in{}D_{\ram{e,t}}$ and every $d\in D_{\ram{e}}$\\
-     $(h(k))(d) = 1$ iff $k(d)=0$ and\\
-     $(h(k))(d) = 0$ iff $k(d)=1$
-\end{itemize}
-}
-
-\frame{\frametitle{Argument deletion}
-\begin{itemize}
-  \item<1-> \bl{understood objects} in: \emph{I eat.} - \emph{Vanity kills.} - etc.
-  \item<2-> \emph{eat} is in $ME_{\ram{e,\ram{e,t}}}$
-  \item<3-> assume a \bl{silent logical constant: $R_O$ in $ME_{\ram{\ram{e,\ram{e,t}},\ram{e,t}}}$}
-  \item<4-> a function $h$ s.t. for all $k\in D_{\ram{e,\ram{e,t}}}$ and all $d\in D_{\ram{e}}$\\
-  $h(k)(d)=1$ iff there is some $d^{\prime}\in D_{\ram{e}}$ s.t. k(d\Up{$\prime$})(d)=1
-  \item<5-> passives as similar subject deletion
-\end{itemize}
-}
-
-\section{Lambda languages}
-
-\frame{\frametitle{All there is to $\lambda$}
-\begin{itemize}
-  \item<1-> a new \bl{variable binder}
-  \item<2-> allows \bl{abstraction over wff's of arbitrary complexity}
-  \item<3-> similar to $\{x\|\phi\}$ (read as `the set of all $x$ s.t. $\phi$')
-  \item<4-> we get \bl{$\lambda{}x\ekm{\phi}$}
-  \item<5-> {\footnotesize on Montague's typewriter: $\hat{x}\ekm{\phi}$}
-  \item<6-> does not create a set but a function which can be taken as the CF of a set
-\end{itemize}
-}
-
-\frame{\frametitle{$\lambda$ abstraction}
-\begin{itemize}
-  \item<1-> for every wff $\phi$, any $x\in{}Var$, and any $a\in{}Con$
-  \item<2-> \bl{$\lambda$ abstraction: $\phi$ $\rightarrow$ $\lambda{}x\ekm{\phi^{\ekm{a/x}}}(a)$}
-  \item<3-> read $\phi^{(a/x)}$ as `\emph{phi} with every $a$ replaced by $x$'
-  \item<4-> $x$ can be of any type
-\end{itemize}
-}
-
-
-\frame{\frametitle{Two informal examples}
-\begin{itemize}
-   \item<1-> $\lambda{}x_{\ram{e}}\ekm{L(x)}$ is the characteristic function of the set of those individuals $d\in{}D_{\ram{e}}$ which have property $L$
-   \item<2-> $\lambda{}x_{\ram{e,t}}\ekm{x(l)}$ is the characteristic function of the set of those properties $k\in{}D_{\ram{e,t}}$ that the individual $l$ has
-\end{itemize}
-}
-
-\frame{\frametitle{$\lambda$ conversion}
-\begin{itemize}
-  \item<1-> $\lambda{}x\ekm{L(x)}$ is the abstract of $L(a)$ (with some individual $a$)
-  \item<2-> hence, it holds: $\lambda{}x\ekm{L(x)}(a)\Leftrightarrow{}L(a)$
-  \item<3-> for every wff $\phi$, any $x\in{}Var$, and any $a\in{}Con$
-  \item<4-> \bl{$\lambda$ conversion: $\lambda{}x\ekm{\phi}(a)$ $\rightarrow$ $\phi^{\ekm{x/a}}$}
-\end{itemize}
-}
-
-\frame{\frametitle{$\lambda$ in and out}
-\begin{itemize}
-  \item<1-> \bl{\Large$\lambda{}x\ekm{\phi}(a) \leftrightarrow \phi^{\ekm{x/a}}$}
-  \item<2-> not just syntactically, since truth conditions are equivalent
-  \item<3-> \bl{\Large$\lambda{}x\ekm{\phi}(a) \Leftrightarrow \phi^{\ekm{x/a}}$}
-  \item<4-> notice: \bl{$\lambda{}x_{\ram{\alpha}}\ekm{\phi}$ is in $ME_{\ram{\alpha,t}}$}
-  \item<5-> while $\phi$ (as a wff) is in $ME_{\ram{t}}$
-\end{itemize}
-}
-
-
-\frame{\frametitle{The full rules}
-\begin{itemize}
-  \item<1-> Dowty et al., 102f. (\emph{Syn C.10} and \emph{Sem 10})
-  \item<2-> \bl{If $\alpha\in{}ME_{\alpha}$ and $u\in{}Var_b$, then $\lambda{}u\ekm{\alpha}\in{}ME_{\ram{b,a}}$.}
-  \item<3-> \bl{If $\alpha\in{}ME_a$ and $u\in{}Var_b$ then $\DEM{\lambda{}u\ekm{\alpha}}$ is that function $h$ from $D_b$ into $D_a$ s.t. for all objects $k$ in $D_b$, $h(k)$ is equal to $\Dem{\alpha}{\mMm,g\ekm{k/u}}$.}
-\end{itemize}
-}
 
 \frame{\frametitle{The \emph{non} example revised (Dowty et al., 104)}
 \begin{itemize}
@@ -304,7 +486,7 @@
 \end{center}
 }
 
-\subsection{A glimpse at quantification in Montague's system}
+\section{Ausblick auf Quantifikation bei Montague}
 
 \frame{\frametitle{The behavior of quantified NPs}
 \begin{itemize}
@@ -334,3 +516,11 @@
 
 }
 
+
+\begin{frame}
+  {Aufgaben I}
+  \onslide<+->
+  \begin{itemize}[<+->]
+  \item Wie kann man Passiv in $L_{Type}$ modellieren?
+  \end{itemize}
+\end{frame}
