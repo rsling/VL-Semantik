@@ -57,11 +57,13 @@ $(OUTDIR)/%$(SLIDESUFF)$(PROJECT)$(SUFFSUFF): main.tex $(SOURCEDIR)%.tex $(OUTDI
 
 # Phony shit.
 
-.PHONY: handout01 handout02 handout03 handout04 handout05 handout06 handout07 handout08 handout09 handout10 handout11 handout12 slides01 slides02 slides03 slides04 slides05 slides06 slides07 slides08 slides09 slides10 allhandouts allslides all clean realclean edit test
+.PHONY: full handout01 handout02 handout03 handout04 handout05 handout06 handout07 handout08 handout09 handout10 handout11 handout12 slides01 slides02 slides03 slides04 slides05 slides06 slides07 slides08 slides09 slides10 allhandouts allslides all clean realclean edit test
 
 test:
 	echo $(OUTDIR)/$(PROJECT)$(HANDOUTSUFF)$(FULL)$(BIBSUFF)
 	echo $(OUTDIR)/%$(HANDOUTSUFF)$(PROJECT)$(BIBSUFF)
+
+full: $(OUTDIR)/$(PROJECT)$(HANDOUTSUFF)$(FULL)$(SUFFSUFF)
 
 handout01: $(OUTDIR)/01.+Inferenz+und+Bedeutung$(HANDOUTSUFF)$(PROJECT)$(SUFFSUFF)
 handout02: $(OUTDIR)/02.+Referentielle+Semantik$(HANDOUTSUFF)$(PROJECT)$(SUFFSUFF)
