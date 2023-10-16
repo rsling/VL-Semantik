@@ -14,7 +14,7 @@
   Und woher kennen Sie den $\lambda$-Operator eigentlich schon?\\
   \onslide<+->
   \Halbzeile
-  \grau{\footnotesize Text für heute: \citet[Kapitel~4]{DowtyEa1981} | \citealt[Kapitel~7]{ChierchiaMcconnellginet2000}}
+  \grau{\footnotesize Texte für heute: \citet[Kapitel~4]{DowtyEa1981} | \citealt[Kapitel~7]{ChierchiaMcconnellginet2000}}
 \end{frame}
 
 \section{Einfachere Semantik}
@@ -457,68 +457,115 @@
   \end{itemize}
 \end{frame}
 
-
-\frame{\frametitle{The \emph{non} example revised (Dowty et al., 104)}
-\begin{itemize}
-  \item<1-> $\forall{}x\forall{}v_{0^{\ram{e,t}}}\ekm{(\mathbf{non}(v_{0_{\ram{e,t}}}))(x)\leftrightarrow\neg{}(v_{0_{\ram{e,t}}}(x))}$
-  \item<2-> $\forall{}v_{0_{\ram{e,t}}}\ekm{\lambda{}x\ekm{(\mathbf{non}(v_{0_{\ram{e,t}}}))(x)}=\lambda{}x\ekm{\neg{}(v_{0_{\ram{e,t}}}(x))}}$
-  \item<3-> $\forall{}v_{0_{\ram{e,t}}}\ekm{\mathbf{non}(v_{0_{\ram{e,t}}})=\lambda{}x\ekm{\neg{}(v_{0_{\ram{e,t}}}(x))}}$\\ \smallskip
-  {\footnotesize (since $\lambda{x}\ekm{\mathbf{non}(v)(x)}$ is unnecessarily abstract/$\eta$ reduction)}
-  \item<4-> $\lambda{}v_{0_{\ram{e,t}}}\ekm{\mathbf{non}(v_{0_{\ram{e,t}}})=\lambda{}v_{0_{\ram{e,t}}}\ekm{\lambda{}x\ekm{\neg{}(v_{0_{\ram{e,t}}}(x))}}}$
-  \item<5->{\footnotesize and since that is about all assignments for $\lambda{}v_{0_{\ram{e,t}}}$:}\\
+\begin{frame}
+  {The \emph{non} example revised \citep[104]{DowtyEa1981}}
+  \onslide<+->
+  \onslide<+->
+  Das können Sie jetzt nachvollziehen!\\
+  \Zeile
+  \begin{itemize}[<+->]
+    \item $\forall{}x\forall{}v_{0^{\ram{e,t}}}\ekm{(\mathbf{non}(v_{0_{\ram{e,t}}}))(x)\leftrightarrow\neg{}(v_{0_{\ram{e,t}}}(x))}$
+    \item $\forall{}v_{0_{\ram{e,t}}}\ekm{\lambda{}x\ekm{(\mathbf{non}(v_{0_{\ram{e,t}}}))(x)}=\lambda{}x\ekm{\neg{}(v_{0_{\ram{e,t}}}(x))}}$
+    %{\footnotesize (since $\lambda{x}\ekm{\mathbf{non}(v)(x)}$ is unnecessarily abstract/$\eta$ reduction)}
+    \item $\lambda{}v_{0_{\ram{e,t}}}\ekm{\mathbf{non}(v_{0_{\ram{e,t}}})=\lambda{}v_{0_{\ram{e,t}}}\ekm{\lambda{}x\ekm{\neg{}(v_{0_{\ram{e,t}}}(x))}}}$
+    \item %{\footnotesize and since that is about all assignments for $\lambda{}v_{0_{\ram{e,t}}}$:}\\
     $\mathbf{non}=\lambda{}v_{0_{\ram{e,t}}}\ekm{\lambda{x}\ekm{\neg{}v_{0_{\ram{e,t}}}(x)}}$
-\end{itemize}
-}
+  \end{itemize}
+\end{frame}
 
-\frame{
-\begin{center}
-  {\footnotesize\emph{Mary is non-adjacent.}\\(translate `adjacent' as $c_{0_{\ram{e,t}}}$, `Mary' as $c_{0_{\ram{e}}}$, ignore the copula)}\\
-  
-  \bigskip
- 
-%  \Tree[3]{%
-%           & \K{$\neg{}c_{0_{\ram{e,t}}}(c_{0_{\ram{e}}})$ \bl{(by $\lambda$ conv.)}} \\
-%           & \Kk{2.5}{$\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}(c_{0_{\ram{e}}})$ \bl{(by FA)}} \B{dr}\B{dl} \\
-%           \K{$c_{0_{\ram{e}}}$} && \K{$\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}$ \bl{(by $\lambda$ conv.)}} \\
-%            && \Kk{2.5}{$\lambda{}v_{0_{\ram{e,t}}}\ekm{\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}}(c_{0_{\ram{e,t}}})$ \bl{(by FA)}} \B{dr}\B{dl} \\
-%           & \K{$\lambda{}v_{0_{\ram{e,t}}}\ekm{\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}}$} && \K{$c_{0_{\ram{e,t}}}$}
-%          }
-\end{center}
-}
+\begin{frame}
+  {Example with \textit{non}}
+  \onslide<+->
+  \onslide<+->
+  \textit{Mary is non-belligerent.}\\
+  \Viertelzeile
+  \grau{Translate `belligerent' as $c_{0_{\ram{e,t}}}$, `Mary' as $c_{0_{\ram{e}}}$, ignore the copula.}\\
+  \onslide<+->
+  \Zeile
+  \centering 
+  \scalebox{0.8}{\begin{forest}
+    [$\neg{}c_{0_{\ram{e,t}}}(c_{0_{\ram{e}}})$ \bl{(by $\lambda$ conv.)}
+      [$\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}(c_{0_{\ram{e}}})$ \bl{(by FA)}
+        [$c_{0_{\ram{e}}}$]
+        [$\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}$ \bl{(by $\lambda$ conv.)}
+          [$\lambda{}v_{0_{\ram{e,t}}}\ekm{\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}}(c_{0_{\ram{e,t}}})$ \bl{(by FA)}
+            [$\lambda{}v_{0_{\ram{e,t}}}\ekm{\lambda{v_{0_{\ram{e}}}}\ekm{\neg{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}}$]
+            [$c_{0_{\ram{e,t}}}$]
+          ]
+        ]
+      ]
+    ]
+  \end{forest}}
+\end{frame}
+
 
 \section{Ausblick auf Quantifikation bei Montague}
 
-\frame{\frametitle{The behavior of quantified NPs}
-\begin{itemize}
-  \item<1-> syntactically like referential NPs
-  \item<2-> semantically like PC quantifiers
-  \item<3-> \emph{Every student walks.}: $\forall{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\rightarrow{}c_{1_{\ram{e,t}}}(v_{0_{\ram{e}}})}$
-  \item<4-> \emph{Some student walks.}: $\forall{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}c_{1_{\ram{e,t}}}(v_{0_{\ram{e}}})}$
-  \item<5-> making referential NPs and QNPs \bl{the same type}? 
-\end{itemize}
-}
+\begin{frame}
+  {Quantifizierte NPs bei Montague}
+  \onslide<+->
+  \onslide<+->
+  Können referentielle und quantifizierte NPs denselben Typ haben?\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Quantoren-NP-Syntax | Wie die referentieller NPs
+    \item Quantoren-NP-Semantik | Wie die von prädikatenlogischen Quantoren
+      \Halbzeile
+    \item Erstmal nicht aufregend bzw.\ erwartbar in $L_{Type}$
+      \Viertelzeile
+      \begin{itemize}[<+->]
+        \item \textit{Every student walks.}: \alert{$\forall{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\rightarrow{}c_{1_{\ram{e,t}}}(v_{0_{\ram{e}}})}$}
+        \item \textit{Some student walks.}: \alert{$\forall{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}c_{1_{\ram{e,t}}}(v_{0_{\ram{e}}})}$}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{A higher type}
-\begin{itemize}
-  \item<1-> \bl{$\lambda{}v_{0_{\ram{e,t}}}\forall{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\rightarrow{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}$}
-  \item<2-> a second order function
-  \item<3-> characterizes the set of all predicates true of every student
-  \item<4-> equally: \bl{$\lambda{}v_{0_{\ram{e,t}}}\exists{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}$}
-\end{itemize}
-}
+\begin{frame}
+  {Ein höherer Typ}
+  \onslide<+->
+  \onslide<+->
+  Die Macht höherstufiger $\lambda$-Sprachen\\
+  \Zeile 
+  \begin{itemize}[<+->]
+    \item Versuchen Sie, diese Ausdrücke zu verstehen
+      \begin{itemize}[<+->]
+        \item \bl{$\lambda{}v_{0_{\ram{e,t}}}\forall{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\rightarrow{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}$}
+        \item \bl{$\lambda{}v_{0_{\ram{e,t}}}\exists{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}$}
+      \end{itemize}
+    \item Denken Sie daran:
+      \begin{itemize}[<+->]
+        \item $c_{0_{\ram{e,t}}}$ | Das Prädikat für \textit{students}
+        \item $\lambda{}v_{0_{\ram{e,t}}}$ | Variable über einstellige Prädikate
+        \item $v_{0_{\ram{e}}}$ | Variable über Individuen
+      \end{itemize}
+      \Halbzeile
+    \item \alert{Funktionen zweiter Ordnung} (Prädikate als Eingabewerte) 
+      \Halbzeile
+      \onslide<+->
+    \item \gruen{CFs der Mengen von Prädikaten die auf alle\slash einige Studierende zutreffen}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Combining with some predicate}
-
-%  \Tree[3]{& \K{$\exists{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}c_{1_{\ram{e,t}}}(v_{0_{\ram{e}}})}$ \bl{(by $\lambda$ conv.)}} \B{d} \\
-%           & \K{$\lambda{}v_{0_{\ram{e,t}}}\exists{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}(c_{1_{\ram{e,t}}})$ \bl{(by FA)}} \B{dl}\B{dr} \\
-%        \K{$\lambda{}v_{0_{\ram{e,t}}}\exists{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}$} & & \K{$c_{1_{\ram{e,t}}}$}
-%       }
-
-}
+\begin{frame}
+  {Kombination mit Prädikat}
+  \onslide<+->
+  \onslide<+->
+  \centering 
+  \scalebox{1}{\begin{forest}
+    [$\exists{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}c_{1_{\ram{e,t}}}(v_{0_{\ram{e}}})}$ \bl{(by $\lambda$ conv.)}
+      [$\lambda{}v_{0_{\ram{e,t}}}\exists{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}(c_{1_{\ram{e,t}}})$ \bl{(by FA)}
+        [$\lambda{}v_{0_{\ram{e,t}}}\exists{v_{0_{\ram{e}}}}\ekm{c_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})\wedge{}v_{0_{\ram{e,t}}}(v_{0_{\ram{e}}})}$]
+        [$c_{1_{\ram{e,t}}}$]
+      ]
+    ]
+  \end{forest}}
+\end{frame}
 
 
 \begin{frame}
   {Aufgaben I}
+  \rot{Unvollständig!}\\
+  \Zeile
   \onslide<+->
   \begin{itemize}[<+->]
   \item Wie kann man Passiv in $L_{Type}$ modellieren?
