@@ -347,54 +347,88 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  {Evaluation mit zwei Variablen}
-  \onslide<+->
-  \onslide<+->\scriptsize
-  $\alert{D_1}=\{Herr\ Webelhuth, Frau\ Klenk, Turm-Mensa\}$ \grau{| Individuen in $\Model_1$}\\
-  \onslide<+->
-  $\alert{V_1(Q)}=\{\tuple{Webelhuth,Klenk},\tuple{Webelhuth,Mensa},\tuple{Klenk,Webelhuth}\}$ \grau{| Prädikat $Q$ (\zB \textit{x besucht y}) in $\Model_1$}\\
-  \onslide<+->
-  Evaluiere \alert{$\dem{\forall x_1\exists x_2 Qx_1x_2}^{\Model_1,g_1}\visible<18->{=\orongsch{0}}$} \visible<18->{weil nicht für jede Belegung von $x_1$ mindestens einmal \gruen{1}}\\
-  \onslide<+->
-  \Zeile
-  \begin{minipage}{0.5\textwidth}\begin{itemize}[<+->]
-        \item Initiale Belegung $\dem{x_1}^{\Model_1,g_1}=Frau\ Klenk$
-          \begin{itemize}[<+->]\scriptsize
-            \item $\dem{Qx_1x_2}^{\mMm_1,g_1}=\orongsch{0}$
-            \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\gruen<8>{Klenk/x_2}]}=\orongsch{0}$
-            \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\gruen<9>{Webelhuth/x_2}]}=\gruen{1}$
-          \end{itemize}
-        \item $\dem{x_1}^{\Model_1,g_1[Turm-Mensa/x_1]}=Turm-Mensa$
-          \begin{itemize}[<+->]\scriptsize
-            \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<11-13>{Turm-Mensa/x_1}]}=\orongsch{0}$
-            \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<11-13>{Turm-Mensa/x_1},\gruen<12>{Klenk/x_2}]}=\orongsch{0}$
-            \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<11-13>{Turm-Mensa/x_1},\gruen<13>{Webelhuth/x_2}]}=\orongsch{0}$ \rot{Abbruch!}
-          \end{itemize}
-        \item $\dem{x_1}^{\Model_1,g_1[Webelhuth/x_1]}=Herr\ Webelhuth$
-          \begin{itemize}[<+->]\scriptsize
-            \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<15-17>{Webelhuth/x_1}]}=\gruen{1}$
-            \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<15-17>{Webelhuth/x_1},\gruen<16>{Klenk/x_2}]}=\gruen{1}$
-            \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<15-17>{Webelhuth/x_1},\gruen<17>{Webelhuth/x_2}]}=\orongsch{0}$
-          \end{itemize}
-    \end{itemize}\end{minipage}%
-    \begin{minipage}{0.5\textwidth}%
-    \centering 
-    \scalebox{1.2}{$g_1 = \left[\begin{array}{l}
-        x_1 \rightarrow \tuerkis<11-13,15-17>{%
-          \only<5-10,14,18->{Frau\ Klenk}%
-          \only<11-13>{Turm-Mensa}%
-          \only<15-17>{Herr\ Webelhuth}%
-        }\\
-        x_2 \rightarrow \gruen<8-9,12-13,16-17>{%
-          \only<5-7,10-11,14-15,18->{Turm-Mensa}%
-          \only<8,12,16>{Frau\ Klenk}%
-          \only<9,13,17>{Herr\ Webelhuth}
-        }\\
-      x_3 \rightarrow Herr\ Webelhuth\\
-    \end{array}\right]$}\\
-  \end{minipage}
-\end{frame}
+\ifdefined\HANDOUT
+  \begin{frame}
+    {Evaluation mit zwei Variablen}
+    \onslide<+->
+    \onslide<+->\scriptsize
+    $\alert{D_1}=\{Herr\ Webelhuth, Frau\ Klenk, Turm-Mensa\}$ \grau{| Individuen in $\Model_1$}\\
+    \onslide<+->
+    $\alert{V_1(Q)}=\{\tuple{Webelhuth,Klenk},\tuple{Webelhuth,Mensa},\tuple{Klenk,Webelhuth}\}$ \grau{| Prädikat $Q$ (\zB \textit{x besucht y}) in $\Model_1$}\\
+    \onslide<+->
+    Evaluiere \alert{$\dem{\forall x_1\exists x_2 Qx_1x_2}^{\Model_1,g_1}\visible<18->{=\orongsch{0}}$} \visible<18->{weil nicht für jede Belegung von $x_1$ mindestens einmal \gruen{1}}\\
+    \onslide<+->
+    \Zeile
+    \begin{minipage}{0.5\textwidth}\begin{itemize}[<+->]
+          \item Initiale Belegung $\dem{x_1}^{\Model_1,g_1}=Frau\ Klenk$
+            \begin{itemize}[<+->]\scriptsize
+              \item $\dem{Qx_1x_2}^{\mMm_1,g_1}=\orongsch{0}$
+              \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\gruen<8>{Klenk/x_2}]}=\orongsch{0}$
+              \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\gruen<9>{Webelhuth/x_2}]}=\gruen{1}$
+            \end{itemize}
+          \item $\dem{x_1}^{\Model_1,g_1[Turm-Mensa/x_1]}=Turm-Mensa$
+            \begin{itemize}[<+->]\scriptsize
+              \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<11-13>{Turm-Mensa/x_1}]}=\orongsch{0}$
+              \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<11-13>{Turm-Mensa/x_1},\gruen<12>{Klenk/x_2}]}=\orongsch{0}$
+              \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<11-13>{Turm-Mensa/x_1},\gruen<13>{Webelhuth/x_2}]}=\orongsch{0}$ \rot{Abbruch!}
+            \end{itemize}
+          \item $\dem{x_1}^{\Model_1,g_1[Webelhuth/x_1]}=Herr\ Webelhuth$
+            \begin{itemize}[<+->]\scriptsize
+              \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<15-17>{Webelhuth/x_1}]}=\gruen{1}$
+              \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<15-17>{Webelhuth/x_1},\gruen<16>{Klenk/x_2}]}=\gruen{1}$
+              \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<15-17>{Webelhuth/x_1},\gruen<17>{Webelhuth/x_2}]}=\orongsch{0}$
+            \end{itemize}
+      \end{itemize}\end{minipage}  \end{frame}
+\else
+  \begin{frame}
+    {Evaluation mit zwei Variablen}
+    \onslide<+->
+    \onslide<+->\scriptsize
+    $\alert{D_1}=\{Herr\ Webelhuth, Frau\ Klenk, Turm-Mensa\}$ \grau{| Individuen in $\Model_1$}\\
+    \onslide<+->
+    $\alert{V_1(Q)}=\{\tuple{Webelhuth,Klenk},\tuple{Webelhuth,Mensa},\tuple{Klenk,Webelhuth}\}$ \grau{| Prädikat $Q$ (\zB \textit{x besucht y}) in $\Model_1$}\\
+    \onslide<+->
+    Evaluiere \alert{$\dem{\forall x_1\exists x_2 Qx_1x_2}^{\Model_1,g_1}\visible<18->{=\orongsch{0}}$} \visible<18->{weil nicht für jede Belegung von $x_1$ mindestens einmal \gruen{1}}\\
+    \onslide<+->
+    \Zeile
+    \begin{minipage}{0.5\textwidth}\begin{itemize}[<+->]
+          \item Initiale Belegung $\dem{x_1}^{\Model_1,g_1}=Frau\ Klenk$
+            \begin{itemize}[<+->]\scriptsize
+              \item $\dem{Qx_1x_2}^{\mMm_1,g_1}=\orongsch{0}$
+              \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\gruen<8>{Klenk/x_2}]}=\orongsch{0}$
+              \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\gruen<9>{Webelhuth/x_2}]}=\gruen{1}$
+            \end{itemize}
+          \item $\dem{x_1}^{\Model_1,g_1[Turm-Mensa/x_1]}=Turm-Mensa$
+            \begin{itemize}[<+->]\scriptsize
+              \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<11-13>{Turm-Mensa/x_1}]}=\orongsch{0}$
+              \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<11-13>{Turm-Mensa/x_1},\gruen<12>{Klenk/x_2}]}=\orongsch{0}$
+              \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<11-13>{Turm-Mensa/x_1},\gruen<13>{Webelhuth/x_2}]}=\orongsch{0}$ \rot{Abbruch!}
+            \end{itemize}
+          \item $\dem{x_1}^{\Model_1,g_1[Webelhuth/x_1]}=Herr\ Webelhuth$
+            \begin{itemize}[<+->]\scriptsize
+              \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<15-17>{Webelhuth/x_1}]}=\gruen{1}$
+              \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<15-17>{Webelhuth/x_1},\gruen<16>{Klenk/x_2}]}=\gruen{1}$
+              \item $\dem{Qx_1x_2}^{\mMm_1,g_1[\tuerkis<15-17>{Webelhuth/x_1},\gruen<17>{Webelhuth/x_2}]}=\orongsch{0}$
+            \end{itemize}
+      \end{itemize}\end{minipage}%
+      \begin{minipage}{0.5\textwidth}%
+      \centering 
+      \scalebox{1.2}{$g_1 = \left[\begin{array}{l}
+          x_1 \rightarrow \tuerkis<11-13,15-17>{%
+            \only<5-10,14,18->{Frau\ Klenk}%
+            \only<11-13>{Turm-Mensa}%
+            \only<15-17>{Herr\ Webelhuth}%
+          }\\
+          x_2 \rightarrow \gruen<8-9,12-13,16-17>{%
+            \only<5-7,10-11,14-15,18->{Turm-Mensa}%
+            \only<8,12,16>{Frau\ Klenk}%
+            \only<9,13,17>{Herr\ Webelhuth}
+          }\\
+        x_3 \rightarrow Herr\ Webelhuth\\
+      \end{array}\right]$}\\
+    \end{minipage}
+  \end{frame}
+\fi
 
 \section{Quantifikation in natürlicher Sprache}
 
@@ -496,54 +530,17 @@
   Die Interpretation erfolgt nach ähnlichem Schema.
 \end{frame}
 
-\begin{frame}
-  {Bäume}
-  \onslide<+->
-  \onslide<+->
-  \textit{Martin sends \gruen{all colleagues} \orongsch{some paper}.} in the $\exists\forall$ reading:\\
-  \centering
-  \onslide<+->
-  \Zeile 
-  $\vcenter{\hbox{\scalebox{0.5}{\begin{forest}
-    [$S$
-      [$NP$
-        [$N$
-          [\textit{Martin}]
-        ]
-      ]
-      [$VP$, calign=child, calign child=2
-        [$V_{tr}$
-          [\textit{sends}]
-        ]
-        [$NP$, gruentree
-          [$Det$
-            [\textit{all}]
-          ]
-          [$N$
-            [\textit{colleagues}]
-          ]
-        ]
-        [$NP$, orongschtree
-          [$Det$
-            [\textit{some}]
-          ]
-          [$N$
-            [\textit{paper}]
-          ]
-        ]
-      ]
-    ]
-  \end{forest}}}}$~\only<4->{$\Longrightarrow$}\only<5->{$\Longrightarrow$}~$\vcenter{\hbox{\scalebox{0.5}{%
-    \only<4>{\begin{forest}
-    [$S\Prm$
-      [$NP_i$, gruentree
-        [$Det$
-          [\textit{all}]
-        ]
-        [$N$
-          [\textit{colleagues}]
-        ]
-      ]
+\ifdefined\HANDOUT
+  \begin{frame}
+    {Bäume}
+    \onslide<+->
+    \onslide<+->
+    \textit{Martin sends \gruen{all colleagues} \orongsch{some paper}.}\\
+    This is the $\exists\forall$ reading:\\
+    \centering
+    \onslide<+->
+    \Zeile 
+    $\vcenter{\hbox{\scalebox{0.4}{\begin{forest}
       [$S$
         [$NP$
           [$N$
@@ -554,7 +551,14 @@
           [$V_{tr}$
             [\textit{sends}]
           ]
-          [$t_1$, gruentree]
+          [$NP$, gruentree
+            [$Det$
+              [\textit{all}]
+            ]
+            [$N$
+              [\textit{colleagues}]
+            ]
+          ]
           [$NP$, orongschtree
             [$Det$
               [\textit{some}]
@@ -565,18 +569,8 @@
           ]
         ]
       ]
-    ]
-  \end{forest}}%
-  \only<5->{\begin{forest}
-    [$S\Prm$
-      [$NP$, orongschtree
-        [$Det$
-          [\textit{some}]
-        ]
-        [$N$
-          [\textit{paper}]
-        ]
-      ]
+    \end{forest}}}}~\Longrightarrow~\vcenter{\hbox{\scalebox{0.4}{%
+      \only<4>{\begin{forest}
       [$S\Prm$
         [$NP_i$, gruentree
           [$Det$
@@ -597,13 +591,166 @@
               [\textit{sends}]
             ]
             [$t_1$, gruentree]
-            [$t_2$, orongschtree]
+            [$NP$, orongschtree
+              [$Det$
+                [\textit{some}]
+              ]
+              [$N$
+                [\textit{paper}]
+              ]
+            ]
           ]
         ]
       ]
-    ]
-  \end{forest}}}}}$%
-\end{frame}
+    \end{forest}}}}}~\Longrightarrow~\vcenter{\hbox{\scalebox{0.4}{%
+    \begin{forest}
+      [$S\Prm$
+        [$NP$, orongschtree
+          [$Det$
+            [\textit{some}]
+          ]
+          [$N$
+            [\textit{paper}]
+          ]
+        ]
+        [$S\Prm$
+          [$NP_i$, gruentree
+            [$Det$
+              [\textit{all}]
+            ]
+            [$N$
+              [\textit{colleagues}]
+            ]
+          ]
+          [$S$
+            [$NP$
+              [$N$
+                [\textit{Martin}]
+              ]
+            ]
+            [$VP$, calign=child, calign child=2
+              [$V_{tr}$
+                [\textit{sends}]
+              ]
+              [$t_1$, gruentree]
+              [$t_2$, orongschtree]
+            ]
+          ]
+        ]
+      ]
+    \end{forest}}}}$
+  \end{frame}
+\else
+  \begin{frame}
+    {Bäume}
+    \onslide<+->
+    \onslide<+->
+    \textit{Martin sends \gruen{all colleagues} \orongsch{some paper}.}\\
+    This is the $\exists\forall$ reading:\\
+    \centering
+    \onslide<+->
+    \Zeile 
+    $\vcenter{\hbox{\scalebox{0.5}{\begin{forest}
+      [$S$
+        [$NP$
+          [$N$
+            [\textit{Martin}]
+          ]
+        ]
+        [$VP$, calign=child, calign child=2
+          [$V_{tr}$
+            [\textit{sends}]
+          ]
+          [$NP$, gruentree
+            [$Det$
+              [\textit{all}]
+            ]
+            [$N$
+              [\textit{colleagues}]
+            ]
+          ]
+          [$NP$, orongschtree
+            [$Det$
+              [\textit{some}]
+            ]
+            [$N$
+              [\textit{paper}]
+            ]
+          ]
+        ]
+      ]
+    \end{forest}}}}$~\only<4->{$\Longrightarrow$}\only<5->{$\Longrightarrow$}~$\vcenter{\hbox{\scalebox{0.5}{%
+      \only<4>{\begin{forest}
+      [$S\Prm$
+        [$NP_i$, gruentree
+          [$Det$
+            [\textit{all}]
+          ]
+          [$N$
+            [\textit{colleagues}]
+          ]
+        ]
+        [$S$
+          [$NP$
+            [$N$
+              [\textit{Martin}]
+            ]
+          ]
+          [$VP$, calign=child, calign child=2
+            [$V_{tr}$
+              [\textit{sends}]
+            ]
+            [$t_1$, gruentree]
+            [$NP$, orongschtree
+              [$Det$
+                [\textit{some}]
+              ]
+              [$N$
+                [\textit{paper}]
+              ]
+            ]
+          ]
+        ]
+      ]
+    \end{forest}}%
+    \only<5->{\begin{forest}
+      [$S\Prm$
+        [$NP$, orongschtree
+          [$Det$
+            [\textit{some}]
+          ]
+          [$N$
+            [\textit{paper}]
+          ]
+        ]
+        [$S\Prm$
+          [$NP_i$, gruentree
+            [$Det$
+              [\textit{all}]
+            ]
+            [$N$
+              [\textit{colleagues}]
+            ]
+          ]
+          [$S$
+            [$NP$
+              [$N$
+                [\textit{Martin}]
+              ]
+            ]
+            [$VP$, calign=child, calign child=2
+              [$V_{tr}$
+                [\textit{sends}]
+              ]
+              [$t_1$, gruentree]
+              [$t_2$, orongschtree]
+            ]
+          ]
+        ]
+      ]
+    \end{forest}}}}}$%
+  \end{frame}
+\fi
 
 \section{Aufgaben}
 
