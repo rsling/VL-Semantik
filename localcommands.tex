@@ -260,6 +260,7 @@
   orongschtree/.style={for tree={orongsch}, for children={edge=orongsch}},
   rottree/.style={for tree={rot}, for children={edge=rot}},
   gruentree/.style={for tree={gruen}, for children={edge=gruen}},
+  whytetree/.style={for tree={white}, for children={edge=white}},
   tuerkistree/.style={for tree={tuerkis}, for children={edge=tuerkis}},
   brauntree/.style={for tree={braun}, for children={edge=braun}},
   grautree/.style={for tree={grau}, for children={edge=grau}}, 
@@ -377,12 +378,12 @@
 
 
 %% SEMANTIK
-\newcommand{\den}[1]{\ensuremath{\llbracket\text{#1}\rrbracket}}
-\newcommand{\dem}[1]{{\llbracket{}#1\rrbracket}}
-\newcommand{\Dem}[2]{\llbracket{}#1\rrbracket^{#2}}
-\newcommand{\DEM}[1]{\llbracket{}#1\rrbracket^{\mathcal{M},g}}
-\newcommand{\DEMM}[1]{\llbracket{}#1\rrbracket^{\mathcal{M},w,i,g}}
-\newcommand{\DEMI}[1]{\llbracket{}#1\rrbracket_{\not c}^{\mathcal{M},g}}
+\newcommand{\den}[1]{\raisebox{-0.05em}{\scalebox{1.2}{\ensuremath{\llbracket}}}#1\raisebox{-0.05em}{\scalebox{1.2}{\ensuremath{\rrbracket}}}}
+\newcommand{\dem}[1]{\den{#1}} % legacy
+\newcommand{\Dem}[2]{\den{#1}^{#2}}
+\newcommand{\DEM}[1]{\den{#1}^{\mathcal{M},g}}
+\newcommand{\DEMM}[1]{\den{#1}^{\mathcal{M},w,i,g}}
+\newcommand{\DEMI}[1]{\den{#1}_{\not c}^{\mathcal{M},g}}
 %\newcommand{\ram}[1]{{\langle{}#1\rangle}}
 \newcommand{\Model}{\ensuremath{\mathcal{M}}}
 \newcommand{\Valu}{\ensuremath{\mathcal{V}}}

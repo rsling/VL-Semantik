@@ -16,7 +16,8 @@ BIBFILE = /Users/roland/Workingcopies/Bibtex/rs.bib
 
 # TeX Sources to watch.
 SOURCEDIR = includes/
-SOURCES = main.tex $(wildcard $(SOURCEDIR)/*.tex)
+MAINS = main.tex localpackages.tex localcommands.tex
+SOURCES = $(MAINS) $(wildcard $(SOURCEDIR)/*.tex)
 
 # Stuff passed to XeLaTeX.
 HANDOUTDEF = \def\HANDOUT{}
@@ -40,19 +41,19 @@ $(OUTDIR)/$(PROJECT)$(HANDOUTSUFF)$(FULL)$(SUFFSUFF): $(OUTDIR)/$(PROJECT)$(HAND
 	$(LX) $(TEXFLAGS) -jobname=$(PROJECT)$(HANDOUTSUFF)$(FULL) "$(HANDOUTDEF)$(MAININCLUDE)"
 
 # Individual handout BBL and PDF.
-$(OUTDIR)/%$(HANDOUTSUFF)$(PROJECT)$(BIBSUFF): main.tex $(SOURCEDIR)/%.tex $(BIBFILE)
+$(OUTDIR)/%$(HANDOUTSUFF)$(PROJECT)$(BIBSUFF): $(MAINS) $(SOURCEDIR)/%.tex $(BIBFILE)
 	$(LX) $(TEXFLAGS) $(PREFLAGS) -jobname=$*$(HANDOUTSUFF)$(PROJECT) "$(HANDOUTDEF)\edef\TITLE{$*}$(MAININCLUDE)"
 	cd ./$(OUTDIR); $(BX) $*$(HANDOUTSUFF)$(PROJECT)
 
-$(OUTDIR)/%$(HANDOUTSUFF)$(PROJECT)$(SUFFSUFF): main.tex $(SOURCEDIR)%.tex $(OUTDIR)/%$(HANDOUTSUFF)$(PROJECT)$(BIBSUFF)
+$(OUTDIR)/%$(HANDOUTSUFF)$(PROJECT)$(SUFFSUFF): $(MAINS) $(SOURCEDIR)%.tex $(OUTDIR)/%$(HANDOUTSUFF)$(PROJECT)$(BIBSUFF)
 	$(LX) $(TEXFLAGS) -jobname=$*$(HANDOUTSUFF)$(PROJECT) "$(HANDOUTDEF)\edef\TITLE{$*}$(MAININCLUDE)"
 
 # Individual slides BBL and PDF.
-$(OUTDIR)/%$(SLIDESUFF)$(PROJECT)$(BIBSUFF): main.tex $(SOURCEDIR)%.tex $(BIBFILE)
+$(OUTDIR)/%$(SLIDESUFF)$(PROJECT)$(BIBSUFF): $(MAINS) $(SOURCEDIR)%.tex $(BIBFILE)
 	$(LX) $(TEXFLAGS) $(PREFLAGS) -jobname=$*$(SLIDESUFF)$(PROJECT) "$(SLIDEDEF)\edef\TITLE{$*}$(MAININCLUDE)"
 	cd ./$(OUTDIR); $(BX) $*$(SLIDESUFF)$(PROJECT)
 
-$(OUTDIR)/%$(SLIDESUFF)$(PROJECT)$(SUFFSUFF): main.tex $(SOURCEDIR)%.tex $(OUTDIR)/%$(SLIDESUFF)$(PROJECT)$(BIBSUFF)
+$(OUTDIR)/%$(SLIDESUFF)$(PROJECT)$(SUFFSUFF): $(MAINS) $(SOURCEDIR)%.tex $(OUTDIR)/%$(SLIDESUFF)$(PROJECT)$(BIBSUFF)
 	$(LX) $(TEXFLAGS) -jobname=$*$(SLIDESUFF)$(PROJECT) "$(SLIDEDEF)\edef\TITLE{$*}$(MAININCLUDE)"
 
 # Phony shit.
