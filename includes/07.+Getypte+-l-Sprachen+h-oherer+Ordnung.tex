@@ -561,13 +561,53 @@
   \end{forest}}
 \end{frame}
 
+\section{Aufgaben}
 
 \begin{frame}
   {Aufgaben I}
-  \rot{Unvollständig!}\\
-  \Zeile
-  \onslide<+->
-  \begin{itemize}[<+->]
-  \item Wie kann man Passiv in $L_{Type}$ modellieren?
-  \end{itemize}
+  Überlegen Sie, wie die Semantik folgender Sätze in einer $\lambda$-Sprache kompositional modelliert werden kann. Sie können ein vollständiges Fragment entwickeln, müssen es aber nicht. Übersetzen Sie gerne auch einfach einzelne relevante Ausdrücke "`plausibel"' in Prädikatenlogik höherer Ordnung mit $\lambda$-Abstraktion. Die relevanten Konstituenten, bei denen Sie über die Vorteile einer $\lambda$-Sprache nachdenken sollten, sind jeweils farblich hervorgehoben.\\
+  \Halbzeile
+  \begin{enumerate}
+    \item \textit{\alert{Martin und Maria} laufen.}
+    \item \textit{Maria \alert{schwimmt oder taucht}.}
+    \item \textit{Eine Linguistin \alert{schwimmt und läuft}.}
+    \item \textit{Martin \alert{macht irgendwas}.}
+    \item \textit{Das Buch \gruen{brennt} \alert{auf dem Tisch}}.
+    \item \textit{Das Buch \gruen{liegt} \alert{auf dem Tisch}}.
+    \item \textit{Herr Webelhuth legt das Buch \alert{auf oder neben den Tisch}.}
+  \end{enumerate}
 \end{frame}
+
+
+\begin{frame}
+  {Aufgaben II}
+  Versuchen Sie, die Affixe bzw. den Kompositionsvorgang in folgenden Wortpaaren in einer $\lambda$-Prädikatenlogik höherer Ordnung zu modellieren. (Das gleiche wie auf der letzten Folie, nur für Wortbildung statt für Syntax.) Das ist längst nicht alles trivial, und einiges wird nicht funktionieren, je nachdem wie genau Sie es nehmen.\\
+  \Halbzeile
+  \begin{enumerate}
+    \item \textit{Linguist -- Linguist\alert{in}}\\
+      \grau{\footnotesize mit und ohne "`generische"' Form}
+    \item \textit{streichen -- \alert{rot}streichen}\\
+      \grau{\footnotesize Versuchen Sie, die temporalen\slash aspektuellen Besonderheiten irgendwie zu umschiffen.}
+    \item \textit{gehen -- \alert{be}gehen}
+    \item \textit{schreiben -- \alert{ver}schreiben}
+    \item \textit{lesen -- Les\alert{er}}
+    \item \textit{Leser -- \alert{Karten}leser}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  {Aufgaben III}
+  Wie kann man Passiv in $L_{Type}$ modellieren?
+  \Halbzeile
+  \begin{enumerate}
+    \item Modellieren Sie zunächst die Semantik des passivierten Verbs auf Basis einer Semantik des Aktivverbs.
+    \item Versuchen Sie, für das Deutsche ein minimales Fragment im Stil von $L_{Type}$ zu bauen, dass die folgenden beiden Sätze modelliert:
+      \begin{itemize}[<+->]
+        \item Maria grüßt Martin.
+        \item Martin wird gegrüßt.
+      \end{itemize}
+    \item Geben Sie ein minimales Modell an, in dem beide Sätze wahr sind.
+    \item Geben Sie ein minimales Modell an, in dem nur der Aktivsatz, nicht aber der Passivsatz wahr ist.
+  \end{enumerate}
+\end{frame}
+
