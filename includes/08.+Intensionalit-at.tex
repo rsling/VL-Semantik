@@ -1,51 +1,73 @@
+\begin{frame}
+  {Kernfragen dieser Woche}
+  \onslide<+->
+  \onslide<+->
+  \Large
+  \centering 
+  Verständnis dafür, dass wir bisher nur über \alert{Extensionen} sprechen.
+  \Halbzeile
+  \onslide<+->
+  Wissen um Konstruktionen, in denen das nicht ausreicht.
+  \Halbzeile
+  \onslide<+->
+  Definition des intensionalen Kalküls auf Basis des extensionalen.
+\end{frame}
 
-\frame{\frametitle{Targets for this week}
-\begin{itemize}
-  \item<1-> Understand that we have been exclusively dealing with extensions so far.
-  \item<2-> Acknowledge that the approach fails in certain constructions.
-  \item<3-> Learn how one can define an intensional calculus on top of the extensional one.
-  \item<4-> See how that solves many problems with extensional logic for NL.
-\end{itemize}
-}
+\section{Wozu Intensionalität?}
 
-\section{Intensionality}
-%\subsection{Problems with extensionality and non-dimensional models}
-\frame{\frametitle{Some examples}
-\begin{itemize}
-  \item<1-> Stockhausen \bl{will} write another opera.
-  \item<2-> \bl{Had} Arno Schmidt cut down on drinking, he \bl{would} still be alive.
-  \item<3-> Gustave Moreau \bl{believes that} estheticism rules.
-\end{itemize}
-}
+\begin{frame}
+  {Intensionalität | Beispiele}
+  \onslide<+->
+  \begin{itemize}[<+->]
+    \item \textit{Stockhausen \alert{wird} eine andere Oper schreiben.}
+    \item \textit{\alert{Hätte} Arno Schmidt weniger getrunken, \alert{könnte} er noch leben.}
+    \item \textit{Gustave Moreau \alert{glaubt}, dass Ästhetizismus toll ist.}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Simple extensions?}
-\begin{itemize}
-  \item<1-> syntactic types are no problem
-  \item<2-> truth conditions impossible to define for static models (\bl{tense})
-  \item<3-> ... and for just one state of affairs (\bl{modals}, \bl{believe type verbs})
-\end{itemize}
-}
+\begin{frame}
+  {Probleme mit Extensionen}
+  \onslide<+->
+  \onslide<+->
+  \begin{itemize}
+    \item \grau{\textit{Stockhausen {wird} eine andere Oper schreiben.}}
+    \item \grau{\textit{{Hätte} Arno Schmidt weniger getrunken, {könnte} er noch leben.}}
+    \item \grau{\textit{Gustave Moreau {glaubt}, dass Ästhetizismus toll ist.}}
+  \end{itemize}
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item \alert{Syntax} der Ausdrücke | Problemlos mit Einführung von Auxiliaren
+    \item \alert{Wahrheitsbedingungen} | \rot{Nicht angebbar}
+      \begin{itemize}[<+->]
+        \item in eindimensionalen Modellen ohne Tempus 
+        \item und ohne Modellierung von Möglichkeit und Notwendigkeit\\
+          \grau{\footnotesize(Modalverben, modale Adverbiale, \textit{glauben}-Verben)}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-%\subsection{Intensions}
-\frame{\frametitle{What are intensions?}
-\begin{center}
-\begin{tabular}{|l|l|l|}
-  \hline
-  \textbf{Type} & \textbf{Reference} & \textbf{Sense} \\
-  \hline
-  \hline
-  NP & individuals & individual concepts \\
-      & \emph{Venus} & \\
-  \hline
-  VP & sets & property concepts \\
-  & \emph{humming birds} & \\
-  \hline
-  S & 1 or 0 & thoughts or \textbf{propositions} \\
-  & \emph{I like cats.} & \\
-  \hline
-\end{tabular}
-\end{center}
-}
+
+\begin{frame}
+  {Was sind Intensionen?}
+  \onslide<+->
+  \onslide<+->
+  Bedeutung (\alert{Extension}) und Sinn (\alert{Intension})\\
+  \onslide<+->
+  \Zeile
+  \centering 
+  \begin{tabular}{lll}
+    \toprule
+    \textbf{Synt.\ Typ} & \textbf{Bedeutung} & \textbf{Sinn} \\
+    \midrule
+    NP & Individuum & Individuenkonzept \\
+       & \emph{Venus} & \\
+    VP & Menge & Eigenschaftskonzept \\
+       & \emph{Kolibri} & \\
+    S  & \{0,1\} & Gedanke\slash \alert{Proposition} \\
+       & \emph{Ich mag Kolibris.} & \\
+    \bottomrule
+  \end{tabular}
+\end{frame}
 
 \frame{\frametitle{Properties of intensions}
 \begin{itemize}
@@ -78,8 +100,8 @@
 \end{itemize}
 }
 
-\section{A formal account of intensions}
-%\subsection{Sets of PSOAs}
+\section{Formale Modellierung von Intensionen}
+
 \frame{\frametitle{Propositions and PSOAs}
 \begin{itemize}
   \item<1-> assume \bl{a set of all PSOAs}
@@ -101,7 +123,6 @@
 \end{itemize}
 }
 
-%\subsection{Intensions as functions}
 
 \frame{\frametitle{The nature of propositions}
 \begin{itemize}
@@ -125,7 +146,6 @@
 \end{itemize}
 }
 
-%\subsection{Repeat after me...}
 \frame{\frametitle{Your evening prayer}
 \begin{itemize}
   \item<1-> \bl{If we know the state of affairs, we know for every sentence whether it is true!}
@@ -136,8 +156,7 @@
 \end{itemize}
 }
 
-\section{Sets of worlds}
-%\subsection{Known relations}
+\section{Mengen von Welten}
 
 \frame{\frametitle{Entailment}
 \begin{itemize}
@@ -188,7 +207,6 @@
 \end{itemize}
 }
 
-%\subsection{Modal operators}
 
 \frame{\frametitle{Quantification over worlds}
 \begin{itemize}
@@ -224,8 +242,7 @@
 \end{itemize}
 }
 
-\section{Intensional Model Theory}
-%\subsection{Ingedients of models}
+\section{Intensionale Modelltheory}
 
 \frame{\frametitle{A larger tuple}
 \begin{itemize}
@@ -241,7 +258,6 @@
 \end{itemize}
 }
 
-%\subsection{Evaluating individual constants}
 
 \frame{\frametitle{Intensional interpretation of individual constants}
 \begin{itemize}
@@ -269,7 +285,6 @@
 \end{itemize}
 }
 
-%\subsection{Set membership}
 
 \frame{\frametitle{The Chierchia approach: predicates/sentences}
 \begin{itemize}
@@ -299,7 +314,6 @@
 \end{itemize}
 }
 
-%\subsection{Some peculiarities of $\Box$ and $\Diamond$}
 
 \frame{\frametitle{A similarity of $\forall$ and $\Box$}
 \begin{itemize}

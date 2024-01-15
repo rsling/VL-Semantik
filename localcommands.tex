@@ -39,7 +39,7 @@
 
 % Colors ==============================================================
 
-\ifdefined\HANDOUT
+%\ifdefined\HANDOUT
   \definecolor{grau}{rgb}{0.5,0.5,0.5}
   \definecolor{dgrau}{rgb}{0.2,0.2,0.2}
   \definecolor{lg}{rgb}{0.8,0.8,0.8}
@@ -57,24 +57,24 @@
   \definecolor{tuerkis}{RGB}{63,136,143}
   \definecolor{braun}{RGB}{108,71,65}
   \definecolor{blaw}{rgb}{0,0,0.9}
-\else
-  \definecolor{grau}{rgb}{0.7,0.7,0.7}
-  \definecolor{dgrau}{rgb}{0.3,0.3,0.3}
-  \definecolor{lg}{rgb}{0.9,0.9,0.9}
-  \definecolor{trueblue}{rgb}{0.8,0.8,1}
-  \definecolor{ltb}{rgb}{0.9,0.9,1}
-  \definecolor{lgr}{rgb}{0.7,1,0.7}
-  \definecolor{orongsch}{RGB}{255, 200, 100}
-  \definecolor{orgrA}{RGB}{   204, 206,  80}
-  \definecolor{orgrB}{RGB}{   153, 212,  60}
-  \definecolor{orgrC}{RGB}{   102, 218,  40}
-  \definecolor{orgrD}{RGB}{    51, 224,  20}
-  \definecolor{gruen}{RGB}{     0, 230,   0}
-  \definecolor{rot}{rgb}{0.8,0.0,0.0}
-  \definecolor{tuerkis}{RGB}{150,205,205}
-  \definecolor{braun}{RGB}{140,120,115}
-  \definecolor{blaw}{rgb}{0,0,0.9}
-\fi
+%\else
+%  \definecolor{grau}{rgb}{0.7,0.7,0.7}
+%  \definecolor{dgrau}{rgb}{0.3,0.3,0.3}
+%  \definecolor{lg}{rgb}{0.9,0.9,0.9}
+%  \definecolor{trueblue}{rgb}{0.8,0.8,1}
+%  \definecolor{ltb}{rgb}{0.9,0.9,1}
+%  \definecolor{lgr}{rgb}{0.7,1,0.7}
+%  \definecolor{orongsch}{RGB}{255, 200, 100}
+%  \definecolor{orgrA}{RGB}{   204, 206,  80}
+%  \definecolor{orgrB}{RGB}{   153, 212,  60}
+%  \definecolor{orgrC}{RGB}{   102, 218,  40}
+%  \definecolor{orgrD}{RGB}{    51, 224,  20}
+%  \definecolor{gruen}{RGB}{     0, 230,   0}
+%  \definecolor{rot}{rgb}{0.8,0.0,0.0}
+%  \definecolor{tuerkis}{RGB}{150,205,205}
+%  \definecolor{braun}{RGB}{140,120,115}
+%  \definecolor{blaw}{rgb}{0,0,0.9}
+%\fi
 
 \newcommand{\gruen}[1]{\textcolor{gruen}{#1}}
 \newcommand{\blaw}[1]{\textcolor{blaw}{#1}}
@@ -136,11 +136,11 @@
 
 \usetheme[hideothersubsections]{Boadilla}
 
-\ifdefined\HANDOUT
+%\ifdefined\HANDOUT
   \usecolortheme{whale}
-\else
-  \usecolortheme{magpie}
-\fi
+%\else
+%  \usecolortheme{magpie}
+%\fi
 
 \renewcommand<>{\rot}[1]{%
   \alt#2{\beameroriginal{\rot}{#1}}{#1}%
