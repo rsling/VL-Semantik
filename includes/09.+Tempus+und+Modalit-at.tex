@@ -1,0 +1,294 @@
+
+\frame{\frametitle{Targets for this week}
+\begin{itemize}
+  \item<1-> Understand how simple tense logic can be represented by operators shifting $i$ indices.
+  \item<2-> See why tense operators are sentence operators.
+  \item<3-> See why a multi-dimensional theory of tenses and a better handling of tense embedding are required.
+  \item<4-> See how we restrict (different types of) propositional backgrounds.
+  \item<5-> Understand how opaque contexts affect meaning (incl. \emph{believe} type verbs).
+  \item<6-> Get a first idea of why we need the \emph{up} operator $\ \hat{ }\ $.
+\end{itemize}
+}
+
+\section{Tense}
+%\subsection{Priorian operators}
+\frame{\frametitle{Will, was... and always}
+\begin{itemize}
+  \item<1-> \bl{present}: no operator ($\phi$ `it is the case that $\phi$')
+  \item<2-> \bl{past}: $\mathbf{P}$ ($\mathbf{P}\phi$ `it was the case that $\phi$')
+  \item<3-> \bl{future}: $\mathbf{F}$ ($\mathbf{F}\phi$ `it will be the case that $\phi$')
+  \item<4-> it will always be the case... ($\mathbf{G} = \neg \mathbf{F}\neg \phi$)
+  \item<5-> it was always the case... ($\mathbf{H} = \neg \mathbf{P}\neg \phi$)
+\end{itemize}
+}
+
+\frame{\frametitle{Evaluation}
+\begin{itemize}
+  \item<1-> $\mathbf{P}D(a)$ `Arno Schmidt (has?) died.'
+  \item<2-> relative to the current $\ram{w,i}$: \bl{$\DEMM{\mathbf{P}D(a)}$}
+  \item<3-> \ldots is true iff there is some $i\Prm$, $\ram{i\Prm,i}\in\ <$ and 
+  \item<4-> $\Dem{\mathbf{P}D(a)}{\mMm,w,i\Prm,g}=1$
+\end{itemize}
+}
+
+%\subsection{Tense raising}
+\frame{\frametitle{Like it or not\ldots}
+\begin{itemize}
+  \item<1-> tense operators (TOp) are sentence (wff) Op's
+  \item<2-> \bl{raise} it to sentence-scopal position
+  \item<3-> TP/IP position is motivated by copular/auxiliary elements
+  \item<4-> \emph{He \textbf{is} stupid.} vs. \emph{Kare-wa bakarashi-\textbf{i}.}
+  \item<5-> \emph{He \textbf{was} stupid.} vs. \emph{Kare-wa bakarashi-\textbf{katta}.}
+  \item<6-> \emph{What$_i$ \textbf{did} you expect $t_i$?} vs. \emph{Nani-o yokishi-\textbf{ta}-ka.}
+\end{itemize}
+}
+
+\frame{\frametitle{New ps rules}
+\begin{itemize}
+  \item<1-> \bl{$T\Prm \rightarrow T VP$} (adds tense to VP)
+  \item<2-> $TP \rightarrow NP\ T\Prm$
+  \item<3-> $TP \rightarrow TP\ conj\ TP$
+  \item<4-> $TP \rightarrow neg\ TP$
+  \item<5-> $\ekm{_{TP}\ NP\ T\ VP} \Rightarrow \ekm{_{TP}\ T\ NP\ VP}$ (T raising)
+\end{itemize}
+}
+
+%\subsection{Interpretation}
+\frame{\frametitle{Quantification over instants}
+\begin{itemize}
+  \item<1-> $\DEMM{\mathbf{P} TP} =1$
+  \item<2-> iff among all $\ram{i_n,i}\in\ <$
+  \item<3-> there is \bl{at least one} s.t. $\Dem{TP}{\mMm,w,i\Prm,g}=1$
+\end{itemize}
+}
+
+\frame{\frametitle{Valuations as in Chierchia's M$_3$}
+\begin{itemize}
+  \item<1-> \bl{$U$}: domain of quantification
+  \item<2-> \bl{$V(\beta)$}: non-relativized function for all $\beta$ which are not a proper name
+  \item<3-> \bl{$V(\beta)(\ram{w,i})$}: V valuates $\beta$ to a function from world-time pairs to the denotata of the predicate (sets of individuals, tuples of them, etc.)
+\end{itemize}
+}
+
+%\subsection{Some problems}
+\frame{\frametitle{Natural tenses}
+\begin{itemize}
+  \item<1-> NL tenses beyond TOp's:
+  \item<2-> \emph{Arno Schmidt had already read Poe when he started writing `Zettels Traum'.}
+  \item<3-> \emph{Gosh, I forgot to feed the cat.}
+  \item<4-> \bl{shifts of evaluation time}
+\end{itemize}
+}
+
+\frame{\frametitle{Reichenbach}
+{\footnotesize\begin{tabular}{|l|l|l|l|}
+  \hline 
+   & past (R$<$S) & present (R,S) & future (S$<$R) \\
+   \hline
+   anterior(E$<$R) & E$<$R$<$S & E$<$R,S & S$<$E$<$R \\
+                 & \emph{er war gegangen} & \emph{er ist gegangen} & S,E$<$R \\
+                 & & & E$<$S$<$R\\
+                 & & & \emph{er wird gegangen sein} \\
+   \hline
+   simple(E,R) & E,R$<$S & \bl{E,R,S} & S$<$E,R \\
+                 & \emph{er ging} & \emph{er geht} & \emph{er wird gehen} \\
+   \hline
+   posterior(R$<$E) & R$<$E$<$S & R,S$<$E & S$<$R$<$E \\
+                  & R$<$S,E & \emph{er wird gehen} & \emph{$^{\ast}$er wird gehen werden} \\
+                  & R$<$S,E & & \\
+                  & R$<$S$<$E & & \\
+                  & \emph{$^{\ast}$er w\"urde gehen} & & \\
+   \hline
+\end{tabular}}
+}
+
+\frame{\frametitle{Embedded tenses and adverbials}
+\begin{itemize}
+  \item<1-> \emph{A man was born who will be king.}
+  \item<2-> \textbf{P}(a man is born \textbf{F}(who be king)) ?
+  \item<3-> \emph{Yesterday, Maria woke up happy.}
+  \item<4-> \textbf{Y}(\textbf{P}(Maria wake up happy)) ?
+\end{itemize}
+}
+
+\section{Modality}
+%\subsection{Realizations of modality}
+
+\frame{\frametitle{Types of modal expressions}
+\begin{itemize}
+  \item<1-> \bl{tense forms}: \emph{I \bl{eat} up to 100 nachos a minute.}
+  \item<2-> \bl{mood}: \emph{\bl{Responderet} alius minus sapienter.}
+  \item<3-> \bl{modal auxiliaries}: \emph{Herr Webelhuth \bl{can} look like Michael Moore.}
+  \item<4-> \bl{adverbs}: \emph{\bl{Maybe} Herr Keydana will show up.}
+  \item<5-> \bl{affixes}: \emph{Frau Eckardt is recogniz\bl{able}.}
+\end{itemize}
+}
+
+\frame{\frametitle{The logical form of modal operators}
+\begin{itemize}
+  \item<1-> like tense: \bl{sentence operators}
+  \item<2-> modal \emph{Aux} in English is tense-insensitive (evidence for \emph{Infl})
+  \item<3-> $\Box$ and $\lozenge$ in intensional predicate calculi (IPC): exploit the full set of possible worlds
+  \item<4-> in NL: evaluation of modal expressions against restricted \bl{conversational backgrounds}
+\end{itemize}
+}
+
+%\subsection{Types of modality}
+
+\frame{\frametitle{The background}
+\begin{itemize}
+  \item<1-> different sets of possible worlds under consideration for different types of modal expressions
+  \item<2-> different types of modality: different sets of admitted possible worlds
+  \item<3-> we call the conversationally relevant background \bl{the set of $\ram{w,i}$ pairs relevant to the interpretation of the sentence}
+\end{itemize}
+}
+
+\frame{\frametitle{Root/Logical modality}
+\begin{itemize}
+  \item<1-> \emph{Agent Cooper \bl{cannot} solve the mystery.}
+  \item<2-> translated into root modal IPC: $\neg\lozenge S(c,m)$
+  \item<3-> wrong interpretation: Under no possible circumstances can Cooper solve the mystery.
+  \item<4-> usually, some \bl{obvious facts constitute the background}: \begin{itemize}
+                       \item<5-> he could, but some relevant information is missing
+                       \item<6-> he could, but is sick
+                       \item<7-> he could, but \ldots
+                     \end{itemize}
+\end{itemize}
+}
+
+\frame{\frametitle{Epistemic modality}
+\begin{itemize}
+  \item<1-> \emph{Leo Johnson must be the murderer of Laura Palmer.}
+  \item<2-> in accordance with the \bl{known facts} (e.g., in episode 7 of \emph{Twin Peaks}):
+    \begin{itemize}
+      \item<3-> Leo Johnson is a violent person.
+      \item<4-> Leo smuggles cocaine, Laura was addicted to it.
+      \item<5-> Leo is connected to Jacques Renault who is the bartender of \emph{One Eyed Jack's} where Laura worked as a prostitute.
+      \item<6-> \ldots
+    \end{itemize}
+  \item<7-> which constitute the epistemic background, the sentence is true
+  \item<8-> known facts narrow down the root background
+\end{itemize}
+}
+
+\frame{\frametitle{Deontic modality}
+\begin{itemize}
+  \item<1-> \emph{Agent Cooper must not solve the mystery.}
+  \item<2-> assume: \begin{itemize}
+                      \item<3-> there is some U.S. law which allows a local sheriff to ask the FBI to keep out of local murder investigations
+                      \item<4-> Sheriff Truman has asked the FBI headquarters to keep out of the Palmer investigation
+                      \item<5-> as a special agent, Cooper is required to obey Bureau policy
+                    \end{itemize}
+  \item<6-> Deontic backgrounds are narrowed down by \bl{normative rules} and \bl{moral ideals}.
+  \item<7-> statable in propositional form (ten commandments, law, \ldots)
+\end{itemize}
+}
+
+%\subsection{Modeling the background}
+\frame{\frametitle{Sets of propositions}
+\begin{itemize}
+  \item<1-> specify the kind of background against which you evaluate under the given situation
+  \item<2-> we need:\\ \bl{a function from $\ram{w,i}$ to the relevant background set of $\ram{w_n,i_m}$}
+  \item<3-> reuse $g$:\\ \bl{$g(\ram{w,i})=\{p_1,p_2,\ldots,p_n\}=\{\ram{w,i}_1,\ram{w,i}_2,\ldots,\ram{w,i}_n\}$}
+  \item<4-> such that \bl{all} possible worlds are: \bl{$\bigcap g(\ram{w,i})$}
+\end{itemize}
+}
+
+\section{Embedding}
+%\subsection{Syntax}
+
+\frame{\frametitle{CP structures: \emph{that}}
+\begin{itemize}
+  \item<1-> \emph{that} is a \bl{complementizer}, it \bl{turns a sentence into an argument}.
+  \item<2-> ps rule: \bl{$CP\ \rightarrow\ C\ IP$}
+  \item<3-> \emph{[$_{IP}$ Racine believes [$_{CP}$ that [$_{IP}$ theatre rules]]]}
+  \item<4-> CP (fully fledged sentence) receives theta role by \emph{believe} under government.
+\end{itemize}
+}
+
+\frame{\frametitle{Weak \emph{Infl} and \emph{PRO}}
+\begin{itemize}
+  \item<1-> gerunds:\\
+     \emph{[$_{IP}$ Stockhausen has plans [$_{IP}$ to write another 29 hour opera]]} 
+  \item<2-> incomplete embedded IP, \bl{no subject}
+  \item<3-> internal theta role of \emph{has plans}: to IP
+  \item<4-> external theta role of \emph{write}: to ?
+  \item<5-> \bl{PRO}, \bl{controlled} by the subject of \emph{has plans}:\\
+    \emph{[$_{IP}$ Stockhausen has plans [$_{IP}$ PRO to write another 29 hour opera]]} 
+\end{itemize}
+}
+
+%\subsection{Believe semantics}
+\frame{\frametitle{Propositional attitudes}
+\begin{itemize}
+  \item<1-> verbs like \emph{believe}: \bl{propositional attitude verbs}
+  \item<2-> content of the believe: a pice of information held to be true by the believer, hence a proposition, a $\ram{w_n,i_m}$
+  \item<3-> signalling one element in the background assumed by the believer
+  \item<4-> belief: $\ram{w,i}$ is an element of the proposition of CP
+\end{itemize}
+}
+
+\frame{\frametitle{Translating \emph{that} as $\hat{ }$}
+\begin{itemize}
+  \item<1-> value of propositional attitude (PA) verbs: \bl{functions $\ekm{\ram{w,i} \rightarrow \ram{u_n,p}}$} with $u_n\in U$, $p$ a proposition (set of $\ram{w_n,i_m}$) and compatible to u$_n$'s background
+  \item<2-> \bl{\emph{up} ($\ \hat{ }\ \chi$): an operator which gives the intension of an expression $\chi$}
+  \item<3-> the full logic of $\ \hat{ }\ $ and $\ \check{ }\ $ as designed by Montague next week
+  \item<4-> \up rids us of the problem that the belief content looks truth-conditional (a sentence) but doesn't contribute to the embedding sentence's truth-value. PA verbs take intensions as arguments.
+\end{itemize}
+}
+
+%\subsection{Ambiguities}
+\frame{\frametitle{Meet B.J. Ortcutt}
+\begin{itemize}
+  \item<1-> \gr{Quine's story:} Ralph knows\ldots
+  \item<2-> Bernard J.Ortcutt, the nice guy on the beach.
+  \item<3-> He sees a strange guy with a hat in the dark alley - a spy?
+  \item<4-> Ortcutt just likes to behave funny on the way to his pub\ldots
+  \item<5-> and actually is sinister guy in the alley!
+  \item<6-> Only Ralph doesn't know.
+\end{itemize}
+}
+
+\frame{\frametitle{Is Ralph insane?}
+\begin{itemize}
+  \item<1-> What's the truth value of\ldots
+  \item<2-> \bl{\emph{Ralph believes that the guy from the beach is a spy.}}
+  \item<3-> true: since Ortcutt and the guy in the hat are one individual
+  \item<4-> false: since Ralph doesn't know that and in a way `doesn't believe it'
+\end{itemize}
+}
+
+\frame{\frametitle{\emph{de dicto} and \emph{de re}}
+\begin{itemize}
+  \item<1-> the Russelian interpretation for \emph{the} like $\exists$ with a uniqueness condition (as a GQ):\\ \bl{$\lambda{Q}\lambda{}P\ekm{\exists{x}\ekm{Q(x)\wedge{}P(x)}\wedge\forall{}y\ekm{Q(y)\leftrightarrow y=x}}$}
+  \item<2-> in a raising framework: ambiguity between $THE$ and $believe$
+  \item<3-> {\small[$_{IP}$ the guy from the beach$_i$ [$_{IP}$ Ralph believes [$_{CP}$ that x$_i$ is a spy]]]}
+  \item<5-> makes the sentence true: the \bl{\emph{de re}} reading
+  \item<4-> {\small Ralph believes [$_{CP}$ that [$_{IP}$ the guy from the beach$_i$ [$_{IP}$ x$_i$ is a spy]]]}
+  \item<6-> makes the sentence false: the \bl{\emph{de dicto}} reading
+\end{itemize}
+}
+
+\frame{\frametitle{Rigid designators}
+\begin{itemize}
+  \item<1-> \emph{Yuri Gagarin might now have been the first man in space.}
+  \item<2-> \gr{some Mickey Mouse LFs:}
+  \item<3-> $\lozenge$ THE(first-man-in-space)(not-be-Gagarin)
+  \item<5-> \bl{at some $\ram{w_n,i_m}$ the first individual in space is not Y.G.}
+  \item<4-> THE(first-man-in-space)($\lozenge$[not-be-Gagarin])
+  \item<6-> \rot{at $\ram{w,i}$ the first individual in space (definitely Y.G.) is not Y.G. in an accessible world}
+  \item<7-> \bl{Names are rigid designators across world-time-pairs, definite descriptions aren't.}
+\end{itemize}
+}
+
+%\subsection{Infinitives and gerunds}
+\frame{\frametitle{Chierchia's formalization}
+\begin{itemize}
+  \item<1-> CP has its own subject, \emph{to}-IPs don't (PRO)
+  \item<2-> PRO must be interpreted, in our examples by coindexation with the matrix subject
+  \item<3-> infinitive embedding verbs: \bl{functions from world-time pairs to sets of individuals which have a certain property}, the intension of a predicate \bl{$\hat{ }\ P$}
+  \item<4-> \emph{John tries to sing.}
+  \item<5-> \bl{$try(j,\ \hat{ }\ swim)$}
+\end{itemize}
+}
+
