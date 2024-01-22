@@ -1,294 +1,394 @@
+\begin{frame}
+  {Kernfragen dieser Woche}
+  \onslide<+->
+  \onslide<+->
+  \Large
+  \centering 
+  Wie kann man Tempuslogik durch Verschieben\\ von $i$-Indexen modellieren?\\
+  \Halbzeile
+  \onslide<+->
+  Warum braucht man eine ausgeklügeltere Semantik\\ von Tempus und Modalität?\\
+  \Halbzeile
+  \onslide<+->
+  Wie kann\slash muss man den Auswertungshintergrund\\ von Propositionen einschränken?\\
+  \Halbzeile
+  \onslide<+->
+  Wie beeinflussen opake Kontexte (\textit{glauben} usw.)\\ die Satzbedeutung?\\
+  \onslide<+->
+  \Halbzeile
+  \grau{\footnotesize Texte für heute: \citealt[Kapitel~5]{ChierchiaMcconnellginet2000}}
+\end{frame}
 
-\frame{\frametitle{Targets for this week}
-\begin{itemize}
-  \item<1-> Understand how simple tense logic can be represented by operators shifting $i$ indices.
-  \item<2-> See why tense operators are sentence operators.
-  \item<3-> See why a multi-dimensional theory of tenses and a better handling of tense embedding are required.
-  \item<4-> See how we restrict (different types of) propositional backgrounds.
-  \item<5-> Understand how opaque contexts affect meaning (incl. \emph{believe} type verbs).
-  \item<6-> Get a first idea of why we need the \emph{up} operator $\ \hat{ }\ $.
-\end{itemize}
-}
+\section{Tempus}
 
-\section{Tense}
-%\subsection{Priorian operators}
-\frame{\frametitle{Will, was... and always}
-\begin{itemize}
-  \item<1-> \bl{present}: no operator ($\phi$ `it is the case that $\phi$')
-  \item<2-> \bl{past}: $\mathbf{P}$ ($\mathbf{P}\phi$ `it was the case that $\phi$')
-  \item<3-> \bl{future}: $\mathbf{F}$ ($\mathbf{F}\phi$ `it will be the case that $\phi$')
-  \item<4-> it will always be the case... ($\mathbf{G} = \neg \mathbf{F}\neg \phi$)
-  \item<5-> it was always the case... ($\mathbf{H} = \neg \mathbf{P}\neg \phi$)
-\end{itemize}
-}
+\begin{frame}
+  {Tempus und Zeit}
+  \onslide<+->
+  \onslide<+->
+  Priors Tempusoperatoren | \textit{Was war, was wird sein, was heißt \alert{immer}?}\\
+  \Zeile
+  \begin{itemize}[<+->]
+    \item \alert{$\phi$} | \alert{Präsens}: Es ist jetzt ($i_{now}$) der Fall, dass $\phi$.
+    \item \alert{$\mathbf{P}\phi$} | \alert{Präteritum}: Es war (zu einem $i<i_{now}$) der Fall, dass $\phi$.
+    \item \alert{$\mathbf{F}\phi$} | \alert{Futur}: Es wird (zu einem $i>i_{now}$) der Fall sein, dass $\phi$.
+    \item $\alert{\mathbf{G}\phi} = \neg \mathbf{F}\neg \phi$ | Es wird immer der Fall sein, dass $\phi$.
+    \item $\alert{\mathbf{H}\phi} = \neg \mathbf{P}\neg \phi$ | Es war immer der Fall, dass $\phi$.
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Evaluation}
-\begin{itemize}
-  \item<1-> $\mathbf{P}D(a)$ `Arno Schmidt (has?) died.'
-  \item<2-> relative to the current $\ram{w,i}$: \bl{$\DEMM{\mathbf{P}D(a)}$}
-  \item<3-> \ldots is true iff there is some $i\Prm$, $\ram{i\Prm,i}\in\ <$ and 
-  \item<4-> $\Dem{\mathbf{P}D(a)}{\mMm,w,i\Prm,g}=1$
-\end{itemize}
-}
+\begin{frame}
+  {Auswertung}
+  \onslide<+->
+  \onslide<+->
+  \textit{Arno Schmidt ist gestorben.} bzw.\ \alert{\textit{Arno Schmidt starb.}}\\
+  \Zeile
+  \begin{itemize}[<+->]
+    \item Priorsche Formalisierung | $\mathbf{P}S(a)$
+      \Halbzeile
+    \item Realtiv zu $\ram{w,i}$ (reale Welt jetzt) ist \alert{$\DEMM{\mathbf{P}D(a)}=1$}
+      \Halbzeile
+      \begin{itemize}[<+->]
+         \item wenn es ein $i\Prm$ gibt sodass $i\Prm<i$\\
+           \grau{\footnotesize äquivalent $\ram{i\Prm,i}\in\ <$}
+           \Viertelzeile
+         \item sodass $\Dem{D(a)}{\mMm,w,i\Prm,g}=1$
+           \end{itemize}
+  \end{itemize}
+\end{frame}
 
-%\subsection{Tense raising}
-\frame{\frametitle{Like it or not\ldots}
-\begin{itemize}
-  \item<1-> tense operators (TOp) are sentence (wff) Op's
-  \item<2-> \bl{raise} it to sentence-scopal position
-  \item<3-> TP/IP position is motivated by copular/auxiliary elements
-  \item<4-> \emph{He \textbf{is} stupid.} vs. \emph{Kare-wa bakarashi-\textbf{i}.}
-  \item<5-> \emph{He \textbf{was} stupid.} vs. \emph{Kare-wa bakarashi-\textbf{katta}.}
-  \item<6-> \emph{What$_i$ \textbf{did} you expect $t_i$?} vs. \emph{Nani-o yokishi-\textbf{ta}-ka.}
-\end{itemize}
-}
+\begin{frame}
+  {Natürliche Sprache und TP\slash IP}
+  \onslide<+->
+  \onslide<+->
+  Wie immer: Marker von Tempus stehen nicht am Satzanfang\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Priorsche Tempusoperatoren als Modifikation von Wffs (Logik), also \alert{Sätzen} (NL)
+    \item GB-Ansätze mit \alert{Tempusanhebung} in Position mit \alert{Satzskopus}
+      \Halbzeile
+    \item TP\slash IP-Position motiviert durch Kopulas und Hilfsverben (im Englischen)
+      \begin{itemize}[<+->]
+        \item \textit{He \alert{is} stupid.} -- aber -- \textit{Kare-wa bakarashi-\alert{i}.}
+        \item \textit{He \alert{was} stupid.} -- aber -- \textit{Kare-wa bakarashi-kat-\alert{ta}.}
+        \item \textit{What\Sub{i} \alert{did} you expect t\Sub{i}.} -- aber -- \textit{Nani-o yokishi-\alert{ta}-ka.}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{New ps rules}
-\begin{itemize}
-  \item<1-> \bl{$T\Prm \rightarrow T VP$} (adds tense to VP)
-  \item<2-> $TP \rightarrow NP\ T\Prm$
-  \item<3-> $TP \rightarrow TP\ conj\ TP$
-  \item<4-> $TP \rightarrow neg\ TP$
-  \item<5-> $\ekm{_{TP}\ NP\ T\ VP} \Rightarrow \ekm{_{TP}\ T\ NP\ VP}$ (T raising)
-\end{itemize}
-}
+\begin{frame}
+  {Syntax für ein Chierchia-Fragment mit Tempus}
+  \onslide<+->
+  \begin{itemize}[<+->]
+    \item \alert{T$\Prm \rightarrow$ T VP} | Tempusmarkierung der VP über T-Kopf (T bzw.\ T\Up{0})
+    \item TP $\rightarrow$ NP T$\Prm$ | Subjekt in TP\slash IP
+    \item TP $\rightarrow$ TP conj TP | Satzverbindungen = TP-Verbindungen
+    \item TP $\rightarrow$ neg TP | Satznegation
+    \item \alert{[\Sub{TP} NP T VP] $\Rightarrow$ [\Sub{TP} T NP VP]} | Tempusanhebung (Linkssadjunktion!)
+  \end{itemize}
+\end{frame}
 
-%\subsection{Interpretation}
-\frame{\frametitle{Quantification over instants}
-\begin{itemize}
-  \item<1-> $\DEMM{\mathbf{P} TP} =1$
-  \item<2-> iff among all $\ram{i_n,i}\in\ <$
-  \item<3-> there is \bl{at least one} s.t. $\Dem{TP}{\mMm,w,i\Prm,g}=1$
-\end{itemize}
-}
+\begin{frame}
+  {Semantik und Valuation à la Chierchia}
+  \onslide<+->
+  \begin{itemize}[<+->]
+    \item Semantische Auswertung einer TP
+      \Halbzeile
+      \begin{itemize}[<+->]
+        \item Konkrete T\Up{0} | Hilfsverben mit Bedeutung $\mathbf{P}$, $\mathbf{F}$
+        \item $\DEMM{\mathbf{P} TP} =1$
+        \item wenn es mindestens ein $i\Prm$ gibt, für das $i\Prm<i$,
+        \item und sodass $\Dem{TP}{\mMm,w,i\Prm,g}=1$
+      \end{itemize}
+      \Zeile
+    \item Valuation
+      \Halbzeile
+      \begin{itemize}[<+->]
+        \item \alert{$U$} | Diksursuniversum, Quantifikationsdomäne
+        \item \alert{$V(\beta)$} | Nicht-modal-temporale Auswertungsfunktion für alle $\beta$ außer Eigennamen
+        \item \alert{$V(\beta)(\ram{w,i})$} | Modal-Temporale Auswertungsfunktion: Für jedes Prädikat eine Funktion von Welt-Zeit-Paaren zur Prädikatsmenge (Individuen, Tupel)
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Valuations as in Chierchia's M$_3$}
-\begin{itemize}
-  \item<1-> \bl{$U$}: domain of quantification
-  \item<2-> \bl{$V(\beta)$}: non-relativized function for all $\beta$ which are not a proper name
-  \item<3-> \bl{$V(\beta)(\ram{w,i})$}: V valuates $\beta$ to a function from world-time pairs to the denotata of the predicate (sets of individuals, tuples of them, etc.)
-\end{itemize}
-}
 
-%\subsection{Some problems}
-\frame{\frametitle{Natural tenses}
-\begin{itemize}
-  \item<1-> NL tenses beyond TOp's:
-  \item<2-> \emph{Arno Schmidt had already read Poe when he started writing `Zettels Traum'.}
-  \item<3-> \emph{Gosh, I forgot to feed the cat.}
-  \item<4-> \bl{shifts of evaluation time}
-\end{itemize}
-}
+% %\subsection{Some problems}
+% \frame{\frametitle{Natural tenses}
+% \begin{itemize}
+%   \item<1-> NL tenses beyond TOp's:
+%   \item<2-> \emph{Arno Schmidt had already read Poe when he started writing `Zettels Traum'.}
+%   \item<3-> \emph{Gosh, I forgot to feed the cat.}
+%   \item<4-> \bl{shifts of evaluation time}
+% \end{itemize}
+% }
+% 
+% \frame{\frametitle{Reichenbach}
+% {\footnotesize\begin{tabular}{|l|l|l|l|}
+%   \hline 
+%    & past (R$<$S) & present (R,S) & future (S$<$R) \\
+%    \hline
+%    anterior(E$<$R) & E$<$R$<$S & E$<$R,S & S$<$E$<$R \\
+%                  & \emph{er war gegangen} & \emph{er ist gegangen} & S,E$<$R \\
+%                  & & & E$<$S$<$R\\
+%                  & & & \emph{er wird gegangen sein} \\
+%    \hline
+%    simple(E,R) & E,R$<$S & \bl{E,R,S} & S$<$E,R \\
+%                  & \emph{er ging} & \emph{er geht} & \emph{er wird gehen} \\
+%    \hline
+%    posterior(R$<$E) & R$<$E$<$S & R,S$<$E & S$<$R$<$E \\
+%                   & R$<$S,E & \emph{er wird gehen} & \emph{$^{\ast}$er wird gehen werden} \\
+%                   & R$<$S,E & & \\
+%                   & R$<$S$<$E & & \\
+%                   & \emph{$^{\ast}$er w\"urde gehen} & & \\
+%    \hline
+% \end{tabular}}
+% }
+% 
+% \frame{\frametitle{Embedded tenses and adverbials}
+% \begin{itemize}
+%   \item<1-> \emph{A man was born who will be king.}
+%   \item<2-> \textbf{P}(a man is born \textbf{F}(who be king)) ?
+%   \item<3-> \emph{Yesterday, Maria woke up happy.}
+%   \item<4-> \textbf{Y}(\textbf{P}(Maria wake up happy)) ?
+% \end{itemize}
+% }
 
-\frame{\frametitle{Reichenbach}
-{\footnotesize\begin{tabular}{|l|l|l|l|}
-  \hline 
-   & past (R$<$S) & present (R,S) & future (S$<$R) \\
-   \hline
-   anterior(E$<$R) & E$<$R$<$S & E$<$R,S & S$<$E$<$R \\
-                 & \emph{er war gegangen} & \emph{er ist gegangen} & S,E$<$R \\
-                 & & & E$<$S$<$R\\
-                 & & & \emph{er wird gegangen sein} \\
-   \hline
-   simple(E,R) & E,R$<$S & \bl{E,R,S} & S$<$E,R \\
-                 & \emph{er ging} & \emph{er geht} & \emph{er wird gehen} \\
-   \hline
-   posterior(R$<$E) & R$<$E$<$S & R,S$<$E & S$<$R$<$E \\
-                  & R$<$S,E & \emph{er wird gehen} & \emph{$^{\ast}$er wird gehen werden} \\
-                  & R$<$S,E & & \\
-                  & R$<$S$<$E & & \\
-                  & \emph{$^{\ast}$er w\"urde gehen} & & \\
-   \hline
-\end{tabular}}
-}
+\section{Modalität}
 
-\frame{\frametitle{Embedded tenses and adverbials}
-\begin{itemize}
-  \item<1-> \emph{A man was born who will be king.}
-  \item<2-> \textbf{P}(a man is born \textbf{F}(who be king)) ?
-  \item<3-> \emph{Yesterday, Maria woke up happy.}
-  \item<4-> \textbf{Y}(\textbf{P}(Maria wake up happy)) ?
-\end{itemize}
-}
+\begin{frame}
+  {Sprachliche Realisierung von Modalität}
+  \onslide<+->
+  \onslide<+->
+  Modalität in sehr verschiedenen Erscheinungsformen\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item \textit{I \alert{eat up to} 100 nachos a minute.} | \alert{Tempusformen}
+    \item \textit{\alert{Responderet} alius minus sapienter.} | \alert{Modus}
+    \item \textit{Herr Webelhuth \alert{can} look like Michael Moore.} | \alert{Modalverben}
+    \item \textit{\alert{Maybe} Herr Keydana will show up.} | \alert{Adverben}
+    \item \textit{Frau Klenk is recogniz\alert{able}.} | \alert{Affixe}
+  \end{itemize}
+\end{frame}
 
-\section{Modality}
-%\subsection{Realizations of modality}
+\begin{frame}
+  {Arten von Modalitäten}
+  \onslide<+->
+  \onslide<+->
+  Auswertung von Modalität vor einem \alert{Hintergrund von Welten}
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Modallogik | Auswertung von $\Box$ und $\Diamond$ relativ zu \alert{allen Welten}\\
+      \grau{\footnotesize Zumindest in einer einfachen Modallogik für Einsteiger}
+      \Halbzeile
+    \item Natürliche Sprache | \textit{Wir müssen gehen.} usw.\ als \alert{ambige Sätze}
+    \item \alert{Mehreren Lesarten} je nach \gruen{spezifischem Hintergrund von Welten}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Types of modal expressions}
-\begin{itemize}
-  \item<1-> \bl{tense forms}: \emph{I \bl{eat} up to 100 nachos a minute.}
-  \item<2-> \bl{mood}: \emph{\bl{Responderet} alius minus sapienter.}
-  \item<3-> \bl{modal auxiliaries}: \emph{Herr Webelhuth \bl{can} look like Michael Moore.}
-  \item<4-> \bl{adverbs}: \emph{\bl{Maybe} Herr Keydana will show up.}
-  \item<5-> \bl{affixes}: \emph{Frau Eckardt is recogniz\bl{able}.}
-\end{itemize}
-}
+\begin{frame}
+  {Logische Modalität\slash Root Modality}
+  \onslide<+->
+  \onslide<+->
+  \textit{Agent Cooper \alert{cannot} solve the mystery.}\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Logische Form | $\neg\lozenge S(c,m)$
+      \Halbzeile
+    \item Falsche Interpretation | \orongsch{Er könnte unter keinen Umständen das Rätsel lösen.}
+    \item Korrekt | In den \alert{kontextuell salienten Hintergrundwelten}\\
+      verhindern Umstände die Lösung.
+      \Viertelzeile
+      \begin{itemize}[<+->]
+        \item Cooper fehlen Informationen, sonst könnte er.
+        \item Cooper liegt angeschossen im Great Northern, sonst könnte er.
+        \item Usw.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{The logical form of modal operators}
-\begin{itemize}
-  \item<1-> like tense: \bl{sentence operators}
-  \item<2-> modal \emph{Aux} in English is tense-insensitive (evidence for \emph{Infl})
-  \item<3-> $\Box$ and $\lozenge$ in intensional predicate calculi (IPC): exploit the full set of possible worlds
-  \item<4-> in NL: evaluation of modal expressions against restricted \bl{conversational backgrounds}
-\end{itemize}
-}
 
-%\subsection{Types of modality}
+\begin{frame}
+  {Epistemische Modalität}
+  \onslide<+->
+  \onslide<+->
+  \textit{Leo Johnson \alert{must} be the murderer of Laura Palmer.}\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item \alert{Bekannte Fakten}\slash \alert{Wissenshintergrund} legen den Schluss zwingend nah.\\
+      \grau{\footnotesize Hier: Twin Peaks, Staffel 1, Folge 7}
+      \begin{itemize}[<+->]
+        \item Leo ist eine gewalttätige Person.
+        \item Leo schmuggelt Kokain nach TP, Laura war abhängig von K.
+        \item Leo hat Verbindungen zu Jacques Renault, dem Barkeeper aus One Eyed Jack's,\\
+          und Laura hat bei One Eyed Jack's gearbeitet.
+      \end{itemize}
+      \Halbzeile
+    \item Bekannte Fakten\slash der \alert{epistemische Hintergrund} zur \alert{Reduktion}\\
+      \alert{des Hintergrunds möglicher Welten}
+    \item Bei \orongsch{Irrtum} | Ein paar Welten zu viel entfernt
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{The background}
-\begin{itemize}
-  \item<1-> different sets of possible worlds under consideration for different types of modal expressions
-  \item<2-> different types of modality: different sets of admitted possible worlds
-  \item<3-> we call the conversationally relevant background \bl{the set of $\ram{w,i}$ pairs relevant to the interpretation of the sentence}
-\end{itemize}
-}
 
-\frame{\frametitle{Root/Logical modality}
-\begin{itemize}
-  \item<1-> \emph{Agent Cooper \bl{cannot} solve the mystery.}
-  \item<2-> translated into root modal IPC: $\neg\lozenge S(c,m)$
-  \item<3-> wrong interpretation: Under no possible circumstances can Cooper solve the mystery.
-  \item<4-> usually, some \bl{obvious facts constitute the background}: \begin{itemize}
-                       \item<5-> he could, but some relevant information is missing
-                       \item<6-> he could, but is sick
-                       \item<7-> he could, but \ldots
-                     \end{itemize}
-\end{itemize}
-}
+\begin{frame}
+  {Deontische Modalität}
+  \onslide<+->
+  \onslide<+->
+  \textit{Agent Cooper \alert{must} solve the mystery.}\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item \alert{Juristische\slash moralische Postulate} fordern von Cooper eine Lösung.\\
+      \grau{\footnotesize Hier: Twin Peaks, Staffel 1--2}
+      \begin{itemize}[<+->]
+        \item Cooper hat als FBI-Agent einen Eid geschworen und eine Dienstpflicht.
+        \item Ohne Lösung könnte es weitere Opfer geben.
+        \item Es geht um Gut und Böse an sich, wir sind auf der Seite des Guten.
+      \end{itemize}
+      \Halbzeile
+    \item Der \alert{deontische Hintergrund} zur \alert{Reduktion der Welten\\
+      auf die moralisch\slash juristisch erwünschten}
+    \item Oft kodifiziert | Zehn Gebote, BGB, StGB usw.
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Epistemic modality}
-\begin{itemize}
-  \item<1-> \emph{Leo Johnson must be the murderer of Laura Palmer.}
-  \item<2-> in accordance with the \bl{known facts} (e.g., in episode 7 of \emph{Twin Peaks}):
-    \begin{itemize}
-      \item<3-> Leo Johnson is a violent person.
-      \item<4-> Leo smuggles cocaine, Laura was addicted to it.
-      \item<5-> Leo is connected to Jacques Renault who is the bartender of \emph{One Eyed Jack's} where Laura worked as a prostitute.
-      \item<6-> \ldots
-    \end{itemize}
-  \item<7-> which constitute the epistemic background, the sentence is true
-  \item<8-> known facts narrow down the root background
-\end{itemize}
-}
+\begin{frame}
+  {Funktion zur Reduktion der relevanten Welten}
+  \onslide<+->
+  \onslide<+->
+  Welche Welten brachen wir gerade?\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Der jeweils relevante logische\slash epistemische\slash deontische Weltenhintergrund
+    \item Gegeben durch \alert{eine Funktion in $\wp W^{\wp W}$} \grau{bzw.\ $(\wp W\times I)^{(\wp W\times I)}$}
+      \Halbzeile
+    \item Bei Chierchia $g$ | Warum?
+      \Halbzeile
+    \item Interessant wäre die Frage, wie die Welten ausgewählt werden.\\
+      Eine Funktion zu postulieren löst hier erstmal noch nicht viel.
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Deontic modality}
-\begin{itemize}
-  \item<1-> \emph{Agent Cooper must not solve the mystery.}
-  \item<2-> assume: \begin{itemize}
-                      \item<3-> there is some U.S. law which allows a local sheriff to ask the FBI to keep out of local murder investigations
-                      \item<4-> Sheriff Truman has asked the FBI headquarters to keep out of the Palmer investigation
-                      \item<5-> as a special agent, Cooper is required to obey Bureau policy
-                    \end{itemize}
-  \item<6-> Deontic backgrounds are narrowed down by \bl{normative rules} and \bl{moral ideals}.
-  \item<7-> statable in propositional form (ten commandments, law, \ldots)
-\end{itemize}
-}
 
-%\subsection{Modeling the background}
-\frame{\frametitle{Sets of propositions}
-\begin{itemize}
-  \item<1-> specify the kind of background against which you evaluate under the given situation
-  \item<2-> we need:\\ \bl{a function from $\ram{w,i}$ to the relevant background set of $\ram{w_n,i_m}$}
-  \item<3-> reuse $g$:\\ \bl{$g(\ram{w,i})=\{p_1,p_2,\ldots,p_n\}=\{\ram{w,i}_1,\ram{w,i}_2,\ldots,\ram{w,i}_n\}$}
-  \item<4-> such that \bl{all} possible worlds are: \bl{$\bigcap g(\ram{w,i})$}
-\end{itemize}
-}
+\section{Eingebettete Propositionen}
 
-\section{Embedding}
-%\subsection{Syntax}
+\begin{frame}
+  {Syntax und Semantik der Einbettung}
+  \onslide<+->
+  \onslide<+->
+  \textit{Moreau \orongsch{glaubt}, \alert{dass} \gruen{Ästhetizismus toll ist}.}\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item In GB-artiger Syntax
+      \begin{itemize}[<+->]
+        \item \alert{CP $\rightarrow$ C IP}
+        \item Theta-Rolle für die CP vom Matrixverb
+        \item \grau{Einbettung von Infinitiven etwas komplizierter wegen PRO o.\,ä.}
+      \end{itemize}
+      \Halbzeile
+    \item Semantik von \alert{Propositionalen Einstellungsverben} wie \textit{glauben}
+      \begin{itemize}[<+->]
+        \item Inhalt der Einstellung | Eine vom Subjekt für wahr gehaltene Proposition
+        \item Formal \alert{eine Menge von $\ram{w_n,i_n}$ aus dem Hintergrund des Sprechers}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{CP structures: \emph{that}}
-\begin{itemize}
-  \item<1-> \emph{that} is a \bl{complementizer}, it \bl{turns a sentence into an argument}.
-  \item<2-> ps rule: \bl{$CP\ \rightarrow\ C\ IP$}
-  \item<3-> \emph{[$_{IP}$ Racine believes [$_{CP}$ that [$_{IP}$ theatre rules]]]}
-  \item<4-> CP (fully fledged sentence) receives theta role by \emph{believe} under government.
-\end{itemize}
-}
+\begin{frame}
+  {Der Up-Operator\ \ $\hat{ }$}
+  \onslide<+->
+  \onslide<+->
+  Propositionen \grau{(Mengen von $\ram{w_j,i_j}$)} als First-Class Citizens der Logik\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Für Tupel von \alert{Individuen $u_n\in U$} und \alert{Propositionen $p_m\in\wp W\times I$}
+    \item $\DEMM{glauben}$ als \alert{Funktion in $(U\times(\wp W\times I))^{(W\times I)}$}
+    \item Konkret von der Sprecher-Welt-Zeit-Koordinate $\ram{w,i}$\\
+      zu einem Tupel aus Glaubendem $u_n$ und dem Inhalt des Glaubens $p_m$
+      \Halbzeile
+    \item Der Up-Operator |\ \ \alert{$\hat{ }\phi$} sei die \alert{Intension des Ausdrucks $\phi$}.
+    \item \alert{$G(m, \hat{\ }\ T(\text{\textit{ä}}))$} oder lesbarer \alert{Glaubt(moreau, $\hat{\ }\ $Toll(ästhetizismus))}
+    \item Wahr, wenn es jetzt ein Tupel aus Moreau und einer Menge Welten gibt,\\
+      in denen Ästhetizismus toll ist, sodass diese Welten Teil des Weltenhintergrunds\\
+      von Moreau sind.
+    \item \gruen{Gelöstes Problem | "`Wahrheitswert"' des Glaubensinhalts}
+    \item Verben wie \textit{glauben} fordern eine Proposition als Argument!
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Weak \emph{Infl} and \emph{PRO}}
-\begin{itemize}
-  \item<1-> gerunds:\\
-     \emph{[$_{IP}$ Stockhausen has plans [$_{IP}$ to write another 29 hour opera]]} 
-  \item<2-> incomplete embedded IP, \bl{no subject}
-  \item<3-> internal theta role of \emph{has plans}: to IP
-  \item<4-> external theta role of \emph{write}: to ?
-  \item<5-> \bl{PRO}, \bl{controlled} by the subject of \emph{has plans}:\\
-    \emph{[$_{IP}$ Stockhausen has plans [$_{IP}$ PRO to write another 29 hour opera]]} 
-\end{itemize}
-}
+\begin{frame}
+  {Quines Ortcutt-Geschichte I}
+  \onslide<+->
+  \onslide<+->
+  \alert{\textit{Ralph believes that the guy from the beach is a spy.}}\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Ralph kennt B.\,J.\ Ortcutt als netten Typen vom Strand.
+    \item Abends sieht er einen dubiosen Typen mit Hut im Dunkeln in einer Seitenstraße.
+    \item Der Typ ist Ortcutt, der in der Kneipe in Verkleidung eine Show abziehen will.
+    \item Aber Ralph erkennt ihn nicht.
+  \end{itemize}
+\end{frame}
 
-%\subsection{Believe semantics}
-\frame{\frametitle{Propositional attitudes}
-\begin{itemize}
-  \item<1-> verbs like \emph{believe}: \bl{propositional attitude verbs}
-  \item<2-> content of the believe: a pice of information held to be true by the believer, hence a proposition, a $\ram{w_n,i_m}$
-  \item<3-> signalling one element in the background assumed by the believer
-  \item<4-> belief: $\ram{w,i}$ is an element of the proposition of CP
-\end{itemize}
-}
+\begin{frame}
+  {Quines Ortcutt-Geschichte II}
+  \onslide<+->
+  \onslide<+->
+  \alert{\textit{Ralph believes that the guy from the beach is a spy.}}\\
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Ist der obige Satz wahr oder falsch?
+    \item \gruen{Wahr!} Ortcutt und der dubiose Typ sind dasselbe Individuum.
+    \item \orongsch{Falsch!} Ralph weiß das nicht und glaubt auch nicht daran.
+      \Halbzeile
+    \item Ist Ralph wahnsinnig oder nicht ganz normal?
+    \item Oder können Sätze gleichzeitig wahr und falsch sein?
+  \end{itemize}
+\end{frame}
 
-\frame{\frametitle{Translating \emph{that} as $\hat{ }$}
-\begin{itemize}
-  \item<1-> value of propositional attitude (PA) verbs: \bl{functions $\ekm{\ram{w,i} \rightarrow \ram{u_n,p}}$} with $u_n\in U$, $p$ a proposition (set of $\ram{w_n,i_m}$) and compatible to u$_n$'s background
-  \item<2-> \bl{\emph{up} ($\ \hat{ }\ \chi$): an operator which gives the intension of an expression $\chi$}
-  \item<3-> the full logic of $\ \hat{ }\ $ and $\ \check{ }\ $ as designed by Montague next week
-  \item<4-> \up rids us of the problem that the belief content looks truth-conditional (a sentence) but doesn't contribute to the embedding sentence's truth-value. PA verbs take intensions as arguments.
-\end{itemize}
-}
+\begin{frame}
+  {De dicto und de re}
+  \onslide<+->
+  \onslide<+->
+  Russells Interpretation definiter Singular-NPs\\
+  \onslide<+->
+  \alert{$the\stackrel{def}{=}\lambda{Q}\lambda{}P\ekm{\exists{x}\ekm{Q(x)\wedge{}P(x)}\wedge\forall{}y\ekm{Q(y)\leftrightarrow y=x}}$}\\
+  \grau{\footnotesize Beispiel | Q für \textit{Queen of England} und P für \textit{is bald}}
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item In einem Bewegungsansatz 
+      \begin{itemize}[<+->]
+        \item Quantorenbewegung an \gruen{einbettende} oder \orongsch{eingebettete} IP
+        \item \gruen{[$_{IP}$ the guy from the beach$_i$ [$_{IP}$ Ralph believes [$_{CP}$ that x$_i$ is a spy]]]}
+        \item \orongsch{Ralph believes [$_{CP}$ that [$_{IP}$ the guy from the beach$_i$ [$_{IP}$ x$_i$ is a spy]]]}
+      \end{itemize}
+      \Halbzeile
+    \item Zwei Lesarten automatisch verfügbar
+      \begin{itemize}[<+->]
+        \item \gruen{De re-Lesart} | \gruen{Wahr!} Denn für den Typen vom Strand gilt \ldots
+        \item \orongsch{De dicto-Lesart} | \orongsch{Falsch!} Denn Ralph glaubt, dass \ldots
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-%\subsection{Ambiguities}
-\frame{\frametitle{Meet B.J. Ortcutt}
-\begin{itemize}
-  \item<1-> \gr{Quine's story:} Ralph knows\ldots
-  \item<2-> Bernard J.Ortcutt, the nice guy on the beach.
-  \item<3-> He sees a strange guy with a hat in the dark alley - a spy?
-  \item<4-> Ortcutt just likes to behave funny on the way to his pub\ldots
-  \item<5-> and actually is sinister guy in the alley!
-  \item<6-> Only Ralph doesn't know.
-\end{itemize}
-}
-
-\frame{\frametitle{Is Ralph insane?}
-\begin{itemize}
-  \item<1-> What's the truth value of\ldots
-  \item<2-> \bl{\emph{Ralph believes that the guy from the beach is a spy.}}
-  \item<3-> true: since Ortcutt and the guy in the hat are one individual
-  \item<4-> false: since Ralph doesn't know that and in a way `doesn't believe it'
-\end{itemize}
-}
-
-\frame{\frametitle{\emph{de dicto} and \emph{de re}}
-\begin{itemize}
-  \item<1-> the Russelian interpretation for \emph{the} like $\exists$ with a uniqueness condition (as a GQ):\\ \bl{$\lambda{Q}\lambda{}P\ekm{\exists{x}\ekm{Q(x)\wedge{}P(x)}\wedge\forall{}y\ekm{Q(y)\leftrightarrow y=x}}$}
-  \item<2-> in a raising framework: ambiguity between $THE$ and $believe$
-  \item<3-> {\small[$_{IP}$ the guy from the beach$_i$ [$_{IP}$ Ralph believes [$_{CP}$ that x$_i$ is a spy]]]}
-  \item<5-> makes the sentence true: the \bl{\emph{de re}} reading
-  \item<4-> {\small Ralph believes [$_{CP}$ that [$_{IP}$ the guy from the beach$_i$ [$_{IP}$ x$_i$ is a spy]]]}
-  \item<6-> makes the sentence false: the \bl{\emph{de dicto}} reading
-\end{itemize}
-}
-
-\frame{\frametitle{Rigid designators}
-\begin{itemize}
-  \item<1-> \emph{Yuri Gagarin might now have been the first man in space.}
-  \item<2-> \gr{some Mickey Mouse LFs:}
-  \item<3-> $\lozenge$ THE(first-man-in-space)(not-be-Gagarin)
-  \item<5-> \bl{at some $\ram{w_n,i_m}$ the first individual in space is not Y.G.}
-  \item<4-> THE(first-man-in-space)($\lozenge$[not-be-Gagarin])
-  \item<6-> \rot{at $\ram{w,i}$ the first individual in space (definitely Y.G.) is not Y.G. in an accessible world}
-  \item<7-> \bl{Names are rigid designators across world-time-pairs, definite descriptions aren't.}
-\end{itemize}
-}
-
-%\subsection{Infinitives and gerunds}
-\frame{\frametitle{Chierchia's formalization}
-\begin{itemize}
-  \item<1-> CP has its own subject, \emph{to}-IPs don't (PRO)
-  \item<2-> PRO must be interpreted, in our examples by coindexation with the matrix subject
-  \item<3-> infinitive embedding verbs: \bl{functions from world-time pairs to sets of individuals which have a certain property}, the intension of a predicate \bl{$\hat{ }\ P$}
-  \item<4-> \emph{John tries to sing.}
-  \item<5-> \bl{$try(j,\ \hat{ }\ swim)$}
-\end{itemize}
-}
+\begin{frame}
+  {Rigide Designatoren}
+  \onslide<+->
+  \onslide<+->
+  \textit{Yuri Gagarin \alert{might not} have been the first man in space.}\\
+  \grau{\footnotesize Erinnerung | In einem naiven Ansatz: \textit{YG könnte auch nicht YG gewesen sein.}}
+  \Halbzeile
+  \begin{itemize}[<+->]
+    \item Namen sind \alert{rigide} und bezeichnen immer dasselbe Individuum! (Kripke)
+      \Halbzeile
+    \item $\Diamond$ THE(first-man-in-space)(not-be-Gagarin)
+      \begin{itemize}[<+->]
+        \item \gruen{In irgendeiner Welt ist YG (rigide) nicht der erste Mensch auf dem Mond (nicht-rigide).}
+      \end{itemize}
+      \Halbzeile
+    \item THE(first-man-in-space)($\Diamond$[not-be-Gagarin])
+      \begin{itemize}[<+->]
+        \item \orongsch{Der erste Mensch auf dem Mond (= YG) war in einer zugänglichen Welt nicht YG.}
+        \item Diese Lesart ist auszuschließen. S. Chierchia, Dowty usw.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
